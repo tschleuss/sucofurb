@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6B55BC2E-1296-4D7F-8F8F-113F4C1A61DA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sUCO</RootNamespace>
+    <AssemblyName>CasosUso</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="core\Acao.cs" />
+    <Compile Include="core\CenarioAlternativo.cs" />
+    <Compile Include="core\Diagrama.cs" />
+    <Compile Include="forms\FormAddCenario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormAddCenario.Designer.cs">
+      <DependentUpon>FormAddCenario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormAlterarCenario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormAlterarCenario.Designer.cs">
+      <DependentUpon>FormAlterarCenario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormAlterarRaia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormAlterarRaia.Designer.cs">
+      <DependentUpon>FormAlterarRaia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="core\CasoDeUso.cs" />
+    <Compile Include="forms\FormAddRaia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormAddRaia.Designer.cs">
+      <DependentUpon>FormAddRaia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormDeleteRaia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormDeleteRaia.Designer.cs">
+      <DependentUpon>FormDeleteRaia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="core\GeraRelatorio.cs" />
+    <Compile Include="core\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="forms\FormAddCenario.resx">
+      <DependentUpon>FormAddCenario.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormAlterarCenario.resx">
+      <DependentUpon>FormAlterarCenario.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormAlterarRaia.resx">
+      <DependentUpon>FormAlterarRaia.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormAddRaia.resx">
+      <DependentUpon>FormAddRaia.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormDeleteRaia.resx">
+      <DependentUpon>FormDeleteRaia.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="core\Raia.cs" />
+    <Compile Include="core\Serializador.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\addRaia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\raia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\deleteRaia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\cenarioAlternativo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\relatorio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\sUCO.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
