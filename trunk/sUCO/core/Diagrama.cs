@@ -1,0 +1,222 @@
+﻿using System;
+using System.Collections;
+using System.Linq;
+using System.Text;
+using System.Drawing;
+using System.Windows.Forms;
+using System.IO;
+
+namespace sUCO
+{
+    [Serializable]
+    class Diagrama
+    {
+        private ArrayList p_ListaRaias;
+        private byte[] p_ByteImagem;
+        private bool p_CarregandoNovoDiagrama = false;
+
+        // Construtores
+        public Diagrama(Image imagem, ArrayList listaRaias)
+        {
+            p_ByteImagem    = imagem != null ?  convertImageToByteArray(imagem) : new byte[0];
+            p_ListaRaias    = listaRaias;
+        }
+        public Diagrama()
+        {
+            p_ListaRaias = new ArrayList();
+            p_ByteImagem = new byte[0];
+        }
+        
+        // Propriedades
+        public bool CarregandoNovoDiagrama
+        {
+            get { return p_CarregandoNovoDiagrama; }
+        }
+        public Image Imagem
+        {
+            set { p_ByteImagem = value != null ? convertImageToByteArray(value) : new byte[0]; }
+            get { return p_ByteImagem.Length > 0 ? convertByteArrayToImage(p_ByteImagem) : null; }
+        }
+        public ArrayList ListaRaias
+        {
+            get { return p_ListaRaias; }
+        }
+        public int countRaias
+        {
+            get { return p_ListaRaias.Count; }
+        }
+        public int countAcoes
+        {
+            get
+            {
+                if (p_ListaRaias.Count > 0)
+                    return ((Raia)p_ListaRaias[0]).ListaAcoes.Count;
+
+                return 0;
+            }
+        }
+
+        // Métodos principais
+        public DataGridViewColumn[] addRaia(Raia raia)
+        {
+            DataGridViewColumn[] colunas = new DataGridViewColumn[1];
+            if (p_ListaRaias.Count == 0)
+            {
+                colunas = new DataGridViewColumn[2];
+                colunas[0] = addNewRaia(new Raia("Nº", 30, new ArrayList()));
+                colunas[1] = addNewRaia(raia);
+            }
+            else
+                colunas[0] = addNewRaia(raia);
+
+            // Preenche com ações vazias, para que todas as rias 
+            // tenham a mesma qtd de ações
+            doPreencherComAcoesVazias(raia);
+
+            return colunas;
+        }
+        public DataGridViewColumn getRaia(int index)
+        {
+            if (index < p_ListaRaias.Count)
+                return doCriarColuna((Raia)p_ListaRaias[index]);
+
+            return null;
+        }
+        public Acao getAcao(int columnIndex, int rowIndex)
+        {
+            if (columnIndex < ListaRaias.Count)
+            {
+                Raia r = ((Raia)ListaRaias[columnIndex]);
+                if (rowIndex < r.ListaAcoes.Count)
+                    return (Acao)r.ListaAcoes[rowIndex];
+            }
+            return null;
+        }
+        public void addAcao()
+        {
+            // Adiciona uma nova linha para todas as Raias
+            for (int x=0; x<ListaRaias.Count; x++)
+            {
+                ((Raia)p_ListaRaias[x]).ListaAcoes.Add(new Acao("", new ArrayList()));
+            }
+        }
+
+        public void addCenario(Acao acao, CenarioAlternativo cenario)
+        {
+            acao.ListaCenariosAlternativos.Add(cenario);
+        }
+        public void doRemoverCenario(Acao acao, CenarioAlternativo cenario)
+        {
+            if (acao.ListaCenariosAlternativos.Contains(cenario))
+                acao.ListaCenariosAlternativos.Remove(cenario);
+        }
+
+        public void doAlterarAcao(int columnIndex, int rowIndex, Acao acao)
+        {
+            if (columnIndex < ListaRaias.Count)
+            {
+                if (rowIndex < ((Raia)p_ListaRaias[columnIndex]).ListaAcoes.Count)
+                {
+                    (((Raia)p_ListaRaias[columnIndex]).ListaAcoes[rowIndex]) = acao;
+                }
+            }
+        }
+        public void doAlterarNomeRaia(int index, string novoNome, DataGridView dataGridView)
+        {
+            if (index < p_ListaRaias.Count)
+            {
+                Raia raia = (Raia)p_ListaRaias[index];
+                dataGridView.Columns[raia.Nome].HeaderText = novoNome;
+                dataGridView.Columns[raia.Nome].Name = novoNome;
+                raia.Nome = novoNome;
+            }
+        }
+        public void doRemoverAcao(int rowIndex)
+        {
+
+            for (int x = 0; x < ListaRaias.Count; x++)
+            {
+                if (rowIndex < ((Raia)p_ListaRaias[x]).ListaAcoes.Count)
+                    ((Raia)p_ListaRaias[x]).ListaAcoes.RemoveAt(rowIndex);
+            }
+        }                
+        public void doRemoverRaia(int index, DataGridView dataGridView)
+        {
+            if (index < p_ListaRaias.Count)
+            {
+                dataGridView.Columns.RemoveAt(index);
+                p_ListaRaias.RemoveAt(index);
+            }
+        }        
+        public void doCarregarDatagridView(DataGridView dataGridView)
+        {
+            try
+            {
+                p_CarregandoNovoDiagrama = true;
+                dataGridView.ColumnCount = 0;
+
+                for (int x = 0; x < countRaias; x++)
+                {
+                    // Adiciona Raia(Coluna)
+                    dataGridView.Columns.Add(getRaia(x));
+
+                    if (dataGridView.RowCount < countAcoes)
+                        dataGridView.RowCount = countAcoes;
+
+                    // Adiciona as ações(linhas)
+                    for (int y = 0; y < dataGridView.RowCount; y++)
+                    {
+                        string texto = ((Acao)((Raia)ListaRaias[x]).ListaAcoes[y]).Texto;
+                        dataGridView[x, y].Value = texto != "" ? texto : null;
+                    }
+                }
+
+                p_CarregandoNovoDiagrama = false;
+            }
+            catch (Exception err)
+            {
+                throw new Exception("Erro ao carregar dataGridView.\r\nMensagem: " + err.Message);
+            }
+        }
+
+        // Métodos auxiliares
+        private byte[] convertImageToByteArray(System.Drawing.Image image)
+        {
+            MemoryStream ms = new MemoryStream();
+            image.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            return ms.ToArray();
+        }
+        private Image convertByteArrayToImage(byte[] byteArray)
+        {
+            MemoryStream ms = new MemoryStream(byteArray);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+        private DataGridViewColumn addNewRaia(Raia raia)
+        {
+            p_ListaRaias.Add(raia);
+            return doCriarColuna(raia);
+        }
+        private DataGridViewColumn doCriarColuna(Raia raia)
+        {
+            DataGridViewColumn column = new DataGridViewColumn();
+            column.CellTemplate = new DataGridViewTextBoxCell();
+            column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            column.HeaderText = raia.Nome;
+            column.Name = raia.Nome;
+            column.Width = raia.Width;
+
+            return column;
+        }
+        private void doPreencherComAcoesVazias(Raia raia)
+        {
+            if (countAcoes > 0)
+            {
+                for (int x = 0; x < countAcoes; x++)
+                {
+                    raia.ListaAcoes.Add(new Acao("", new ArrayList()));
+                }
+            }
+        }
+    }
+}
