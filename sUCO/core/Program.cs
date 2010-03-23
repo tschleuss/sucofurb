@@ -10,7 +10,7 @@ namespace sUCO
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.Run(new formPrincipal());
+            Application.Run(new Principal());
         }
         
     }
