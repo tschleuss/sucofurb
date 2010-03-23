@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-
+using System.Text;
 
 namespace sUCO
 {    
 
-    class GeraRelatorio
+    class Relatorio
     {
-        public GeraRelatorio()
+        public Relatorio()
         { }
 
         public void gerar(Diagrama diagrama)

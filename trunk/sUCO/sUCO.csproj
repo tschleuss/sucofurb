@@ -71,7 +71,7 @@
     <Compile Include="forms\FormAlterarRaia.Designer.cs">
       <DependentUpon>FormAlterarRaia.cs</DependentUpon>
     </Compile>
-    <Compile Include="core\CasoDeUso.cs" />
+    <Compile Include="core\CasoUso.cs" />
     <Compile Include="forms\FormAddRaia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,7 +90,7 @@
     <Compile Include="forms\FormDeleteRaia.Designer.cs">
       <DependentUpon>FormDeleteRaia.cs</DependentUpon>
     </Compile>
-    <Compile Include="core\GeraRelatorio.cs" />
+    <Compile Include="core\Relatorio.cs" />
     <Compile Include="core\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\FormAddCenario.resx">
@@ -152,6 +152,8 @@
     <None Include="images\cenarioAlternativo.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="docs\Arquitetura.vsd" />
+    <None Include="docs\suco.eap" />
     <None Include="images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
