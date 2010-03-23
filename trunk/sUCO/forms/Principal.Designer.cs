@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace sUCO
 {
-    partial class formPrincipal
+    partial class Principal
     {
         /// <summary>
         /// Required designer variable.
@@ -26,7 +26,7 @@ namespace sUCO
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formPrincipal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.abrirArquivoDialog = new System.Windows.Forms.OpenFileDialog();
             this.panelDiagrama = new System.Windows.Forms.Panel();
             this.diagramaBox = new System.Windows.Forms.PictureBox();
@@ -481,7 +481,7 @@ namespace sUCO
             this.label2.TabIndex = 7;
             this.label2.Text = "Projeto";
             // 
-            // formPrincipal
+            // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -493,9 +493,10 @@ namespace sUCO
             this.Controls.Add(this.topToolBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "formPrincipal";
+            this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Organizador para descrição de Casos de Uso";
+            this.Text = "sUCO (Simple Use Case Organizer)";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelDiagrama.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.diagramaBox)).EndInit();
             this.topToolBox.ResumeLayout(false);

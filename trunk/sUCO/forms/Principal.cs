@@ -11,7 +11,7 @@ using System.Collections;
 
 namespace sUCO
 {
-    public partial class formPrincipal : Form
+    public partial class Principal : Form
     {
        // private CasoDeUso diagrama;
         enum tiposArquivos { Nenhum, CasoUso, Imagem}
@@ -21,7 +21,7 @@ namespace sUCO
         CasoUso casoDeUso = new CasoUso("", new Diagrama(), "");
 
 
-        public formPrincipal()
+        public Principal()
         {
             InitializeComponent();
             
