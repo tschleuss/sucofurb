@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Windows.Forms;
+using Dalssoft.DiagramNet;
 
 namespace sUCO
 {
@@ -66,6 +67,7 @@ namespace sUCO
             this.salvarArquivoDialog = new System.Windows.Forms.SaveFileDialog();
             this.txt_NomeProjeto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.designer1 = new Dalssoft.DiagramNet.Designer();
             this.panelDiagrama.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diagramaBox)).BeginInit();
             this.topToolBox.SuspendLayout();
@@ -91,6 +93,7 @@ namespace sUCO
             // 
             this.panelDiagrama.AutoScroll = true;
             this.panelDiagrama.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDiagrama.Controls.Add(this.designer1);
             this.panelDiagrama.Controls.Add(this.diagramaBox);
             this.panelDiagrama.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelDiagrama.Location = new System.Drawing.Point(0, 25);
@@ -100,9 +103,9 @@ namespace sUCO
             // 
             // diagramaBox
             // 
-            this.diagramaBox.Location = new System.Drawing.Point(0, 0);
+            this.diagramaBox.Location = new System.Drawing.Point(-1, -1);
             this.diagramaBox.Name = "diagramaBox";
-            this.diagramaBox.Size = new System.Drawing.Size(916, 248);
+            this.diagramaBox.Size = new System.Drawing.Size(365, 248);
             this.diagramaBox.TabIndex = 0;
             this.diagramaBox.TabStop = false;
             // 
@@ -481,6 +484,16 @@ namespace sUCO
             this.label2.TabIndex = 7;
             this.label2.Text = "Projeto";
             // 
+            // designer1
+            // 
+            this.designer1.AutoScroll = true;
+            this.designer1.AutoSize = true;
+            this.designer1.BackColor = System.Drawing.SystemColors.Window;
+            this.designer1.Location = new System.Drawing.Point(370, 0);
+            this.designer1.Name = "designer1";
+            this.designer1.Size = new System.Drawing.Size(546, 248);
+            this.designer1.TabIndex = 1;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,6 +511,7 @@ namespace sUCO
             this.Text = "sUCO (Simple Use Case Organizer)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelDiagrama.ResumeLayout(false);
+            this.panelDiagrama.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diagramaBox)).EndInit();
             this.topToolBox.ResumeLayout(false);
             this.topToolBox.PerformLayout();
@@ -574,6 +588,7 @@ namespace sUCO
         private ToolStripMenuItem hhhToolStripMenuItem;
         private TextBox txt_NomeProjeto;
         private Label label2;
+        private Designer designer1;
     }
 }
 

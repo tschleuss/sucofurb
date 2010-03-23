@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dalssoft.DiagramNet, Version=0.4.0.1703, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Interop.Word, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -140,24 +141,25 @@
     <Compile Include="core\Serializador.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\addRaia.png" />
+    <None Include="resources\images\addRaia.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\raia.png" />
+    <None Include="resources\images\raia.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\deleteRaia.png" />
+    <None Include="resources\images\deleteRaia.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\cenarioAlternativo.png" />
+    <None Include="resources\images\cenarioAlternativo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="docs\Arquitetura.vsd" />
     <None Include="docs\suco.eap" />
-    <None Include="images\relatorio.png" />
+    <None Include="resources\images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\sUCO.ico" />
+    <Content Include="resources\Dalssoft.DiagramNet.dll" />
+    <Content Include="resources\images\sUCO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
