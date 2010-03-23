@@ -18,7 +18,7 @@ namespace sUCO
         private tiposArquivos tipoArquivo = tiposArquivos.Nenhum;
         private bool dataGridViewAlterado = false;
 
-        CasoDeUso casoDeUso = new CasoDeUso("", new Diagrama(), "");
+        CasoUso casoDeUso = new CasoUso("", new Diagrama(), "");
 
 
         public formPrincipal()
@@ -110,7 +110,7 @@ namespace sUCO
         {
             if (verificaSalvar())
             {
-                casoDeUso = new CasoDeUso("", new Diagrama(), "");
+                casoDeUso = new CasoUso("", new Diagrama(), "");
                 diagramaBox.Image = null;
                 cb_Cenarios.Items.Clear();
 
@@ -623,7 +623,7 @@ namespace sUCO
 
         private void hhhToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GeraRelatorio relatorio = new GeraRelatorio();
+            Relatorio relatorio = new Relatorio();
             relatorio.gerar(casoDeUso.Diagrama);
             MessageBox.Show("Relatório gerado com éxito!");
         }

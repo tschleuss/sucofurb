@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Drawing;
-using System.IO;
 
 namespace sUCO
 {
     [Serializable]
-    class CasoDeUso
+    class CasoUso
     {
         private string p_Nome;
         private string p_FileName;
         private Diagrama p_Diagrama;
         //private bool p_CarregandoNovoDiagrama = false;
 
-        public CasoDeUso(string nome, Diagrama diagrama, string fileName)
+        public CasoUso(string nome, Diagrama diagrama, string fileName)
         {
             p_Diagrama = diagrama;
             p_FileName = fileName;
