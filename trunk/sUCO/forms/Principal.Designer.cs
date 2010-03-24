@@ -30,6 +30,7 @@ namespace sUCO
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.abrirArquivoDialog = new System.Windows.Forms.OpenFileDialog();
             this.panelDiagrama = new System.Windows.Forms.Panel();
+            this.designer1 = new Dalssoft.DiagramNet.Designer();
             this.diagramaBox = new System.Windows.Forms.PictureBox();
             this.topToolBox = new System.Windows.Forms.ToolStrip();
             this.btNovo = new System.Windows.Forms.ToolStripButton();
@@ -67,7 +68,6 @@ namespace sUCO
             this.salvarArquivoDialog = new System.Windows.Forms.SaveFileDialog();
             this.txt_NomeProjeto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.designer1 = new Dalssoft.DiagramNet.Designer();
             this.panelDiagrama.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diagramaBox)).BeginInit();
             this.topToolBox.SuspendLayout();
@@ -100,6 +100,16 @@ namespace sUCO
             this.panelDiagrama.Name = "panelDiagrama";
             this.panelDiagrama.Size = new System.Drawing.Size(918, 250);
             this.panelDiagrama.TabIndex = 3;
+            // 
+            // designer1
+            // 
+            this.designer1.AutoScroll = true;
+            this.designer1.AutoSize = true;
+            this.designer1.BackColor = System.Drawing.SystemColors.Window;
+            this.designer1.Location = new System.Drawing.Point(370, 0);
+            this.designer1.Name = "designer1";
+            this.designer1.Size = new System.Drawing.Size(546, 248);
+            this.designer1.TabIndex = 1;
             // 
             // diagramaBox
             // 
@@ -273,7 +283,7 @@ namespace sUCO
             this.btRaiaAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaAdd.Image = global::sUCO.Properties.Resources.addRaia;
             this.btRaiaAdd.Name = "btRaiaAdd";
-            this.btRaiaAdd.Size = new System.Drawing.Size(150, 22);
+            this.btRaiaAdd.Size = new System.Drawing.Size(152, 22);
             this.btRaiaAdd.Text = "Adicionar Raia";
             this.btRaiaAdd.ToolTipText = "Adiciona uma Raia ao Caso de Uso";
             this.btRaiaAdd.Click += new System.EventHandler(this.btRaiaAdd_Click);
@@ -283,7 +293,7 @@ namespace sUCO
             this.btRaiaDel.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaDel.Image = global::sUCO.Properties.Resources.deleteRaia;
             this.btRaiaDel.Name = "btRaiaDel";
-            this.btRaiaDel.Size = new System.Drawing.Size(150, 22);
+            this.btRaiaDel.Size = new System.Drawing.Size(152, 22);
             this.btRaiaDel.Text = "Excluir Raia";
             this.btRaiaDel.ToolTipText = "Deleta uma Raia do Caso de Uso";
             this.btRaiaDel.Click += new System.EventHandler(this.btRaiaDel_Click);
@@ -483,16 +493,6 @@ namespace sUCO
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Projeto";
-            // 
-            // designer1
-            // 
-            this.designer1.AutoScroll = true;
-            this.designer1.AutoSize = true;
-            this.designer1.BackColor = System.Drawing.SystemColors.Window;
-            this.designer1.Location = new System.Drawing.Point(370, 0);
-            this.designer1.Name = "designer1";
-            this.designer1.Size = new System.Drawing.Size(546, 248);
-            this.designer1.TabIndex = 1;
             // 
             // Principal
             // 
