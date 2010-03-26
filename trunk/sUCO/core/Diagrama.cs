@@ -19,6 +19,7 @@ namespace sUCO
             p_ByteImagem    = imagem != null ?  convertImageToByteArray(imagem) : new byte[0];
             p_ListaRaias    = listaRaias;
         }
+
         public Diagrama()
         {
             p_ListaRaias = new ArrayList();
@@ -30,19 +31,23 @@ namespace sUCO
         {
             get { return p_CarregandoNovoDiagrama; }
         }
+
         public Image Imagem
         {
             set { p_ByteImagem = value != null ? convertImageToByteArray(value) : new byte[0]; }
             get { return p_ByteImagem.Length > 0 ? convertByteArrayToImage(p_ByteImagem) : null; }
         }
+
         public ArrayList ListaRaias
         {
             get { return p_ListaRaias; }
         }
+
         public int countRaias
         {
             get { return p_ListaRaias.Count; }
         }
+
         public int countAcoes
         {
             get
@@ -58,14 +63,7 @@ namespace sUCO
         public DataGridViewColumn[] addRaia(Raia raia)
         {
             DataGridViewColumn[] colunas = new DataGridViewColumn[1];
-            if (p_ListaRaias.Count == 0)
-            {
-                colunas = new DataGridViewColumn[2];
-                colunas[0] = addNewRaia(new Raia("Nº", 30, new ArrayList()));
-                colunas[1] = addNewRaia(raia);
-            }
-            else
-                colunas[0] = addNewRaia(raia);
+            colunas[0] = addNewRaia(raia);
 
             // Preenche com ações vazias, para que todas as rias 
             // tenham a mesma qtd de ações
@@ -73,6 +71,7 @@ namespace sUCO
 
             return colunas;
         }
+
         public DataGridViewColumn getRaia(int index)
         {
             if (index < p_ListaRaias.Count)
@@ -80,6 +79,7 @@ namespace sUCO
 
             return null;
         }
+
         public Acao getAcao(int columnIndex, int rowIndex)
         {
             if (columnIndex < ListaRaias.Count)
@@ -90,6 +90,7 @@ namespace sUCO
             }
             return null;
         }
+
         public void addAcao()
         {
             // Adiciona uma nova linha para todas as Raias
@@ -103,6 +104,7 @@ namespace sUCO
         {
             acao.ListaCenariosAlternativos.Add(cenario);
         }
+
         public void doRemoverCenario(Acao acao, CenarioAlternativo cenario)
         {
             if (acao.ListaCenariosAlternativos.Contains(cenario))
@@ -119,6 +121,7 @@ namespace sUCO
                 }
             }
         }
+
         public void doAlterarNomeRaia(int index, string novoNome, DataGridView dataGridView)
         {
             if (index < p_ListaRaias.Count)
@@ -137,7 +140,8 @@ namespace sUCO
                 if (rowIndex < ((Raia)p_ListaRaias[x]).ListaAcoes.Count)
                     ((Raia)p_ListaRaias[x]).ListaAcoes.RemoveAt(rowIndex);
             }
-        }                
+        }   
+             
         public void doRemoverRaia(int index, DataGridView dataGridView)
         {
             if (index < p_ListaRaias.Count)
@@ -145,7 +149,8 @@ namespace sUCO
                 dataGridView.Columns.RemoveAt(index);
                 p_ListaRaias.RemoveAt(index);
             }
-        }        
+        }      
+  
         public void doCarregarDatagridView(DataGridView dataGridView)
         {
             try
@@ -184,17 +189,20 @@ namespace sUCO
             image.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
             return ms.ToArray();
         }
+
         private Image convertByteArrayToImage(byte[] byteArray)
         {
             MemoryStream ms = new MemoryStream(byteArray);
             Image returnImage = Image.FromStream(ms);
             return returnImage;
         }
+
         private DataGridViewColumn addNewRaia(Raia raia)
         {
             p_ListaRaias.Add(raia);
             return doCriarColuna(raia);
         }
+
         private DataGridViewColumn doCriarColuna(Raia raia)
         {
             DataGridViewColumn column = new DataGridViewColumn();
@@ -206,6 +214,7 @@ namespace sUCO
 
             return column;
         }
+
         private void doPreencherComAcoesVazias(Raia raia)
         {
             if (countAcoes > 0)

@@ -36,10 +36,10 @@
             // 
             // btn_Inerir
             // 
-            this.btn_Inerir.Location = new System.Drawing.Point(200, 42);
+            this.btn_Inerir.Location = new System.Drawing.Point(119, 42);
             this.btn_Inerir.Name = "btn_Inerir";
             this.btn_Inerir.Size = new System.Drawing.Size(75, 23);
-            this.btn_Inerir.TabIndex = 0;
+            this.btn_Inerir.TabIndex = 2;
             this.btn_Inerir.Text = "Inserir";
             this.btn_Inerir.UseVisualStyleBackColor = true;
             this.btn_Inerir.Click += new System.EventHandler(this.btn_Inerir_Click);
@@ -63,7 +63,7 @@
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(119, 42);
+            this.btn_Cancelar.Location = new System.Drawing.Point(200, 42);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancelar.TabIndex = 3;
