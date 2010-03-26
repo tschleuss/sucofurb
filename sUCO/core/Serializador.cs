@@ -9,9 +9,13 @@ namespace sUCO
         public static void salvarArquivo(CasoUso diagrama)
         {
             if (File.Exists(diagrama.FileName))
+            {
                 File.Delete(diagrama.FileName);
+            }
             else
+            {
                 diagrama.FileName += ".xml";
+            }
 
             SoapFormatter s = new SoapFormatter();
             FileStream f = File.Create(diagrama.FileName);

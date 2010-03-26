@@ -36,10 +36,10 @@
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(119, 38);
+            this.btn_Cancelar.Location = new System.Drawing.Point(200, 38);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancelar.TabIndex = 7;
+            this.btn_Cancelar.TabIndex = 3;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
@@ -58,15 +58,15 @@
             this.txt_Cenario.Location = new System.Drawing.Point(70, 12);
             this.txt_Cenario.Name = "txt_Cenario";
             this.txt_Cenario.Size = new System.Drawing.Size(205, 20);
-            this.txt_Cenario.TabIndex = 5;
+            this.txt_Cenario.TabIndex = 1;
             this.txt_Cenario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_Cenario_KeyUp);
             // 
             // btn_Inerir
             // 
-            this.btn_Inerir.Location = new System.Drawing.Point(200, 38);
+            this.btn_Inerir.Location = new System.Drawing.Point(119, 38);
             this.btn_Inerir.Name = "btn_Inerir";
             this.btn_Inerir.Size = new System.Drawing.Size(75, 23);
-            this.btn_Inerir.TabIndex = 4;
+            this.btn_Inerir.TabIndex = 2;
             this.btn_Inerir.Text = "Inserir";
             this.btn_Inerir.UseVisualStyleBackColor = true;
             this.btn_Inerir.Click += new System.EventHandler(this.btn_Inerir_Click);

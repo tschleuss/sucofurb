@@ -40,17 +40,17 @@
             this.btn_Excluir.Location = new System.Drawing.Point(135, 45);
             this.btn_Excluir.Name = "btn_Excluir";
             this.btn_Excluir.Size = new System.Drawing.Size(75, 23);
-            this.btn_Excluir.TabIndex = 14;
+            this.btn_Excluir.TabIndex = 3;
             this.btn_Excluir.Text = "Remover";
             this.btn_Excluir.UseVisualStyleBackColor = true;
             this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(54, 45);
+            this.btn_Cancelar.Location = new System.Drawing.Point(216, 45);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancelar.TabIndex = 13;
+            this.btn_Cancelar.TabIndex = 4;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
@@ -69,15 +69,15 @@
             this.txt_Cenario.Location = new System.Drawing.Point(54, 14);
             this.txt_Cenario.Name = "txt_Cenario";
             this.txt_Cenario.Size = new System.Drawing.Size(237, 20);
-            this.txt_Cenario.TabIndex = 11;
+            this.txt_Cenario.TabIndex = 1;
             this.txt_Cenario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_Cenario_KeyUp);
             // 
             // btn_Inerir
             // 
-            this.btn_Inerir.Location = new System.Drawing.Point(216, 45);
+            this.btn_Inerir.Location = new System.Drawing.Point(54, 45);
             this.btn_Inerir.Name = "btn_Inerir";
             this.btn_Inerir.Size = new System.Drawing.Size(75, 23);
-            this.btn_Inerir.TabIndex = 10;
+            this.btn_Inerir.TabIndex = 2;
             this.btn_Inerir.Text = "Alterar";
             this.btn_Inerir.UseVisualStyleBackColor = true;
             this.btn_Inerir.Click += new System.EventHandler(this.btn_Inerir_Click);

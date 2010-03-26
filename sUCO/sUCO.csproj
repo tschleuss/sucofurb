@@ -54,6 +54,9 @@
     <Compile Include="core\Acao.cs" />
     <Compile Include="core\CenarioAlternativo.cs" />
     <Compile Include="core\Diagrama.cs" />
+    <Compile Include="core\MyDGV.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="forms\FormAddCenario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,7 +94,6 @@
     <Compile Include="forms\FormDeleteRaia.Designer.cs">
       <DependentUpon>FormDeleteRaia.cs</DependentUpon>
     </Compile>
-    <Compile Include="core\Relatorio.cs" />
     <Compile Include="core\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\FormAddCenario.resx">

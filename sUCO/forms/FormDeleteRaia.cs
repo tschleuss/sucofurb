@@ -13,7 +13,6 @@ namespace sUCO
     {
         private string nomeRaia = "";
         private int index = -1;
-        private bool cancelado = true;
         private bool remover = false;
 
 
