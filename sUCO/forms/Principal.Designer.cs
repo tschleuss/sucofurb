@@ -36,8 +36,8 @@ namespace sUCO
             this.panelCasosUso = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            //this.dgCasosUso = new System.Windows.Forms.DataGridView();
-            this.dgCasosUso = new MyDGV();
+            this.dgCasosUso = new System.Windows.Forms.DataGridView();
+            //this.dgCasosUso = new MyDGV();
 
             this.ucToolBox = new System.Windows.Forms.MenuStrip();
             this.btRaia = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,8 +49,8 @@ namespace sUCO
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cb_Cenarios = new System.Windows.Forms.ComboBox();
-            //this.dgCenarioAlternativo = new System.Windows.Forms.DataGridView();
-            this.dgCenarioAlternativo = new MyDGV();
+            this.dgCenarioAlternativo = new System.Windows.Forms.DataGridView();
+            //this.dgCenarioAlternativo = new MyDGV();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.novoCenarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoCenarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -475,8 +475,9 @@ namespace sUCO
         private Panel panel1;
         private Panel panel2;
         private DataGridView dgCenarioAlternativo;
-        //private DataGridViewTextBoxColumn CenarioAlternativo;
-        public DataGridView dgCasosUso;
+        private DataGridView dgCasosUso;
+        //private MyDVG dgCenarioAlternativo;
+        //private MyDVG dgCasosUso;
         private MenuStrip menuStrip1;
         private Label label1;
         private ComboBox cb_Cenarios;

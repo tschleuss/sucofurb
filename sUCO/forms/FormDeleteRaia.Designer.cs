@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDeleteRaia));
             this.bt_Remover = new System.Windows.Forms.Button();
             this.bt_Cancelar = new System.Windows.Forms.Button();
             this.cb_Raias = new System.Windows.Forms.ComboBox();
@@ -81,7 +82,12 @@
             this.Controls.Add(this.cb_Raias);
             this.Controls.Add(this.bt_Cancelar);
             this.Controls.Add(this.bt_Remover);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormDeleteRaia";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Excluindo raia";
             this.ResumeLayout(false);
