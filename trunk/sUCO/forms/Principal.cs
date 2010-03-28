@@ -497,7 +497,7 @@ namespace sUCO
             {
                 if (dgCasosUso.SelectedCells.Count == 1)
                 {
-                    if (dgCasosUso.SelectedCells[0].Value == null || dgCasosUso.SelectedCells[0].ColumnIndex == 0)
+                    if (dgCasosUso.SelectedCells[0].Value == null )
                     {
                         novoCenarioToolStripMenuItem.Enabled = false;
                         raiaToolStripMenuItem.Enabled = false;

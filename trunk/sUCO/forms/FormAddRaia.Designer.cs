@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddRaia));
             this.btn_Inerir = new System.Windows.Forms.Button();
             this.txt_Raia = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,7 +81,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_Raia);
             this.Controls.Add(this.btn_Inerir);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAddRaia";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionando uma nova raia";
             this.Load += new System.EventHandler(this.FormAddRaia_Load);
