@@ -157,6 +157,7 @@
   <ItemGroup>
     <None Include="docs\Arquitetura.vsd" />
     <None Include="docs\Desenho da Arquitetura.doc" />
+    <None Include="docs\Impacto dos RNF.doc" />
     <None Include="docs\suco.eap" />
     <None Include="resources\images\relatorio.png" />
   </ItemGroup>
