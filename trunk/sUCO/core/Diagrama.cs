@@ -53,7 +53,9 @@ namespace sUCO
             get
             {
                 if (p_ListaRaias.Count > 0)
+                {
                     return ((Raia)p_ListaRaias[0]).ListaAcoes.Count;
+                }
 
                 return 0;
             }
@@ -75,7 +77,9 @@ namespace sUCO
         public DataGridViewColumn getRaia(int index)
         {
             if (index < p_ListaRaias.Count)
+            {
                 return doCriarColuna((Raia)p_ListaRaias[index]);
+            }
 
             return null;
         }
@@ -86,7 +90,9 @@ namespace sUCO
             {
                 Raia r = ((Raia)ListaRaias[columnIndex]);
                 if (rowIndex < r.ListaAcoes.Count)
+                {
                     return (Acao)r.ListaAcoes[rowIndex];
+                }
             }
             return null;
         }
@@ -108,7 +114,9 @@ namespace sUCO
         public void doRemoverCenario(Acao acao, CenarioAlternativo cenario)
         {
             if (acao.ListaCenariosAlternativos.Contains(cenario))
+            {
                 acao.ListaCenariosAlternativos.Remove(cenario);
+            }
         }
 
         public void doAlterarAcao(int columnIndex, int rowIndex, Acao acao)
@@ -138,7 +146,9 @@ namespace sUCO
             for (int x = 0; x < ListaRaias.Count; x++)
             {
                 if (rowIndex < ((Raia)p_ListaRaias[x]).ListaAcoes.Count)
+                {
                     ((Raia)p_ListaRaias[x]).ListaAcoes.RemoveAt(rowIndex);
+                }
             }
         }   
              
@@ -164,7 +174,9 @@ namespace sUCO
                     dataGridView.Columns.Add(getRaia(x));
 
                     if (dataGridView.RowCount < countAcoes)
+                    {
                         dataGridView.RowCount = countAcoes;
+                    }
 
                     // Adiciona as ações(linhas)
                     for (int y = 0; y < dataGridView.RowCount; y++)
