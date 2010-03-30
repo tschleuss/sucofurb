@@ -155,18 +155,18 @@
     <None Include="resources\images\cenarioAlternativo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="docs\Arquitetura.vsd" />
-    <None Include="docs\Desenho da Arquitetura.doc" />
-    <None Include="docs\pdf\Desenho da Arquitetura.pdf" />
-    <None Include="docs\Impacto dos RNF.doc" />
-    <None Include="docs\pdf\Impacto dos RNF.pdf" />
-    <None Include="docs\eap\sUCO_2.eap" />
-    <None Include="docs\eap\sUCO_3.EAP" />
-    <None Include="docs\pdf\sUCO_3.pdf" />
+    <None Include="resources\docs\Arquitetura.vsd" />
+    <None Include="resources\docs\Desenho da Arquitetura.doc" />
+    <None Include="resources\docs\pdf\Desenho da Arquitetura.pdf" />
+    <None Include="resources\docs\Impacto dos RNF.doc" />
+    <None Include="resources\docs\pdf\Impacto dos RNF.pdf" />
+    <None Include="resources\docs\eap\sUCO_2.eap" />
+    <None Include="resources\docs\eap\sUCO_3.EAP" />
+    <None Include="resources\docs\pdf\sUCO_3.pdf" />
     <None Include="resources\images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="docs\sUCO_DER.png" />
+    <Content Include="resources\docs\sUCO_DER.png" />
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\sUCO.ico" />
   </ItemGroup>
