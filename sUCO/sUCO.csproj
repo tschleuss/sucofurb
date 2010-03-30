@@ -140,7 +140,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="core\Raia.cs" />
-    <Compile Include="core\Serializador.cs" />
+    <Compile Include="control\Serializador.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\images\addRaia.png" />
@@ -157,11 +157,16 @@
   <ItemGroup>
     <None Include="docs\Arquitetura.vsd" />
     <None Include="docs\Desenho da Arquitetura.doc" />
+    <None Include="docs\pdf\Desenho da Arquitetura.pdf" />
     <None Include="docs\Impacto dos RNF.doc" />
-    <None Include="docs\suco.eap" />
+    <None Include="docs\pdf\Impacto dos RNF.pdf" />
+    <None Include="docs\eap\sUCO_2.eap" />
+    <None Include="docs\eap\sUCO_3.EAP" />
+    <None Include="docs\pdf\sUCO_3.pdf" />
     <None Include="resources\images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="docs\sUCO_DER.png" />
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\sUCO.ico" />
   </ItemGroup>
