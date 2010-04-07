@@ -34,11 +34,12 @@ namespace sUCO
             this.btAbrir = new System.Windows.Forms.ToolStripButton();
             this.btSalvar = new System.Windows.Forms.ToolStripButton();
             this.panelCasosUso = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.containerFluxoUC = new System.Windows.Forms.SplitContainer();
+            this.panelFluxo = new System.Windows.Forms.Panel();
             this.dgCasosUso = new System.Windows.Forms.DataGridView();
-            //this.dgCasosUso = new MyDGV();
-
             this.ucToolBox = new System.Windows.Forms.MenuStrip();
             this.btRaia = new System.Windows.Forms.ToolStripMenuItem();
             this.btRaiaAdd = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,6 @@ namespace sUCO
             this.label1 = new System.Windows.Forms.Label();
             this.cb_Cenarios = new System.Windows.Forms.ComboBox();
             this.dgCenarioAlternativo = new System.Windows.Forms.DataGridView();
-            //this.dgCenarioAlternativo = new MyDGV();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.novoCenarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoCenarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,18 +63,25 @@ namespace sUCO
             this.salvarArquivoDialog = new System.Windows.Forms.SaveFileDialog();
             this.txt_NomeProjeto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.menuTopo = new System.Windows.Forms.MenuStrip();
+            this.menuItemArquivo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemInternoAbrir = new System.Windows.Forms.ToolStripMenuItem();
             this.topToolBox.SuspendLayout();
             this.panelCasosUso.SuspendLayout();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.containerFluxoUC.Panel1.SuspendLayout();
+            this.containerFluxoUC.Panel2.SuspendLayout();
+            this.containerFluxoUC.SuspendLayout();
+            this.panelFluxo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCasosUso)).BeginInit();
             this.ucToolBox.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCenarioAlternativo)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ds)).BeginInit();
+            this.menuTopo.SuspendLayout();
             this.SuspendLayout();
             // 
             // abrirArquivoDialog
@@ -89,7 +96,7 @@ namespace sUCO
             this.btNovo,
             this.btAbrir,
             this.btSalvar});
-            this.topToolBox.Location = new System.Drawing.Point(0, 0);
+            this.topToolBox.Location = new System.Drawing.Point(0, 24);
             this.topToolBox.Name = "topToolBox";
             this.topToolBox.Size = new System.Drawing.Size(918, 25);
             this.topToolBox.TabIndex = 4;
@@ -132,39 +139,73 @@ namespace sUCO
             // 
             this.panelCasosUso.AutoScroll = true;
             this.panelCasosUso.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelCasosUso.Controls.Add(this.splitContainer1);
+            this.panelCasosUso.Controls.Add(this.tabControl);
             this.panelCasosUso.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCasosUso.Location = new System.Drawing.Point(0, 25);
+            this.panelCasosUso.Location = new System.Drawing.Point(0, 49);
             this.panelCasosUso.Name = "panelCasosUso";
-            this.panelCasosUso.Size = new System.Drawing.Size(918, 539);
+            this.panelCasosUso.Size = new System.Drawing.Size(918, 515);
             this.panelCasosUso.TabIndex = 5;
             // 
-            // splitContainer1
+            // tabControl
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(914, 511);
+            this.tabControl.TabIndex = 7;
             // 
-            // splitContainer1.Panel1
+            // tabPage1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.panel1);
-            this.splitContainer1.Panel1.Controls.Add(this.ucToolBox);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.txt_NomeProjeto);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(906, 485);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Projeto";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1.Panel2
+            // tabPage2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel2);
-            this.splitContainer1.Size = new System.Drawing.Size(914, 535);
-            this.splitContainer1.SplitterDistance = 466;
-            this.splitContainer1.TabIndex = 6;
+            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Controls.Add(this.containerFluxoUC);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(906, 485);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Caso de Uso 1";
             // 
-            // panel1
+            // containerFluxoUC
             // 
-            this.panel1.Controls.Add(this.dgCasosUso);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(34, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(432, 535);
-            this.panel1.TabIndex = 4;
+            this.containerFluxoUC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.containerFluxoUC.Location = new System.Drawing.Point(3, 3);
+            this.containerFluxoUC.Name = "containerFluxoUC";
+            // 
+            // containerFluxoUC.Panel1
+            // 
+            this.containerFluxoUC.Panel1.Controls.Add(this.panelFluxo);
+            this.containerFluxoUC.Panel1.Controls.Add(this.ucToolBox);
+            // 
+            // containerFluxoUC.Panel2
+            // 
+            this.containerFluxoUC.Panel2.Controls.Add(this.panel2);
+            this.containerFluxoUC.Size = new System.Drawing.Size(900, 479);
+            this.containerFluxoUC.SplitterDistance = 458;
+            this.containerFluxoUC.TabIndex = 6;
+            // 
+            // panelFluxo
+            // 
+            this.panelFluxo.Controls.Add(this.dgCasosUso);
+            this.panelFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFluxo.Location = new System.Drawing.Point(34, 0);
+            this.panelFluxo.Name = "panelFluxo";
+            this.panelFluxo.Size = new System.Drawing.Size(424, 479);
+            this.panelFluxo.TabIndex = 4;
             // 
             // dgCasosUso
             // 
@@ -173,7 +214,7 @@ namespace sUCO
             this.dgCasosUso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCasosUso.Location = new System.Drawing.Point(0, 0);
             this.dgCasosUso.Name = "dgCasosUso";
-            this.dgCasosUso.Size = new System.Drawing.Size(432, 535);
+            this.dgCasosUso.Size = new System.Drawing.Size(424, 479);
             this.dgCasosUso.TabIndex = 7;
             this.dgCasosUso.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCasosUso_CellValueChanged);
             this.dgCasosUso.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCasosUso_ColumnHeaderMouseDoubleClick);
@@ -197,7 +238,7 @@ namespace sUCO
             this.btCenarioAlternativo});
             this.ucToolBox.Location = new System.Drawing.Point(0, 0);
             this.ucToolBox.Name = "ucToolBox";
-            this.ucToolBox.Size = new System.Drawing.Size(34, 535);
+            this.ucToolBox.Size = new System.Drawing.Size(34, 479);
             this.ucToolBox.TabIndex = 3;
             this.ucToolBox.Text = "ucToolBox";
             // 
@@ -216,7 +257,7 @@ namespace sUCO
             this.btRaiaAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaAdd.Image = global::sUCO.Properties.Resources.addRaia;
             this.btRaiaAdd.Name = "btRaiaAdd";
-            this.btRaiaAdd.Size = new System.Drawing.Size(153, 22);
+            this.btRaiaAdd.Size = new System.Drawing.Size(150, 22);
             this.btRaiaAdd.Text = "Adicionar Raia";
             this.btRaiaAdd.ToolTipText = "Adiciona uma Raia ao Caso de Uso";
             this.btRaiaAdd.Click += new System.EventHandler(this.btRaiaAdd_Click);
@@ -226,7 +267,7 @@ namespace sUCO
             this.btRaiaDel.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaDel.Image = global::sUCO.Properties.Resources.deleteRaia;
             this.btRaiaDel.Name = "btRaiaDel";
-            this.btRaiaDel.Size = new System.Drawing.Size(153, 22);
+            this.btRaiaDel.Size = new System.Drawing.Size(150, 22);
             this.btRaiaDel.Text = "Excluir Raia";
             this.btRaiaDel.ToolTipText = "Deleta uma Raia do Caso de Uso";
             this.btRaiaDel.Click += new System.EventHandler(this.btRaiaDel_Click);
@@ -246,7 +287,7 @@ namespace sUCO
             this.visualizarCenariosToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.visualizarCenariosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("visualizarCenariosToolStripMenuItem.Image")));
             this.visualizarCenariosToolStripMenuItem.Name = "visualizarCenariosToolStripMenuItem";
-            this.visualizarCenariosToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.visualizarCenariosToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.visualizarCenariosToolStripMenuItem.Text = "Visualizar Cenários";
             this.visualizarCenariosToolStripMenuItem.ToolTipText = "Visualisa os cenários alternativos";
             this.visualizarCenariosToolStripMenuItem.Click += new System.EventHandler(this.visualizarCenariosToolStripMenuItem_Click);
@@ -256,7 +297,7 @@ namespace sUCO
             this.ocultarCenariosToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.ocultarCenariosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ocultarCenariosToolStripMenuItem.Image")));
             this.ocultarCenariosToolStripMenuItem.Name = "ocultarCenariosToolStripMenuItem";
-            this.ocultarCenariosToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.ocultarCenariosToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.ocultarCenariosToolStripMenuItem.Text = "Ocultar Cenários";
             this.ocultarCenariosToolStripMenuItem.ToolTipText = "Oculta os cenários alternativos";
             this.ocultarCenariosToolStripMenuItem.Click += new System.EventHandler(this.ocultarCenariosToolStripMenuItem_Click);
@@ -270,7 +311,7 @@ namespace sUCO
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(444, 535);
+            this.panel2.Size = new System.Drawing.Size(438, 479);
             this.panel2.TabIndex = 0;
             // 
             // label1
@@ -298,7 +339,7 @@ namespace sUCO
             this.dgCenarioAlternativo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCenarioAlternativo.Location = new System.Drawing.Point(0, 24);
             this.dgCenarioAlternativo.Name = "dgCenarioAlternativo";
-            this.dgCenarioAlternativo.Size = new System.Drawing.Size(444, 511);
+            this.dgCenarioAlternativo.Size = new System.Drawing.Size(438, 455);
             this.dgCenarioAlternativo.TabIndex = 0;
             this.dgCenarioAlternativo.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCenarioAlternativo_ColumnHeaderMouseDoubleClick);
             this.dgCenarioAlternativo.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgCenarioAlternativo_CellBeginEdit);
@@ -314,7 +355,7 @@ namespace sUCO
             this.raiaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(444, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(438, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -373,7 +414,7 @@ namespace sUCO
             this.adicionarRaiaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.adicionarRaiaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("adicionarRaiaToolStripMenuItem.Image")));
             this.adicionarRaiaToolStripMenuItem.Name = "adicionarRaiaToolStripMenuItem";
-            this.adicionarRaiaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.adicionarRaiaToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.adicionarRaiaToolStripMenuItem.Text = "Adicionar Raia";
             this.adicionarRaiaToolStripMenuItem.ToolTipText = "Adiciona uma nova raia ao cenário alternativo";
             this.adicionarRaiaToolStripMenuItem.Click += new System.EventHandler(this.adicionarRaiaToolStripMenuItem_Click);
@@ -383,7 +424,7 @@ namespace sUCO
             this.removerRaiaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.removerRaiaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("removerRaiaToolStripMenuItem.Image")));
             this.removerRaiaToolStripMenuItem.Name = "removerRaiaToolStripMenuItem";
-            this.removerRaiaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.removerRaiaToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.removerRaiaToolStripMenuItem.Text = "Remover Raia";
             this.removerRaiaToolStripMenuItem.ToolTipText = "Remove uma raia do cenário alternativo";
             this.removerRaiaToolStripMenuItem.Click += new System.EventHandler(this.removerRaiaToolStripMenuItem_Click);
@@ -394,7 +435,7 @@ namespace sUCO
             // 
             // txt_NomeProjeto
             // 
-            this.txt_NomeProjeto.Location = new System.Drawing.Point(250, 2);
+            this.txt_NomeProjeto.Location = new System.Drawing.Point(72, 6);
             this.txt_NomeProjeto.Name = "txt_NomeProjeto";
             this.txt_NomeProjeto.Size = new System.Drawing.Size(280, 20);
             this.txt_NomeProjeto.TabIndex = 6;
@@ -403,22 +444,46 @@ namespace sUCO
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label2.Location = new System.Drawing.Point(194, 5);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(16, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Projeto";
+            // 
+            // menuTopo
+            // 
+            this.menuTopo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemArquivo});
+            this.menuTopo.Location = new System.Drawing.Point(0, 0);
+            this.menuTopo.Name = "menuTopo";
+            this.menuTopo.Size = new System.Drawing.Size(918, 24);
+            this.menuTopo.TabIndex = 8;
+            this.menuTopo.Text = "menuStrip2";
+            // 
+            // menuItemArquivo
+            // 
+            this.menuItemArquivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemInternoAbrir});
+            this.menuItemArquivo.Name = "menuItemArquivo";
+            this.menuItemArquivo.Size = new System.Drawing.Size(61, 20);
+            this.menuItemArquivo.Text = "Arquivo";
+            // 
+            // menuItemInternoAbrir
+            // 
+            this.menuItemInternoAbrir.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoAbrir.Image")));
+            this.menuItemInternoAbrir.Name = "menuItemInternoAbrir";
+            this.menuItemInternoAbrir.Size = new System.Drawing.Size(152, 22);
+            this.menuItemInternoAbrir.Text = "Abrir";
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 564);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txt_NomeProjeto);
             this.Controls.Add(this.panelCasosUso);
             this.Controls.Add(this.topToolBox);
+            this.Controls.Add(this.menuTopo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Principal";
@@ -428,11 +493,15 @@ namespace sUCO
             this.topToolBox.ResumeLayout(false);
             this.topToolBox.PerformLayout();
             this.panelCasosUso.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.containerFluxoUC.Panel1.ResumeLayout(false);
+            this.containerFluxoUC.Panel1.PerformLayout();
+            this.containerFluxoUC.Panel2.ResumeLayout(false);
+            this.containerFluxoUC.ResumeLayout(false);
+            this.panelFluxo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCasosUso)).EndInit();
             this.ucToolBox.ResumeLayout(false);
             this.ucToolBox.PerformLayout();
@@ -442,6 +511,8 @@ namespace sUCO
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ds)).EndInit();
+            this.menuTopo.ResumeLayout(false);
+            this.menuTopo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,13 +537,13 @@ namespace sUCO
         private System.Windows.Forms.Panel panelCasosUso;
         private DataSet ds;
         private SaveFileDialog salvarArquivoDialog;
-        private SplitContainer splitContainer1;
+        private SplitContainer containerFluxoUC;
         private MenuStrip ucToolBox;
         private ToolStripMenuItem btRaia;
         private ToolStripMenuItem btRaiaAdd;
         private ToolStripMenuItem btRaiaDel;
         private ToolStripMenuItem btCenarioAlternativo;
-        private Panel panel1;
+        private Panel panelFluxo;
         private Panel panel2;
         private DataGridView dgCenarioAlternativo;
         private DataGridView dgCasosUso;
@@ -492,6 +563,12 @@ namespace sUCO
         private ToolStripMenuItem alterarCenarioToolStripMenuItem;
         private TextBox txt_NomeProjeto;
         private Label label2;
+        private TabControl tabControl;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private MenuStrip menuTopo;
+        private ToolStripMenuItem menuItemArquivo;
+        private ToolStripMenuItem menuItemInternoAbrir;
     }
 }
 
