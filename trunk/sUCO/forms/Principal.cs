@@ -26,7 +26,7 @@ namespace sUCO
             InitializeComponent();
             
             validarBotoesCenario();
-            splitContainer1.Panel2Collapsed = true;
+            containerFluxoUC.Panel2Collapsed = true;
         }
 
         private void abrirArquivoDialog_FileOk(object sender, CancelEventArgs e)
@@ -550,12 +550,12 @@ namespace sUCO
 
         private void visualizarCenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            splitContainer1.Panel2Collapsed = false;
+            containerFluxoUC.Panel2Collapsed = false;
         }
 
         private void ocultarCenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            splitContainer1.Panel2Collapsed = true;
+            containerFluxoUC.Panel2Collapsed = true;
         }
 
         private void doRemoverRaia(Diagrama diagrama, DataGridView dataGridView)
