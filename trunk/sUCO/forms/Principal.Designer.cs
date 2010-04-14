@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Windows.Forms;
 using Dalssoft.DiagramNet;
-using sUCO.core;
+using sUCO.forms;
 
 namespace sUCO
 {
@@ -166,6 +166,8 @@ namespace sUCO
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
+
+            this.tabControl.Controls.Add(new TabCasoUso().GetTab());
 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
