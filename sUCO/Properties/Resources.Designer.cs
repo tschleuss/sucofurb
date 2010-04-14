@@ -67,6 +67,13 @@ namespace sUCO.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap addUC {
+            get {
+                object obj = ResourceManager.GetObject("addUC", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap cenarioAlternativo {
             get {
                 object obj = ResourceManager.GetObject("cenarioAlternativo", resourceCulture);
@@ -77,6 +84,13 @@ namespace sUCO.Properties {
         internal static System.Drawing.Bitmap deleteRaia {
             get {
                 object obj = ResourceManager.GetObject("deleteRaia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap deleteUC {
+            get {
+                object obj = ResourceManager.GetObject("deleteUC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
