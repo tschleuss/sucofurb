@@ -57,6 +57,7 @@
     <Compile Include="core\MyDGV.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="core\TabCasoUso.cs" />
     <Compile Include="forms\FormAddCenario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +169,8 @@
   <ItemGroup>
     <Content Include="resources\docs\sUCO_DER.png" />
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
+    <Content Include="resources\images\addUC.png" />
+    <Content Include="resources\images\deleteUC.png" />
     <Content Include="resources\images\sUCO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
