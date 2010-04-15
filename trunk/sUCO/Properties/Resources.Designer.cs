@@ -95,6 +95,20 @@ namespace sUCO.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap negado {
+            get {
+                object obj = ResourceManager.GetObject("negado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ok {
+            get {
+                object obj = ResourceManager.GetObject("ok", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap raia {
             get {
                 object obj = ResourceManager.GetObject("raia", resourceCulture);
