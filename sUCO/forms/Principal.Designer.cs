@@ -538,6 +538,9 @@ namespace sUCO
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(914, 511);
             this.tabControl.TabIndex = 7;
+
+            this.tabControl.Controls.Add(this.GetTabPage());
+
             // 
             // tabPage1
             // 
