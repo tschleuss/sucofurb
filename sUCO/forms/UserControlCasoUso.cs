@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -10,25 +10,11 @@ using System.Collections;
 
 namespace sUCO.forms
 {
-    public partial class TabCasoUso : TabPage
+    public partial class UserControlCasoUso : UserControl
     {
-
-        public TabCasoUso()
+        public UserControlCasoUso()
         {
             InitializeComponent();
-            
-            validarBotoesCenario();
-            containerFluxoUC.Panel2Collapsed = true;
-        }
-
-        public TabPage GetTab()
-        {
-            return Tab;
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            base.OnPaint(pe);
         }
 
         #region Controller
