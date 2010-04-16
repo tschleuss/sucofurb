@@ -12,16 +12,20 @@ namespace sUCO.forms
 {
     public partial class UserControlCasoUso : UserControl
     {
+
+        private bool dataGridViewAlterado = false;
+
+        private CasoUso casoDeUso = new CasoUso("", new Diagrama(), "");
+
         public UserControlCasoUso()
         {
+            dataGridViewAlterado = false;
+            casoDeUso            = new CasoUso("", new Diagrama(), "");
+
             InitializeComponent();
         }
 
         #region Controller
-
-        private bool dataGridViewAlterado = false;
-
-        CasoUso casoDeUso = new CasoUso("", new Diagrama(), "");
 
         private void dgCasosUso_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
