@@ -95,6 +95,13 @@ namespace sUCO.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap editUC {
+            get {
+                object obj = ResourceManager.GetObject("editUC", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap negado {
             get {
                 object obj = ResourceManager.GetObject("negado", resourceCulture);

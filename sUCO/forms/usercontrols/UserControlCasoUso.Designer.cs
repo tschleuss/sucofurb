@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Data;
-namespace sUCO.forms
+namespace sUCO.forms.usercontrols
 {
     partial class UserControlCasoUso
     {
@@ -139,8 +139,8 @@ namespace sUCO.forms
             // containerFluxoUC.Panel2
             // 
             this.containerFluxoUC.Panel2.Controls.Add(this.panelCenarioAlternativo);
-            this.containerFluxoUC.Size = new System.Drawing.Size(1386, 599);
-            this.containerFluxoUC.SplitterDistance = 703;
+            this.containerFluxoUC.Size = new System.Drawing.Size(856, 457);
+            this.containerFluxoUC.SplitterDistance = 434;
             this.containerFluxoUC.TabIndex = 6;
             // 
             // panelFluxo
@@ -149,7 +149,7 @@ namespace sUCO.forms
             this.panelFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFluxo.Location = new System.Drawing.Point(34, 0);
             this.panelFluxo.Name = "panelFluxo";
-            this.panelFluxo.Size = new System.Drawing.Size(669, 599);
+            this.panelFluxo.Size = new System.Drawing.Size(400, 457);
             this.panelFluxo.TabIndex = 4;
             // 
             // dgCasosUso
@@ -183,7 +183,7 @@ namespace sUCO.forms
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgCasosUso.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgCasosUso.Size = new System.Drawing.Size(669, 599);
+            this.dgCasosUso.Size = new System.Drawing.Size(400, 457);
             this.dgCasosUso.TabIndex = 7;
             this.dgCasosUso.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCasosUso_CellValueChanged);
             this.dgCasosUso.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCasosUso_ColumnHeaderMouseDoubleClick);
@@ -208,7 +208,7 @@ namespace sUCO.forms
             this.ucToolBox.Location = new System.Drawing.Point(0, 0);
             this.ucToolBox.Name = "ucToolBox";
             this.ucToolBox.ShowItemToolTips = true;
-            this.ucToolBox.Size = new System.Drawing.Size(34, 599);
+            this.ucToolBox.Size = new System.Drawing.Size(34, 457);
             this.ucToolBox.TabIndex = 3;
             this.ucToolBox.Text = "ucToolBox";
             // 
@@ -227,7 +227,7 @@ namespace sUCO.forms
             this.btRaiaAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaAdd.Image = global::sUCO.Properties.Resources.addRaia;
             this.btRaiaAdd.Name = "btRaiaAdd";
-            this.btRaiaAdd.Size = new System.Drawing.Size(153, 22);
+            this.btRaiaAdd.Size = new System.Drawing.Size(150, 22);
             this.btRaiaAdd.Text = "Adicionar Raia";
             this.btRaiaAdd.ToolTipText = "Adiciona uma Raia ao Caso de Uso";
             this.btRaiaAdd.Click += new System.EventHandler(this.btRaiaAdd_Click);
@@ -237,7 +237,7 @@ namespace sUCO.forms
             this.btRaiaDel.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaDel.Image = global::sUCO.Properties.Resources.deleteRaia;
             this.btRaiaDel.Name = "btRaiaDel";
-            this.btRaiaDel.Size = new System.Drawing.Size(153, 22);
+            this.btRaiaDel.Size = new System.Drawing.Size(150, 22);
             this.btRaiaDel.Text = "Excluir Raia";
             this.btRaiaDel.ToolTipText = "Deleta uma Raia do Caso de Uso";
             this.btRaiaDel.Click += new System.EventHandler(this.btRaiaDel_Click);
@@ -257,7 +257,7 @@ namespace sUCO.forms
             this.visualizarCenariosToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.visualizarCenariosToolStripMenuItem.Image = global::sUCO.Properties.Resources.ok;
             this.visualizarCenariosToolStripMenuItem.Name = "visualizarCenariosToolStripMenuItem";
-            this.visualizarCenariosToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.visualizarCenariosToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.visualizarCenariosToolStripMenuItem.Text = "Visualizar Cenários";
             this.visualizarCenariosToolStripMenuItem.ToolTipText = "Visualisa os cenários alternativos";
             this.visualizarCenariosToolStripMenuItem.Click += new System.EventHandler(this.visualizarCenariosToolStripMenuItem_Click);
@@ -267,7 +267,7 @@ namespace sUCO.forms
             this.ocultarCenariosToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.ocultarCenariosToolStripMenuItem.Image = global::sUCO.Properties.Resources.negado;
             this.ocultarCenariosToolStripMenuItem.Name = "ocultarCenariosToolStripMenuItem";
-            this.ocultarCenariosToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.ocultarCenariosToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.ocultarCenariosToolStripMenuItem.Text = "Ocultar Cenários";
             this.ocultarCenariosToolStripMenuItem.ToolTipText = "Oculta os cenários alternativos";
             this.ocultarCenariosToolStripMenuItem.Click += new System.EventHandler(this.ocultarCenariosToolStripMenuItem_Click);
@@ -281,7 +281,7 @@ namespace sUCO.forms
             this.panelCenarioAlternativo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCenarioAlternativo.Location = new System.Drawing.Point(0, 0);
             this.panelCenarioAlternativo.Name = "panelCenarioAlternativo";
-            this.panelCenarioAlternativo.Size = new System.Drawing.Size(679, 599);
+            this.panelCenarioAlternativo.Size = new System.Drawing.Size(418, 457);
             this.panelCenarioAlternativo.TabIndex = 0;
             // 
             // lblCenarioAlternativo
@@ -333,7 +333,7 @@ namespace sUCO.forms
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgCenarioAlternativo.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgCenarioAlternativo.Size = new System.Drawing.Size(679, 575);
+            this.dgCenarioAlternativo.Size = new System.Drawing.Size(418, 433);
             this.dgCenarioAlternativo.TabIndex = 0;
             this.dgCenarioAlternativo.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCenarioAlternativo_ColumnHeaderMouseDoubleClick);
             this.dgCenarioAlternativo.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgCenarioAlternativo_CellBeginEdit);
@@ -349,7 +349,7 @@ namespace sUCO.forms
             this.raiaToolStripMenuItem});
             this.menuCenarioAlternativo.Location = new System.Drawing.Point(0, 0);
             this.menuCenarioAlternativo.Name = "menuCenarioAlternativo";
-            this.menuCenarioAlternativo.Size = new System.Drawing.Size(679, 24);
+            this.menuCenarioAlternativo.Size = new System.Drawing.Size(418, 24);
             this.menuCenarioAlternativo.TabIndex = 1;
             // 
             // novoCenarioToolStripMenuItem
@@ -401,7 +401,7 @@ namespace sUCO.forms
             // 
             this.adicionarRaiaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.adicionarRaiaToolStripMenuItem.Name = "adicionarRaiaToolStripMenuItem";
-            this.adicionarRaiaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.adicionarRaiaToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.adicionarRaiaToolStripMenuItem.Text = "Adicionar Raia";
             this.adicionarRaiaToolStripMenuItem.ToolTipText = "Adiciona uma nova raia ao cenário alternativo";
             this.adicionarRaiaToolStripMenuItem.Click += new System.EventHandler(this.adicionarRaiaToolStripMenuItem_Click);
@@ -410,7 +410,7 @@ namespace sUCO.forms
             // 
             this.removerRaiaToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.removerRaiaToolStripMenuItem.Name = "removerRaiaToolStripMenuItem";
-            this.removerRaiaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.removerRaiaToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.removerRaiaToolStripMenuItem.Text = "Remover Raia";
             this.removerRaiaToolStripMenuItem.ToolTipText = "Remove uma raia do cenário alternativo";
             this.removerRaiaToolStripMenuItem.Click += new System.EventHandler(this.removerRaiaToolStripMenuItem_Click);
@@ -424,10 +424,9 @@ namespace sUCO.forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.Dock = DockStyle.Fill;
             this.Controls.Add(this.containerFluxoUC);
             this.Name = "UserControlCasoUso";
-            this.Size = new System.Drawing.Size(1386, 599);
+            this.Size = new System.Drawing.Size(856, 457);
             this.containerFluxoUC.Panel1.ResumeLayout(false);
             this.containerFluxoUC.Panel1.PerformLayout();
             this.containerFluxoUC.Panel2.ResumeLayout(false);

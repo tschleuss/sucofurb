@@ -57,10 +57,13 @@
     <Compile Include="core\MyDGV.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="forms\UserControlCasoUso.cs">
+    <Compile Include="forms\usercontrols\TabControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\usercontrols\UserControlCasoUso.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="forms\UserControlCasoUso.Designer.cs">
+    <Compile Include="forms\usercontrols\UserControlCasoUso.Designer.cs">
       <DependentUpon>UserControlCasoUso.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\FormAddCenario.cs">
@@ -101,8 +104,14 @@
       <DependentUpon>FormDeleteRaia.cs</DependentUpon>
     </Compile>
     <Compile Include="core\Program.cs" />
+    <Compile Include="forms\usercontrols\UserControlPanelCasoUso.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\usercontrols\UserControlPanelCasoUso.Designer.cs">
+      <DependentUpon>UserControlPanelCasoUso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="forms\UserControlCasoUso.resx">
+    <EmbeddedResource Include="forms\usercontrols\UserControlCasoUso.resx">
       <DependentUpon>UserControlCasoUso.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -128,6 +137,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormDeleteRaia.resx">
       <DependentUpon>FormDeleteRaia.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\usercontrols\UserControlPanelCasoUso.resx">
+      <DependentUpon>UserControlPanelCasoUso.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -180,6 +193,7 @@
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\addUC.png" />
     <Content Include="resources\images\deleteUC.png" />
+    <None Include="resources\images\editUC.png" />
     <Content Include="resources\images\negado.png" />
     <Content Include="resources\images\ok.png" />
     <Content Include="resources\images\sUCO.ico" />
