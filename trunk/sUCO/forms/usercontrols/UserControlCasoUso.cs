@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 
-namespace sUCO.forms
+namespace sUCO.forms.usercontrols
 {
     public partial class UserControlCasoUso : UserControl
     {
