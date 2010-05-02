@@ -33,6 +33,10 @@
   <ItemGroup>
     <Reference Include="Dalssoft.DiagramNet, Version=0.4.0.1703, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Interop.Word, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="MySql.Data, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -53,6 +57,7 @@
   <ItemGroup>
     <Compile Include="core\Acao.cs" />
     <Compile Include="core\CenarioAlternativo.cs" />
+    <Compile Include="core\DBManager.cs" />
     <Compile Include="core\Diagrama.cs" />
     <Compile Include="core\MyDGV.cs">
       <SubType>Component</SubType>
@@ -197,6 +202,7 @@
     <Content Include="resources\images\negado.png" />
     <Content Include="resources\images\ok.png" />
     <Content Include="resources\images\sUCO.ico" />
+    <Content Include="resources\MySql.Data.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
