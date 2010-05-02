@@ -147,9 +147,9 @@ namespace sUCO.forms.usercontrols
             // 
             this.panelFluxo.Controls.Add(this.dgCasosUso);
             this.panelFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFluxo.Location = new System.Drawing.Point(34, 0);
+            this.panelFluxo.Location = new System.Drawing.Point(98, 0);
             this.panelFluxo.Name = "panelFluxo";
-            this.panelFluxo.Size = new System.Drawing.Size(400, 457);
+            this.panelFluxo.Size = new System.Drawing.Size(336, 457);
             this.panelFluxo.TabIndex = 4;
             // 
             // dgCasosUso
@@ -183,7 +183,7 @@ namespace sUCO.forms.usercontrols
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgCasosUso.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgCasosUso.Size = new System.Drawing.Size(400, 457);
+            this.dgCasosUso.Size = new System.Drawing.Size(336, 457);
             this.dgCasosUso.TabIndex = 7;
             this.dgCasosUso.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCasosUso_CellValueChanged);
             this.dgCasosUso.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCasosUso_ColumnHeaderMouseDoubleClick);
@@ -208,7 +208,7 @@ namespace sUCO.forms.usercontrols
             this.ucToolBox.Location = new System.Drawing.Point(0, 0);
             this.ucToolBox.Name = "ucToolBox";
             this.ucToolBox.ShowItemToolTips = true;
-            this.ucToolBox.Size = new System.Drawing.Size(34, 457);
+            this.ucToolBox.Size = new System.Drawing.Size(98, 457);
             this.ucToolBox.TabIndex = 3;
             this.ucToolBox.Text = "ucToolBox";
             // 
@@ -219,7 +219,7 @@ namespace sUCO.forms.usercontrols
             this.btRaiaDel});
             this.btRaia.Image = global::sUCO.Properties.Resources.raia;
             this.btRaia.Name = "btRaia";
-            this.btRaia.Size = new System.Drawing.Size(21, 20);
+            this.btRaia.Size = new System.Drawing.Size(85, 20);
             this.btRaia.ToolTipText = "Raias";
             // 
             // btRaiaAdd
@@ -227,7 +227,7 @@ namespace sUCO.forms.usercontrols
             this.btRaiaAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaAdd.Image = global::sUCO.Properties.Resources.addRaia;
             this.btRaiaAdd.Name = "btRaiaAdd";
-            this.btRaiaAdd.Size = new System.Drawing.Size(150, 22);
+            this.btRaiaAdd.Size = new System.Drawing.Size(152, 22);
             this.btRaiaAdd.Text = "Adicionar Raia";
             this.btRaiaAdd.ToolTipText = "Adiciona uma Raia ao Caso de Uso";
             this.btRaiaAdd.Click += new System.EventHandler(this.btRaiaAdd_Click);
@@ -237,7 +237,7 @@ namespace sUCO.forms.usercontrols
             this.btRaiaDel.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaDel.Image = global::sUCO.Properties.Resources.deleteRaia;
             this.btRaiaDel.Name = "btRaiaDel";
-            this.btRaiaDel.Size = new System.Drawing.Size(150, 22);
+            this.btRaiaDel.Size = new System.Drawing.Size(152, 22);
             this.btRaiaDel.Text = "Excluir Raia";
             this.btRaiaDel.ToolTipText = "Deleta uma Raia do Caso de Uso";
             this.btRaiaDel.Click += new System.EventHandler(this.btRaiaDel_Click);
@@ -249,7 +249,7 @@ namespace sUCO.forms.usercontrols
             this.ocultarCenariosToolStripMenuItem});
             this.btCenarioAlternativo.Image = global::sUCO.Properties.Resources.cenarioAlternativo;
             this.btCenarioAlternativo.Name = "btCenarioAlternativo";
-            this.btCenarioAlternativo.Size = new System.Drawing.Size(21, 20);
+            this.btCenarioAlternativo.Size = new System.Drawing.Size(85, 20);
             this.btCenarioAlternativo.ToolTipText = "Cenários Alternativos";
             // 
             // visualizarCenariosToolStripMenuItem
