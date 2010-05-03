@@ -1,7 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using sUCO.core.events;
 using sUCO.forms.usercontrols;
+using System.Collections.Generic;
+using System.Drawing;
 
 
 namespace sUCO
@@ -16,19 +19,26 @@ namespace sUCO
            ,Imagem
         }
 
+        private event PanelCasoUsoHandler ClickPanelCasoUso;
+        private UserControlPanelCasoUso panelCasoUsoSelecionado;
+        private IList<UserControlPanelCasoUso> listaPanelCasoUso;
+
         private tiposArquivos tipoArquivo = tiposArquivos.Nenhum;
         private bool dataGridViewAlterado = false;
 
-        private int initPanelCasoUsoLocation = 15;
+        private int initLocationX = 15;
+        private int initLocationY = 15;
+        private int distanceBetweenPanel = 15;
         private int qtdCasoUso;
 
-        CasoUso casoDeUso = new CasoUso("", new Diagrama(), "");
+        private CasoUso casoDeUso;
 
         public Principal()
         {
+            this.listaPanelCasoUso = new List<UserControlPanelCasoUso>();
+            this.casoDeUso = new CasoUso("", new Diagrama(), "");
+            this.ClickPanelCasoUso += new PanelCasoUsoHandler(this.SelecionarPanelCasoUso);
             InitializeComponent();
-            
-            //containerFluxoUC.Panel2Collapsed = true;
         }
         
         private void abrirArquivoDialog_FileOk(object sender, CancelEventArgs e)
@@ -38,7 +48,7 @@ namespace sUCO
                 case tiposArquivos.CasoUso:
                     casoDeUso = Serializador.abrirArquivo(abrirArquivoDialog.FileName);
                     //casoDeUso.Diagrama.doCarregarDatagridView(dgCasosUso);
-                    txt_NomeProjeto.Text = casoDeUso.Nome;
+                    txtNomeProjeto.Text = casoDeUso.Nome;
 
                     //cb_Cenarios.Items.Clear();
 
@@ -166,10 +176,16 @@ namespace sUCO
 
             if (!formAddCasoUso.Cancelado)
             {
-
                 //cria a tab
                 TabPage tab = this.GetTabPage();
-                UserControlCasoUso ucCasoUso = new UserControlCasoUso();
+
+                UserControlPanelCasoUso ucPanelCasoUso = new UserControlPanelCasoUso(this);
+                this.listaPanelCasoUso.Add(ucPanelCasoUso);
+
+                ucPanelCasoUso.Tab = tab;
+
+                UserControlCasoUso ucCasoUso = new UserControlCasoUso(ucPanelCasoUso);
+
                 ucCasoUso.Dock = DockStyle.Fill;
                 tab.Controls.Add(ucCasoUso);
                 ucCasoUso.CasoUso.Nome = formAddCasoUso.NomeCasoUso;
@@ -185,16 +201,11 @@ namespace sUCO
                 //adiciona a tab
                 this.tabControl.Controls.Add(tab);
 
-                UserControlPanelCasoUso ucPanelCasoUso = new UserControlPanelCasoUso();
-                ucPanelCasoUso.Tab = tab;
                 ucPanelCasoUso.TxtCasoUso = ucCasoUso.CasoUso.Nome;
                 ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
                 ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
 
-                ucPanelCasoUso.Location = new System.Drawing.Point(initPanelCasoUsoLocation, 15);
-                this.splitProjetoCasosUso.Panel2.Controls.Add(ucPanelCasoUso);
-
-                initPanelCasoUsoLocation += 150;
+                ManageLayoutPanelCasoUso(ucPanelCasoUso);
 
                 ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
             }
@@ -204,7 +215,6 @@ namespace sUCO
             }
 
         }
-
 
         private TabPage GetTabPage()
         {
@@ -221,6 +231,30 @@ namespace sUCO
             tab.ResumeLayout(false);
 
             return tab;
+        }
+
+        private void ManageLayoutPanelCasoUso(UserControlPanelCasoUso panel)
+        {
+
+            //não considera o panel que foi adicionado na conta
+            int qtdRenderizada = this.listaPanelCasoUso.Count - 1;
+
+            int larguraDisponivel = this.splitProjetoCasosUso.Panel2.Width;
+            int larguraPanel = distanceBetweenPanel + panel.Width;
+
+            int qtdPorLinha = larguraDisponivel / larguraPanel;
+
+            if (qtdRenderizada != 0 && (qtdRenderizada % qtdPorLinha) == 0)
+            {
+                initLocationX = distanceBetweenPanel;
+                initLocationY = (distanceBetweenPanel * 2) + (panel.Height * (qtdRenderizada / qtdPorLinha));
+            }
+
+            panel.Location = new Point(initLocationX, initLocationY);
+            this.splitProjetoCasosUso.Panel2.Controls.Add(panel);
+
+            initLocationX += larguraPanel;
+
         }
 
         private void PanelCasoUso_Click(object sender, EventArgs e)
@@ -241,8 +275,27 @@ namespace sUCO
             qtdCasoUso--;
         }
 
-        private void teste(object sender, EventArgs e)
+        public void DispararEventoClickPanelCasoUso(UserControlPanelCasoUso panelCasoUso)
         {
+            if (this.ClickPanelCasoUso != null)
+            {
+                this.ClickPanelCasoUso(this, new Arguments(panelCasoUso));
+            }
+        }
+
+        private void SelecionarPanelCasoUso(object sender, Arguments e)
+        {
+            if (this.panelCasoUsoSelecionado != null)
+            {
+                this.panelCasoUsoSelecionado.BorderStyle = BorderStyle.None;
+            }
+            else
+            {
+                this.btUCDel.Enabled = true;
+            }
+
+            this.panelCasoUsoSelecionado                = e.PanelCasoUso;
+            this.panelCasoUsoSelecionado.BorderStyle    = BorderStyle.FixedSingle;
         }
 
     }

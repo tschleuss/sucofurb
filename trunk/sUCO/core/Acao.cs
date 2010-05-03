@@ -6,36 +6,36 @@ namespace sUCO
     [Serializable]
     public class Acao
     {
-        private string p_Texto;
-        private ArrayList p_ListaCenariosAlternativos;
+        private string texto;
+        private ArrayList listaCenariosAlternativos;
 
         public Acao(string texto, ArrayList listaCenariosAlternativos)
         {
-            p_Texto = texto;
-            p_ListaCenariosAlternativos = listaCenariosAlternativos;
+            this.texto = texto;
+            this.listaCenariosAlternativos = listaCenariosAlternativos;
         }
 
         public string Texto
         {
-            set { p_Texto = value; }
-            get { return p_Texto; }
+            set { texto = value; }
+            get { return texto; }
         }
 
         public ArrayList ListaCenariosAlternativos
         {
-            set { p_ListaCenariosAlternativos = value; }
-            get { return p_ListaCenariosAlternativos; }
+            set { this.listaCenariosAlternativos = value; }
+            get { return this.listaCenariosAlternativos; }
         }
 
         public string[] ListaCenarios
         {
             get
             {
-                string[] lista = new string[ListaCenariosAlternativos.Count];
+                string[] lista = new string[this.listaCenariosAlternativos.Count];
 
-                for (int x = 0; x < ListaCenariosAlternativos.Count; x++)
+                for (int x = 0; x < listaCenariosAlternativos.Count; x++)
                 {
-                    lista[x] = ((CenarioAlternativo)ListaCenariosAlternativos[x]).Nome;
+                    lista[x] = ((CenarioAlternativo)this.listaCenariosAlternativos[x]).Nome;
                 }
                 return lista;
             }

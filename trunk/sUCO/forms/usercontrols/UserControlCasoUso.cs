@@ -14,6 +14,7 @@ namespace sUCO.forms.usercontrols
     {
 
         private bool dataGridViewAlterado = false;
+        private UserControlPanelCasoUso panelSelecao;
 
         private CasoUso casoUso;
 
@@ -23,11 +24,14 @@ namespace sUCO.forms.usercontrols
             set { casoUso = value; }
         }
 
-        public UserControlCasoUso()
+        public UserControlCasoUso(UserControlPanelCasoUso panelSelecao)
         {
             dataGridViewAlterado = false;
+            this.panelSelecao = panelSelecao;
             this.casoUso = new CasoUso( new Diagrama());
             InitializeComponent();
+
+            this.containerFluxoUC.Panel2Collapsed = true;
         }
 
         #region Controller
@@ -516,6 +520,9 @@ namespace sUCO.forms.usercontrols
             this.casoUso.PosCondicao = this.txtPosCondicao.Text;
 
             btAlterar.Enabled = false;
+
+            this.panelSelecao.DispararEventoChangeNameCasoUso(this.casoUso.Nome);
+
         }
     }
 }
