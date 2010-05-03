@@ -60,6 +60,13 @@ namespace sUCO.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap add {
+            get {
+                object obj = ResourceManager.GetObject("add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap addRaia {
             get {
                 object obj = ResourceManager.GetObject("addRaia", resourceCulture);
@@ -77,6 +84,13 @@ namespace sUCO.Properties {
         internal static System.Drawing.Bitmap cenarioAlternativo {
             get {
                 object obj = ResourceManager.GetObject("cenarioAlternativo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +140,13 @@ namespace sUCO.Properties {
         internal static System.Drawing.Bitmap relatorio {
             get {
                 object obj = ResourceManager.GetObject("relatorio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap uml_actor {
+            get {
+                object obj = ResourceManager.GetObject("uml_actor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

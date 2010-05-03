@@ -4,7 +4,7 @@ using System.Collections;
 namespace sUCO
 {
     [Serializable]
-    class Raia
+    public class Raia
     {
         private ArrayList p_ListaAcoes = new ArrayList();
         private string p_Nome = "";

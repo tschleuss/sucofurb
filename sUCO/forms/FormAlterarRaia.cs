@@ -26,7 +26,7 @@ namespace sUCO
             get { return nomeRaia; }
             set
             {
-                txt_Raia.Text = value;
+                txtNome.Text = value;
                 nomeRaia = value; 
             }
         }
@@ -45,20 +45,20 @@ namespace sUCO
             get { return alterar; }
         }
 
-        private void btn_Inerir_Click(object sender, EventArgs e)
+        private void btAlterar_Click(object sender, EventArgs e)
         {
-            nomeRaia = txt_Raia.Text;
+            nomeRaia = txtNome.Text;
             alterar = true;
             this.Close();
         }
 
-        private void btn_Excluir_Click(object sender, EventArgs e)
+        private void btRemover_Click(object sender, EventArgs e)
         {
             remover = true;
             this.Close();
         }
 
-        private void btn_Cancelar_Click(object sender, EventArgs e)
+        private void btCancelar_Click(object sender, EventArgs e)
         {
             cancelado = true;
             this.Close();

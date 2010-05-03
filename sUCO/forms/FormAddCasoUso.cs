@@ -9,20 +9,41 @@ using System.Windows.Forms;
 
 namespace sUCO
 {
-    public partial class FormAddRaia : Form
+    public partial class FormAddCasoUso : Form
     {
-        private string nomeRaia = "";
+        private string nomeCasoUso = "";
+        private string objetivo = "";
+        private string preCondicao = "";
+        private string posCondicao = "";
+
         private bool cancelado = true;
 
-        public FormAddRaia()
+        public FormAddCasoUso(string nomePadrao)
         {
             InitializeComponent();
+            this.txtNome.Text = nomePadrao;
         }
 
-        public string NomeRaia
+        public string NomeCasoUso
         {
-            get {return nomeRaia; }
+            get {return nomeCasoUso; }
         }
+
+        public string Objetivo
+        {
+            get { return objetivo; }
+        }
+
+        public string PreCondicao
+        {
+            get { return preCondicao; }
+        }
+
+        public string PosCondicao
+        {
+            get { return posCondicao; }
+        }
+
         public bool Cancelado
         {
             get { return cancelado; }
@@ -30,7 +51,11 @@ namespace sUCO
 
         private void btInserir_Click(object sender, EventArgs e)
         {
-            nomeRaia = txtNome.Text;
+            nomeCasoUso = txtNome.Text;
+            objetivo = txtObjetivo.Text;
+            posCondicao = txtPosCondicao.Text;
+            preCondicao = txtPreCondicao.Text;
+
             cancelado = false;
             this.Close();
         }
@@ -54,7 +79,7 @@ namespace sUCO
             }
         }
 
-        private void FormAddRaia_Load(object sender, EventArgs e)
+        private void FormAddCasoUso_Load(object sender, EventArgs e)
         {
             txtNome.Focus();            
         }

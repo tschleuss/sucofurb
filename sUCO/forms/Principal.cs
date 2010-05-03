@@ -161,39 +161,58 @@ namespace sUCO
         private void btUCAdd_Click(object sender, EventArgs e)
         {
             qtdCasoUso++;
+            FormAddCasoUso formAddCasoUso = new FormAddCasoUso(String.Format("Caso de Uso {0}", qtdCasoUso));
+            formAddCasoUso.ShowDialog();
 
-            //cria a tab
-            TabPage tab = this.GetTabPage();
+            if (!formAddCasoUso.Cancelado)
+            {
 
-            //adiciona a tab
-            this.tabControl.Controls.Add(tab);
+                //cria a tab
+                TabPage tab = this.GetTabPage();
+                UserControlCasoUso ucCasoUso = new UserControlCasoUso();
+                ucCasoUso.Dock = DockStyle.Fill;
+                tab.Controls.Add(ucCasoUso);
+                ucCasoUso.CasoUso.Nome = formAddCasoUso.NomeCasoUso;
+                ucCasoUso.CasoUso.Objetivo = formAddCasoUso.Objetivo;
+                ucCasoUso.CasoUso.PreCondicao = formAddCasoUso.PreCondicao;
+                ucCasoUso.CasoUso.PosCondicao = formAddCasoUso.PosCondicao;
 
-            UserControlPanelCasoUso ucPanelCasoUso = new UserControlPanelCasoUso();
-            ucPanelCasoUso.Tab = tab;
-            ucPanelCasoUso.TxtCasoUso = String.Format("Caso de Uso {0}", qtdCasoUso);
-            ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
-            ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
+                ucCasoUso.TxtNome.Text = ucCasoUso.CasoUso.Nome;
+                ucCasoUso.TxtObjetivo.Text = ucCasoUso.CasoUso.Objetivo;
+                ucCasoUso.TxtPreCondicao.Text = ucCasoUso.CasoUso.PreCondicao;
+                ucCasoUso.TxtPosCondicao.Text = ucCasoUso.CasoUso.PosCondicao;
 
-            ucPanelCasoUso.Location = new System.Drawing.Point(initPanelCasoUsoLocation, 15);
-            this.splitProjetoCasosUso.Panel2.Controls.Add(ucPanelCasoUso);
+                //adiciona a tab
+                this.tabControl.Controls.Add(tab);
 
-            initPanelCasoUsoLocation += 150;
+                UserControlPanelCasoUso ucPanelCasoUso = new UserControlPanelCasoUso();
+                ucPanelCasoUso.Tab = tab;
+                ucPanelCasoUso.TxtCasoUso = ucCasoUso.CasoUso.Nome;
+                ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
+                ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
 
-            ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
+                ucPanelCasoUso.Location = new System.Drawing.Point(initPanelCasoUsoLocation, 15);
+                this.splitProjetoCasosUso.Panel2.Controls.Add(ucPanelCasoUso);
+
+                initPanelCasoUsoLocation += 150;
+
+                ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
+            }
+            else
+            {
+                qtdCasoUso--;
+            }
+
         }
 
 
         private TabPage GetTabPage()
         {
-            UserControlCasoUso ucCasoUso = new UserControlCasoUso();
             TabPage tab = new TabPage();
 
             tab.SuspendLayout();
 
-            ucCasoUso.Dock = DockStyle.Fill;
-
             tab.BackColor = System.Drawing.Color.Transparent;
-            tab.Controls.Add(ucCasoUso);
             //this.tabPage2.Location = new System.Drawing.Point(10, 22);
             // this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             //this.tabPage2.Size = new System.Drawing.Size(906, 485);
@@ -220,6 +239,10 @@ namespace sUCO
         private void btUCDel_Click(object sender, EventArgs e)
         {
             qtdCasoUso--;
+        }
+
+        private void teste(object sender, EventArgs e)
+        {
         }
 
     }

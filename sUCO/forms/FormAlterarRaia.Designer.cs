@@ -29,69 +29,69 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlterarRaia));
-            this.btn_Excluir = new System.Windows.Forms.Button();
-            this.btn_Cancelar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_Raia = new System.Windows.Forms.TextBox();
-            this.btn_Inerir = new System.Windows.Forms.Button();
+            this.btRemover = new System.Windows.Forms.Button();
+            this.btCancelar = new System.Windows.Forms.Button();
+            this.lblNome = new System.Windows.Forms.Label();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.btAlterar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btn_Excluir
+            // btRemover
             // 
-            this.btn_Excluir.Location = new System.Drawing.Point(134, 48);
-            this.btn_Excluir.Name = "btn_Excluir";
-            this.btn_Excluir.Size = new System.Drawing.Size(75, 23);
-            this.btn_Excluir.TabIndex = 3;
-            this.btn_Excluir.Text = "Remover";
-            this.btn_Excluir.UseVisualStyleBackColor = true;
-            this.btn_Excluir.Click += new System.EventHandler(this.btn_Excluir_Click);
+            this.btRemover.Location = new System.Drawing.Point(134, 48);
+            this.btRemover.Name = "btRemover";
+            this.btRemover.Size = new System.Drawing.Size(75, 23);
+            this.btRemover.TabIndex = 3;
+            this.btRemover.Text = "Remover";
+            this.btRemover.UseVisualStyleBackColor = true;
+            this.btRemover.Click += new System.EventHandler(this.btRemover_Click);
             // 
-            // btn_Cancelar
+            // btCancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(215, 48);
-            this.btn_Cancelar.Name = "btn_Cancelar";
-            this.btn_Cancelar.Size = new System.Drawing.Size(75, 23);
-            this.btn_Cancelar.TabIndex = 4;
-            this.btn_Cancelar.Text = "Cancelar";
-            this.btn_Cancelar.UseVisualStyleBackColor = true;
-            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
+            this.btCancelar.Location = new System.Drawing.Point(215, 48);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btCancelar.TabIndex = 4;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
-            // label1
+            // lblNome
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Nome";
+            this.lblNome.AutoSize = true;
+            this.lblNome.Location = new System.Drawing.Point(12, 24);
+            this.lblNome.Name = "lblNome";
+            this.lblNome.Size = new System.Drawing.Size(35, 13);
+            this.lblNome.TabIndex = 7;
+            this.lblNome.Text = "Nome";
             // 
-            // txt_Raia
+            // txtNome
             // 
-            this.txt_Raia.Location = new System.Drawing.Point(53, 17);
-            this.txt_Raia.Name = "txt_Raia";
-            this.txt_Raia.Size = new System.Drawing.Size(237, 20);
-            this.txt_Raia.TabIndex = 1;
+            this.txtNome.Location = new System.Drawing.Point(53, 17);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(237, 20);
+            this.txtNome.TabIndex = 1;
             // 
-            // btn_Inerir
+            // btAlterar
             // 
-            this.btn_Inerir.Location = new System.Drawing.Point(53, 48);
-            this.btn_Inerir.Name = "btn_Inerir";
-            this.btn_Inerir.Size = new System.Drawing.Size(75, 23);
-            this.btn_Inerir.TabIndex = 2;
-            this.btn_Inerir.Text = "Alterar";
-            this.btn_Inerir.UseVisualStyleBackColor = true;
-            this.btn_Inerir.Click += new System.EventHandler(this.btn_Inerir_Click);
+            this.btAlterar.Location = new System.Drawing.Point(53, 48);
+            this.btAlterar.Name = "btAlterar";
+            this.btAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btAlterar.TabIndex = 2;
+            this.btAlterar.Text = "Alterar";
+            this.btAlterar.UseVisualStyleBackColor = true;
+            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
             // 
             // FormAlterarRaia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(304, 83);
-            this.Controls.Add(this.btn_Excluir);
-            this.Controls.Add(this.btn_Cancelar);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_Raia);
-            this.Controls.Add(this.btn_Inerir);
+            this.Controls.Add(this.btRemover);
+            this.Controls.Add(this.btCancelar);
+            this.Controls.Add(this.lblNome);
+            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.btAlterar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -99,7 +99,7 @@
             this.Name = "FormAlterarRaia";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Propriedades da raia";
+            this.Text = "Alterar raia";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,10 +107,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_Excluir;
-        private System.Windows.Forms.Button btn_Cancelar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_Raia;
-        private System.Windows.Forms.Button btn_Inerir;
+        private System.Windows.Forms.Button btRemover;
+        private System.Windows.Forms.Button btCancelar;
+        private System.Windows.Forms.Label lblNome;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Button btAlterar;
     }
 }

@@ -59,8 +59,15 @@
     <Compile Include="core\CenarioAlternativo.cs" />
     <Compile Include="core\DBManager.cs" />
     <Compile Include="core\Diagrama.cs" />
+    <Compile Include="core\Evento.cs" />
     <Compile Include="core\MyDGV.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\FormAddCasoUso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormAddCasoUso.Designer.cs">
+      <DependentUpon>FormAddCasoUso.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\usercontrols\TabControlEx.cs">
       <SubType>Component</SubType>
@@ -116,6 +123,10 @@
       <DependentUpon>UserControlPanelCasoUso.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="forms\FormAddCasoUso.resx">
+      <DependentUpon>FormAddCasoUso.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\usercontrols\UserControlCasoUso.resx">
       <DependentUpon>UserControlCasoUso.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -196,12 +207,16 @@
   <ItemGroup>
     <Content Include="resources\docs\sUCO_DER.png" />
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
+    <Content Include="resources\images\add.png" />
     <Content Include="resources\images\addUC.png" />
+    <Content Include="resources\images\delete.png" />
     <Content Include="resources\images\deleteUC.png" />
+    <None Include="resources\docs\eap\sUCO_4.EAP" />
     <None Include="resources\images\editUC.png" />
     <Content Include="resources\images\negado.png" />
     <Content Include="resources\images\ok.png" />
     <Content Include="resources\images\sUCO.ico" />
+    <Content Include="resources\images\uml_actor.png" />
     <Content Include="resources\MySql.Data.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

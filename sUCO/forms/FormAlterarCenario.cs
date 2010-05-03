@@ -26,7 +26,7 @@ namespace sUCO
             get { return nomeCenario; }
             set
             {
-                txt_Cenario.Text = value;
+                txtNome.Text = value;
                 nomeCenario = value;
             }
         }
@@ -45,31 +45,31 @@ namespace sUCO
             get { return alterar; }
         }
 
-        private void btn_Inerir_Click(object sender, EventArgs e)
+        private void btAlterar_Click(object sender, EventArgs e)
         {
-            nomeCenario = txt_Cenario.Text;
+            nomeCenario = txtNome.Text;
             alterar = true;
             this.Close();
         }
 
-        private void btn_Excluir_Click(object sender, EventArgs e)
+        private void btRemover_Click(object sender, EventArgs e)
         {
             remover = true;
             this.Close();
         }
 
-        private void btn_Cancelar_Click(object sender, EventArgs e)
+        private void btCancelar_Click(object sender, EventArgs e)
         {
             cancelado = true;
             this.Close();
         }
 
-        private void txt_Cenario_KeyUp(object sender, KeyEventArgs e)
+        private void txtNome_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
                 if (e.KeyCode == Keys.Enter)
-                    btn_Inerir_Click(sender, e);
+                    btAlterar_Click(sender, e);
             }
             catch (Exception err)
             {

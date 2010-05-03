@@ -34,25 +34,25 @@ namespace sUCO
             get { return inserir; }
         }
 
-        private void btn_Cancelar_Click(object sender, EventArgs e)
+        private void btCancelar_Click(object sender, EventArgs e)
         {
             cancelado = true;
             this.Close();
         }
 
-        private void btn_Inerir_Click(object sender, EventArgs e)
+        private void btInserir_Click(object sender, EventArgs e)
         {
-            nomeCenario = txt_Cenario.Text;
+            nomeCenario = txtNome.Text;
             inserir = true;
             this.Close();
         }
 
-        private void txt_Cenario_KeyUp(object sender, KeyEventArgs e)
+        private void txtNome_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
                 if (e.KeyCode == Keys.Enter)
-                    btn_Inerir_Click(sender, e);
+                    btInserir_Click(sender, e);
             }
             catch (Exception err)
             {

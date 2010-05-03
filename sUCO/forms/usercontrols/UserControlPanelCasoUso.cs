@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using sUCO.core;
 
 namespace sUCO.forms.usercontrols
 {
@@ -76,6 +77,17 @@ namespace sUCO.forms.usercontrols
             this.lblCasoUso.Visible = false;
             this.btEditarNome.Visible = false;
             this.txtCasoUso.Visible = true;
+        }
+
+        private void UserControlPanelCasoUso_Click(object sender, EventArgs e)
+        {
+            /*
+            if (Evento.ClickPanelCasoUso != null)
+            {
+                Evento.ClickPanelCasoUso(this, new EventArgs());
+                this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            }
+             */
         }
 
     }

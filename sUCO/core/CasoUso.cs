@@ -3,35 +3,64 @@
 namespace sUCO
 {
     [Serializable]
-    class CasoUso
+    public class CasoUso
     {
-        private string p_Nome;
-        private string p_FileName;
-        private Diagrama p_Diagrama;
+        private string nome;
+        private string objetivo;
+        private string posCondicao;
+        private string preCondicao;
+        private string nomeArquivo;
+        private Diagrama diagrama;
 
-        public CasoUso(string nome, Diagrama diagrama, string fileName)
+        public CasoUso(string nome, Diagrama diagrama, string nomeArquivo)
+            : this(diagrama)
         {
-            p_Diagrama = diagrama;
-            p_FileName = fileName;
-            p_Nome = nome;
+            this.nomeArquivo = nomeArquivo;
+            this.nome = nome;
+        }
+
+        public CasoUso(Diagrama diagrama)
+        {
+            this.diagrama = diagrama;
         }
 
         public Diagrama Diagrama
         {
-            get { return p_Diagrama; }
-            set { p_Diagrama = value; }
+            get { return diagrama; }
+            set { diagrama = value; }
         }
 
         public string Nome
         {
-            get { return p_Nome; }
-            set { p_Nome = value; }
+            get { return nome; }
+            set { nome = value; }
         }
 
         public string FileName
         {
-            get { return p_FileName; }
-            set { p_FileName = value; }
+            get { return nomeArquivo; }
+            set { nomeArquivo = value; }
+        }
+
+
+        public string Objetivo
+        {
+            get { return objetivo; }
+            set { objetivo = value; }
+        }
+
+
+        public string PosCondicao
+        {
+            get { return posCondicao; }
+            set { posCondicao = value; }
+        }
+
+
+        public string PreCondicao
+        {
+            get { return preCondicao; }
+            set { preCondicao = value; }
         }
     }
 }

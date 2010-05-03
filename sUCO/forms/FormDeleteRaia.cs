@@ -37,24 +37,24 @@ namespace sUCO
 
         public void carregarRaias(string[] raias)
         {
-            cb_Raias.Items.AddRange(raias);
+            cbRaias.Items.AddRange(raias);
         }
 
-        private void bt_Remover_Click(object sender, EventArgs e)
+        private void btRemover_Click(object sender, EventArgs e)
         {
-            if (cb_Raias.SelectedIndex < 0)
+            if (cbRaias.SelectedIndex < 0)
             {
                 MessageBox.Show("Selecione uma Raia para remové-la!");
                 return;
             }
 
             remover = true;
-            nomeRaia = cb_Raias.Items[cb_Raias.SelectedIndex].ToString();
-            index = cb_Raias.SelectedIndex + 1;
+            nomeRaia = cbRaias.Items[cbRaias.SelectedIndex].ToString();
+            index = cbRaias.SelectedIndex + 1;
             this.Close();
         }
 
-        private void bt_Cancelar_Click(object sender, EventArgs e)
+        private void btCancelar_Click(object sender, EventArgs e)
         {
             remover = false;
             this.Close();

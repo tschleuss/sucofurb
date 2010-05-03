@@ -4,7 +4,7 @@ using System.Collections;
 namespace sUCO
 {
     [Serializable]
-    class Acao
+    public class Acao
     {
         private string p_Texto;
         private ArrayList p_ListaCenariosAlternativos;
