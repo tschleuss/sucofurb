@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using sUCO.core;
+using sUCO.core.events;
 
 namespace sUCO.forms.usercontrols
 {
@@ -8,6 +9,8 @@ namespace sUCO.forms.usercontrols
     {
 
         private TabPage tab;
+        private Principal principal;
+        private event PanelCasoUsoHandler ChangeNameCasoUso;
 
         public TabPage Tab
         {
@@ -21,8 +24,10 @@ namespace sUCO.forms.usercontrols
             set { panelInternoCasoUso = value; }
         }
 
-        public UserControlPanelCasoUso()
+        public UserControlPanelCasoUso(Principal principal)
         {
+            this.principal = principal;
+            this.ChangeNameCasoUso += new PanelCasoUsoHandler(this.AlterarNomeCasoUso);
             InitializeComponent();
         }
 
@@ -32,7 +37,8 @@ namespace sUCO.forms.usercontrols
         {
             if (e.KeyCode == Keys.Enter)
             {
-                this.lblCasoUso.Visible = true;
+                e.Handled = true;
+                this.lblNome.Visible = true;
                 this.LblCasoUso = this.TxtCasoUso;
                 this.Tab.Text = this.LblCasoUso;
                 this.btEditarNome.Visible = true;
@@ -54,15 +60,15 @@ namespace sUCO.forms.usercontrols
 
         public String LblCasoUso
         {
-            get { return lblCasoUso.Text; }
+            get { return lblNome.Text; }
             set
             {
-                if (value.Length > 15)
+                if (value.Length > 13)
                 {
-                    value = String.Format("{0}...", value.Remove(15));
+                    value = String.Format("{0}...", value.Remove(13));
                 }
 
-                lblCasoUso.Text = value;
+                lblNome.Text = value;
             }
         }
 
@@ -74,20 +80,29 @@ namespace sUCO.forms.usercontrols
 
         private void btEditarNome_Click(object sender, EventArgs e)
         {
-            this.lblCasoUso.Visible = false;
+            this.lblNome.Visible = false;
             this.btEditarNome.Visible = false;
             this.txtCasoUso.Visible = true;
         }
 
         private void UserControlPanelCasoUso_Click(object sender, EventArgs e)
         {
-            /*
-            if (Evento.ClickPanelCasoUso != null)
+            principal.DispararEventoClickPanelCasoUso(this);
+        }
+
+        public void DispararEventoChangeNameCasoUso(String novoNome)
+        {
+            if (this.ChangeNameCasoUso != null)
             {
-                Evento.ClickPanelCasoUso(this, new EventArgs());
-                this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                this.ChangeNameCasoUso(this, new Arguments(novoNome));
             }
-             */
+        }
+
+        private void AlterarNomeCasoUso(object sender, Arguments e)
+        {
+            this.TxtCasoUso = e.NovoNomeCasoUso;
+            this.LblCasoUso = this.TxtCasoUso;
+            this.Tab.Text = this.LblCasoUso;
         }
 
     }

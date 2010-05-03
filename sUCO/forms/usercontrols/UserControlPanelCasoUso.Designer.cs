@@ -33,7 +33,7 @@ namespace sUCO.forms.usercontrols
             this.panelInternoCasoUso = new System.Windows.Forms.Panel();
             this.txtCasoUso = new System.Windows.Forms.TextBox();
             this.btEditarNome = new System.Windows.Forms.Button();
-            this.lblCasoUso = new System.Windows.Forms.Label();
+            this.lblNome = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panelInternoCasoUso
@@ -67,17 +67,18 @@ namespace sUCO.forms.usercontrols
             // 
             // lblCasoUso
             // 
-            this.lblCasoUso.AutoSize = true;
-            this.lblCasoUso.Location = new System.Drawing.Point(7, 114);
-            this.lblCasoUso.Name = "lblCasoUso";
-            this.lblCasoUso.Size = new System.Drawing.Size(99, 13);
-            this.lblCasoUso.TabIndex = 6;
-            this.lblCasoUso.Text = "Nome Caso de Uso";
+            this.lblNome.AutoSize = true;
+            this.lblNome.Location = new System.Drawing.Point(7, 114);
+            this.lblNome.Name = "lblCasoUso";
+            this.lblNome.Size = new System.Drawing.Size(99, 13);
+            this.lblNome.TabIndex = 6;
+            this.lblNome.Text = "Nome Caso de Uso";
+            this.lblNome.Click += new System.EventHandler(this.UserControlPanelCasoUso_Click);
             // 
             // UserControlPanelCasoUso
             // 
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.Controls.Add(this.lblCasoUso);
+            this.Controls.Add(this.lblNome);
             this.Controls.Add(this.btEditarNome);
             this.Controls.Add(this.txtCasoUso);
             this.Controls.Add(this.panelInternoCasoUso);
@@ -94,6 +95,6 @@ namespace sUCO.forms.usercontrols
         private Panel panelInternoCasoUso;
         private TextBox txtCasoUso;
         private Button btEditarNome;
-        private Label lblCasoUso;
+        private Label lblNome;
     }
 }
