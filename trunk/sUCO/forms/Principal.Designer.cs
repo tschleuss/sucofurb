@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Dalssoft.DiagramNet;
 using sUCO.forms;
 using sUCO.forms.usercontrols;
+using sUCO.core;
 
 namespace sUCO
 {
@@ -68,6 +69,7 @@ namespace sUCO
             this.btNovo = new System.Windows.Forms.ToolStripButton();
             this.btAbrir = new System.Windows.Forms.ToolStripButton();
             this.btSalvar = new System.Windows.Forms.ToolStripButton();
+            this.btRelatorio = new System.Windows.Forms.ToolStripButton();
             this.panelTab = new System.Windows.Forms.Panel();
             this.tabControl = new sUCO.forms.usercontrols.TabControlEx();
             this.tabPageProjeto = new System.Windows.Forms.TabPage();
@@ -143,7 +145,8 @@ namespace sUCO
             this.topToolBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btNovo,
             this.btAbrir,
-            this.btSalvar});
+            this.btSalvar,
+            this.btRelatorio});
             this.topToolBox.Location = new System.Drawing.Point(0, 24);
             this.topToolBox.Name = "topToolBox";
             this.topToolBox.Size = new System.Drawing.Size(918, 25);
@@ -157,7 +160,7 @@ namespace sUCO
             this.btNovo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btNovo.Name = "btNovo";
             this.btNovo.Size = new System.Drawing.Size(23, 22);
-            this.btNovo.ToolTipText = "Novo";
+            this.btNovo.ToolTipText = "Novo Projeto";
             this.btNovo.Click += new System.EventHandler(this.btNovo_Click);
             // 
             // btAbrir
@@ -167,7 +170,7 @@ namespace sUCO
             this.btAbrir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btAbrir.Name = "btAbrir";
             this.btAbrir.Size = new System.Drawing.Size(23, 22);
-            this.btAbrir.ToolTipText = "Abrir Caso de Uso";
+            this.btAbrir.ToolTipText = "Abrir Projeto";
             this.btAbrir.Click += new System.EventHandler(this.btAbrir_Click);
             // 
             // btSalvar
@@ -177,8 +180,17 @@ namespace sUCO
             this.btSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btSalvar.Name = "btSalvar";
             this.btSalvar.Size = new System.Drawing.Size(23, 22);
-            this.btSalvar.ToolTipText = "Salvar Caso de Uso";
+            this.btSalvar.ToolTipText = "Salvar Projeto";
             this.btSalvar.Click += new System.EventHandler(this.btSalvar_Click);
+            // 
+            // btRelatorio
+            // 
+            this.btRelatorio.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btRelatorio.Image = global::sUCO.Properties.Resources.relatorio;
+            this.btRelatorio.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btRelatorio.Name = "btRelatorio";
+            this.btRelatorio.Size = new System.Drawing.Size(23, 22);
+            this.btRelatorio.ToolTipText = "Gerar Relatório do Projeto";
             // 
             // panelTab
             // 
@@ -219,14 +231,15 @@ namespace sUCO
             this.panelProjeto.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panelProjeto.Controls.Add(this.splitProjetoCasosUso);
             this.panelProjeto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelProjeto.Location = new System.Drawing.Point(101, 3);
+            this.panelProjeto.Location = new System.Drawing.Point(37, 3);
             this.panelProjeto.Name = "panelProjeto";
-            this.panelProjeto.Size = new System.Drawing.Size(802, 479);
+            this.panelProjeto.Size = new System.Drawing.Size(866, 479);
             this.panelProjeto.TabIndex = 8;
             // 
             // splitProjetoCasosUso
             // 
             this.splitProjetoCasosUso.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitProjetoCasosUso.IsSplitterFixed = true;
             this.splitProjetoCasosUso.Location = new System.Drawing.Point(0, 0);
             this.splitProjetoCasosUso.Name = "splitProjetoCasosUso";
             this.splitProjetoCasosUso.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -235,7 +248,7 @@ namespace sUCO
             // 
             this.splitProjetoCasosUso.Panel1.Controls.Add(this.lblNomeProjeto);
             this.splitProjetoCasosUso.Panel1.Controls.Add(this.txt_NomeProjeto);
-            this.splitProjetoCasosUso.Size = new System.Drawing.Size(802, 479);
+            this.splitProjetoCasosUso.Size = new System.Drawing.Size(866, 479);
             this.splitProjetoCasosUso.SplitterDistance = 25;
             this.splitProjetoCasosUso.TabIndex = 12;
             // 
@@ -266,7 +279,7 @@ namespace sUCO
             this.projectToolBox.Location = new System.Drawing.Point(3, 3);
             this.projectToolBox.Name = "projectToolBox";
             this.projectToolBox.ShowItemToolTips = true;
-            this.projectToolBox.Size = new System.Drawing.Size(98, 479);
+            this.projectToolBox.Size = new System.Drawing.Size(34, 479);
             this.projectToolBox.TabIndex = 9;
             this.projectToolBox.Text = "menuStrip2";
             // 
@@ -274,7 +287,7 @@ namespace sUCO
             // 
             this.btUCAdd.Image = global::sUCO.Properties.Resources.addUC;
             this.btUCAdd.Name = "btUCAdd";
-            this.btUCAdd.Size = new System.Drawing.Size(85, 20);
+            this.btUCAdd.Size = new System.Drawing.Size(21, 20);
             this.btUCAdd.ToolTipText = "Adicionar Caso de Uso";
             this.btUCAdd.Click += new System.EventHandler(this.btUCAdd_Click);
             // 
@@ -283,12 +296,13 @@ namespace sUCO
             this.btUCDel.Enabled = false;
             this.btUCDel.Image = global::sUCO.Properties.Resources.deleteUC;
             this.btUCDel.Name = "btUCDel";
-            this.btUCDel.Size = new System.Drawing.Size(85, 20);
+            this.btUCDel.Size = new System.Drawing.Size(21, 20);
             this.btUCDel.ToolTipText = "Remover Caso de Uso";
             this.btUCDel.Click += new System.EventHandler(this.btUCDel_Click);
             // 
             // Principal
             // 
+            Evento.ClickPanelCasoUso += new Evento.PanelCasoUsoHandler(this.teste);
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 564);
@@ -318,6 +332,8 @@ namespace sUCO
             this.PerformLayout();
 
         }
+
+        private ToolStripButton btRelatorio;
 
     }
 }

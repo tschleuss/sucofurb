@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace sUCO
 {
     [Serializable]
-    class Diagrama
+    public class Diagrama
     {
         private ArrayList p_ListaRaias;
         private byte[] p_ByteImagem;

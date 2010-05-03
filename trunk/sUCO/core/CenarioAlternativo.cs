@@ -3,7 +3,7 @@
 namespace sUCO
 {
     [Serializable]
-    class CenarioAlternativo : Diagrama
+    public class CenarioAlternativo : Diagrama
     {
         private string p_Nome;
 

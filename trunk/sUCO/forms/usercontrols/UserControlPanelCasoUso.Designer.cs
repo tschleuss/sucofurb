@@ -43,9 +43,8 @@ namespace sUCO.forms.usercontrols
             this.panelInternoCasoUso.Name = "panelInternoCasoUso";
             this.panelInternoCasoUso.Size = new System.Drawing.Size(120, 96);
             this.panelInternoCasoUso.TabIndex = 0;
-            this.panelInternoCasoUso.MouseLeave += new EventHandler(PanelInterno_MouseLeave);
-            this.panelInternoCasoUso.MouseMove += new MouseEventHandler(PanelInterno_MouseMove);
-
+            this.panelInternoCasoUso.MouseLeave += new System.EventHandler(this.PanelInterno_MouseLeave);
+            this.panelInternoCasoUso.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelInterno_MouseMove);
             // 
             // txtCasoUso
             // 
@@ -54,7 +53,7 @@ namespace sUCO.forms.usercontrols
             this.txtCasoUso.Size = new System.Drawing.Size(120, 20);
             this.txtCasoUso.TabIndex = 4;
             this.txtCasoUso.Visible = false;
-            this.txtCasoUso.KeyDown += new KeyEventHandler(txtCasoUso_keyDown);
+            this.txtCasoUso.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCasoUso_keyDown);
             // 
             // btEditarNome
             // 
@@ -83,7 +82,8 @@ namespace sUCO.forms.usercontrols
             this.Controls.Add(this.txtCasoUso);
             this.Controls.Add(this.panelInternoCasoUso);
             this.Name = "UserControlPanelCasoUso";
-            this.Size = new System.Drawing.Size(140, 140);
+            this.Size = new System.Drawing.Size(138, 138);
+            this.Click += new System.EventHandler(this.UserControlPanelCasoUso_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
