@@ -8,8 +8,7 @@ namespace sUCO
 {
     partial class Principal
     {
-
-        private TabControlEx tabControl;
+        private TabControlCasoUso tabControl;
         private TabPage tabPageProjeto;
         private MenuStrip menuTopo;
 
@@ -71,12 +70,13 @@ namespace sUCO
             this.btSalvar = new System.Windows.Forms.ToolStripButton();
             this.btRelatorio = new System.Windows.Forms.ToolStripButton();
             this.panelTab = new System.Windows.Forms.Panel();
-            this.tabControl = new sUCO.forms.usercontrols.TabControlEx();
+            this.tabControl = new sUCO.forms.usercontrols.TabControlCasoUso();
             this.tabPageProjeto = new System.Windows.Forms.TabPage();
             this.panelProjeto = new System.Windows.Forms.Panel();
             this.splitProjetoCasosUso = new System.Windows.Forms.SplitContainer();
             this.lblNomeProjeto = new System.Windows.Forms.Label();
             this.txtNomeProjeto = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanelCasoUso = new System.Windows.Forms.TableLayoutPanel();
             this.projectToolBox = new System.Windows.Forms.MenuStrip();
             this.btUCAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.btUCDel = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,6 +87,7 @@ namespace sUCO
             this.tabPageProjeto.SuspendLayout();
             this.panelProjeto.SuspendLayout();
             this.splitProjetoCasosUso.Panel1.SuspendLayout();
+            this.splitProjetoCasosUso.Panel2.SuspendLayout();
             this.splitProjetoCasosUso.SuspendLayout();
             this.projectToolBox.SuspendLayout();
             this.SuspendLayout();
@@ -107,14 +108,14 @@ namespace sUCO
             this.menuItemInternoAbrir,
             this.menuItemInternoSalvar});
             this.menuItemArquivo.Name = "menuItemArquivo";
-            this.menuItemArquivo.Size = new System.Drawing.Size(56, 20);
+            this.menuItemArquivo.Size = new System.Drawing.Size(61, 20);
             this.menuItemArquivo.Text = "Arquivo";
             // 
             // menuItemInternoNovo
             // 
             this.menuItemInternoNovo.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoNovo.Image")));
             this.menuItemInternoNovo.Name = "menuItemInternoNovo";
-            this.menuItemInternoNovo.Size = new System.Drawing.Size(115, 22);
+            this.menuItemInternoNovo.Size = new System.Drawing.Size(105, 22);
             this.menuItemInternoNovo.Text = "Novo";
             this.menuItemInternoNovo.Click += new System.EventHandler(this.menuItemInternoNovo_Click);
             // 
@@ -122,7 +123,7 @@ namespace sUCO
             // 
             this.menuItemInternoAbrir.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoAbrir.Image")));
             this.menuItemInternoAbrir.Name = "menuItemInternoAbrir";
-            this.menuItemInternoAbrir.Size = new System.Drawing.Size(115, 22);
+            this.menuItemInternoAbrir.Size = new System.Drawing.Size(105, 22);
             this.menuItemInternoAbrir.Text = "Abrir";
             this.menuItemInternoAbrir.Click += new System.EventHandler(this.menuItemInternoAbrir_Click);
             // 
@@ -130,7 +131,7 @@ namespace sUCO
             // 
             this.menuItemInternoSalvar.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoSalvar.Image")));
             this.menuItemInternoSalvar.Name = "menuItemInternoSalvar";
-            this.menuItemInternoSalvar.Size = new System.Drawing.Size(115, 22);
+            this.menuItemInternoSalvar.Size = new System.Drawing.Size(105, 22);
             this.menuItemInternoSalvar.Text = "Salvar";
             this.menuItemInternoSalvar.Click += new System.EventHandler(this.menuItemInternoSalvar_Click);
             // 
@@ -251,6 +252,7 @@ namespace sUCO
             // splitProjetoCasosUso.Panel2
             // 
             this.splitProjetoCasosUso.Panel2.AutoScroll = true;
+            this.splitProjetoCasosUso.Panel2.Controls.Add(this.tableLayoutPanelCasoUso);
             this.splitProjetoCasosUso.Size = new System.Drawing.Size(865, 488);
             this.splitProjetoCasosUso.SplitterDistance = 25;
             this.splitProjetoCasosUso.TabIndex = 12;
@@ -271,6 +273,21 @@ namespace sUCO
             this.txtNomeProjeto.Name = "txtNomeProjeto";
             this.txtNomeProjeto.Size = new System.Drawing.Size(280, 20);
             this.txtNomeProjeto.TabIndex = 12;
+            // 
+            // tableLayoutPanelCasoUso
+            // 
+            this.tableLayoutPanelCasoUso.ColumnCount = 5;
+            this.tableLayoutPanelCasoUso.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelCasoUso.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelCasoUso.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelCasoUso.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelCasoUso.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelCasoUso.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanelCasoUso.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelCasoUso.RowCount = 1;
+            this.tableLayoutPanelCasoUso.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanelCasoUso.Size = new System.Drawing.Size(865, 160);
+            this.tableLayoutPanelCasoUso.TabIndex = 0;
             // 
             // projectToolBox
             // 
@@ -328,6 +345,7 @@ namespace sUCO
             this.panelProjeto.ResumeLayout(false);
             this.splitProjetoCasosUso.Panel1.ResumeLayout(false);
             this.splitProjetoCasosUso.Panel1.PerformLayout();
+            this.splitProjetoCasosUso.Panel2.ResumeLayout(false);
             this.splitProjetoCasosUso.ResumeLayout(false);
             this.projectToolBox.ResumeLayout(false);
             this.projectToolBox.PerformLayout();
@@ -335,6 +353,8 @@ namespace sUCO
             this.PerformLayout();
 
         }
+
+        private TableLayoutPanel tableLayoutPanelCasoUso;
 
     }
 }

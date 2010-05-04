@@ -40,7 +40,6 @@ namespace sUCO.forms.usercontrols
             // 
             this.panelInternoCasoUso.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panelInternoCasoUso.Location = new System.Drawing.Point(10, 10);
-            this.panelInternoCasoUso.Name = "panelInternoCasoUso";
             this.panelInternoCasoUso.Size = new System.Drawing.Size(120, 96);
             this.panelInternoCasoUso.TabIndex = 0;
             this.panelInternoCasoUso.MouseLeave += new System.EventHandler(this.PanelInterno_MouseLeave);
@@ -49,7 +48,6 @@ namespace sUCO.forms.usercontrols
             // txtCasoUso
             // 
             this.txtCasoUso.Location = new System.Drawing.Point(10, 111);
-            this.txtCasoUso.Name = "txtCasoUso";
             this.txtCasoUso.Size = new System.Drawing.Size(120, 20);
             this.txtCasoUso.TabIndex = 4;
             this.txtCasoUso.Visible = false;
@@ -59,17 +57,15 @@ namespace sUCO.forms.usercontrols
             // 
             this.btEditarNome.Image = global::sUCO.Properties.Resources.editUC;
             this.btEditarNome.Location = new System.Drawing.Point(107, 111);
-            this.btEditarNome.Name = "btEditarNome";
             this.btEditarNome.Size = new System.Drawing.Size(23, 23);
             this.btEditarNome.TabIndex = 5;
             this.btEditarNome.UseVisualStyleBackColor = true;
             this.btEditarNome.Click += new System.EventHandler(this.btEditarNome_Click);
             // 
-            // lblCasoUso
+            // lblNome
             // 
             this.lblNome.AutoSize = true;
             this.lblNome.Location = new System.Drawing.Point(7, 114);
-            this.lblNome.Name = "lblCasoUso";
             this.lblNome.Size = new System.Drawing.Size(99, 13);
             this.lblNome.TabIndex = 6;
             this.lblNome.Text = "Nome Caso de Uso";
@@ -82,7 +78,6 @@ namespace sUCO.forms.usercontrols
             this.Controls.Add(this.btEditarNome);
             this.Controls.Add(this.txtCasoUso);
             this.Controls.Add(this.panelInternoCasoUso);
-            this.Name = "UserControlPanelCasoUso";
             this.Size = new System.Drawing.Size(138, 138);
             this.Click += new System.EventHandler(this.UserControlPanelCasoUso_Click);
             this.ResumeLayout(false);

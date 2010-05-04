@@ -8,11 +8,11 @@ namespace sUCO.forms.usercontrols
     public partial class UserControlPanelCasoUso : UserControl
     {
 
-        private TabPage tab;
+        private TabCasoUso tab;
         private Principal principal;
         private event PanelCasoUsoHandler ChangeNameCasoUso;
 
-        public TabPage Tab
+        public TabCasoUso Tab
         {
             get { return tab; }
             set { tab = value; }
@@ -43,6 +43,9 @@ namespace sUCO.forms.usercontrols
                 this.Tab.Text = this.LblCasoUso;
                 this.btEditarNome.Visible = true;
                 this.txtCasoUso.Visible = false;
+
+                tab.CasoUso.CasoUso.Nome = this.txtCasoUso.Text;
+                tab.CasoUso.TxtNome.Text = tab.CasoUso.CasoUso.Nome;
             }
         }
 
