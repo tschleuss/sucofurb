@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{6B55BC2E-1296-4D7F-8F8F-113F4C1A61DA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -70,7 +70,10 @@
     <Compile Include="forms\FormAddCasoUso.Designer.cs">
       <DependentUpon>FormAddCasoUso.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\usercontrols\TabControlEx.cs">
+    <Compile Include="forms\usercontrols\TabCasoUso.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\usercontrols\TabControlCasoUso.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="forms\usercontrols\UserControlCasoUso.cs">

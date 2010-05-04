@@ -26,9 +26,9 @@ namespace sUCO
         private tiposArquivos tipoArquivo = tiposArquivos.Nenhum;
         private bool dataGridViewAlterado = false;
 
-        private int initLocationX = 15;
-        private int initLocationY = 15;
-        private int distanceBetweenPanel = 15;
+        private int qtdPorLinha = 5;
+        private int paddingPanel = 15;
+
         private int qtdCasoUso;
 
         private CasoUso casoDeUso;
@@ -176,38 +176,38 @@ namespace sUCO
 
             if (!formAddCasoUso.Cancelado)
             {
-                //cria a tab
-                TabPage tab = this.GetTabPage();
 
                 UserControlPanelCasoUso ucPanelCasoUso = new UserControlPanelCasoUso(this);
-                this.listaPanelCasoUso.Add(ucPanelCasoUso);
-
-                ucPanelCasoUso.Tab = tab;
 
                 UserControlCasoUso ucCasoUso = new UserControlCasoUso(ucPanelCasoUso);
-
                 ucCasoUso.Dock = DockStyle.Fill;
-                tab.Controls.Add(ucCasoUso);
                 ucCasoUso.CasoUso.Nome = formAddCasoUso.NomeCasoUso;
                 ucCasoUso.CasoUso.Objetivo = formAddCasoUso.Objetivo;
                 ucCasoUso.CasoUso.PreCondicao = formAddCasoUso.PreCondicao;
                 ucCasoUso.CasoUso.PosCondicao = formAddCasoUso.PosCondicao;
-
                 ucCasoUso.TxtNome.Text = ucCasoUso.CasoUso.Nome;
                 ucCasoUso.TxtObjetivo.Text = ucCasoUso.CasoUso.Objetivo;
                 ucCasoUso.TxtPreCondicao.Text = ucCasoUso.CasoUso.PreCondicao;
                 ucCasoUso.TxtPosCondicao.Text = ucCasoUso.CasoUso.PosCondicao;
+
+                this.listaPanelCasoUso.Add(ucPanelCasoUso);
+
+                //cria a tab
+                TabCasoUso tab = this.GetTabPage(ucCasoUso);
+
 
                 //adiciona a tab
                 this.tabControl.Controls.Add(tab);
 
                 ucPanelCasoUso.TxtCasoUso = ucCasoUso.CasoUso.Nome;
                 ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
-                ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
-
-                ManageLayoutPanelCasoUso(ucPanelCasoUso);
-
+                ucPanelCasoUso.Tab = tab;
+                ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;                
                 ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
+
+                //ManageLayoutPanelCasoUso(ucPanelCasoUso);
+
+                AddPanelOnTableLayout(ucPanelCasoUso);
             }
             else
             {
@@ -216,45 +216,36 @@ namespace sUCO
 
         }
 
-        private TabPage GetTabPage()
+        private TabCasoUso GetTabPage(UserControlCasoUso casoUso)
         {
-            TabPage tab = new TabPage();
+            TabCasoUso tab = new TabCasoUso(casoUso);
 
             tab.SuspendLayout();
 
             tab.BackColor = System.Drawing.Color.Transparent;
-            //this.tabPage2.Location = new System.Drawing.Point(10, 22);
-            // this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            //this.tabPage2.Size = new System.Drawing.Size(906, 485);
-            //this.tabPage2.TabIndex = 1;
-
             tab.ResumeLayout(false);
 
             return tab;
         }
 
-        private void ManageLayoutPanelCasoUso(UserControlPanelCasoUso panel)
+        private void AddPanelOnTableLayout(UserControlPanelCasoUso panel)
         {
-
             //não considera o panel que foi adicionado na conta
-            int qtdRenderizada = this.listaPanelCasoUso.Count - 1;
+            int coluna = this.listaPanelCasoUso.Count - 1;
+            int linha = 0;
 
-            int larguraDisponivel = this.splitProjetoCasosUso.Panel2.Width;
-            int larguraPanel = distanceBetweenPanel + panel.Width;
-
-            int qtdPorLinha = larguraDisponivel / larguraPanel;
-
-            if (qtdRenderizada != 0 && (qtdRenderizada % qtdPorLinha) == 0)
+            if (coluna != 0 && (coluna % this.qtdPorLinha) == 0)
             {
-                initLocationX = distanceBetweenPanel;
-                initLocationY = (distanceBetweenPanel * 2) + (panel.Height * (qtdRenderizada / qtdPorLinha));
+
+                int altura = panel.Height + 30;
+
+                this.tableLayoutPanelCasoUso.RowCount++;
+                this.tableLayoutPanelCasoUso.RowStyles.Add(new RowStyle(SizeType.Absolute, altura));
+                this.tableLayoutPanelCasoUso.Height += altura;
             }
 
-            panel.Location = new Point(initLocationX, initLocationY);
-            this.splitProjetoCasosUso.Panel2.Controls.Add(panel);
-
-            initLocationX += larguraPanel;
-
+            panel.Anchor = AnchorStyles.None;
+            tableLayoutPanelCasoUso.Controls.Add(panel, coluna, linha);
         }
 
         private void PanelCasoUso_Click(object sender, EventArgs e)
@@ -296,6 +287,11 @@ namespace sUCO
 
             this.panelCasoUsoSelecionado                = e.PanelCasoUso;
             this.panelCasoUsoSelecionado.BorderStyle    = BorderStyle.FixedSingle;
+        }
+
+        private void tableLayoutPanelCasoUso_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
     }
