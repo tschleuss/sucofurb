@@ -9,9 +9,9 @@ namespace sUCO
         [STAThread]
         static void Main()
         {
+            DBManager.testeConexao();
             Application.EnableVisualStyles();
             Application.Run(new Principal());
-            DBManager.testeConexao();
         }
     }
 }

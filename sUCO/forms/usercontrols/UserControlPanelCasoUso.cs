@@ -7,7 +7,6 @@ namespace sUCO.forms.usercontrols
 {
     public partial class UserControlPanelCasoUso : UserControl
     {
-
         private TabCasoUso tab;
         private Principal principal;
         private event PanelCasoUsoHandler ChangeNameCasoUso;
