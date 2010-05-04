@@ -29,8 +29,6 @@ namespace sUCO
         private int qtdPorLinha = 5;
         private int paddingPanel = 15;
 
-        private int qtdCasoUso;
-
         private CasoUso casoDeUso;
 
         public Principal()
@@ -170,8 +168,7 @@ namespace sUCO
 
         private void btUCAdd_Click(object sender, EventArgs e)
         {
-            qtdCasoUso++;
-            FormAddCasoUso formAddCasoUso = new FormAddCasoUso(String.Format("Caso de Uso {0}", qtdCasoUso));
+            FormAddCasoUso formAddCasoUso = new FormAddCasoUso(String.Format("Caso de Uso {0}", this.listaPanelCasoUso.Count));
             formAddCasoUso.ShowDialog();
 
             if (!formAddCasoUso.Cancelado)
@@ -195,7 +192,6 @@ namespace sUCO
                 //cria a tab
                 TabCasoUso tab = this.GetTabPage(ucCasoUso);
 
-
                 //adiciona a tab
                 this.tabControl.Controls.Add(tab);
 
@@ -205,14 +201,9 @@ namespace sUCO
                 ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;                
                 ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
 
-                //ManageLayoutPanelCasoUso(ucPanelCasoUso);
-
                 AddPanelOnTableLayout(ucPanelCasoUso);
             }
-            else
-            {
-                qtdCasoUso--;
-            }
+
 
         }
 
@@ -232,7 +223,6 @@ namespace sUCO
         {
             //não considera o panel que foi adicionado na conta
             int coluna = this.listaPanelCasoUso.Count - 1;
-            int linha = 0;
 
             if (coluna != 0 && (coluna % this.qtdPorLinha) == 0)
             {
@@ -245,7 +235,8 @@ namespace sUCO
             }
 
             panel.Anchor = AnchorStyles.None;
-            tableLayoutPanelCasoUso.Controls.Add(panel, coluna, linha);
+
+            tableLayoutPanelCasoUso.Controls.Add(panel, coluna, 0);
         }
 
         private void PanelCasoUso_Click(object sender, EventArgs e)
@@ -263,7 +254,17 @@ namespace sUCO
 
         private void btUCDel_Click(object sender, EventArgs e)
         {
-            qtdCasoUso--;
+
+             DialogResult opt = MessageBox.Show(
+	                                                "Deseja realmente excluir o Caso de Uso selecionado do projeto?", 
+	                                                "Excluir Caso de Uso", 
+                                                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question
+                                                   );
+             if (opt == DialogResult.Yes)
+            {
+                this.tableLayoutPanelCasoUso.Controls.Remove(this.panelCasoUsoSelecionado);
+                this.listaPanelCasoUso.Remove(this.panelCasoUsoSelecionado);
+            }
         }
 
         public void DispararEventoClickPanelCasoUso(UserControlPanelCasoUso panelCasoUso)
