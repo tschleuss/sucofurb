@@ -6,19 +6,13 @@ namespace sUCO
     [Serializable]
     public class Acao
     {
-        private string texto;
+        public string Texto { get; set; }
         private ArrayList listaCenariosAlternativos;
 
         public Acao(string texto, ArrayList listaCenariosAlternativos)
         {
             this.texto = texto;
             this.listaCenariosAlternativos = listaCenariosAlternativos;
-        }
-
-        public string Texto
-        {
-            set { texto = value; }
-            get { return texto; }
         }
 
         public ArrayList ListaCenariosAlternativos
