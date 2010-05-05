@@ -64,6 +64,7 @@
     <Compile Include="core\MyDGV.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="core\Projeto.cs" />
     <Compile Include="forms\FormAddCasoUso.cs">
       <SubType>Form</SubType>
     </Compile>

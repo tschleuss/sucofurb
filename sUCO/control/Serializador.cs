@@ -11,13 +11,13 @@ namespace sUCO
     {
         public static void salvarArquivo(CasoUso diagrama)
         {
-            if (File.Exists(diagrama.FileName))
+            if (File.Exists(diagrama.NomeArquivo))
             {
-                File.Delete(diagrama.FileName);
+                File.Delete(diagrama.NomeArquivo);
             }
             else
             {
-                diagrama.FileName += ".xml";
+                diagrama.NomeArquivo += ".xml";
             }
 
             salvarXML(diagrama);
@@ -25,7 +25,7 @@ namespace sUCO
 
         private static void salvarXML(CasoUso diagrama)
         {
-            XmlTextWriter xmlOut = new XmlTextWriter(diagrama.FileName, null);
+            XmlTextWriter xmlOut = new XmlTextWriter(diagrama.NomeArquivo, null);
             xmlOut.Formatting = Formatting.Indented;
             xmlOut.WriteStartDocument();
             xmlOut.WriteStartElement("projetos");
