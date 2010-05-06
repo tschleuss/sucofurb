@@ -69,7 +69,6 @@ namespace sUCO.forms.usercontrols
         private ToolStripMenuItem btRemoverRaia;
         private ToolStripMenuItem btCenarioAlternativo;
         private ToolStripMenuItem btGerarRelatorio;
-        private ToolStripMenuItem btImportarModelo;
 
         #endregion
 
@@ -120,20 +119,20 @@ namespace sUCO.forms.usercontrols
 
         #endregion
 
-        private SplitContainer containerFluxoUC;
+        private SplitContainer splitContainerFluxoUC;
 
         private Label lblCenarioAlternativo;
         private ComboBox cbCenariosAlternativos;
 
         public void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.containerFluxoUC = new System.Windows.Forms.SplitContainer();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.splitContainerFluxoUC = new System.Windows.Forms.SplitContainer();
             this.panelFluxo = new System.Windows.Forms.Panel();
             this.dgCasosUso = new System.Windows.Forms.DataGridView();
             this.ucToolBox = new System.Windows.Forms.MenuStrip();
@@ -144,7 +143,6 @@ namespace sUCO.forms.usercontrols
             this.btVerCenariosAlternativos = new System.Windows.Forms.ToolStripMenuItem();
             this.btOcultarCenariosAlternativos = new System.Windows.Forms.ToolStripMenuItem();
             this.btGerarRelatorio = new System.Windows.Forms.ToolStripMenuItem();
-            this.btImportarModelo = new System.Windows.Forms.ToolStripMenuItem();
             this.panelCenarioAlternativo = new System.Windows.Forms.Panel();
             this.lblCenarioAlternativo = new System.Windows.Forms.Label();
             this.cbCenariosAlternativos = new System.Windows.Forms.ComboBox();
@@ -168,10 +166,15 @@ namespace sUCO.forms.usercontrols
             this.lblObjetivo = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
+            this.menuExibicao = new System.Windows.Forms.ToolStrip();
+            this.btExibirDiagrama = new System.Windows.Forms.ToolStripButton();
+            this.btExibirFluxo = new System.Windows.Forms.ToolStripButton();
+            this.splitContainerExibicao = new System.Windows.Forms.SplitContainer();
             this.dataSet = new System.Data.DataSet();
-            this.containerFluxoUC.Panel1.SuspendLayout();
-            this.containerFluxoUC.Panel2.SuspendLayout();
-            this.containerFluxoUC.SuspendLayout();
+            this.btImportarModelo = new System.Windows.Forms.ToolStripButton();
+            this.splitContainerFluxoUC.Panel1.SuspendLayout();
+            this.splitContainerFluxoUC.Panel2.SuspendLayout();
+            this.splitContainerFluxoUC.SuspendLayout();
             this.panelFluxo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCasosUso)).BeginInit();
             this.ucToolBox.SuspendLayout();
@@ -182,26 +185,29 @@ namespace sUCO.forms.usercontrols
             this.splitContainerGeral.Panel1.SuspendLayout();
             this.splitContainerGeral.Panel2.SuspendLayout();
             this.splitContainerGeral.SuspendLayout();
+            this.menuExibicao.SuspendLayout();
+            this.splitContainerExibicao.Panel2.SuspendLayout();
+            this.splitContainerExibicao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // containerFluxoUC
+            // splitContainerFluxoUC
             // 
-            this.containerFluxoUC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.containerFluxoUC.Location = new System.Drawing.Point(0, 0);
-            this.containerFluxoUC.Name = "containerFluxoUC";
+            this.splitContainerFluxoUC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerFluxoUC.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerFluxoUC.Name = "splitContainerFluxoUC";
             // 
-            // containerFluxoUC.Panel1
+            // splitContainerFluxoUC.Panel1
             // 
-            this.containerFluxoUC.Panel1.Controls.Add(this.panelFluxo);
-            this.containerFluxoUC.Panel1.Controls.Add(this.ucToolBox);
+            this.splitContainerFluxoUC.Panel1.Controls.Add(this.panelFluxo);
+            this.splitContainerFluxoUC.Panel1.Controls.Add(this.ucToolBox);
             // 
-            // containerFluxoUC.Panel2
+            // splitContainerFluxoUC.Panel2
             // 
-            this.containerFluxoUC.Panel2.Controls.Add(this.panelCenarioAlternativo);
-            this.containerFluxoUC.Size = new System.Drawing.Size(800, 348);
-            this.containerFluxoUC.SplitterDistance = 266;
-            this.containerFluxoUC.TabIndex = 6;
+            this.splitContainerFluxoUC.Panel2.Controls.Add(this.panelCenarioAlternativo);
+            this.splitContainerFluxoUC.Size = new System.Drawing.Size(800, 216);
+            this.splitContainerFluxoUC.SplitterDistance = 266;
+            this.splitContainerFluxoUC.TabIndex = 6;
             // 
             // panelFluxo
             // 
@@ -209,41 +215,41 @@ namespace sUCO.forms.usercontrols
             this.panelFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFluxo.Location = new System.Drawing.Point(34, 0);
             this.panelFluxo.Name = "panelFluxo";
-            this.panelFluxo.Size = new System.Drawing.Size(232, 348);
+            this.panelFluxo.Size = new System.Drawing.Size(232, 216);
             this.panelFluxo.TabIndex = 4;
             // 
             // dgCasosUso
             // 
             this.dgCasosUso.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCasosUso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCasosUso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgCasosUso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgCasosUso.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCasosUso.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgCasosUso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCasosUso.Location = new System.Drawing.Point(0, 0);
             this.dgCasosUso.Name = "dgCasosUso";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCasosUso.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.dgCasosUso.Size = new System.Drawing.Size(232, 348);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCasosUso.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgCasosUso.Size = new System.Drawing.Size(232, 216);
             this.dgCasosUso.TabIndex = 7;
             this.dgCasosUso.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCasosUso_CellValueChanged);
             this.dgCasosUso.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCasosUso_ColumnHeaderMouseDoubleClick);
@@ -265,12 +271,11 @@ namespace sUCO.forms.usercontrols
             this.ucToolBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btRaia,
             this.btCenarioAlternativo,
-            this.btGerarRelatorio,
-            this.btImportarModelo});
+            this.btGerarRelatorio});
             this.ucToolBox.Location = new System.Drawing.Point(0, 0);
             this.ucToolBox.Name = "ucToolBox";
             this.ucToolBox.ShowItemToolTips = true;
-            this.ucToolBox.Size = new System.Drawing.Size(34, 348);
+            this.ucToolBox.Size = new System.Drawing.Size(34, 216);
             this.ucToolBox.TabIndex = 3;
             // 
             // btRaia
@@ -289,7 +294,7 @@ namespace sUCO.forms.usercontrols
             this.btRaiaAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaAdd.Image = global::sUCO.Properties.Resources.addRaia;
             this.btRaiaAdd.Name = "btRaiaAdd";
-            this.btRaiaAdd.Size = new System.Drawing.Size(153, 22);
+            this.btRaiaAdd.Size = new System.Drawing.Size(150, 22);
             this.btRaiaAdd.Text = "Adicionar Raia";
             this.btRaiaAdd.ToolTipText = "Adiciona uma Raia ao Caso de Uso";
             this.btRaiaAdd.Click += new System.EventHandler(this.btRaiaAdd_Click);
@@ -299,7 +304,7 @@ namespace sUCO.forms.usercontrols
             this.btRemoverRaia.BackColor = System.Drawing.SystemColors.Control;
             this.btRemoverRaia.Image = global::sUCO.Properties.Resources.deleteRaia;
             this.btRemoverRaia.Name = "btRemoverRaia";
-            this.btRemoverRaia.Size = new System.Drawing.Size(153, 22);
+            this.btRemoverRaia.Size = new System.Drawing.Size(150, 22);
             this.btRemoverRaia.Text = "Excluir Raia";
             this.btRemoverRaia.ToolTipText = "Deleta uma Raia do Caso de Uso";
             this.btRemoverRaia.Click += new System.EventHandler(this.btRaiaDel_Click);
@@ -320,7 +325,7 @@ namespace sUCO.forms.usercontrols
             this.btVerCenariosAlternativos.BackColor = System.Drawing.SystemColors.Control;
             this.btVerCenariosAlternativos.Image = global::sUCO.Properties.Resources.ok;
             this.btVerCenariosAlternativos.Name = "btVerCenariosAlternativos";
-            this.btVerCenariosAlternativos.Size = new System.Drawing.Size(174, 22);
+            this.btVerCenariosAlternativos.Size = new System.Drawing.Size(172, 22);
             this.btVerCenariosAlternativos.Text = "Visualizar Cenários";
             this.btVerCenariosAlternativos.ToolTipText = "Visualisa os cenários alternativos";
             this.btVerCenariosAlternativos.Click += new System.EventHandler(this.visualizarCenariosToolStripMenuItem_Click);
@@ -330,7 +335,7 @@ namespace sUCO.forms.usercontrols
             this.btOcultarCenariosAlternativos.BackColor = System.Drawing.SystemColors.Control;
             this.btOcultarCenariosAlternativos.Image = global::sUCO.Properties.Resources.negado;
             this.btOcultarCenariosAlternativos.Name = "btOcultarCenariosAlternativos";
-            this.btOcultarCenariosAlternativos.Size = new System.Drawing.Size(174, 22);
+            this.btOcultarCenariosAlternativos.Size = new System.Drawing.Size(172, 22);
             this.btOcultarCenariosAlternativos.Text = "Ocultar Cenários";
             this.btOcultarCenariosAlternativos.ToolTipText = "Oculta os cenários alternativos";
             this.btOcultarCenariosAlternativos.Click += new System.EventHandler(this.ocultarCenariosToolStripMenuItem_Click);
@@ -343,14 +348,6 @@ namespace sUCO.forms.usercontrols
             this.btGerarRelatorio.Size = new System.Drawing.Size(21, 20);
             this.btGerarRelatorio.ToolTipText = "Gerar Relatório do Caso de Uso";
             // 
-            // btImportarModelo
-            // 
-            this.btImportarModelo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btImportarModelo.Image = global::sUCO.Properties.Resources.uml_actor;
-            this.btImportarModelo.Name = "btImportarModelo";
-            this.btImportarModelo.Size = new System.Drawing.Size(21, 20);
-            this.btImportarModelo.ToolTipText = "Importar Diagrama UML";
-            // 
             // panelCenarioAlternativo
             // 
             this.panelCenarioAlternativo.Controls.Add(this.lblCenarioAlternativo);
@@ -360,7 +357,7 @@ namespace sUCO.forms.usercontrols
             this.panelCenarioAlternativo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCenarioAlternativo.Location = new System.Drawing.Point(0, 0);
             this.panelCenarioAlternativo.Name = "panelCenarioAlternativo";
-            this.panelCenarioAlternativo.Size = new System.Drawing.Size(530, 348);
+            this.panelCenarioAlternativo.Size = new System.Drawing.Size(530, 216);
             this.panelCenarioAlternativo.TabIndex = 0;
             // 
             // lblCenarioAlternativo
@@ -384,35 +381,35 @@ namespace sUCO.forms.usercontrols
             // dgCenarioAlternativo
             // 
             this.dgCenarioAlternativo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCenarioAlternativo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCenarioAlternativo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgCenarioAlternativo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgCenarioAlternativo.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCenarioAlternativo.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgCenarioAlternativo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCenarioAlternativo.Location = new System.Drawing.Point(0, 24);
             this.dgCenarioAlternativo.Name = "dgCenarioAlternativo";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCenarioAlternativo.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.dgCenarioAlternativo.Size = new System.Drawing.Size(530, 324);
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCenarioAlternativo.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgCenarioAlternativo.Size = new System.Drawing.Size(530, 192);
             this.dgCenarioAlternativo.TabIndex = 0;
             this.dgCenarioAlternativo.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCenarioAlternativo_ColumnHeaderMouseDoubleClick);
             this.dgCenarioAlternativo.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgCenarioAlternativo_CellBeginEdit);
@@ -486,7 +483,7 @@ namespace sUCO.forms.usercontrols
             this.btAddRaiaCenarioAlternativo.BackColor = System.Drawing.SystemColors.Control;
             this.btAddRaiaCenarioAlternativo.Image = global::sUCO.Properties.Resources.addRaia;
             this.btAddRaiaCenarioAlternativo.Name = "btAddRaiaCenarioAlternativo";
-            this.btAddRaiaCenarioAlternativo.Size = new System.Drawing.Size(153, 22);
+            this.btAddRaiaCenarioAlternativo.Size = new System.Drawing.Size(150, 22);
             this.btAddRaiaCenarioAlternativo.Text = "Adicionar Raia";
             this.btAddRaiaCenarioAlternativo.ToolTipText = "Adiciona uma nova raia ao cenário alternativo";
             this.btAddRaiaCenarioAlternativo.Click += new System.EventHandler(this.adicionarRaiaToolStripMenuItem_Click);
@@ -496,7 +493,7 @@ namespace sUCO.forms.usercontrols
             this.btRemoverRaiaCenarioAlternativo.BackColor = System.Drawing.SystemColors.Control;
             this.btRemoverRaiaCenarioAlternativo.Image = global::sUCO.Properties.Resources.deleteRaia;
             this.btRemoverRaiaCenarioAlternativo.Name = "btRemoverRaiaCenarioAlternativo";
-            this.btRemoverRaiaCenarioAlternativo.Size = new System.Drawing.Size(153, 22);
+            this.btRemoverRaiaCenarioAlternativo.Size = new System.Drawing.Size(150, 22);
             this.btRemoverRaiaCenarioAlternativo.Text = "Remover Raia";
             this.btRemoverRaiaCenarioAlternativo.ToolTipText = "Remove uma raia do cenário alternativo";
             this.btRemoverRaiaCenarioAlternativo.Click += new System.EventHandler(this.removerRaiaToolStripMenuItem_Click);
@@ -513,6 +510,7 @@ namespace sUCO.forms.usercontrols
             // splitContainerGeral
             // 
             this.splitContainerGeral.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGeral.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerGeral.IsSplitterFixed = true;
             this.splitContainerGeral.Location = new System.Drawing.Point(0, 0);
             this.splitContainerGeral.Name = "splitContainerGeral";
@@ -533,9 +531,10 @@ namespace sUCO.forms.usercontrols
             // 
             // splitContainerGeral.Panel2
             // 
-            this.splitContainerGeral.Panel2.Controls.Add(this.containerFluxoUC);
+            this.splitContainerGeral.Panel2.Controls.Add(this.menuExibicao);
+            this.splitContainerGeral.Panel2.Controls.Add(this.splitContainerExibicao);
             this.splitContainerGeral.Size = new System.Drawing.Size(800, 450);
-            this.splitContainerGeral.SplitterDistance = 98;
+            this.splitContainerGeral.SplitterDistance = 110;
             this.splitContainerGeral.TabIndex = 7;
             // 
             // btAlterar
@@ -617,19 +616,77 @@ namespace sUCO.forms.usercontrols
             this.lblNome.TabIndex = 1;
             this.lblNome.Text = "Nome do Caso de Uso:";
             // 
+            // menuExibicao
+            // 
+            this.menuExibicao.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btExibirDiagrama,
+            this.btExibirFluxo,
+            this.btImportarModelo});
+            this.menuExibicao.Location = new System.Drawing.Point(0, 0);
+            this.menuExibicao.Name = "menuExibicao";
+            this.menuExibicao.Size = new System.Drawing.Size(800, 25);
+            this.menuExibicao.TabIndex = 7;
+            // 
+            // btExibirDiagrama
+            // 
+            this.btExibirDiagrama.Checked = true;
+            this.btExibirDiagrama.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btExibirDiagrama.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btExibirDiagrama.Image = global::sUCO.Properties.Resources.diagrama;
+            this.btExibirDiagrama.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btExibirDiagrama.Name = "btExibirDiagrama";
+            this.btExibirDiagrama.Size = new System.Drawing.Size(23, 22);
+            this.btExibirDiagrama.ToolTipText = "Exibir Diagrama";
+            this.btExibirDiagrama.Click += new System.EventHandler(this.btExibirDiagrama_Click);
+            // 
+            // btExibirFluxo
+            // 
+            this.btExibirFluxo.Checked = true;
+            this.btExibirFluxo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btExibirFluxo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btExibirFluxo.Image = global::sUCO.Properties.Resources.text;
+            this.btExibirFluxo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btExibirFluxo.Name = "btExibirFluxo";
+            this.btExibirFluxo.Size = new System.Drawing.Size(23, 22);
+            this.btExibirFluxo.ToolTipText = "Exibir Fluxo do Caso de Uso";
+            this.btExibirFluxo.Click += new System.EventHandler(this.btExibirFluxo_Click);
+            // 
+            // splitContainerExibicao
+            // 
+            this.splitContainerExibicao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerExibicao.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerExibicao.Name = "splitContainerExibicao";
+            this.splitContainerExibicao.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerExibicao.Panel2
+            // 
+            this.splitContainerExibicao.Panel2.Controls.Add(this.splitContainerFluxoUC);
+            this.splitContainerExibicao.Size = new System.Drawing.Size(800, 336);
+            this.splitContainerExibicao.SplitterDistance = 116;
+            this.splitContainerExibicao.TabIndex = 8;
+            // 
             // dataSet
             // 
             this.dataSet.DataSetName = "NewDataSet";
+            // 
+            // btImportarModelo
+            // 
+            this.btImportarModelo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btImportarModelo.Image = global::sUCO.Properties.Resources.uml_actor;
+            this.btImportarModelo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btImportarModelo.Name = "btImportarModelo";
+            this.btImportarModelo.Size = new System.Drawing.Size(23, 22);
+            this.btImportarModelo.ToolTipText = "Importar Diagrama Caso Uso";
             // 
             // UserControlCasoUso
             // 
             this.Controls.Add(this.panelGeral);
             this.Name = "UserControlCasoUso";
             this.Size = new System.Drawing.Size(800, 450);
-            this.containerFluxoUC.Panel1.ResumeLayout(false);
-            this.containerFluxoUC.Panel1.PerformLayout();
-            this.containerFluxoUC.Panel2.ResumeLayout(false);
-            this.containerFluxoUC.ResumeLayout(false);
+            this.splitContainerFluxoUC.Panel1.ResumeLayout(false);
+            this.splitContainerFluxoUC.Panel1.PerformLayout();
+            this.splitContainerFluxoUC.Panel2.ResumeLayout(false);
+            this.splitContainerFluxoUC.ResumeLayout(false);
             this.panelFluxo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCasosUso)).EndInit();
             this.ucToolBox.ResumeLayout(false);
@@ -643,7 +700,12 @@ namespace sUCO.forms.usercontrols
             this.splitContainerGeral.Panel1.ResumeLayout(false);
             this.splitContainerGeral.Panel1.PerformLayout();
             this.splitContainerGeral.Panel2.ResumeLayout(false);
+            this.splitContainerGeral.Panel2.PerformLayout();
             this.splitContainerGeral.ResumeLayout(false);
+            this.menuExibicao.ResumeLayout(false);
+            this.menuExibicao.PerformLayout();
+            this.splitContainerExibicao.Panel2.ResumeLayout(false);
+            this.splitContainerExibicao.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             this.ResumeLayout(false);
 
@@ -658,6 +720,12 @@ namespace sUCO.forms.usercontrols
             coluna.Frozen = true;
             this.dgCasosUso.Columns.Add(coluna);
         }
+
+        private ToolStrip menuExibicao;
+        private ToolStripButton btExibirDiagrama;
+        private ToolStripButton btExibirFluxo;
+        private SplitContainer splitContainerExibicao;
+        private ToolStripButton btImportarModelo;
 
     }
 }

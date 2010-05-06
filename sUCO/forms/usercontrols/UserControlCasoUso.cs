@@ -31,7 +31,7 @@ namespace sUCO.forms.usercontrols
             this.casoUso = new CasoUso( new Diagrama());
             InitializeComponent();
 
-            this.containerFluxoUC.Panel2Collapsed = true;
+            this.splitContainerFluxoUC.Panel2Collapsed = true;
         }
 
         #region Controller
@@ -448,12 +448,12 @@ namespace sUCO.forms.usercontrols
 
         private void visualizarCenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            containerFluxoUC.Panel2Collapsed = false;
+            splitContainerFluxoUC.Panel2Collapsed = false;
         }
 
         private void ocultarCenariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            containerFluxoUC.Panel2Collapsed = true;
+            splitContainerFluxoUC.Panel2Collapsed = true;
         }
 
         private void doRemoverRaia(Diagrama diagrama, DataGridView dataGridView)
@@ -523,6 +523,35 @@ namespace sUCO.forms.usercontrols
 
             this.panelSelecao.DispararEventoChangeNameCasoUso(this.casoUso.Nome);
 
+        }
+
+
+        private void btExibirDiagrama_Click(object sender, EventArgs e)
+        {
+
+            if (btExibirDiagrama.Checked && !btExibirFluxo.Checked)
+            {
+                MessageBox.Show("Ao menos uma das áreas deve permanecer visível", "Layout inválido");
+            }
+            else
+            {
+                btExibirDiagrama.Checked = !btExibirDiagrama.Checked;
+                this.splitContainerExibicao.Panel1Collapsed = !btExibirDiagrama.Checked;
+            }
+
+        }
+
+        private void btExibirFluxo_Click(object sender, EventArgs e)
+        {
+            if (btExibirFluxo.Checked && !btExibirDiagrama.Checked)
+            {
+                MessageBox.Show("Ao menos uma das áreas deve permanecer visível", "Layout inválido");
+            }
+            else
+            {
+                btExibirFluxo.Checked = !btExibirFluxo.Checked;
+                this.splitContainerExibicao.Panel2Collapsed = !btExibirFluxo.Checked;
+            }
         }
     }
 }
