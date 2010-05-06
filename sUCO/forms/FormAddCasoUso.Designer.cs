@@ -1,4 +1,4 @@
-﻿namespace sUCO
+﻿namespace sUCO.forms
 {
     partial class FormAddCasoUso
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace sUCO
+namespace sUCO.core
 {
     [Serializable]
     public class CasoUso

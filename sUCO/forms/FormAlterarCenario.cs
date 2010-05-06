@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace sUCO
+namespace sUCO.forms
 {
     public partial class FormAlterarCenario : Form
     {

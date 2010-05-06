@@ -188,7 +188,6 @@ namespace sUCO.forms.usercontrols
  
     } 
 
-
 #region   Custom Scroller with Close Button 
 
     internal class TabScroller : System.Windows.Forms.Control

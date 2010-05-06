@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace sUCO
+namespace sUCO.core
 {
     /// This class extends the DataGridView to allow for custom
     /// drag and drop reordering operations on both columns and rows.  

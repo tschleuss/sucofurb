@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace sUCO
+namespace sUCO.core
 {
     [Serializable]
     public class Raia

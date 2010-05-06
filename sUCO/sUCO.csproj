@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{6B55BC2E-1296-4D7F-8F8F-113F4C1A61DA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -37,6 +37,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>resources\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -53,6 +59,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="core\Acao.cs" />
@@ -65,6 +77,29 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="core\Projeto.cs" />
+    <Compile Include="diagram\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="diagram\Connection.cs" />
+    <Compile Include="diagram\ConnectionAdorner.cs" />
+    <Compile Include="diagram\Connector.cs" />
+    <Compile Include="diagram\ConnectorAdorner.cs" />
+    <Compile Include="diagram\controls\DragThumb.cs" />
+    <Compile Include="diagram\controls\RelativePositionPanel.cs" />
+    <Compile Include="diagram\controls\ResizeThumb.cs" />
+    <Compile Include="diagram\DesignerCanvas.Commands.cs" />
+    <Compile Include="diagram\DesignerCanvas.cs" />
+    <Compile Include="diagram\DesignerItem.cs" />
+    <Compile Include="diagram\IGroupable.cs" />
+    <Compile Include="diagram\ISelectable.cs" />
+    <Compile Include="diagram\PathFinder.cs" />
+    <Compile Include="diagram\RubberbandAdorner.cs" />
+    <Compile Include="diagram\SelectionService.cs" />
+    <Compile Include="diagram\Toolbox.cs" />
+    <Compile Include="diagram\ToolboxItem.cs" />
+    <Compile Include="diagram\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="forms\FormAddCasoUso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,7 +155,7 @@
     <Compile Include="forms\FormDeleteRaia.Designer.cs">
       <DependentUpon>FormDeleteRaia.cs</DependentUpon>
     </Compile>
-    <Compile Include="core\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="forms\usercontrols\UserControlPanelCasoUso.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -210,6 +245,29 @@
     <None Include="resources\images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="diagram\resources\images\AlignObjectsBottom.png" />
+    <Content Include="diagram\resources\images\AlignObjectsCenteredHorizontal.png" />
+    <Content Include="diagram\resources\images\AlignObjectsCenteredVertical.png" />
+    <Content Include="diagram\resources\images\AlignObjectsLeft.png" />
+    <Content Include="diagram\resources\images\AlignObjectsRight.png" />
+    <Content Include="diagram\resources\images\AlignObjectsTop.png" />
+    <Content Include="diagram\resources\images\BringForward.png" />
+    <Content Include="diagram\resources\images\BringToFront.png" />
+    <Content Include="diagram\resources\images\Copy.png" />
+    <Content Include="diagram\resources\images\Cut.png" />
+    <Content Include="diagram\resources\images\Delete.png" />
+    <Content Include="diagram\resources\images\DistributeObjectsHorizontal.png" />
+    <Content Include="diagram\resources\images\DistributeObjectsVertical.png" />
+    <Content Include="diagram\resources\images\GenericDocument.png" />
+    <Content Include="diagram\resources\images\Group.png" />
+    <Content Include="diagram\resources\images\OpenFolder.png" />
+    <Content Include="diagram\resources\images\Paste.png" />
+    <Content Include="diagram\resources\images\PasteBig.png" />
+    <Content Include="diagram\resources\images\Print.png" />
+    <Content Include="diagram\resources\images\Save.png" />
+    <Content Include="diagram\resources\images\SendBackward.png" />
+    <Content Include="diagram\resources\images\SendToBack.png" />
+    <Content Include="diagram\resources\images\Ungroup.png" />
     <Content Include="resources\database\sUCO_DER.png" />
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\add.png" />
@@ -228,6 +286,64 @@
     <Content Include="resources\images\uml_actor.png" />
     <Content Include="resources\database\MySql.Data.dll" />
     <Content Include="resources\database\sUCO_DER.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="diagram\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\ApplicationToolbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\Connection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\DesignerItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\stencils\FlowChartStencils.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\stencils\ShapeStencils.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\styles\Expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\styles\GroupBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\styles\ScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\styles\Shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\styles\ToolBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\Toolbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\resources\ToolboxItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\Window1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
