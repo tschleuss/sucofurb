@@ -11,7 +11,7 @@ namespace sUCO
 
         public Acao(string texto, ArrayList listaCenariosAlternativos)
         {
-            this.texto = texto;
+            this.Texto = texto;
             this.listaCenariosAlternativos = listaCenariosAlternativos;
         }
 

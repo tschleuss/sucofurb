@@ -219,10 +219,12 @@
     <None Include="resources\docs\eap\sUCO_4.EAP" />
     <None Include="resources\images\editUC.png" />
     <None Include="resources\database\script_BD.sql" />
+    <None Include="resources\images\diagrama.png" />
     <Content Include="resources\images\negado.png" />
     <Content Include="resources\images\ok.png" />
     <Content Include="resources\images\refresh.png" />
     <Content Include="resources\images\sUCO.ico" />
+    <Content Include="resources\images\text.png" />
     <Content Include="resources\images\uml_actor.png" />
     <Content Include="resources\database\MySql.Data.dll" />
     <Content Include="resources\database\sUCO_DER.xml" />
