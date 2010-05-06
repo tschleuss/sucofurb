@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>sUCO</RootNamespace>
-    <AssemblyName>CasosUso</AssemblyName>
+    <AssemblyName>sUCO</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dalssoft.DiagramNet, Version=0.4.0.1703, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Interop.Word, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
     <Reference Include="MySql.Data, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -59,6 +58,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -90,6 +92,9 @@
     <Compile Include="diagram\DesignerCanvas.Commands.cs" />
     <Compile Include="diagram\DesignerCanvas.cs" />
     <Compile Include="diagram\DesignerItem.cs" />
+    <Compile Include="diagram\DiagramaWPF.xaml.cs">
+      <DependentUpon>DiagramaWPF.xaml</DependentUpon>
+    </Compile>
     <Compile Include="diagram\IGroupable.cs" />
     <Compile Include="diagram\ISelectable.cs" />
     <Compile Include="diagram\PathFinder.cs" />
@@ -245,29 +250,29 @@
     <None Include="resources\images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="diagram\resources\images\AlignObjectsBottom.png" />
-    <Content Include="diagram\resources\images\AlignObjectsCenteredHorizontal.png" />
-    <Content Include="diagram\resources\images\AlignObjectsCenteredVertical.png" />
-    <Content Include="diagram\resources\images\AlignObjectsLeft.png" />
-    <Content Include="diagram\resources\images\AlignObjectsRight.png" />
-    <Content Include="diagram\resources\images\AlignObjectsTop.png" />
-    <Content Include="diagram\resources\images\BringForward.png" />
-    <Content Include="diagram\resources\images\BringToFront.png" />
-    <Content Include="diagram\resources\images\Copy.png" />
-    <Content Include="diagram\resources\images\Cut.png" />
-    <Content Include="diagram\resources\images\Delete.png" />
-    <Content Include="diagram\resources\images\DistributeObjectsHorizontal.png" />
-    <Content Include="diagram\resources\images\DistributeObjectsVertical.png" />
-    <Content Include="diagram\resources\images\GenericDocument.png" />
-    <Content Include="diagram\resources\images\Group.png" />
-    <Content Include="diagram\resources\images\OpenFolder.png" />
-    <Content Include="diagram\resources\images\Paste.png" />
-    <Content Include="diagram\resources\images\PasteBig.png" />
-    <Content Include="diagram\resources\images\Print.png" />
-    <Content Include="diagram\resources\images\Save.png" />
-    <Content Include="diagram\resources\images\SendBackward.png" />
-    <Content Include="diagram\resources\images\SendToBack.png" />
-    <Content Include="diagram\resources\images\Ungroup.png" />
+    <Resource Include="diagram\resources\images\AlignObjectsBottom.png" />
+    <Resource Include="diagram\resources\images\AlignObjectsCenteredHorizontal.png" />
+    <Resource Include="diagram\resources\images\AlignObjectsCenteredVertical.png" />
+    <Resource Include="diagram\resources\images\AlignObjectsLeft.png" />
+    <Resource Include="diagram\resources\images\AlignObjectsRight.png" />
+    <Resource Include="diagram\resources\images\AlignObjectsTop.png" />
+    <Resource Include="diagram\resources\images\BringForward.png" />
+    <Resource Include="diagram\resources\images\BringToFront.png" />
+    <Resource Include="diagram\resources\images\Copy.png" />
+    <Resource Include="diagram\resources\images\Cut.png" />
+    <Resource Include="diagram\resources\images\Delete.png" />
+    <Resource Include="diagram\resources\images\DistributeObjectsHorizontal.png" />
+    <Resource Include="diagram\resources\images\DistributeObjectsVertical.png" />
+    <Resource Include="diagram\resources\images\GenericDocument.png" />
+    <Resource Include="diagram\resources\images\Group.png" />
+    <Resource Include="diagram\resources\images\OpenFolder.png" />
+    <Resource Include="diagram\resources\images\Paste.png" />
+    <Resource Include="diagram\resources\images\PasteBig.png" />
+    <Resource Include="diagram\resources\images\Print.png" />
+    <Resource Include="diagram\resources\images\Save.png" />
+    <Resource Include="diagram\resources\images\SendBackward.png" />
+    <Resource Include="diagram\resources\images\SendToBack.png" />
+    <Resource Include="diagram\resources\images\Ungroup.png" />
     <Content Include="resources\database\sUCO_DER.png" />
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\add.png" />
@@ -291,6 +296,10 @@
     <Page Include="diagram\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="diagram\DiagramaWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="diagram\resources\ApplicationToolbar.xaml">
       <Generator>MSBuild:Compile</Generator>

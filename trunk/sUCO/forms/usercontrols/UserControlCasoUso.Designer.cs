@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Data;
+using sUCO.diagram;
 namespace sUCO.forms.usercontrols
 {
     partial class UserControlCasoUso
@@ -169,9 +170,10 @@ namespace sUCO.forms.usercontrols
             this.menuExibicao = new System.Windows.Forms.ToolStrip();
             this.btExibirDiagrama = new System.Windows.Forms.ToolStripButton();
             this.btExibirFluxo = new System.Windows.Forms.ToolStripButton();
-            this.splitContainerExibicao = new System.Windows.Forms.SplitContainer();
-            this.dataSet = new System.Data.DataSet();
             this.btImportarModelo = new System.Windows.Forms.ToolStripButton();
+            this.splitContainerExibicao = new System.Windows.Forms.SplitContainer();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.dataSet = new System.Data.DataSet();
             this.splitContainerFluxoUC.Panel1.SuspendLayout();
             this.splitContainerFluxoUC.Panel2.SuspendLayout();
             this.splitContainerFluxoUC.SuspendLayout();
@@ -186,6 +188,7 @@ namespace sUCO.forms.usercontrols
             this.splitContainerGeral.Panel2.SuspendLayout();
             this.splitContainerGeral.SuspendLayout();
             this.menuExibicao.SuspendLayout();
+            this.splitContainerExibicao.Panel1.SuspendLayout();
             this.splitContainerExibicao.Panel2.SuspendLayout();
             this.splitContainerExibicao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
@@ -294,7 +297,7 @@ namespace sUCO.forms.usercontrols
             this.btRaiaAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaAdd.Image = global::sUCO.Properties.Resources.addRaia;
             this.btRaiaAdd.Name = "btRaiaAdd";
-            this.btRaiaAdd.Size = new System.Drawing.Size(150, 22);
+            this.btRaiaAdd.Size = new System.Drawing.Size(153, 22);
             this.btRaiaAdd.Text = "Adicionar Raia";
             this.btRaiaAdd.ToolTipText = "Adiciona uma Raia ao Caso de Uso";
             this.btRaiaAdd.Click += new System.EventHandler(this.btRaiaAdd_Click);
@@ -304,7 +307,7 @@ namespace sUCO.forms.usercontrols
             this.btRemoverRaia.BackColor = System.Drawing.SystemColors.Control;
             this.btRemoverRaia.Image = global::sUCO.Properties.Resources.deleteRaia;
             this.btRemoverRaia.Name = "btRemoverRaia";
-            this.btRemoverRaia.Size = new System.Drawing.Size(150, 22);
+            this.btRemoverRaia.Size = new System.Drawing.Size(153, 22);
             this.btRemoverRaia.Text = "Excluir Raia";
             this.btRemoverRaia.ToolTipText = "Deleta uma Raia do Caso de Uso";
             this.btRemoverRaia.Click += new System.EventHandler(this.btRaiaDel_Click);
@@ -325,7 +328,7 @@ namespace sUCO.forms.usercontrols
             this.btVerCenariosAlternativos.BackColor = System.Drawing.SystemColors.Control;
             this.btVerCenariosAlternativos.Image = global::sUCO.Properties.Resources.ok;
             this.btVerCenariosAlternativos.Name = "btVerCenariosAlternativos";
-            this.btVerCenariosAlternativos.Size = new System.Drawing.Size(172, 22);
+            this.btVerCenariosAlternativos.Size = new System.Drawing.Size(174, 22);
             this.btVerCenariosAlternativos.Text = "Visualizar Cenários";
             this.btVerCenariosAlternativos.ToolTipText = "Visualisa os cenários alternativos";
             this.btVerCenariosAlternativos.Click += new System.EventHandler(this.visualizarCenariosToolStripMenuItem_Click);
@@ -335,7 +338,7 @@ namespace sUCO.forms.usercontrols
             this.btOcultarCenariosAlternativos.BackColor = System.Drawing.SystemColors.Control;
             this.btOcultarCenariosAlternativos.Image = global::sUCO.Properties.Resources.negado;
             this.btOcultarCenariosAlternativos.Name = "btOcultarCenariosAlternativos";
-            this.btOcultarCenariosAlternativos.Size = new System.Drawing.Size(172, 22);
+            this.btOcultarCenariosAlternativos.Size = new System.Drawing.Size(174, 22);
             this.btOcultarCenariosAlternativos.Text = "Ocultar Cenários";
             this.btOcultarCenariosAlternativos.ToolTipText = "Oculta os cenários alternativos";
             this.btOcultarCenariosAlternativos.Click += new System.EventHandler(this.ocultarCenariosToolStripMenuItem_Click);
@@ -483,7 +486,7 @@ namespace sUCO.forms.usercontrols
             this.btAddRaiaCenarioAlternativo.BackColor = System.Drawing.SystemColors.Control;
             this.btAddRaiaCenarioAlternativo.Image = global::sUCO.Properties.Resources.addRaia;
             this.btAddRaiaCenarioAlternativo.Name = "btAddRaiaCenarioAlternativo";
-            this.btAddRaiaCenarioAlternativo.Size = new System.Drawing.Size(150, 22);
+            this.btAddRaiaCenarioAlternativo.Size = new System.Drawing.Size(153, 22);
             this.btAddRaiaCenarioAlternativo.Text = "Adicionar Raia";
             this.btAddRaiaCenarioAlternativo.ToolTipText = "Adiciona uma nova raia ao cenário alternativo";
             this.btAddRaiaCenarioAlternativo.Click += new System.EventHandler(this.adicionarRaiaToolStripMenuItem_Click);
@@ -493,7 +496,7 @@ namespace sUCO.forms.usercontrols
             this.btRemoverRaiaCenarioAlternativo.BackColor = System.Drawing.SystemColors.Control;
             this.btRemoverRaiaCenarioAlternativo.Image = global::sUCO.Properties.Resources.deleteRaia;
             this.btRemoverRaiaCenarioAlternativo.Name = "btRemoverRaiaCenarioAlternativo";
-            this.btRemoverRaiaCenarioAlternativo.Size = new System.Drawing.Size(150, 22);
+            this.btRemoverRaiaCenarioAlternativo.Size = new System.Drawing.Size(153, 22);
             this.btRemoverRaiaCenarioAlternativo.Text = "Remover Raia";
             this.btRemoverRaiaCenarioAlternativo.ToolTipText = "Remove uma raia do cenário alternativo";
             this.btRemoverRaiaCenarioAlternativo.Click += new System.EventHandler(this.removerRaiaToolStripMenuItem_Click);
@@ -651,24 +654,6 @@ namespace sUCO.forms.usercontrols
             this.btExibirFluxo.ToolTipText = "Exibir Fluxo do Caso de Uso";
             this.btExibirFluxo.Click += new System.EventHandler(this.btExibirFluxo_Click);
             // 
-            // splitContainerExibicao
-            // 
-            this.splitContainerExibicao.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerExibicao.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerExibicao.Name = "splitContainerExibicao";
-            this.splitContainerExibicao.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerExibicao.Panel2
-            // 
-            this.splitContainerExibicao.Panel2.Controls.Add(this.splitContainerFluxoUC);
-            this.splitContainerExibicao.Size = new System.Drawing.Size(800, 336);
-            this.splitContainerExibicao.SplitterDistance = 116;
-            this.splitContainerExibicao.TabIndex = 8;
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "NewDataSet";
-            // 
             // btImportarModelo
             // 
             this.btImportarModelo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -677,6 +662,41 @@ namespace sUCO.forms.usercontrols
             this.btImportarModelo.Name = "btImportarModelo";
             this.btImportarModelo.Size = new System.Drawing.Size(23, 22);
             this.btImportarModelo.ToolTipText = "Importar Diagrama Caso Uso";
+            // 
+            // splitContainerExibicao
+            // 
+            this.splitContainerExibicao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerExibicao.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerExibicao.Name = "splitContainerExibicao";
+            this.splitContainerExibicao.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerExibicao.Panel1
+            // 
+            this.splitContainerExibicao.Panel1.Controls.Add(this.elementHost1);
+            // 
+            // splitContainerExibicao.Panel2
+            // 
+            this.splitContainerExibicao.Panel2.Controls.Add(this.splitContainerFluxoUC);
+            this.splitContainerExibicao.Size = new System.Drawing.Size(800, 336);
+            this.splitContainerExibicao.SplitterDistance = 116;
+            this.splitContainerExibicao.TabIndex = 8;
+            // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(22, 28);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(755, 75);
+            this.elementHost1.TabIndex = 0;
+            this.elementHost1.Text = "elementHost1";
+            
+
+            DiagramaWPF wpfctl = new DiagramaWPF();
+            this.elementHost1.Child = wpfctl;
+
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "NewDataSet";
             // 
             // UserControlCasoUso
             // 
@@ -704,6 +724,7 @@ namespace sUCO.forms.usercontrols
             this.splitContainerGeral.ResumeLayout(false);
             this.menuExibicao.ResumeLayout(false);
             this.menuExibicao.PerformLayout();
+            this.splitContainerExibicao.Panel1.ResumeLayout(false);
             this.splitContainerExibicao.Panel2.ResumeLayout(false);
             this.splitContainerExibicao.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
@@ -726,6 +747,7 @@ namespace sUCO.forms.usercontrols
         private ToolStripButton btExibirFluxo;
         private SplitContainer splitContainerExibicao;
         private ToolStripButton btImportarModelo;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
 
     }
 }
