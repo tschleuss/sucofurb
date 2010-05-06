@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using sUCO.core;
+using sUCO.forms;
 
 namespace sUCO
 {
@@ -12,6 +13,7 @@ namespace sUCO
             DBManager.testeConexao();
             Application.EnableVisualStyles();
             Application.Run(new Principal());
+            //Application.Run(new Window1());
         }
     }
 }

@@ -4,7 +4,7 @@ using sUCO.forms.usercontrols;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace sUCO
+namespace sUCO.forms
 {
     partial class Principal
     {

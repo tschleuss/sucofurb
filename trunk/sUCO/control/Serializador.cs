@@ -4,8 +4,9 @@ using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.Xml;
+using sUCO.core;
 
-namespace sUCO
+namespace sUCO.control
 {
     class Serializador
     {

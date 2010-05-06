@@ -6,9 +6,10 @@ using sUCO.forms.usercontrols;
 using System.Collections.Generic;
 using System.Drawing;
 using sUCO.core;
+using sUCO.control;
 
 
-namespace sUCO
+namespace sUCO.forms
 {
     public partial class Principal : Form
     {
