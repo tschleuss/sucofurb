@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using sUCO.core;
+using sUCO.diagram;
+using System.Windows.Forms.Integration;
 
 namespace sUCO.forms.usercontrols
 {
