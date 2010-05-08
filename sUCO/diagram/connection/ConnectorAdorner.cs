@@ -5,7 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Controls;
 
-namespace sUCO.diagram
+namespace sUCO.diagram.connection
 {
     public class ConnectorAdorner : Adorner
     {
@@ -53,7 +53,9 @@ namespace sUCO.diagram
             this.sourceConnector = sourceConnector;
             drawingPen = new Pen(Brushes.LightSlateGray, 1);
             drawingPen.LineJoin = PenLineJoin.Round;
-            this.Cursor = Cursors.Cross;
+
+            System.Console.WriteLine("Aqui seta o cursor quando move o mouse");
+            this.Cursor = Cursors.Hand;
         }
 
         protected override void OnMouseUp(MouseButtonEventArgs e)
@@ -62,7 +64,7 @@ namespace sUCO.diagram
             {
                 Connector sourceConnector = this.sourceConnector;
                 Connector sinkConnector = this.HitConnector;
-                Connection newConnection = new Connection(sourceConnector, sinkConnector);
+                Connection newConnection = new Connection(sourceConnector, sinkConnector, true);
 
                 Canvas.SetZIndex(newConnection, designerCanvas.Children.Count);
                 this.designerCanvas.Children.Add(newConnection);
@@ -86,6 +88,9 @@ namespace sUCO.diagram
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
+
+                System.Console.WriteLine("Aqui move o mouse ");
+
                 if (!this.IsMouseCaptured) this.CaptureMouse();
                 HitTesting(e.GetPosition(this));
                 this.pathGeometry = GetPathGeometry(e.GetPosition(this));

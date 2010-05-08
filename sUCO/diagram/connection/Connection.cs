@@ -7,11 +7,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace sUCO.diagram
+namespace sUCO.diagram.connection
 {
     public class Connection : Control, ISelectable, INotifyPropertyChanged
     {
         private Adorner connectionAdorner;
+
+        public Connection(Connector source, Connector sink, bool isDashed)
+        {
+            this.ID = Guid.NewGuid();
+            this.Source = source;
+            this.Sink = sink;
+            this.StrokeDashArray = new DoubleCollection(new double[] { 1, 2 });
+            base.Unloaded += new RoutedEventHandler(Connection_Unloaded);
+        }
 
         #region Properties
 
@@ -29,6 +38,7 @@ namespace sUCO.diagram
             {
                 if (source != value)
                 {
+
                     if (source != null)
                     {
                         source.PropertyChanged -= new PropertyChangedEventHandler(OnConnectorPositionChanged);
@@ -234,15 +244,6 @@ namespace sUCO.diagram
         }
 
         #endregion
-
-        public Connection(Connector source, Connector sink)
-        {
-            this.ID = Guid.NewGuid();
-            this.Source = source;
-            this.Sink = sink;
-            base.Unloaded += new RoutedEventHandler(Connection_Unloaded);
-        }
-
 
         protected override void OnMouseDown(System.Windows.Input.MouseButtonEventArgs e)
         {

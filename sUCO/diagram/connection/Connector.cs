@@ -7,7 +7,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace sUCO.diagram
+namespace sUCO.diagram.connection
 {
     public class Connector : Control, INotifyPropertyChanged
     {
