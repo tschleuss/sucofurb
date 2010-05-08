@@ -1,10 +1,11 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace sUCO.diagram
 {
-    public partial class Window1 : Window
+    public partial class DiagramaWPF : UserControl
     {
-        public Window1()
+        public DiagramaWPF()
         {
             InitializeComponent();
         }

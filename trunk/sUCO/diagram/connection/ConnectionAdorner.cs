@@ -7,7 +7,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace sUCO.diagram
+namespace sUCO.diagram.connection
 {
     public class ConnectionAdorner : Adorner
     {
@@ -102,6 +102,8 @@ namespace sUCO.diagram
 
         void thumbDragThumb_DragCompleted(object sender, DragCompletedEventArgs e)
         {
+
+            System.Console.WriteLine("thumbDragThumb_DragCompleted");
             if (HitConnector != null)
             {
                 if (connection != null)
@@ -116,7 +118,10 @@ namespace sUCO.diagram
             this.HitDesignerItem = null;
             this.HitConnector = null;
             this.pathGeometry = null;
-            this.connection.StrokeDashArray = null;
+
+            //System.Console.WriteLine("aqui seta o tipo da linha ao alterar a posição dela");
+            //this.connection.StrokeDashArray = new DoubleCollection(new double[] { 1, 2 });
+            //this.connection.StrokeDashArray = null;
             this.InvalidateVisual();
         }
 
@@ -126,7 +131,7 @@ namespace sUCO.diagram
             this.HitConnector = null;
             this.pathGeometry = null;
             this.Cursor = Cursors.Cross;
-            this.connection.StrokeDashArray = new DoubleCollection(new double[] { 1, 2 });
+            //this.connection.StrokeDashArray = new DoubleCollection(new double[] { 1, 2 });
 
             if (sender == sourceDragThumb)
             {
