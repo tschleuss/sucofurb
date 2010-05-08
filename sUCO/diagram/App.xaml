@@ -1,0 +1,23 @@
+﻿<Application x:Class="sUCO.diagram.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="Diagrama.xaml">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="designer/components/Shared.xaml"/>
+        <ResourceDictionary Source="designer/components/ToolBar.xaml"/>
+        <ResourceDictionary Source="designer/components/GroupBox.xaml"/>
+        <ResourceDictionary Source="designer/components/Expander.xaml"/>
+        <ResourceDictionary Source="designer/components/ScrollBar.xaml"/>        
+        <ResourceDictionary Source="designer/ApplicationToolbar.xaml"/>
+        <ResourceDictionary Source="designer/DesignerItem.xaml"/>
+        <ResourceDictionary Source="designer/Connection.xaml"/>
+        <ResourceDictionary Source="designer/toolbox/ElementosUC.xaml"/>
+        <ResourceDictionary Source="designer/toolbox/ShapeStencils.xaml"/>
+        <ResourceDictionary Source="designer/toolbox/ToolboxItem.xaml"/>
+        <ResourceDictionary Source="designer/toolbox/Toolbox.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
