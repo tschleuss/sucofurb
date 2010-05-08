@@ -332,5 +332,11 @@ namespace sUCO.forms
         {
             this.projeto.Responsavel = this.txtResponsavel.Text;
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormMySQLConfig formMySQL = new FormMySQLConfig();
+            formMySQL.ShowDialog();
+        }
     }
 }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{6B55BC2E-1296-4D7F-8F8F-113F4C1A61DA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="control\MySQLGenerator.cs" />
     <Compile Include="control\UseCaseLink.cs" />
     <Compile Include="control\UseCase.cs" />
     <Compile Include="control\Importer.cs" />
@@ -113,6 +114,12 @@
     </Compile>
     <Compile Include="forms\FormAddCasoUso.Designer.cs">
       <DependentUpon>FormAddCasoUso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormMySQLConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormMySQLConfig.Designer.cs">
+      <DependentUpon>FormMySQLConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\usercontrols\TabCasoUso.cs">
       <SubType>Component</SubType>
@@ -173,6 +180,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\FormAddCasoUso.resx">
       <DependentUpon>FormAddCasoUso.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormMySQLConfig.resx">
+      <DependentUpon>FormMySQLConfig.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\usercontrols\UserControlCasoUso.resx">
@@ -280,6 +291,7 @@
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\add.png" />
     <Content Include="resources\images\addUC.png" />
+    <Content Include="resources\images\connect.png" />
     <Content Include="resources\images\delete.png" />
     <Content Include="resources\images\deleteUC.png" />
     <None Include="resources\docs\eap\sUCO_4.EAP" />

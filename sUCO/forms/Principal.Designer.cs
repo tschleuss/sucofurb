@@ -60,16 +60,18 @@ namespace sUCO.forms
             this.salvarArquivoDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuTopo = new System.Windows.Forms.MenuStrip();
             this.menuItemArquivo = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemInternoNovo = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemInternoAbrir = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemInternoSalvar = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirArquivoDialog = new System.Windows.Forms.OpenFileDialog();
             this.topToolBox = new System.Windows.Forms.ToolStrip();
+            this.panelTab = new System.Windows.Forms.Panel();
+            this.preferenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btNovo = new System.Windows.Forms.ToolStripButton();
             this.btAbrir = new System.Windows.Forms.ToolStripButton();
             this.btSalvar = new System.Windows.Forms.ToolStripButton();
             this.btRelatorio = new System.Windows.Forms.ToolStripButton();
-            this.panelTab = new System.Windows.Forms.Panel();
+            this.menuItemInternoNovo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemInternoAbrir = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemInternoSalvar = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new sUCO.forms.usercontrols.TabControlCasoUso();
             this.tabPageProjeto = new System.Windows.Forms.TabPage();
             this.panelProjeto = new System.Windows.Forms.Panel();
@@ -98,7 +100,8 @@ namespace sUCO.forms
             // menuTopo
             // 
             this.menuTopo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemArquivo});
+            this.menuItemArquivo,
+            this.preferenciasToolStripMenuItem});
             this.menuTopo.Location = new System.Drawing.Point(0, 0);
             this.menuTopo.Name = "menuTopo";
             this.menuTopo.Size = new System.Drawing.Size(917, 24);
@@ -113,30 +116,6 @@ namespace sUCO.forms
             this.menuItemArquivo.Name = "menuItemArquivo";
             this.menuItemArquivo.Size = new System.Drawing.Size(56, 20);
             this.menuItemArquivo.Text = "Arquivo";
-            // 
-            // menuItemInternoNovo
-            // 
-            this.menuItemInternoNovo.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoNovo.Image")));
-            this.menuItemInternoNovo.Name = "menuItemInternoNovo";
-            this.menuItemInternoNovo.Size = new System.Drawing.Size(115, 22);
-            this.menuItemInternoNovo.Text = "Novo";
-            this.menuItemInternoNovo.Click += new System.EventHandler(this.menuItemInternoNovo_Click);
-            // 
-            // menuItemInternoAbrir
-            // 
-            this.menuItemInternoAbrir.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoAbrir.Image")));
-            this.menuItemInternoAbrir.Name = "menuItemInternoAbrir";
-            this.menuItemInternoAbrir.Size = new System.Drawing.Size(115, 22);
-            this.menuItemInternoAbrir.Text = "Abrir";
-            this.menuItemInternoAbrir.Click += new System.EventHandler(this.menuItemInternoAbrir_Click);
-            // 
-            // menuItemInternoSalvar
-            // 
-            this.menuItemInternoSalvar.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoSalvar.Image")));
-            this.menuItemInternoSalvar.Name = "menuItemInternoSalvar";
-            this.menuItemInternoSalvar.Size = new System.Drawing.Size(115, 22);
-            this.menuItemInternoSalvar.Text = "Salvar";
-            this.menuItemInternoSalvar.Click += new System.EventHandler(this.menuItemInternoSalvar_Click);
             // 
             // abrirArquivoDialog
             // 
@@ -155,6 +134,33 @@ namespace sUCO.forms
             this.topToolBox.Name = "topToolBox";
             this.topToolBox.Size = new System.Drawing.Size(917, 25);
             this.topToolBox.TabIndex = 4;
+            // 
+            // panelTab
+            // 
+            this.panelTab.AutoScroll = true;
+            this.panelTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelTab.Controls.Add(this.tabControl);
+            this.panelTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTab.Location = new System.Drawing.Point(0, 49);
+            this.panelTab.Name = "panelTab";
+            this.panelTab.Size = new System.Drawing.Size(917, 524);
+            this.panelTab.TabIndex = 5;
+            // 
+            // preferenciasToolStripMenuItem
+            // 
+            this.preferenciasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.preferenciasToolStripMenuItem.Name = "preferenciasToolStripMenuItem";
+            this.preferenciasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.preferenciasToolStripMenuItem.Text = "Preferencias";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = global::sUCO.Properties.Resources.connect;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Text = "MySQL";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // btNovo
             // 
@@ -195,16 +201,29 @@ namespace sUCO.forms
             this.btRelatorio.Size = new System.Drawing.Size(23, 22);
             this.btRelatorio.ToolTipText = "Gerar Relatório do Projeto";
             // 
-            // panelTab
+            // menuItemInternoNovo
             // 
-            this.panelTab.AutoScroll = true;
-            this.panelTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelTab.Controls.Add(this.tabControl);
-            this.panelTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTab.Location = new System.Drawing.Point(0, 49);
-            this.panelTab.Name = "panelTab";
-            this.panelTab.Size = new System.Drawing.Size(917, 524);
-            this.panelTab.TabIndex = 5;
+            this.menuItemInternoNovo.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoNovo.Image")));
+            this.menuItemInternoNovo.Name = "menuItemInternoNovo";
+            this.menuItemInternoNovo.Size = new System.Drawing.Size(152, 22);
+            this.menuItemInternoNovo.Text = "Novo";
+            this.menuItemInternoNovo.Click += new System.EventHandler(this.menuItemInternoNovo_Click);
+            // 
+            // menuItemInternoAbrir
+            // 
+            this.menuItemInternoAbrir.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoAbrir.Image")));
+            this.menuItemInternoAbrir.Name = "menuItemInternoAbrir";
+            this.menuItemInternoAbrir.Size = new System.Drawing.Size(152, 22);
+            this.menuItemInternoAbrir.Text = "Abrir";
+            this.menuItemInternoAbrir.Click += new System.EventHandler(this.menuItemInternoAbrir_Click);
+            // 
+            // menuItemInternoSalvar
+            // 
+            this.menuItemInternoSalvar.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoSalvar.Image")));
+            this.menuItemInternoSalvar.Name = "menuItemInternoSalvar";
+            this.menuItemInternoSalvar.Size = new System.Drawing.Size(152, 22);
+            this.menuItemInternoSalvar.Text = "Salvar";
+            this.menuItemInternoSalvar.Click += new System.EventHandler(this.menuItemInternoSalvar_Click);
             // 
             // tabControl
             // 
@@ -234,9 +253,9 @@ namespace sUCO.forms
             this.panelProjeto.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panelProjeto.Controls.Add(this.splitProjetoCasosUso);
             this.panelProjeto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelProjeto.Location = new System.Drawing.Point(101, 3);
+            this.panelProjeto.Location = new System.Drawing.Point(37, 3);
             this.panelProjeto.Name = "panelProjeto";
-            this.panelProjeto.Size = new System.Drawing.Size(801, 488);
+            this.panelProjeto.Size = new System.Drawing.Size(865, 488);
             this.panelProjeto.TabIndex = 8;
             // 
             // splitProjetoCasosUso
@@ -258,7 +277,7 @@ namespace sUCO.forms
             // 
             this.splitProjetoCasosUso.Panel2.AutoScroll = true;
             this.splitProjetoCasosUso.Panel2.Controls.Add(this.tableLayoutPanelCasoUso);
-            this.splitProjetoCasosUso.Size = new System.Drawing.Size(801, 488);
+            this.splitProjetoCasosUso.Size = new System.Drawing.Size(865, 488);
             this.splitProjetoCasosUso.SplitterDistance = 25;
             this.splitProjetoCasosUso.TabIndex = 12;
             // 
@@ -311,7 +330,7 @@ namespace sUCO.forms
             this.tableLayoutPanelCasoUso.Name = "tableLayoutPanelCasoUso";
             this.tableLayoutPanelCasoUso.RowCount = 1;
             this.tableLayoutPanelCasoUso.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanelCasoUso.Size = new System.Drawing.Size(801, 160);
+            this.tableLayoutPanelCasoUso.Size = new System.Drawing.Size(865, 160);
             this.tableLayoutPanelCasoUso.TabIndex = 0;
             // 
             // projectToolBox
@@ -325,7 +344,7 @@ namespace sUCO.forms
             this.projectToolBox.Location = new System.Drawing.Point(3, 3);
             this.projectToolBox.Name = "projectToolBox";
             this.projectToolBox.ShowItemToolTips = true;
-            this.projectToolBox.Size = new System.Drawing.Size(98, 488);
+            this.projectToolBox.Size = new System.Drawing.Size(34, 488);
             this.projectToolBox.TabIndex = 9;
             // 
             // btUCAdd
@@ -393,6 +412,8 @@ namespace sUCO.forms
         private ToolStripMenuItem btRefreshLayout;
         private Label lblResponsavel;
         private TextBox txtResponsavel;
+        private ToolStripMenuItem preferenciasToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
 
     }
 }
