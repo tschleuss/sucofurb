@@ -41,6 +41,14 @@ namespace sUCO.forms
             switch (tipoArquivo)
             {
                 case tiposArquivos.CasoUso:
+                    this.projeto.NomeArquivo = abrirArquivoDialog.FileName;
+                    IList<CasoUso> ucList = Serializador.abrirArquivo(this.projeto);
+
+                    if (ucList.Count > 0)
+                    {
+                        Console.WriteLine("HOHO");
+                    }
+
                     //casoDeUso = Serializador.abrirArquivo(abrirArquivoDialog.FileName);
                     //casoDeUso.Diagrama.doCarregarDatagridView(dgCasosUso);
                     //txtNomeProjeto.Text = casoDeUso.Nome;
@@ -64,7 +72,7 @@ namespace sUCO.forms
             {
                 salvarArquivoDialog.AddExtension = true;
                 salvarArquivoDialog.DefaultExt = ".xml";
-                salvarArquivoDialog.Filter = "(*.xml)|*.xml";
+                salvarArquivoDialog.Filter = "Arquivos de casos de uso (*.xml)|*.xml";
                 salvarArquivoDialog.FileName = "*.xml";
                 salvarArquivoDialog.ShowDialog();
                 projeto.NomeArquivo = salvarArquivoDialog.FileName;
@@ -97,7 +105,7 @@ namespace sUCO.forms
                 //limparGrig(dgCenarioAlternativo);
 
                 tipoArquivo = tiposArquivos.CasoUso;
-                abrirArquivoDialog.Filter = " Arquivos de casos de uso (*.xml)|*.xml";
+                abrirArquivoDialog.Filter = "Arquivos de casos de uso (*.xml)|*.xml";
                 this.abrirArquivoDialog.ShowDialog();
             }
         }
@@ -194,7 +202,6 @@ namespace sUCO.forms
                 ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
 
                 AddPanelOnTableLayout(ucPanelCasoUso);
-
             }
         }
 

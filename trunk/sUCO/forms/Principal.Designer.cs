@@ -118,7 +118,7 @@ namespace sUCO.forms
             // 
             this.menuItemInternoNovo.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoNovo.Image")));
             this.menuItemInternoNovo.Name = "menuItemInternoNovo";
-            this.menuItemInternoNovo.Size = new System.Drawing.Size(115, 22);
+            this.menuItemInternoNovo.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoNovo.Text = "Novo";
             this.menuItemInternoNovo.Click += new System.EventHandler(this.menuItemInternoNovo_Click);
             // 
@@ -126,7 +126,7 @@ namespace sUCO.forms
             // 
             this.menuItemInternoAbrir.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoAbrir.Image")));
             this.menuItemInternoAbrir.Name = "menuItemInternoAbrir";
-            this.menuItemInternoAbrir.Size = new System.Drawing.Size(115, 22);
+            this.menuItemInternoAbrir.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoAbrir.Text = "Abrir";
             this.menuItemInternoAbrir.Click += new System.EventHandler(this.menuItemInternoAbrir_Click);
             // 
@@ -134,7 +134,7 @@ namespace sUCO.forms
             // 
             this.menuItemInternoSalvar.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoSalvar.Image")));
             this.menuItemInternoSalvar.Name = "menuItemInternoSalvar";
-            this.menuItemInternoSalvar.Size = new System.Drawing.Size(115, 22);
+            this.menuItemInternoSalvar.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoSalvar.Text = "Salvar";
             this.menuItemInternoSalvar.Click += new System.EventHandler(this.menuItemInternoSalvar_Click);
             // 
