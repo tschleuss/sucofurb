@@ -27,16 +27,19 @@ namespace sUCO.control
             xmlOut.Formatting = Formatting.Indented;
             xmlOut.WriteStartDocument();
             xmlOut.WriteStartElement("casosDeUso");
-            xmlOut.WriteAttributeString("projeto", projeto.Nome);
-            xmlOut.WriteAttributeString("criado", projeto.DataCriacao.ToString());
-            xmlOut.WriteAttributeString("atualizado", projeto.DataAtualizacao.ToString());
-            xmlOut.WriteAttributeString("autor", projeto.Responsavel);
+            xmlOut.WriteAttributeString("projeto",      projeto.Nome);
+            xmlOut.WriteAttributeString("criado",       projeto.DataCriacao.ToString());
+            xmlOut.WriteAttributeString("atualizado",   projeto.DataAtualizacao.ToString());
+            xmlOut.WriteAttributeString("autor",        projeto.Responsavel);
 
             foreach (CasoUso diagrama in ucList)
             {
                 //Gera o xml para as raias, acoes, cenarios.. de cada caso de uso
                 xmlOut.WriteStartElement("casoDeUso");
-                xmlOut.WriteAttributeString("nome", diagrama.Nome);
+                xmlOut.WriteAttributeString("nome",         diagrama.Nome);
+                xmlOut.WriteAttributeString("objetivo",     diagrama.Objetivo);
+                xmlOut.WriteAttributeString("preCondicao",  diagrama.PreCondicao);
+                xmlOut.WriteAttributeString("posCondicao",  diagrama.PosCondicao);
                 xmlOut = geraXmlRaias(xmlOut, diagrama.Diagrama.ListaRaias);
                 xmlOut.WriteEndElement();
             }
