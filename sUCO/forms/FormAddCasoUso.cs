@@ -51,13 +51,7 @@ namespace sUCO.forms
 
         private void btInserir_Click(object sender, EventArgs e)
         {
-            nomeCasoUso = txtNome.Text;
-            objetivo = txtObjetivo.Text;
-            posCondicao = txtPosCondicao.Text;
-            preCondicao = txtPreCondicao.Text;
-
-            cancelado = false;
-            this.Close();
+            this.adicionarCasoDeUso();
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
@@ -68,14 +62,9 @@ namespace sUCO.forms
 
         private void txtNome_KeyUp(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Enter)
-                    btInserir_Click(sender, e);
-            }
-            catch (Exception err)
-            {
-                throw new Exception(err.Message);
+                this.adicionarCasoDeUso();
             }
         }
 
@@ -84,5 +73,15 @@ namespace sUCO.forms
             txtNome.Focus();            
         }
 
+        private void adicionarCasoDeUso()
+        {
+            nomeCasoUso = txtNome.Text;
+            objetivo = txtObjetivo.Text;
+            posCondicao = txtPosCondicao.Text;
+            preCondicao = txtPreCondicao.Text;
+
+            cancelado = false;
+            this.Close();
+        }
     }
 }

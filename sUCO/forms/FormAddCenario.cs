@@ -42,22 +42,22 @@ namespace sUCO.forms
 
         private void btInserir_Click(object sender, EventArgs e)
         {
-            nomeCenario = txtNome.Text;
-            inserir = true;
-            this.Close();
+            this.adicionarCenario();
         }
 
         private void txtNome_KeyUp(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Enter)
-                    btInserir_Click(sender, e);
+                this.adicionarCenario();
             }
-            catch (Exception err)
-            {
-                throw new Exception(err.Message);
-            }
+        }
+
+        private void adicionarCenario()
+        {
+            nomeCenario = txtNome.Text;
+            inserir = true;
+            this.Close();
         }
     }
 }

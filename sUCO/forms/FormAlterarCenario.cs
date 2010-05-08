@@ -47,9 +47,7 @@ namespace sUCO.forms
 
         private void btAlterar_Click(object sender, EventArgs e)
         {
-            nomeCenario = txtNome.Text;
-            alterar = true;
-            this.Close();
+            this.alterarCenario();
         }
 
         private void btRemover_Click(object sender, EventArgs e)
@@ -66,15 +64,17 @@ namespace sUCO.forms
 
         private void txtNome_KeyUp(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Enter)
-                    btAlterar_Click(sender, e);
+                this.alterarCenario();
             }
-            catch (Exception err)
-            {
-                throw new Exception(err.Message);
-            }
+        }
+
+        private void alterarCenario()
+        {
+            nomeCenario = txtNome.Text;
+            alterar = true;
+            this.Close();
         }
     }
 }

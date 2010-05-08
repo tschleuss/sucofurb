@@ -71,6 +71,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(237, 20);
             this.txtNome.TabIndex = 1;
+            this.txtNome.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyUp);
             // 
             // btAlterar
             // 
