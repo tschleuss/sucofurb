@@ -13,7 +13,6 @@ namespace sUCO.forms
 {
     public partial class Principal : Form
     {
-       // private CasoDeUso diagrama;
         enum tiposArquivos 
         { 
             Nenhum
@@ -26,17 +25,13 @@ namespace sUCO.forms
         private Projeto projeto;
 
         private tiposArquivos tipoArquivo = tiposArquivos.Nenhum;
-        private bool dataGridViewAlterado = false;
 
         private int qtdPorLinha = 5;
         private int paddingPanel = 15;
 
-        private CasoUso casoDeUso;
-
         public Principal()
         {
             this.projeto = new Projeto();
-            this.casoDeUso = new CasoUso("", new Diagrama(), "");
             this.ClickPanelCasoUso += new PanelCasoUsoHandler(this.SelecionarPanelCasoUso);
             InitializeComponent();
         }
@@ -46,13 +41,12 @@ namespace sUCO.forms
             switch (tipoArquivo)
             {
                 case tiposArquivos.CasoUso:
-                    casoDeUso = Serializador.abrirArquivo(abrirArquivoDialog.FileName);
+                    //casoDeUso = Serializador.abrirArquivo(abrirArquivoDialog.FileName);
                     //casoDeUso.Diagrama.doCarregarDatagridView(dgCasosUso);
-                    txtNomeProjeto.Text = casoDeUso.Nome;
+                    //txtNomeProjeto.Text = casoDeUso.Nome;
 
                     //cb_Cenarios.Items.Clear();
 
-                    dataGridViewAlterado = false;
                     //validarBotoesCenario();
 
                     break;
@@ -66,16 +60,26 @@ namespace sUCO.forms
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
-            if (dataGridViewAlterado)
+            if (projeto.NomeArquivo == null || projeto.NomeArquivo.Equals("") )
             {
-                if (casoDeUso.NomeArquivo == "")
+                salvarArquivoDialog.AddExtension = true;
+                salvarArquivoDialog.DefaultExt = ".xml";
+                salvarArquivoDialog.Filter = "(*.xml)|*.xml";
+                salvarArquivoDialog.FileName = "*.xml";
+                salvarArquivoDialog.ShowDialog();
+                projeto.NomeArquivo = salvarArquivoDialog.FileName;
+            }
+
+            if ( projeto.NomeArquivo != null && !projeto.NomeArquivo.Equals(""))
+            {
+                //Recupera todo os casos de uso criados
+                IList<CasoUso> ucList = new List<CasoUso>();
+                foreach (UserControlPanelCasoUso ucpc in this.projeto.listaPanelCasoUso)
                 {
-                    salvarArquivoDialog.ShowDialog();
-                    casoDeUso.NomeArquivo = salvarArquivoDialog.FileName;
+                    ucList.Add(ucpc.Tab.CasoUso.CasoUso);
                 }
 
-                Serializador.salvarArquivo(casoDeUso);
-                dataGridViewAlterado = false;
+                Serializador.salvarArquivo(projeto, ucList);
             }
         }
 
@@ -106,9 +110,9 @@ namespace sUCO.forms
 
         private void btNovo_Click(object sender, EventArgs e)
         {
-            if (verificaSalvar())
+            if ( verificaSalvar())
             {
-                casoDeUso = new CasoUso("", new Diagrama(), "");
+                //casoDeUso = new CasoUso("", new Diagrama(), "");
                 //cb_Cenarios.Items.Clear();
 
                 //limparGrig(dgCasosUso);
@@ -119,52 +123,39 @@ namespace sUCO.forms
 
         private bool verificaSalvar()
         {
-            if (dataGridViewAlterado)
+            DialogResult result = MessageBox.Show("O conteúdo do arquivo foi alterado.\nDeseja Salvar as alterações?", "Arquivo alterado", MessageBoxButtons.YesNoCancel);
+
+            if (result == DialogResult.Yes)
             {
-                DialogResult result = MessageBox.Show("O conteúdo do arquivo foi alterado.\nDeseja Salvar as alterações?", "Arquivo alterado", MessageBoxButtons.YesNoCancel);
-
-                if (result == DialogResult.Yes)
-                {
-                    return salvar();
-                }
-                else if (result == DialogResult.Cancel)
-                {
-                    return false;
-                }
-
+                return salvar();
             }
+            else if (result == DialogResult.Cancel)
+            {
+                return false;
+            }
+
             return true;
         }
 
         private bool salvar()
         {
-            if (dataGridViewAlterado)
+            if (projeto.NomeArquivo == null)
             {
-                string fileName = "";
-                if (casoDeUso == null)
+                if ( salvarArquivoDialog.ShowDialog() == DialogResult.OK )
                 {
-                    if (salvarArquivoDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        fileName = salvarArquivoDialog.FileName;
-                    }
-                }
-                else
-                {
-                    fileName = casoDeUso.NomeArquivo;
-                }
-
-                if (fileName != "")
-                {
-                    Serializador.salvarArquivo(casoDeUso);
-
-                    dataGridViewAlterado = false;
-                    return true;
-                }
-                else
-                {
-                    return false;
+                    projeto.NomeArquivo = salvarArquivoDialog.FileName;
                 }
             }
+
+            //Recupera todo os casos de uso criados
+            IList<CasoUso> ucList = new List<CasoUso>();
+            foreach (UserControlPanelCasoUso ucpc in this.projeto.listaPanelCasoUso)
+            {
+                ucList.Add(ucpc.Tab.CasoUso.CasoUso);
+            }
+
+            Serializador.salvarArquivo(projeto, ucList);
+
             return true;
         }
 
@@ -175,7 +166,6 @@ namespace sUCO.forms
 
             if (!formAddCasoUso.Cancelado)
             {
-
                 UserControlPanelCasoUso ucPanelCasoUso = new UserControlPanelCasoUso(this);
 
                 UserControlCasoUso ucCasoUso = new UserControlCasoUso(ucPanelCasoUso);
@@ -200,13 +190,12 @@ namespace sUCO.forms
                 ucPanelCasoUso.TxtCasoUso = ucCasoUso.CasoUso.Nome;
                 ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
                 ucPanelCasoUso.Tab = tab;
-                ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;                
+                ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
                 ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
 
                 AddPanelOnTableLayout(ucPanelCasoUso);
+
             }
-
-
         }
 
         private TabCasoUso GetTabPage(UserControlCasoUso casoUso)
@@ -228,9 +217,7 @@ namespace sUCO.forms
 
             if (coluna != 0 && (coluna % this.qtdPorLinha) == 0)
             {
-
                 int altura = panel.Height + 30;
-
                 this.tableLayoutPanelCasoUso.RowCount++;
                 this.tableLayoutPanelCasoUso.RowStyles.Add(new RowStyle(SizeType.Absolute, altura));
                 this.tableLayoutPanelCasoUso.Height += altura;
@@ -292,15 +279,14 @@ namespace sUCO.forms
             this.panelCasoUsoSelecionado.BorderStyle    = BorderStyle.FixedSingle;
         }
 
-        private void txtDadosProjeto_keyDown(object sender, KeyEventArgs e)
+        private void txtNomeProjeto_TextChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.Handled = true;
-                this.projeto.Nome        = this.txtNomeProjeto.Text;
-                this.projeto.Responsavel = this.txtResponsavel.Text;
-            }
+            this.projeto.Nome = this.txtNomeProjeto.Text;
         }
 
+        private void txtResponsavel_TextChanged(object sender, EventArgs e)
+        {
+            this.projeto.Responsavel = this.txtResponsavel.Text;
+        }
     }
 }

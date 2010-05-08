@@ -10,11 +10,14 @@ namespace sUCO.core
         public DateTime DataCriacao{ get; set;}
         public DateTime DataAtualizacao { get; set; }
         public String Responsavel { get; set; }
-        private IList<UserControlPanelCasoUso> listaPanelCasoUso;
+        public String NomeArquivo { get; set; }
+        public IList<UserControlPanelCasoUso> listaPanelCasoUso;
 
         public Projeto()
         {
             this.listaPanelCasoUso = new List<UserControlPanelCasoUso>();
+            this.DataCriacao = System.DateTime.Today;
+            this.DataAtualizacao = System.DateTime.Today;
         }
 
         public void AddPanelCasoUso(UserControlPanelCasoUso panel)
