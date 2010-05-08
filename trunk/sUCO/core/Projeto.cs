@@ -16,8 +16,8 @@ namespace sUCO.core
         public Projeto()
         {
             this.listaPanelCasoUso = new List<UserControlPanelCasoUso>();
-            this.DataCriacao = System.DateTime.Today;
-            this.DataAtualizacao = System.DateTime.Today;
+            this.DataCriacao = System.DateTime.Now;
+            this.DataAtualizacao = System.DateTime.Now;
         }
 
         public void AddPanelCasoUso(UserControlPanelCasoUso panel)
