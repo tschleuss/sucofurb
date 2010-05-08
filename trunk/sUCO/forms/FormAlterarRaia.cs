@@ -47,9 +47,7 @@ namespace sUCO.forms
 
         private void btAlterar_Click(object sender, EventArgs e)
         {
-            nomeRaia = txtNome.Text;
-            alterar = true;
-            this.Close();
+            this.alterarRaia();
         }
 
         private void btRemover_Click(object sender, EventArgs e)
@@ -61,6 +59,21 @@ namespace sUCO.forms
         private void btCancelar_Click(object sender, EventArgs e)
         {
             cancelado = true;
+            this.Close();
+        }
+
+        private void txtNome_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.alterarRaia();
+            }
+        }
+
+        private void alterarRaia()
+        {
+            nomeRaia = txtNome.Text;
+            alterar = true;
             this.Close();
         }
     }

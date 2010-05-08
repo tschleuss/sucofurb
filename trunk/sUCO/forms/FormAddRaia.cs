@@ -30,9 +30,7 @@ namespace sUCO.forms
 
         private void btInserir_Click(object sender, EventArgs e)
         {
-            nomeRaia = txtNome.Text;
-            cancelado = false;
-            this.Close();
+            this.adicionarRaia();
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
@@ -43,14 +41,9 @@ namespace sUCO.forms
 
         private void txtNome_KeyUp(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Enter)
-                    btInserir_Click(sender, e);
-            }
-            catch (Exception err)
-            {
-                throw new Exception(err.Message);
+                this.adicionarRaia();
             }
         }
 
@@ -59,5 +52,11 @@ namespace sUCO.forms
             txtNome.Focus();            
         }
 
+        private void adicionarRaia()
+        {
+            nomeRaia = txtNome.Text;
+            cancelado = false;
+            this.Close();
+        }
     }
 }
