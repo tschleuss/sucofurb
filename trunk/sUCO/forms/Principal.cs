@@ -46,12 +46,20 @@ namespace sUCO.forms
                     if (ucList != null && ucList.Count > 0)
                     {
                         //Recria os componentes graficos
+                        this.excluirComponentes();
                         this.restaurarComponentes(ucList);
                         this.opened = true;
                     }
 
                     break;
             }
+        }
+
+        private void excluirComponentes()
+        {
+            //Limpar tudo antes de carregar.
+            tableLayoutPanelCasoUso.Controls.Clear();
+            this.projeto.LimparPanelCasoUso();
         }
 
         private void restaurarComponentes(IList<CasoUso> ucList)

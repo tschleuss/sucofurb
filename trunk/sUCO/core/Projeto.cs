@@ -30,6 +30,11 @@ namespace sUCO.core
             this.listaPanelCasoUso.Remove(panel);
         }
 
+        public void LimparPanelCasoUso()
+        {
+            this.listaPanelCasoUso.Clear();
+        }
+
         public int QtdCasoUso()
         {
             return this.listaPanelCasoUso.Count;
