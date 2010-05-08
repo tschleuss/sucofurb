@@ -13,21 +13,19 @@ namespace sUCO.forms
 {
     public partial class Principal : Form
     {
-        enum tiposArquivos 
+        enum TiposArquivos 
         { 
             Nenhum
            ,CasoUso
            ,Imagem
         }
 
+        private Projeto projeto;
         private event PanelCasoUsoHandler ClickPanelCasoUso;
         private UserControlPanelCasoUso panelCasoUsoSelecionado;
-        private Projeto projeto;
-
-        private tiposArquivos tipoArquivo = tiposArquivos.Nenhum;
-
+        private TiposArquivos tipoArquivo = TiposArquivos.Nenhum;
         private int qtdPorLinha = 5;
-        private int paddingPanel = 15;
+        private bool opened = false;
 
         public Principal()
         {
@@ -40,25 +38,57 @@ namespace sUCO.forms
         {
             switch (tipoArquivo)
             {
-                case tiposArquivos.CasoUso:
+                case TiposArquivos.CasoUso:
+
                     this.projeto.NomeArquivo = abrirArquivoDialog.FileName;
                     IList<CasoUso> ucList = Serializador.abrirArquivo(this.projeto);
 
-                    if (ucList.Count > 0)
+                    if (ucList != null && ucList.Count > 0)
                     {
-                        Console.WriteLine("HOHO");
+                        //Recria os componentes graficos
+                        this.restaurarComponentes(ucList);
+                        this.opened = true;
                     }
-
-                    //casoDeUso = Serializador.abrirArquivo(abrirArquivoDialog.FileName);
-                    //casoDeUso.Diagrama.doCarregarDatagridView(dgCasosUso);
-                    //txtNomeProjeto.Text = casoDeUso.Nome;
-
-                    //cb_Cenarios.Items.Clear();
-
-                    //validarBotoesCenario();
 
                     break;
             }
+        }
+
+        private void restaurarComponentes(IList<CasoUso> ucList)
+        {
+            UserControlPanelCasoUso ucPanelCasoUso = null;
+            UserControlCasoUso ucCasoUso = null;
+
+            foreach (CasoUso uc in ucList)
+            {
+                ucPanelCasoUso = new UserControlPanelCasoUso(this); 
+                ucCasoUso = new UserControlCasoUso(ucPanelCasoUso);
+                ucCasoUso.Dock = DockStyle.Fill;
+                ucCasoUso.CasoUso = uc;
+                ucCasoUso.TxtNome.Text = ucCasoUso.CasoUso.Nome;
+                ucCasoUso.TxtObjetivo.Text = ucCasoUso.CasoUso.Objetivo;
+                ucCasoUso.TxtPreCondicao.Text = ucCasoUso.CasoUso.PreCondicao;
+                ucCasoUso.TxtPosCondicao.Text = ucCasoUso.CasoUso.PosCondicao;
+
+                //Atualiza a grid com as raias e acoes
+                ucCasoUso.refreshComponentes();
+
+                this.projeto.AddPanelCasoUso(ucPanelCasoUso);
+
+                //cria a tab
+                TabCasoUso tab = this.GetTabPage(ucCasoUso);
+
+                ucPanelCasoUso.TxtCasoUso = ucCasoUso.CasoUso.Nome;
+                ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
+                ucPanelCasoUso.Tab = tab;
+                ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
+                ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
+
+                AddPanelOnTableLayout(ucPanelCasoUso);
+            }
+
+            this.txtNomeProjeto.Text = this.projeto.Nome;
+            this.txtResponsavel.Text = this.projeto.Responsavel;
         }
 
         private void menuItemInternoSalvar_Click(object sender, EventArgs e)
@@ -101,15 +131,11 @@ namespace sUCO.forms
         {
             if (verificaSalvar())
             {                
-                //limparGrig(dgCasosUso);
-                //limparGrig(dgCenarioAlternativo);
-
-                tipoArquivo = tiposArquivos.CasoUso;
+                tipoArquivo = TiposArquivos.CasoUso;
                 abrirArquivoDialog.Filter = "Arquivos de casos de uso (*.xml)|*.xml";
                 this.abrirArquivoDialog.ShowDialog();
             }
         }
-
 
         private void menuItemInternoNovo_Click(object sender, EventArgs e)
         {
@@ -131,15 +157,18 @@ namespace sUCO.forms
 
         private bool verificaSalvar()
         {
-            DialogResult result = MessageBox.Show("O conteúdo do arquivo foi alterado.\nDeseja Salvar as alterações?", "Arquivo alterado", MessageBoxButtons.YesNoCancel);
+            if (opened)
+            {
+                DialogResult result = MessageBox.Show("O conteúdo do arquivo foi alterado.\nDeseja Salvar as alterações?", "Arquivo alterado", MessageBoxButtons.YesNoCancel);
 
-            if (result == DialogResult.Yes)
-            {
-                return salvar();
-            }
-            else if (result == DialogResult.Cancel)
-            {
-                return false;
+                if (result == DialogResult.Yes)
+                {
+                    return salvar();
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    return false;
+                }
             }
 
             return true;

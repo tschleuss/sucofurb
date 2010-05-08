@@ -6,6 +6,8 @@ using System.Runtime.Serialization.Formatters.Soap;
 using System.Xml;
 using sUCO.core;
 using System.Collections.Generic;
+using sUCO.forms.usercontrols;
+using sUCO.forms;
 
 namespace sUCO.control
 {
@@ -27,10 +29,10 @@ namespace sUCO.control
             xmlOut.Formatting = Formatting.Indented;
             xmlOut.WriteStartDocument();
             xmlOut.WriteStartElement("casosDeUso");
-            xmlOut.WriteAttributeString("projeto",      projeto.Nome);
+            xmlOut.WriteAttributeString("nome",         projeto.Nome);
             xmlOut.WriteAttributeString("criado",       projeto.DataCriacao.ToString());
             xmlOut.WriteAttributeString("atualizado",   projeto.DataAtualizacao.ToString());
-            xmlOut.WriteAttributeString("autor",        projeto.Responsavel);
+            xmlOut.WriteAttributeString("responsavel",  projeto.Responsavel);
 
             foreach (CasoUso diagrama in ucList)
             {
@@ -102,12 +104,8 @@ namespace sUCO.control
             if (File.Exists(projeto.NomeArquivo))
             {
                 IList<CasoUso> ucList = new List<CasoUso>();
-                //Diagrama diagrama = new Diagrama();
-                //CasoUso casoDeUso = new CasoUso("", diagrama);
-
                 XmlTextReader xmlIn = new XmlTextReader(projeto.NomeArquivo);
-                //xmlIn = lerXmlRaias(xmlIn, casoDeUso, casoDeUso.Diagrama.ListaRaias);
-                xmlIn = lerXmlRaias(xmlIn, ucList, null);
+                xmlIn = lerXmlRaias(xmlIn, ucList, projeto, null, null);
 
                 return ucList;
             }
@@ -115,8 +113,7 @@ namespace sUCO.control
             return null;
         }
 
-        //private static XmlTextReader lerXmlRaias(XmlTextReader xmlIn, CasoUso casoDeUso, ArrayList raias)
-        private static XmlTextReader lerXmlRaias(XmlTextReader xmlIn, IList<CasoUso> usList, CasoUso casoDeUso)
+        private static XmlTextReader lerXmlRaias(XmlTextReader xmlIn, IList<CasoUso> usList, Projeto projeto, CasoUso casoDeUso, ArrayList raias)
         {
             ArrayList acoes = null;
             CenarioAlternativo cenario = null;
@@ -129,11 +126,23 @@ namespace sUCO.control
 
                 if (xmlIn.IsStartElement())
                 {
+                    if (xmlIn.Name.Equals("casosDeUso"))
+                    {
+                        String datePattern = "M/d/yyyy H:mm:ss tt";
+                        projeto.Nome = xmlIn.GetAttribute("nome");
+                        projeto.Responsavel = xmlIn.GetAttribute("responsavel");
+                        projeto.DataCriacao = DateTime.ParseExact(xmlIn.GetAttribute("criado"), datePattern, null);
+                        projeto.DataAtualizacao = DateTime.ParseExact(xmlIn.GetAttribute("criado"), datePattern, null);
+                    }
+
                     if (xmlIn.Name.Equals("casoDeUso"))
                     {
                         casoDeUso = new CasoUso( new Diagrama() );
-                        String nomeProjeto = xmlIn.GetAttribute("nome");
-                        casoDeUso.Nome = nomeProjeto;
+                        raias = casoDeUso.Diagrama.ListaRaias;
+                        casoDeUso.Nome = xmlIn.GetAttribute("nome");
+                        casoDeUso.Objetivo = xmlIn.GetAttribute("objetivo");
+                        casoDeUso.PreCondicao = xmlIn.GetAttribute("preCondicao");
+                        casoDeUso.PosCondicao = xmlIn.GetAttribute("posCondicao");
                     }
 
                     if (xmlIn.Name.Equals("raia"))
@@ -142,14 +151,14 @@ namespace sUCO.control
                         String nomeAtor = xmlIn.GetAttribute("nome");
                         int tamanho = int.Parse(xmlIn.GetAttribute("tamanho"));
                         raia = new Raia(nomeAtor, tamanho, acoes);
-                        casoDeUso.Diagrama.addRaia(raia);
+                        raias.Add(raia);
                     }
 
                     if (xmlIn.Name.Equals("acao"))
                     {
                         String valorAcao = xmlIn.GetAttribute("valor");
                         acao = new Acao(valorAcao, new ArrayList());
-                        ((Raia)casoDeUso.Diagrama.ListaRaias[casoDeUso.Diagrama.ListaRaias.Count - 1]).ListaAcoes.Add(acao);
+                        ((Raia)raias[raias.Count - 1]).ListaAcoes.Add(acao);
                     }
 
                     if (xmlIn.Name.Equals("cenario"))
@@ -157,11 +166,11 @@ namespace sUCO.control
                         String nomeCenario = xmlIn.GetAttribute("nome");
                         cenario = new CenarioAlternativo(nomeCenario);
 
-                        acoes = ((Raia)casoDeUso.Diagrama.ListaRaias[casoDeUso.Diagrama.ListaRaias.Count - 1]).ListaAcoes;
+                        acoes = ((Raia)raias[raias.Count - 1]).ListaAcoes;
                         ((Acao)acoes[acoes.Count - 1]).ListaCenariosAlternativos.Add(cenario);
 
                         //Recursivamente recupera as raias e acoes dos cenarios alternativos.
-                        xmlIn = lerXmlRaias(xmlIn, usList, casoDeUso);
+                        xmlIn = lerXmlRaias(xmlIn, usList, projeto, casoDeUso, cenario.ListaRaias);
                     }
 
                     if (xmlIn.Name.Equals("cenario-end"))
@@ -175,7 +184,6 @@ namespace sUCO.control
                     {
                         //Se for final do casoDeUso, adiciona na lista
                         usList.Add(casoDeUso);
-                        casoDeUso = null;
                     }
                 }
             }
