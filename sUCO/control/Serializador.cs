@@ -42,6 +42,9 @@ namespace sUCO.control
                 xmlOut.WriteAttributeString("posCondicao",  diagrama.PosCondicao);
                 xmlOut = geraXmlRaias(xmlOut, diagrama.Diagrama.ListaRaias);
                 xmlOut.WriteEndElement();
+
+                xmlOut.WriteStartElement("casoDeUso-end");
+                xmlOut.WriteEndElement();
             }
 
             xmlOut.WriteEndElement();
@@ -94,22 +97,26 @@ namespace sUCO.control
             return xmlOut;
         }
 
-        public static CasoUso abrirArquivo(string filename)
+        public static IList<CasoUso> abrirArquivo(Projeto projeto)
         {
-            if (File.Exists(filename))
+            if (File.Exists(projeto.NomeArquivo))
             {
-                Diagrama diagrama = new Diagrama();
-                CasoUso casoDeUso = new CasoUso("", diagrama, filename);
+                IList<CasoUso> ucList = new List<CasoUso>();
+                //Diagrama diagrama = new Diagrama();
+                //CasoUso casoDeUso = new CasoUso("", diagrama);
 
-                XmlTextReader xmlIn = new XmlTextReader(filename);
-                xmlIn = lerXmlRaias(xmlIn, casoDeUso, casoDeUso.Diagrama.ListaRaias);
+                XmlTextReader xmlIn = new XmlTextReader(projeto.NomeArquivo);
+                //xmlIn = lerXmlRaias(xmlIn, casoDeUso, casoDeUso.Diagrama.ListaRaias);
+                xmlIn = lerXmlRaias(xmlIn, ucList, null);
 
-                return casoDeUso;
+                return ucList;
             }
+
             return null;
         }
 
-        private static XmlTextReader lerXmlRaias(XmlTextReader xmlIn, CasoUso casoDeUso, ArrayList raias)
+        //private static XmlTextReader lerXmlRaias(XmlTextReader xmlIn, CasoUso casoDeUso, ArrayList raias)
+        private static XmlTextReader lerXmlRaias(XmlTextReader xmlIn, IList<CasoUso> usList, CasoUso casoDeUso)
         {
             ArrayList acoes = null;
             CenarioAlternativo cenario = null;
@@ -122,8 +129,9 @@ namespace sUCO.control
 
                 if (xmlIn.IsStartElement())
                 {
-                    if (xmlIn.Name.Equals("projeto"))
+                    if (xmlIn.Name.Equals("casoDeUso"))
                     {
+                        casoDeUso = new CasoUso( new Diagrama() );
                         String nomeProjeto = xmlIn.GetAttribute("nome");
                         casoDeUso.Nome = nomeProjeto;
                     }
@@ -134,14 +142,14 @@ namespace sUCO.control
                         String nomeAtor = xmlIn.GetAttribute("nome");
                         int tamanho = int.Parse(xmlIn.GetAttribute("tamanho"));
                         raia = new Raia(nomeAtor, tamanho, acoes);
-                        raias.Add(raia);
+                        casoDeUso.Diagrama.addRaia(raia);
                     }
 
                     if (xmlIn.Name.Equals("acao"))
                     {
                         String valorAcao = xmlIn.GetAttribute("valor");
                         acao = new Acao(valorAcao, new ArrayList());
-                        ((Raia)raias[raias.Count - 1]).ListaAcoes.Add(acao);
+                        ((Raia)casoDeUso.Diagrama.ListaRaias[casoDeUso.Diagrama.ListaRaias.Count - 1]).ListaAcoes.Add(acao);
                     }
 
                     if (xmlIn.Name.Equals("cenario"))
@@ -149,11 +157,11 @@ namespace sUCO.control
                         String nomeCenario = xmlIn.GetAttribute("nome");
                         cenario = new CenarioAlternativo(nomeCenario);
 
-                        acoes = ((Raia)raias[raias.Count - 1]).ListaAcoes;
+                        acoes = ((Raia)casoDeUso.Diagrama.ListaRaias[casoDeUso.Diagrama.ListaRaias.Count - 1]).ListaAcoes;
                         ((Acao)acoes[acoes.Count - 1]).ListaCenariosAlternativos.Add(cenario);
 
                         //Recursivamente recupera as raias e acoes dos cenarios alternativos.
-                        xmlIn = lerXmlRaias(xmlIn, casoDeUso, cenario.ListaRaias);
+                        xmlIn = lerXmlRaias(xmlIn, usList, casoDeUso);
                     }
 
                     if (xmlIn.Name.Equals("cenario-end"))
@@ -161,6 +169,13 @@ namespace sUCO.control
                         //Se for final dos cenarios, pula ele e termina a recursao
                         xmlIn.Skip();
                         return xmlIn;
+                    }
+
+                    if (xmlIn.Name.Equals("casoDeUso-end"))
+                    {
+                        //Se for final do casoDeUso, adiciona na lista
+                        usList.Add(casoDeUso);
+                        casoDeUso = null;
                     }
                 }
             }

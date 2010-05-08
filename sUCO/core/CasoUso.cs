@@ -6,10 +6,8 @@ namespace sUCO.core
     public class CasoUso
     {
 
-        public CasoUso(string nome, Diagrama diagrama, string nomeArquivo)
-            : this(diagrama)
+        public CasoUso(string nome, Diagrama diagrama) : this(diagrama)
         {
-            this.NomeArquivo = nomeArquivo;
             this.Nome = nome;
         }
 
@@ -20,7 +18,6 @@ namespace sUCO.core
 
         public Diagrama Diagrama { get; set; }
         public string Nome { get; set; }
-        public string NomeArquivo { get; set; }
         public string Objetivo{ get; set; }
         public string PosCondicao { get; set; }
         public string PreCondicao { get; set; }
