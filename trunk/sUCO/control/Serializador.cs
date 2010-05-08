@@ -5,38 +5,42 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.Xml;
 using sUCO.core;
+using System.Collections.Generic;
 
 namespace sUCO.control
 {
     class Serializador
     {
-        public static void salvarArquivo(CasoUso diagrama)
+        public static void salvarArquivo(Projeto projeto, IList<CasoUso> ucList)
         {
-            if (File.Exists(diagrama.NomeArquivo))
+            if (File.Exists(projeto.NomeArquivo))
             {
-                File.Delete(diagrama.NomeArquivo);
-            }
-            else
-            {
-                diagrama.NomeArquivo += ".xml";
+                File.Delete(projeto.NomeArquivo);
             }
 
-            salvarXML(diagrama);
+            salvarXML(projeto,ucList);
         }
 
-        private static void salvarXML(CasoUso diagrama)
+        private static void salvarXML(Projeto projeto, IList<CasoUso> ucList)
         {
-            XmlTextWriter xmlOut = new XmlTextWriter(diagrama.NomeArquivo, null);
+            XmlTextWriter xmlOut = new XmlTextWriter(projeto.NomeArquivo, null);
             xmlOut.Formatting = Formatting.Indented;
             xmlOut.WriteStartDocument();
-            xmlOut.WriteStartElement("projetos");
-            xmlOut.WriteStartElement("projeto");
-            xmlOut.WriteAttributeString("nome", diagrama.Nome);
+            xmlOut.WriteStartElement("casosDeUso");
+            xmlOut.WriteAttributeString("projeto", projeto.Nome);
+            xmlOut.WriteAttributeString("criado", projeto.DataCriacao.ToString());
+            xmlOut.WriteAttributeString("atualizado", projeto.DataAtualizacao.ToString());
+            xmlOut.WriteAttributeString("autor", projeto.Responsavel);
 
-            //Gera o xml para as raias, acoes, cenarios..
-            xmlOut = geraXmlRaias(xmlOut, diagrama.Diagrama.ListaRaias);
+            foreach (CasoUso diagrama in ucList)
+            {
+                //Gera o xml para as raias, acoes, cenarios.. de cada caso de uso
+                xmlOut.WriteStartElement("casoDeUso");
+                xmlOut.WriteAttributeString("nome", diagrama.Nome);
+                xmlOut = geraXmlRaias(xmlOut, diagrama.Diagrama.ListaRaias);
+                xmlOut.WriteEndElement();
+            }
 
-            xmlOut.WriteEndElement();
             xmlOut.WriteEndElement();
             xmlOut.WriteEndDocument();
             xmlOut.Flush();

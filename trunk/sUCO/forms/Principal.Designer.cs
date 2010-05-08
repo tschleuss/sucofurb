@@ -74,6 +74,8 @@ namespace sUCO.forms
             this.tabPageProjeto = new System.Windows.Forms.TabPage();
             this.panelProjeto = new System.Windows.Forms.Panel();
             this.splitProjetoCasosUso = new System.Windows.Forms.SplitContainer();
+            this.lblResponsavel = new System.Windows.Forms.Label();
+            this.txtResponsavel = new System.Windows.Forms.TextBox();
             this.lblNomeProjeto = new System.Windows.Forms.Label();
             this.txtNomeProjeto = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelCasoUso = new System.Windows.Forms.TableLayoutPanel();
@@ -81,8 +83,6 @@ namespace sUCO.forms
             this.btUCAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.btUCDel = new System.Windows.Forms.ToolStripMenuItem();
             this.btRefreshLayout = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblResponsavel = new System.Windows.Forms.Label();
-            this.txtResponsavel = new System.Windows.Forms.TextBox();
             this.menuTopo.SuspendLayout();
             this.topToolBox.SuspendLayout();
             this.panelTab.SuspendLayout();
@@ -111,14 +111,14 @@ namespace sUCO.forms
             this.menuItemInternoAbrir,
             this.menuItemInternoSalvar});
             this.menuItemArquivo.Name = "menuItemArquivo";
-            this.menuItemArquivo.Size = new System.Drawing.Size(61, 20);
+            this.menuItemArquivo.Size = new System.Drawing.Size(56, 20);
             this.menuItemArquivo.Text = "Arquivo";
             // 
             // menuItemInternoNovo
             // 
             this.menuItemInternoNovo.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoNovo.Image")));
             this.menuItemInternoNovo.Name = "menuItemInternoNovo";
-            this.menuItemInternoNovo.Size = new System.Drawing.Size(105, 22);
+            this.menuItemInternoNovo.Size = new System.Drawing.Size(115, 22);
             this.menuItemInternoNovo.Text = "Novo";
             this.menuItemInternoNovo.Click += new System.EventHandler(this.menuItemInternoNovo_Click);
             // 
@@ -126,7 +126,7 @@ namespace sUCO.forms
             // 
             this.menuItemInternoAbrir.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoAbrir.Image")));
             this.menuItemInternoAbrir.Name = "menuItemInternoAbrir";
-            this.menuItemInternoAbrir.Size = new System.Drawing.Size(105, 22);
+            this.menuItemInternoAbrir.Size = new System.Drawing.Size(115, 22);
             this.menuItemInternoAbrir.Text = "Abrir";
             this.menuItemInternoAbrir.Click += new System.EventHandler(this.menuItemInternoAbrir_Click);
             // 
@@ -134,7 +134,7 @@ namespace sUCO.forms
             // 
             this.menuItemInternoSalvar.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoSalvar.Image")));
             this.menuItemInternoSalvar.Name = "menuItemInternoSalvar";
-            this.menuItemInternoSalvar.Size = new System.Drawing.Size(105, 22);
+            this.menuItemInternoSalvar.Size = new System.Drawing.Size(115, 22);
             this.menuItemInternoSalvar.Text = "Salvar";
             this.menuItemInternoSalvar.Click += new System.EventHandler(this.menuItemInternoSalvar_Click);
             // 
@@ -262,6 +262,24 @@ namespace sUCO.forms
             this.splitProjetoCasosUso.SplitterDistance = 25;
             this.splitProjetoCasosUso.TabIndex = 12;
             // 
+            // lblResponsavel
+            // 
+            this.lblResponsavel.AutoSize = true;
+            this.lblResponsavel.BackColor = System.Drawing.Color.Transparent;
+            this.lblResponsavel.Location = new System.Drawing.Point(395, 5);
+            this.lblResponsavel.Name = "lblResponsavel";
+            this.lblResponsavel.Size = new System.Drawing.Size(69, 13);
+            this.lblResponsavel.TabIndex = 15;
+            this.lblResponsavel.Text = "Responsável\r\n";
+            // 
+            // txtResponsavel
+            // 
+            this.txtResponsavel.Location = new System.Drawing.Point(487, 2);
+            this.txtResponsavel.Name = "txtResponsavel";
+            this.txtResponsavel.Size = new System.Drawing.Size(280, 20);
+            this.txtResponsavel.TabIndex = 14;
+            this.txtResponsavel.TextChanged += new System.EventHandler(this.txtResponsavel_TextChanged);
+            // 
             // lblNomeProjeto
             // 
             this.lblNomeProjeto.AutoSize = true;
@@ -278,7 +296,7 @@ namespace sUCO.forms
             this.txtNomeProjeto.Name = "txtNomeProjeto";
             this.txtNomeProjeto.Size = new System.Drawing.Size(280, 20);
             this.txtNomeProjeto.TabIndex = 12;
-            this.txtNomeProjeto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDadosProjeto_keyDown);
+            this.txtNomeProjeto.TextChanged += new System.EventHandler(this.txtNomeProjeto_TextChanged);
             // 
             // tableLayoutPanelCasoUso
             // 
@@ -336,23 +354,6 @@ namespace sUCO.forms
             this.btRefreshLayout.Name = "btRefreshLayout";
             this.btRefreshLayout.Size = new System.Drawing.Size(21, 20);
             this.btRefreshLayout.ToolTipText = "Atualizar Visualização dos Casos de Uso";
-            // 
-            // lblResponsavel
-            // 
-            this.lblResponsavel.AutoSize = true;
-            this.lblResponsavel.BackColor = System.Drawing.Color.Transparent;
-            this.lblResponsavel.Location = new System.Drawing.Point(395, 5);
-            this.lblResponsavel.Name = "lblResponsavel";
-            this.lblResponsavel.Size = new System.Drawing.Size(69, 13);
-            this.lblResponsavel.TabIndex = 15;
-            this.lblResponsavel.Text = "Responsável\r\n";
-            // 
-            // txtResponsavel
-            // 
-            this.txtResponsavel.Location = new System.Drawing.Point(487, 2);
-            this.txtResponsavel.Name = "txtResponsavel";
-            this.txtResponsavel.Size = new System.Drawing.Size(280, 20);
-            this.txtResponsavel.TabIndex = 14;
             // 
             // Principal
             // 
