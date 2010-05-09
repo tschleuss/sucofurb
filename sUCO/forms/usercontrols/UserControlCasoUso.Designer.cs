@@ -127,12 +127,12 @@ namespace sUCO.forms.usercontrols
 
         public void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainerFluxoUC = new System.Windows.Forms.SplitContainer();
             this.panelFluxo = new System.Windows.Forms.Panel();
             this.dgCasosUso = new System.Windows.Forms.DataGridView();
@@ -210,7 +210,7 @@ namespace sUCO.forms.usercontrols
             // splitContainerFluxoUC.Panel2
             // 
             this.splitContainerFluxoUC.Panel2.Controls.Add(this.panelCenarioAlternativo);
-            this.splitContainerFluxoUC.Size = new System.Drawing.Size(800, 198);
+            this.splitContainerFluxoUC.Size = new System.Drawing.Size(800, 159);
             this.splitContainerFluxoUC.SplitterDistance = 266;
             this.splitContainerFluxoUC.TabIndex = 6;
             // 
@@ -220,41 +220,41 @@ namespace sUCO.forms.usercontrols
             this.panelFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFluxo.Location = new System.Drawing.Point(34, 0);
             this.panelFluxo.Name = "panelFluxo";
-            this.panelFluxo.Size = new System.Drawing.Size(232, 198);
+            this.panelFluxo.Size = new System.Drawing.Size(232, 159);
             this.panelFluxo.TabIndex = 4;
             // 
             // dgCasosUso
             // 
             this.dgCasosUso.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCasosUso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCasosUso.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgCasosUso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgCasosUso.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCasosUso.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgCasosUso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCasosUso.Location = new System.Drawing.Point(0, 0);
             this.dgCasosUso.Name = "dgCasosUso";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCasosUso.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgCasosUso.Size = new System.Drawing.Size(232, 198);
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCasosUso.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgCasosUso.Size = new System.Drawing.Size(232, 159);
             this.dgCasosUso.TabIndex = 7;
             this.dgCasosUso.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCasosUso_ColumnHeaderMouseDoubleClick);
             this.dgCasosUso.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgCasosUso_CellBeginEdit);
@@ -276,7 +276,7 @@ namespace sUCO.forms.usercontrols
             this.ucToolBox.Location = new System.Drawing.Point(0, 0);
             this.ucToolBox.Name = "ucToolBox";
             this.ucToolBox.ShowItemToolTips = true;
-            this.ucToolBox.Size = new System.Drawing.Size(34, 198);
+            this.ucToolBox.Size = new System.Drawing.Size(34, 159);
             this.ucToolBox.TabIndex = 3;
             // 
             // btRaia
@@ -358,7 +358,7 @@ namespace sUCO.forms.usercontrols
             this.panelCenarioAlternativo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCenarioAlternativo.Location = new System.Drawing.Point(0, 0);
             this.panelCenarioAlternativo.Name = "panelCenarioAlternativo";
-            this.panelCenarioAlternativo.Size = new System.Drawing.Size(530, 198);
+            this.panelCenarioAlternativo.Size = new System.Drawing.Size(530, 159);
             this.panelCenarioAlternativo.TabIndex = 0;
             // 
             // lblCenarioAlternativo
@@ -382,35 +382,35 @@ namespace sUCO.forms.usercontrols
             // dgCenarioAlternativo
             // 
             this.dgCenarioAlternativo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCenarioAlternativo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCenarioAlternativo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgCenarioAlternativo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgCenarioAlternativo.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCenarioAlternativo.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgCenarioAlternativo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCenarioAlternativo.Location = new System.Drawing.Point(0, 24);
             this.dgCenarioAlternativo.Name = "dgCenarioAlternativo";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgCenarioAlternativo.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgCenarioAlternativo.Size = new System.Drawing.Size(530, 174);
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCenarioAlternativo.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.dgCenarioAlternativo.Size = new System.Drawing.Size(530, 135);
             this.dgCenarioAlternativo.TabIndex = 0;
             this.dgCenarioAlternativo.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCenarioAlternativo_ColumnHeaderMouseDoubleClick);
             this.dgCenarioAlternativo.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgCenarioAlternativo_CellBeginEdit);
@@ -676,25 +676,25 @@ namespace sUCO.forms.usercontrols
             // 
             this.splitContainerExibicao.Panel2.Controls.Add(this.splitContainerFluxoUC);
             this.splitContainerExibicao.Size = new System.Drawing.Size(800, 307);
-            this.splitContainerExibicao.SplitterDistance = 105;
+            this.splitContainerExibicao.SplitterDistance = 144;
             this.splitContainerExibicao.TabIndex = 8;
             // 
             // panelHostDiagrama
             // 
             this.panelHostDiagrama.AutoScroll = true;
+            this.panelHostDiagrama.AutoScrollMinSize = new System.Drawing.Size(0, 370);
             this.panelHostDiagrama.Controls.Add(this.hostDiagrama);
             this.panelHostDiagrama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHostDiagrama.Location = new System.Drawing.Point(0, 0);
             this.panelHostDiagrama.Name = "panelHostDiagrama";
-            this.panelHostDiagrama.Size = new System.Drawing.Size(800, 105);
+            this.panelHostDiagrama.Size = new System.Drawing.Size(800, 144);
             this.panelHostDiagrama.TabIndex = 1;
             // 
             // hostDiagrama
             // 
             this.hostDiagrama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hostDiagrama.Location = new System.Drawing.Point(0, 0);
-            this.hostDiagrama.Name = "hostDiagrama";
-            this.hostDiagrama.Size = new System.Drawing.Size(800, 105);
+            this.hostDiagrama.Size = new System.Drawing.Size(783, 370);
             this.hostDiagrama.TabIndex = 1;
             this.hostDiagrama.Child = new DiagramaWPF();
             // 
