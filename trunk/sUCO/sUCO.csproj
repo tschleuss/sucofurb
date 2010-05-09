@@ -83,9 +83,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="core\Projeto.cs" />
-    <Compile Include="diagram\App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
     <Compile Include="diagram\connection\Connection.cs" />
     <Compile Include="diagram\connection\ConnectionAdorner.cs" />
     <Compile Include="diagram\connection\Connector.cs" />
@@ -107,6 +104,7 @@
     <Compile Include="diagram\PathFinder.cs" />
     <Compile Include="diagram\RubberbandAdorner.cs" />
     <Compile Include="diagram\SelectionService.cs" />
+    <Compile Include="diagram\TipoRelacionamento.cs" />
     <Compile Include="diagram\Toolbox.cs" />
     <Compile Include="diagram\ToolboxItem.cs" />
     <Compile Include="forms\FormAddCasoUso.cs">
@@ -264,29 +262,33 @@
     <None Include="resources\images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="diagram\designer\images\AlignObjectsBottom.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsCenteredHorizontal.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsCenteredVertical.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsLeft.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsRight.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsTop.png" />
-    <Resource Include="diagram\designer\images\BringForward.png" />
-    <Resource Include="diagram\designer\images\BringToFront.png" />
-    <Resource Include="diagram\designer\images\Copy.png" />
-    <Resource Include="diagram\designer\images\Cut.png" />
-    <Resource Include="diagram\designer\images\Delete.png" />
-    <Resource Include="diagram\designer\images\DistributeObjectsHorizontal.png" />
-    <Resource Include="diagram\designer\images\DistributeObjectsVertical.png" />
-    <Resource Include="diagram\designer\images\GenericDocument.png" />
-    <Resource Include="diagram\designer\images\Group.png" />
-    <Resource Include="diagram\designer\images\OpenFolder.png" />
-    <Resource Include="diagram\designer\images\Paste.png" />
-    <Resource Include="diagram\designer\images\PasteBig.png" />
-    <Resource Include="diagram\designer\images\Print.png" />
-    <Resource Include="diagram\designer\images\Save.png" />
-    <Resource Include="diagram\designer\images\SendBackward.png" />
-    <Resource Include="diagram\designer\images\SendToBack.png" />
-    <Resource Include="diagram\designer\images\Ungroup.png" />
+    <Resource Include="diagram\designer\toolbox\images\AlignObjectsBottom.png" />
+    <Resource Include="diagram\designer\toolbox\images\AlignObjectsCenteredHorizontal.png" />
+    <Resource Include="diagram\designer\toolbox\images\AlignObjectsCenteredVertical.png" />
+    <Resource Include="diagram\designer\toolbox\images\AlignObjectsLeft.png" />
+    <Resource Include="diagram\designer\toolbox\images\AlignObjectsRight.png" />
+    <Resource Include="diagram\designer\toolbox\images\AlignObjectsTop.png" />
+    <Resource Include="diagram\designer\toolbox\images\BringForward.png" />
+    <Resource Include="diagram\designer\toolbox\images\BringToFront.png" />
+    <Resource Include="diagram\designer\toolbox\images\Copy.png" />
+    <Resource Include="diagram\designer\toolbox\images\Cut.png" />
+    <Resource Include="diagram\designer\toolbox\images\Delete.png" />
+    <Resource Include="diagram\designer\toolbox\images\DistributeObjectsHorizontal.png" />
+    <Resource Include="diagram\designer\toolbox\images\DistributeObjectsVertical.png" />
+    <Resource Include="diagram\designer\toolbox\images\GenericDocument.png" />
+    <Resource Include="diagram\designer\toolbox\images\Group.png" />
+    <Resource Include="diagram\designer\toolbox\images\OpenFolder.png" />
+    <Resource Include="diagram\designer\toolbox\images\Paste.png" />
+    <Resource Include="diagram\designer\toolbox\images\PasteBig.png" />
+    <Resource Include="diagram\designer\toolbox\images\Print.png" />
+    <Resource Include="diagram\designer\toolbox\images\Save.png" />
+    <Resource Include="diagram\designer\toolbox\images\SendBackward.png" />
+    <Resource Include="diagram\designer\toolbox\images\SendToBack.png" />
+    <Resource Include="diagram\designer\toolbox\images\Ungroup.png" />
+    <Resource Include="diagram\designer\toolbox\images\rel_associate.png" />
+    <Resource Include="diagram\designer\toolbox\images\rel_extend.png" />
+    <Resource Include="diagram\designer\toolbox\images\rel_generalize.png" />
+    <Resource Include="diagram\designer\toolbox\images\rel_include.png" />
     <Content Include="resources\database\sUCO_DER.png" />
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\add.png" />
@@ -308,10 +310,6 @@
     <Content Include="resources\database\sUCO_DER.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="diagram\App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="diagram\designer\ApplicationToolbar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -352,7 +350,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\toolbox\ShapeStencils.xaml">
+    <Page Include="diagram\designer\toolbox\Relacionamentos.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

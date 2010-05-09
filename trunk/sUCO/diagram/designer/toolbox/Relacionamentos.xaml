@@ -1,0 +1,78 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:sUCO.diagram">
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../components/ToolBar.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--Relacionamentos-->
+    <StackPanel x:Key="Relacionamentos" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Orientation="Vertical" >
+            <Button Margin="1" Padding="2" HorizontalContentAlignment="Left"
+                    Style="{StaticResource ToolBarButtonBaseStyle}"
+                    Command="{x:Static s:DesignerCanvas.Associate}"
+                    CommandTarget="{Binding ElementName=MyDesigner}">
+                <Button.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/sUCO;component/diagram/designer/images/rel_associate.png" Width="16"/>
+                        <TextBlock Margin="3,0,3,0" Text="Associação" VerticalAlignment="Center"  Grid.Column="1"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <Button Margin="1" Padding="2" HorizontalContentAlignment="Left"
+                        Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static s:DesignerCanvas.Include}"
+                        CommandTarget="{Binding ElementName=MyDesigner}">
+                <Button.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/sUCO;component/diagram/designer/images/rel_include.png" Width="16"/>
+                        <TextBlock Margin="3,0,3,0" Text="Inclusão" VerticalAlignment="Center"  Grid.Column="1"/>
+                        </Grid>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Margin="0,2,0,2">
+
+            <Button Margin="1" Padding="2" HorizontalContentAlignment="Left"
+                        Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static s:DesignerCanvas.Generalize}"
+                        CommandTarget="{Binding ElementName=MyDesigner}">
+                <Button.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/sUCO;component/diagram/designer/images/rel_generalize.png" Width="16"/>
+                        <TextBlock Margin="3,0,3,0" Text="Generalização" VerticalAlignment="Center" Grid.Column="1"/>
+                        </Grid>
+                </Button.Content>
+            </Button>
+            <Button Margin="1" Padding="2" HorizontalContentAlignment="Left"
+                        Style="{StaticResource ToolBarButtonBaseStyle}"
+                        Command="{x:Static s:DesignerCanvas.Extend}"
+                        CommandTarget="{Binding ElementName=MyDesigner}">
+                <Button.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/sUCO;component/diagram/designer/images/rel_extend.png" Width="16"/>
+                        <TextBlock Margin="3,0,3,0" Text="Extensão" VerticalAlignment="Center" Grid.Column="1"/>
+                                    </Grid>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</ResourceDictionary>
