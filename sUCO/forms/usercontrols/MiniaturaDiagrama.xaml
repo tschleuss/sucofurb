@@ -1,0 +1,6 @@
+﻿<UserControl x:Class="sUCO.forms.usercontrols.MiniaturaDiagrama"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="96" Width="120">
+    <Image Name="diagrama" Stretch="Fill" MouseLeave="diagrama_MouseLeave" MouseEnter="diagrama_MouseEnter" Source="/sUCO;component/resources/images/semDiagrama.png" MouseDown="diagrama_MouseDown" />
+</UserControl>

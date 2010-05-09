@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using sUCO.core;
 using sUCO.core.events;
+using System.Windows.Forms.Integration;
 
 namespace sUCO.forms.usercontrols
 {
@@ -14,15 +15,21 @@ namespace sUCO.forms.usercontrols
         public TabCasoUso Tab
         {
             get { return tab; }
-            set { tab = value; }
+            set { 
+                    tab = value;
+                    miniDiagrama.Tab = value;
+                }
         }
-
-        public Panel PanelInternoCasoUso
+        public MiniaturaDiagrama MiniaturaDiagrama
         {
-            get { return panelInternoCasoUso; }
-            set { panelInternoCasoUso = value; }
+            get { return miniDiagrama; }
         }
 
+        public ElementHost HostMiniaturaDiagrama
+        {
+            get { return hostMiniDiagrama; }
+        }
+        
         public UserControlPanelCasoUso(Principal principal)
         {
             this.principal = principal;
@@ -48,12 +55,12 @@ namespace sUCO.forms.usercontrols
             }
         }
 
-        private void PanelInterno_MouseMove(object sender, MouseEventArgs e)
+        private void MiniaturaDiagrama_MouseMove(object sender, MouseEventArgs e)
         {
             Cursor.Current = Cursors.Hand;
         }
 
-        private void PanelInterno_MouseLeave(object sender, EventArgs e)
+        private void MiniaturaDiagrama_MouseLeave(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.Arrow;
         }

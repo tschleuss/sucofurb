@@ -686,18 +686,16 @@ namespace sUCO.forms.usercontrols
             this.panelHostDiagrama.Controls.Add(this.hostDiagrama);
             this.panelHostDiagrama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHostDiagrama.Location = new System.Drawing.Point(0, 0);
-            this.panelHostDiagrama.Name = "panelHostDiagrama";
             this.panelHostDiagrama.Size = new System.Drawing.Size(800, 144);
             this.panelHostDiagrama.TabIndex = 1;
             // 
             // hostDiagrama
             // 
+            diagramaWPF = new DiagramaWPF();
             this.hostDiagrama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hostDiagrama.Location = new System.Drawing.Point(0, 0);
-            this.hostDiagrama.Name = "hostDiagrama";
             this.hostDiagrama.Size = new System.Drawing.Size(783, 450);
-            this.hostDiagrama.TabIndex = 1;
-            this.hostDiagrama.Child = new DiagramaWPF();
+            this.hostDiagrama.Child = diagramaWPF;
             // 
             // dataSet
             // 
@@ -752,6 +750,7 @@ namespace sUCO.forms.usercontrols
         private ToolStripButton btExibirDiagrama;
         private ToolStripButton btExibirFluxo;
         private ToolStripButton btImportarModelo;
+        private DiagramaWPF diagramaWPF;
 
     }
 }
