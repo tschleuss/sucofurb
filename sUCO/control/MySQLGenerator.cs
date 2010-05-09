@@ -9,13 +9,13 @@ namespace sUCO.control
 {
     class MySQLGenerator
     {
-        private MySqlConnection conn;
         private static MySQLGenerator instance;
-        private String host;
-        private String port;
-        private String user;
-        private String pass;
-        private String database;
+        public MySqlConnection Connection { get; set; }
+        public String Database { get; set; }
+        public String Host { get; set; }
+        public String Port { get; set; }
+        public String User { get; set; }
+        public String Pass { get; set; }
 
         private MySQLGenerator() {}
 
@@ -109,7 +109,7 @@ namespace sUCO.control
 
             try
             {
-                command = new MySqlCommand(query,instance.Connection);
+                command = new MySqlCommand(query, instance.Connection);
                 command.ExecuteNonQuery();
             }
             catch
@@ -117,12 +117,5 @@ namespace sUCO.control
                 MessageBox.Show("Erro ao executar query");
             }
         }
-
-        public String Host                  { get; set; }
-        public String Port                  { get; set; }
-        public String User                  { get; set; }
-        public String Pass                  { get; set; }
-        public String Database              { get; set; }
-        public MySqlConnection Connection   { get; set; }
     }
 }
