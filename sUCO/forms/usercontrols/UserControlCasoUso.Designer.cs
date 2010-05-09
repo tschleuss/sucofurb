@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Data;
-//using sUCO.diagram;
+using sUCO.diagram;
 namespace sUCO.forms.usercontrols
 {
     partial class UserControlCasoUso
@@ -696,7 +696,7 @@ namespace sUCO.forms.usercontrols
             this.hostDiagrama.Name = "hostDiagrama";
             this.hostDiagrama.Size = new System.Drawing.Size(800, 105);
             this.hostDiagrama.TabIndex = 1;
-            //this.hostDiagrama.Child = new DiagramaWPF();
+            this.hostDiagrama.Child = new DiagramaWPF();
             // 
             // dataSet
             // 
