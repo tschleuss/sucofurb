@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using sUCO.core;
 using sUCO.control;
+using System.Windows.Media.Imaging;
+using System.Windows.Input;
 
 
 namespace sUCO.forms
@@ -90,7 +92,7 @@ namespace sUCO.forms
                 ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
                 ucPanelCasoUso.Tab = tab;
                 ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
-                ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
+                //ucPanelCasoUso.MiniaturaDiagrama.MouseDoubleClick +=  new MouseButtonEventHandler(this.PanelCasoUso_Click);
 
                 AddPanelOnTableLayout(ucPanelCasoUso);
             }
@@ -230,13 +232,13 @@ namespace sUCO.forms
                 TabCasoUso tab = this.GetTabPage(ucCasoUso);
 
                 //adiciona a tab
-                this.tabControl.Controls.Add(tab);
+                tabControl.Controls.Add(tab);
 
                 ucPanelCasoUso.TxtCasoUso = ucCasoUso.CasoUso.Nome;
                 ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
                 ucPanelCasoUso.Tab = tab;
                 ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
-                ucPanelCasoUso.PanelInternoCasoUso.Click += new System.EventHandler(this.PanelCasoUso_Click);
+                //ucPanelCasoUso.MiniaturaDiagrama.MouseDoubleClick += new MouseButtonEventHandler(this.PanelCasoUso_Click);
 
                 AddPanelOnTableLayout(ucPanelCasoUso);
             }
@@ -272,9 +274,13 @@ namespace sUCO.forms
             tableLayoutPanelCasoUso.Controls.Add(panel, coluna, 0);
         }
 
-        private void PanelCasoUso_Click(object sender, EventArgs e)
+        private void PanelCasoUso_Click(object sender, MouseButtonEventArgs e)
         {
-            UserControlPanelCasoUso uc = (UserControlPanelCasoUso) ((Panel)sender).Parent;
+
+            PictureBox pBox = sender as PictureBox;
+            Panel p = pBox.Parent as Panel;
+
+            UserControlPanelCasoUso uc = (UserControlPanelCasoUso)p.Parent;
 
             if (!tabControl.TabPages.Contains(uc.Tab))
             {
@@ -282,7 +288,7 @@ namespace sUCO.forms
             }
 
             //seleciona a tab
-            this.tabControl.SelectedTab = uc.Tab;
+            tabControl.SelectedTab = uc.Tab;
         }
 
         private void btUCDel_Click(object sender, EventArgs e)
@@ -337,6 +343,20 @@ namespace sUCO.forms
         {
             FormMySQLConfig formMySQL = new FormMySQLConfig();
             formMySQL.ShowDialog();
+        }
+
+        private void btRefreshLayout_Click(object sender, EventArgs e)
+        {
+            foreach (UserControlPanelCasoUso panel in this.projeto.listaPanelCasoUso)
+            {
+                RenderTargetBitmap bitmap = panel.Tab.CasoUso.Diagrama.GetImageFromCanvas();
+
+                if (bitmap != null)
+                {
+                    panel.MiniaturaDiagrama.SetImage(bitmap);
+                }
+                
+            }
         }
     }
 }

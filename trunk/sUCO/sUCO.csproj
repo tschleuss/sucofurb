@@ -119,6 +119,9 @@
     <Compile Include="forms\FormMySQLConfig.Designer.cs">
       <DependentUpon>FormMySQLConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\usercontrols\MiniaturaDiagrama.xaml.cs">
+      <DependentUpon>MiniaturaDiagrama.xaml</DependentUpon>
+    </Compile>
     <Compile Include="forms\usercontrols\TabCasoUso.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -262,33 +265,33 @@
     <None Include="resources\images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="diagram\designer\toolbox\images\AlignObjectsBottom.png" />
-    <Resource Include="diagram\designer\toolbox\images\AlignObjectsCenteredHorizontal.png" />
-    <Resource Include="diagram\designer\toolbox\images\AlignObjectsCenteredVertical.png" />
-    <Resource Include="diagram\designer\toolbox\images\AlignObjectsLeft.png" />
-    <Resource Include="diagram\designer\toolbox\images\AlignObjectsRight.png" />
-    <Resource Include="diagram\designer\toolbox\images\AlignObjectsTop.png" />
-    <Resource Include="diagram\designer\toolbox\images\BringForward.png" />
-    <Resource Include="diagram\designer\toolbox\images\BringToFront.png" />
-    <Resource Include="diagram\designer\toolbox\images\Copy.png" />
-    <Resource Include="diagram\designer\toolbox\images\Cut.png" />
-    <Resource Include="diagram\designer\toolbox\images\Delete.png" />
-    <Resource Include="diagram\designer\toolbox\images\DistributeObjectsHorizontal.png" />
-    <Resource Include="diagram\designer\toolbox\images\DistributeObjectsVertical.png" />
-    <Resource Include="diagram\designer\toolbox\images\GenericDocument.png" />
-    <Resource Include="diagram\designer\toolbox\images\Group.png" />
-    <Resource Include="diagram\designer\toolbox\images\OpenFolder.png" />
-    <Resource Include="diagram\designer\toolbox\images\Paste.png" />
-    <Resource Include="diagram\designer\toolbox\images\PasteBig.png" />
-    <Resource Include="diagram\designer\toolbox\images\Print.png" />
-    <Resource Include="diagram\designer\toolbox\images\Save.png" />
-    <Resource Include="diagram\designer\toolbox\images\SendBackward.png" />
-    <Resource Include="diagram\designer\toolbox\images\SendToBack.png" />
-    <Resource Include="diagram\designer\toolbox\images\Ungroup.png" />
-    <Resource Include="diagram\designer\toolbox\images\rel_associate.png" />
-    <Resource Include="diagram\designer\toolbox\images\rel_extend.png" />
-    <Resource Include="diagram\designer\toolbox\images\rel_generalize.png" />
-    <Resource Include="diagram\designer\toolbox\images\rel_include.png" />
+    <Resource Include="diagram\designer\images\AlignObjectsBottom.png" />
+    <Resource Include="diagram\designer\images\AlignObjectsCenteredHorizontal.png" />
+    <Resource Include="diagram\designer\images\AlignObjectsCenteredVertical.png" />
+    <Resource Include="diagram\designer\images\AlignObjectsLeft.png" />
+    <Resource Include="diagram\designer\images\AlignObjectsRight.png" />
+    <Resource Include="diagram\designer\images\AlignObjectsTop.png" />
+    <Resource Include="diagram\designer\images\BringForward.png" />
+    <Resource Include="diagram\designer\images\BringToFront.png" />
+    <Resource Include="diagram\designer\images\Copy.png" />
+    <Resource Include="diagram\designer\images\Cut.png" />
+    <Resource Include="diagram\designer\images\Delete.png" />
+    <Resource Include="diagram\designer\images\DistributeObjectsHorizontal.png" />
+    <Resource Include="diagram\designer\images\DistributeObjectsVertical.png" />
+    <Resource Include="diagram\designer\images\GenericDocument.png" />
+    <Resource Include="diagram\designer\images\Group.png" />
+    <Resource Include="diagram\designer\images\OpenFolder.png" />
+    <Resource Include="diagram\designer\images\Paste.png" />
+    <Resource Include="diagram\designer\images\PasteBig.png" />
+    <Resource Include="diagram\designer\images\Print.png" />
+    <Resource Include="diagram\designer\images\Save.png" />
+    <Resource Include="diagram\designer\images\SendBackward.png" />
+    <Resource Include="diagram\designer\images\SendToBack.png" />
+    <Resource Include="diagram\designer\images\Ungroup.png" />
+    <Resource Include="diagram\designer\images\rel_associate.png" />
+    <Resource Include="diagram\designer\images\rel_extend.png" />
+    <Resource Include="diagram\designer\images\rel_generalize.png" />
+    <Resource Include="diagram\designer\images\rel_include.png" />
     <Content Include="resources\database\sUCO_DER.png" />
     <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\add.png" />
@@ -303,6 +306,7 @@
     <Content Include="resources\images\negado.png" />
     <Content Include="resources\images\ok.png" />
     <Content Include="resources\images\refresh.png" />
+    <Resource Include="resources\images\semDiagrama.png" />
     <Content Include="resources\images\sUCO.ico" />
     <Content Include="resources\images\text.png" />
     <Content Include="resources\images\uml_actor.png" />
@@ -365,6 +369,10 @@
     <Page Include="diagram\DiagramaWPF.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="forms\usercontrols\MiniaturaDiagrama.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

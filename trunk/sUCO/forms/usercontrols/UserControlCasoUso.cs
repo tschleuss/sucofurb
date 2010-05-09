@@ -24,6 +24,11 @@ namespace sUCO.forms.usercontrols
             set { casoUso = value; }
         }
 
+        public DiagramaWPF Diagrama
+        {
+            get { return diagramaWPF; }
+        }
+
         public UserControlCasoUso(UserControlPanelCasoUso panelSelecao)
         {
             this.panelSelecao = panelSelecao;
