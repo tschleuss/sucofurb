@@ -293,7 +293,6 @@
     <Resource Include="diagram\designer\images\rel_generalize.png" />
     <Resource Include="diagram\designer\images\rel_include.png" />
     <Content Include="resources\database\sUCO_DER.png" />
-    <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\add.png" />
     <Content Include="resources\images\addUC.png" />
     <Content Include="resources\images\connect.png" />
