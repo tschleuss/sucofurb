@@ -7,25 +7,26 @@ using System.Windows;
 
 namespace sUCO.control
 {
-    class MySQLGenerator
+    class DBUtil
     {
-        private static MySQLGenerator instance;
+        private static DBUtil instance;
         public MySqlConnection Connection { get; set; }
         public String Database { get; set; }
         public String Host { get; set; }
         public String Port { get; set; }
         public String User { get; set; }
         public String Pass { get; set; }
+        public Boolean Configured { get; set; }
 
-        private MySQLGenerator() {}
+        private DBUtil() {}
 
-        public static MySQLGenerator Instance
+        public static DBUtil Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new MySQLGenerator();
+                    instance = new DBUtil();
                     instance.Host = "localhost";
                     instance.Port = "3306"; ;
                     instance.User = "";
@@ -88,11 +89,13 @@ namespace sUCO.control
                 {
                     instance.Connection.Open();
                     MessageBox.Show("Conexao estabelecida com sucesso!");
+                    instance.Configured = true;
                 }
             }
             catch (Exception e)
             {
                 MessageBox.Show("Erro ao abrir conexao com o banco: " + e.Message);
+                instance.Configured = false;
             }
             finally
             {
@@ -112,9 +115,28 @@ namespace sUCO.control
                 command = new MySqlCommand(query, instance.Connection);
                 command.ExecuteNonQuery();
             }
-            catch
+            catch(Exception e)
             {
-                MessageBox.Show("Erro ao executar query");
+                MessageBox.Show("Erro ao executar query: " + e.Message);
+                throw new Exception(e.Message, e);
+            }
+        }
+
+        public int lastInsertedID()
+        {
+            MySqlCommand command = null;
+
+            try
+            {
+                String query = " SELECT LAST_INSERT_ID() ";
+                command = new MySqlCommand(query, instance.Connection);
+                command.ExecuteNonQuery();
+                return int.Parse(command.ExecuteScalar().ToString());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao executar query: " + e.Message);
+                throw new Exception(e.Message, e);
             }
         }
     }

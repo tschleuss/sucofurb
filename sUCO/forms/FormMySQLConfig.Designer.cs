@@ -94,6 +94,7 @@
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(225, 20);
             this.txtHost.TabIndex = 5;
+            this.txtHost.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
             // txtPort
             // 
@@ -101,6 +102,7 @@
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(225, 20);
             this.txtPort.TabIndex = 6;
+            this.txtPort.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
             // txtUser
             // 
@@ -108,6 +110,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(225, 20);
             this.txtUser.TabIndex = 7;
+            this.txtUser.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
             // txtPass
             // 
@@ -116,6 +119,7 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(225, 20);
             this.txtPass.TabIndex = 8;
+            this.txtPass.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
             // txtDatabase
             // 
@@ -123,9 +127,11 @@
             this.txtDatabase.Name = "txtDatabase";
             this.txtDatabase.Size = new System.Drawing.Size(225, 20);
             this.txtDatabase.TabIndex = 9;
+            this.txtDatabase.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
             // btSalvar
             // 
+            this.btSalvar.Enabled = false;
             this.btSalvar.Location = new System.Drawing.Point(224, 148);
             this.btSalvar.Name = "btSalvar";
             this.btSalvar.Size = new System.Drawing.Size(75, 23);

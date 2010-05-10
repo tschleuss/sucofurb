@@ -6,11 +6,12 @@ namespace sUCO.core
 {
     public class Projeto
     {
-        public String Nome { get; set;}
+        public int      Codigo { get; set; }
+        public String   Nome { get; set;}
         public DateTime DataCriacao{ get; set;}
         public DateTime DataAtualizacao { get; set; }
-        public String Responsavel { get; set; }
-        public String NomeArquivo { get; set; }
+        public String   Responsavel { get; set; }
+        public String   NomeArquivo { get; set; }
         public IList<UserControlPanelCasoUso> listaPanelCasoUso;
 
         public Projeto()

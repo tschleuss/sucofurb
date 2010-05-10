@@ -69,20 +69,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="control\MySQLGenerator.cs" />
+    <Compile Include="control\DBUtil.cs" />
+    <Compile Include="control\persistence\PersistenceFactory.cs" />
+    <Compile Include="control\persistence\SerializadorDB.cs" />
+    <Compile Include="control\persistence\SerializadorXML.cs" />
     <Compile Include="control\UseCaseLink.cs" />
     <Compile Include="control\UseCase.cs" />
     <Compile Include="control\Importer.cs" />
     <Compile Include="core\Acao.cs" />
     <Compile Include="core\CenarioAlternativo.cs" />
-    <Compile Include="core\DBManager.cs" />
-    <Compile Include="core\FluxoCasoUso.cs" />
     <Compile Include="core\events\Arguments.cs" />
     <Compile Include="core\events\Delegates.cs" />
+    <Compile Include="core\FluxoCasoUso.cs" />
     <Compile Include="core\MyDGV.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="core\Projeto.cs" />
+    <Compile Include="dao\AcaoDAO.cs" />
+    <Compile Include="dao\CasoUsoDAO.cs" />
+    <Compile Include="dao\CenarioDAO.cs" />
+    <Compile Include="dao\ProjetoDAO.cs" />
+    <Compile Include="dao\RaiaDAO.cs" />
     <Compile Include="diagram\connection\Connection.cs" />
     <Compile Include="diagram\connection\ConnectionAdorner.cs" />
     <Compile Include="diagram\connection\Connector.cs" />
@@ -239,7 +246,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="core\Raia.cs" />
-    <Compile Include="control\Serializer.cs" />
+    <Compile Include="control\persistence\Serializador.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\images\addRaia.png" />
@@ -265,34 +272,92 @@
     <None Include="resources\images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="diagram\designer\images\AlignObjectsBottom.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsCenteredHorizontal.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsCenteredVertical.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsLeft.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsRight.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsTop.png" />
-    <Resource Include="diagram\designer\images\BringForward.png" />
-    <Resource Include="diagram\designer\images\BringToFront.png" />
-    <Resource Include="diagram\designer\images\Copy.png" />
-    <Resource Include="diagram\designer\images\Cut.png" />
-    <Resource Include="diagram\designer\images\Delete.png" />
-    <Resource Include="diagram\designer\images\DistributeObjectsHorizontal.png" />
-    <Resource Include="diagram\designer\images\DistributeObjectsVertical.png" />
-    <Resource Include="diagram\designer\images\GenericDocument.png" />
-    <Resource Include="diagram\designer\images\Group.png" />
-    <Resource Include="diagram\designer\images\OpenFolder.png" />
-    <Resource Include="diagram\designer\images\Paste.png" />
-    <Resource Include="diagram\designer\images\PasteBig.png" />
-    <Resource Include="diagram\designer\images\Print.png" />
-    <Resource Include="diagram\designer\images\Save.png" />
-    <Resource Include="diagram\designer\images\SendBackward.png" />
-    <Resource Include="diagram\designer\images\SendToBack.png" />
-    <Resource Include="diagram\designer\images\Ungroup.png" />
-    <Resource Include="diagram\designer\images\rel_associate.png" />
-    <Resource Include="diagram\designer\images\rel_extend.png" />
-    <Resource Include="diagram\designer\images\rel_generalize.png" />
-    <Resource Include="diagram\designer\images\rel_include.png" />
+    <None Include="diagram\designer\images\.svn\all-wcprops" />
+    <None Include="diagram\designer\images\.svn\entries" />
+    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsBottom.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsCenteredHorizontal.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsCenteredVertical.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsLeft.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsRight.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsTop.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\BringForward.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\BringToFront.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\Copy.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\Cut.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\Delete.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\DistributeObjectsHorizontal.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\DistributeObjectsVertical.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\GenericDocument.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\Group.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\OpenFolder.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\Paste.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\PasteBig.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\Print.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\rel_associate.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\rel_extend.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\rel_generalize.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\rel_include.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\Save.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\SendBackward.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\SendToBack.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\prop-base\Ungroup.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsBottom.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsCenteredHorizontal.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsCenteredVertical.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsLeft.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsRight.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsTop.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\BringForward.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\BringToFront.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\Copy.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\Cut.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\Delete.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\DistributeObjectsHorizontal.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\DistributeObjectsVertical.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\GenericDocument.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\Group.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\OpenFolder.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\Paste.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\PasteBig.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\Print.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\rel_associate.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\rel_extend.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\rel_generalize.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\rel_include.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\Save.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\SendBackward.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\SendToBack.png.svn-base" />
+    <None Include="diagram\designer\images\.svn\text-base\Ungroup.png.svn-base" />
+    <None Include="resources\database.png" />
+    <Content Include="diagram\designer\images\AlignObjectsBottom.png" />
+    <Content Include="diagram\designer\images\AlignObjectsCenteredHorizontal.png" />
+    <Content Include="diagram\designer\images\AlignObjectsCenteredVertical.png" />
+    <Content Include="diagram\designer\images\AlignObjectsLeft.png" />
+    <Content Include="diagram\designer\images\AlignObjectsRight.png" />
+    <Content Include="diagram\designer\images\AlignObjectsTop.png" />
+    <Content Include="diagram\designer\images\BringForward.png" />
+    <Content Include="diagram\designer\images\BringToFront.png" />
+    <Content Include="diagram\designer\images\Copy.png" />
+    <Content Include="diagram\designer\images\Cut.png" />
+    <Content Include="diagram\designer\images\Delete.png" />
+    <Content Include="diagram\designer\images\DistributeObjectsHorizontal.png" />
+    <Content Include="diagram\designer\images\DistributeObjectsVertical.png" />
+    <Content Include="diagram\designer\images\GenericDocument.png" />
+    <Content Include="diagram\designer\images\Group.png" />
+    <Content Include="diagram\designer\images\OpenFolder.png" />
+    <Content Include="diagram\designer\images\Paste.png" />
+    <Content Include="diagram\designer\images\PasteBig.png" />
+    <Content Include="diagram\designer\images\Print.png" />
+    <Content Include="diagram\designer\images\rel_associate.png" />
+    <Content Include="diagram\designer\images\rel_extend.png" />
+    <Content Include="diagram\designer\images\rel_generalize.png" />
+    <Content Include="diagram\designer\images\rel_include.png" />
+    <Content Include="diagram\designer\images\Save.png" />
+    <Content Include="diagram\designer\images\SendBackward.png" />
+    <Content Include="diagram\designer\images\SendToBack.png" />
+    <Content Include="diagram\designer\images\Ungroup.png" />
     <Content Include="resources\database\sUCO_DER.png" />
+    <Content Include="resources\Dalssoft.DiagramNet.dll" />
     <Content Include="resources\images\add.png" />
     <Content Include="resources\images\addUC.png" />
     <Content Include="resources\images\connect.png" />
@@ -305,12 +370,13 @@
     <Content Include="resources\images\negado.png" />
     <Content Include="resources\images\ok.png" />
     <Content Include="resources\images\refresh.png" />
-    <Resource Include="resources\images\semDiagrama.png" />
     <Content Include="resources\images\sUCO.ico" />
     <Content Include="resources\images\text.png" />
     <Content Include="resources\images\uml_actor.png" />
     <Content Include="resources\database\MySql.Data.dll" />
     <Content Include="resources\database\sUCO_DER.xml" />
+    <None Include="resources\save.png" />
+    <None Include="resources\xml.png" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="diagram\designer\ApplicationToolbar.xaml">
@@ -370,9 +436,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="forms\usercontrols\MiniaturaDiagrama.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="diagram\designer\images\.svn\props\" />
+    <Folder Include="diagram\designer\images\.svn\tmp\prop-base\" />
+    <Folder Include="diagram\designer\images\.svn\tmp\props\" />
+    <Folder Include="diagram\designer\images\.svn\tmp\text-base\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

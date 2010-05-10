@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace sUCO.core
 {
-    [Serializable]
     public class Raia
     {
-        private ArrayList p_ListaAcoes = new ArrayList();
-        private string p_Nome = "";
-        private int p_width = 0;
+        public int          Codigo { get; set; }
+        public IList<Acao>  ListaAcoes { get; set; }
+        private string      p_Nome = "";
+        private int         p_width = 0;
 
-        public Raia(string nome, int width, ArrayList listaAcoes)
+        public Raia(string nome, int width, IList<Acao> listaAcoes)
         {
-            p_ListaAcoes = listaAcoes;
+            this.ListaAcoes = listaAcoes;
             p_Nome = nome;
             p_width = width;
         }
@@ -27,12 +28,6 @@ namespace sUCO.core
         {
             set { p_width = value; }
             get { return p_width; }
-        }
-
-        public ArrayList ListaAcoes
-        {
-            set { p_ListaAcoes = value; }
-            get { return p_ListaAcoes; }
         }
     }
 }

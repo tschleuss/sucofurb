@@ -7,8 +7,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using sUCO.core;
 using sUCO.control;
-using System.Windows.Media.Imaging;
+using sUCO.control.persistence;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 
 namespace sUCO.forms
@@ -43,7 +44,7 @@ namespace sUCO.forms
                 case TiposArquivos.CasoUso:
 
                     this.projeto.NomeArquivo = abrirArquivoDialog.FileName;
-                    IList<CasoUso> ucList = Serializer.AbrirArquivo(this.projeto);
+                    IList<CasoUso> ucList = PersistenceFactory.toXML().abrirArquivo(this.projeto);
 
                     if (ucList != null && ucList.Count > 0)
                     {
@@ -80,7 +81,7 @@ namespace sUCO.forms
                 ucCasoUso.TxtPreCondicao.Text = ucCasoUso.CasoUso.PreCondicao;
                 ucCasoUso.TxtPosCondicao.Text = ucCasoUso.CasoUso.PosCondicao;
 
-                //Atualiza a grid com as raias e acoes
+                //Atualiza a grid com as raias e acoes\
                 ucCasoUso.refreshComponentes();
 
                 this.projeto.AddPanelCasoUso(ucPanelCasoUso);
@@ -103,22 +104,40 @@ namespace sUCO.forms
 
         private void menuItemInternoSalvar_Click(object sender, EventArgs e)
         {
-            btSalvar_Click(sender, e);
-        }
+            IList<CasoUso> ucList = new List<CasoUso>();
+            foreach (UserControlPanelCasoUso ucpc in this.projeto.listaPanelCasoUso)
+            {
+                ucList.Add(ucpc.Tab.CasoUso.CasoUso);
+            }
 
-        private void btSalvar_Click(object sender, EventArgs e)
-        {
-            if (projeto.NomeArquivo == null || projeto.NomeArquivo.Equals("") )
+            if (ucList.Count > 0)
             {
                 salvarArquivoDialog.AddExtension = true;
                 salvarArquivoDialog.DefaultExt = ".xml";
                 salvarArquivoDialog.Filter = "Arquivos de casos de uso (*.xml)|*.xml";
                 salvarArquivoDialog.FileName = "*.xml";
-                salvarArquivoDialog.ShowDialog();
-                projeto.NomeArquivo = salvarArquivoDialog.FileName;
-            }
+                DialogResult result = salvarArquivoDialog.ShowDialog();
 
-            if ( projeto.NomeArquivo != null && !projeto.NomeArquivo.Equals(""))
+                if (result != DialogResult.Cancel)
+                {
+                    projeto.NomeArquivo = salvarArquivoDialog.FileName;
+
+                    if (projeto.NomeArquivo != null && !projeto.NomeArquivo.Equals(""))
+                    {
+                        PersistenceFactory.toXML().salvarArquivo(projeto, ucList);
+                        MessageBox.Show("Projeto exportado com sucesso!");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nao ha itens para exportar!!");
+            }
+        }
+
+        private void menuItemInternoSalvarBD_Click(object sender, EventArgs e)
+        {
+            if (DBUtil.Instance.Configured)
             {
                 //Recupera todo os casos de uso criados
                 IList<CasoUso> ucList = new List<CasoUso>();
@@ -127,14 +146,20 @@ namespace sUCO.forms
                     ucList.Add(ucpc.Tab.CasoUso.CasoUso);
                 }
 
-                Serializer.SalvarArquivo(projeto, ucList);
+                if (ucList.Count > 0)
+                {
+                    PersistenceFactory.toDB().salvarArquivo(projeto, ucList);
+                    MessageBox.Show("Projeto salvo com sucesso!");
+                }
+                else
+                {
+                    MessageBox.Show("Nao ha itens para salvar!!");
+                }
             }
-        }
-
-
-        private void menuItemInternoAbrir_Click(object sender, EventArgs e)
-        {
-            btAbrir_Click(sender, e);
+            else
+            {
+                MessageBox.Show("Configure sua conexao com o banco!");
+            }
         }
 
         private void btAbrir_Click(object sender, EventArgs e)
@@ -201,8 +226,8 @@ namespace sUCO.forms
                 ucList.Add(ucpc.Tab.CasoUso.CasoUso);
             }
 
-            Serializer.SalvarArquivo(projeto, ucList);
-
+            PersistenceFactory.toDB().salvarArquivo(projeto, ucList);
+            MessageBox.Show("Projeto salvo com sucesso!");
             return true;
         }
 
@@ -345,7 +370,7 @@ namespace sUCO.forms
             formMySQL.ShowDialog();
         }
 
-        private void btRefreshLayout_Click(object sender, EventArgs e)
+		private void btRefreshLayout_Click(object sender, EventArgs e)
         {
             foreach (UserControlPanelCasoUso panel in this.projeto.listaPanelCasoUso)
             {
@@ -357,6 +382,20 @@ namespace sUCO.forms
                 }
                 
             }
+        }
+        private void menuItemInternoAbrir_Click(object sender, EventArgs e)
+        {
+            this.carregarProjetosBD();
+        }
+
+        private void btAbrir_Click_1(object sender, EventArgs e)
+        {
+            this.carregarProjetosBD();
+        }
+
+        private void carregarProjetosBD()
+        {
+            MessageBox.Show("Ainda nao carrega do banco - utilize o importar XML");
         }
     }
 }
