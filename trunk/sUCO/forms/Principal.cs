@@ -43,7 +43,7 @@ namespace sUCO.forms
                 case TiposArquivos.CasoUso:
 
                     this.projeto.NomeArquivo = abrirArquivoDialog.FileName;
-                    IList<CasoUso> ucList = Serializador.abrirArquivo(this.projeto);
+                    IList<CasoUso> ucList = Serializer.AbrirArquivo(this.projeto);
 
                     if (ucList != null && ucList.Count > 0)
                     {
@@ -127,7 +127,7 @@ namespace sUCO.forms
                     ucList.Add(ucpc.Tab.CasoUso.CasoUso);
                 }
 
-                Serializador.salvarArquivo(projeto, ucList);
+                Serializer.SalvarArquivo(projeto, ucList);
             }
         }
 
@@ -201,7 +201,7 @@ namespace sUCO.forms
                 ucList.Add(ucpc.Tab.CasoUso.CasoUso);
             }
 
-            Serializador.salvarArquivo(projeto, ucList);
+            Serializer.SalvarArquivo(projeto, ucList);
 
             return true;
         }

@@ -11,19 +11,19 @@ using sUCO.forms;
 
 namespace sUCO.control
 {
-    class Serializador
+    class Serializer
     {
-        public static void salvarArquivo(Projeto projeto, IList<CasoUso> ucList)
+        public static void SalvarArquivo(Projeto projeto, IList<CasoUso> ucList)
         {
             if (File.Exists(projeto.NomeArquivo))
             {
                 File.Delete(projeto.NomeArquivo);
             }
 
-            salvarXML(projeto,ucList);
+            SalvarXML(projeto,ucList);
         }
 
-        private static void salvarXML(Projeto projeto, IList<CasoUso> ucList)
+        private static void SalvarXML(Projeto projeto, IList<CasoUso> ucList)
         {
             XmlTextWriter xmlOut = new XmlTextWriter(projeto.NomeArquivo, null);
             xmlOut.Formatting = Formatting.Indented;
@@ -42,7 +42,7 @@ namespace sUCO.control
                 xmlOut.WriteAttributeString("objetivo",     diagrama.Objetivo);
                 xmlOut.WriteAttributeString("preCondicao",  diagrama.PreCondicao);
                 xmlOut.WriteAttributeString("posCondicao",  diagrama.PosCondicao);
-                xmlOut = geraXmlRaias(xmlOut, diagrama.Diagrama.ListaRaias);
+                xmlOut = GeraXmlRaias(xmlOut, diagrama.Diagrama.ListaRaias);
                 xmlOut.WriteEndElement();
 
                 xmlOut.WriteStartElement("casoDeUso-end");
@@ -55,7 +55,7 @@ namespace sUCO.control
             xmlOut.Close();
         }
 
-        private static XmlTextWriter geraXmlRaias(XmlTextWriter xmlOut, ArrayList listaRaias)
+        private static XmlTextWriter GeraXmlRaias(XmlTextWriter xmlOut, ArrayList listaRaias)
         {
             xmlOut.WriteStartElement("raias");
             foreach (Raia raia in listaRaias)
@@ -81,7 +81,7 @@ namespace sUCO.control
                                 xmlOut.WriteAttributeString("nome",cenario.Nome);
 
                                 //Recursivamente gera o xml para as raias e acoes dos cenarios alternativos.
-                                geraXmlRaias(xmlOut, cenario.ListaRaias);
+                                GeraXmlRaias(xmlOut, cenario.ListaRaias);
                                 xmlOut.WriteEndElement();
 
                                 xmlOut.WriteStartElement("cenario-end");
@@ -99,13 +99,13 @@ namespace sUCO.control
             return xmlOut;
         }
 
-        public static IList<CasoUso> abrirArquivo(Projeto projeto)
+        public static IList<CasoUso> AbrirArquivo(Projeto projeto)
         {
             if (File.Exists(projeto.NomeArquivo))
             {
                 IList<CasoUso> ucList = new List<CasoUso>();
                 XmlTextReader xmlIn = new XmlTextReader(projeto.NomeArquivo);
-                xmlIn = lerXmlRaias(xmlIn, ucList, projeto, null, null);
+                xmlIn = LerXmlRaias(xmlIn, ucList, projeto, null, null);
 
                 return ucList;
             }
@@ -113,7 +113,7 @@ namespace sUCO.control
             return null;
         }
 
-        private static XmlTextReader lerXmlRaias(XmlTextReader xmlIn, IList<CasoUso> usList, Projeto projeto, CasoUso casoDeUso, ArrayList raias)
+        private static XmlTextReader LerXmlRaias(XmlTextReader xmlIn, IList<CasoUso> usList, Projeto projeto, CasoUso casoDeUso, ArrayList raias)
         {
             ArrayList acoes = null;
             CenarioAlternativo cenario = null;
@@ -170,7 +170,7 @@ namespace sUCO.control
                         ((Acao)acoes[acoes.Count - 1]).ListaCenariosAlternativos.Add(cenario);
 
                         //Recursivamente recupera as raias e acoes dos cenarios alternativos.
-                        xmlIn = lerXmlRaias(xmlIn, usList, projeto, casoDeUso, cenario.ListaRaias);
+                        xmlIn = LerXmlRaias(xmlIn, usList, projeto, casoDeUso, cenario.ListaRaias);
                     }
 
                     if (xmlIn.Name.Equals("cenario-end"))
