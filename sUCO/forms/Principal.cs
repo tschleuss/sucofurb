@@ -328,6 +328,7 @@ namespace sUCO.forms
             {
                 this.tableLayoutPanelCasoUso.Controls.Remove(this.panelCasoUsoSelecionado);
                 this.projeto.RemovePanelCasoUso(this.panelCasoUsoSelecionado);
+                tabControl.Controls.Remove(this.panelCasoUsoSelecionado.Tab);
             }
         }
 

@@ -103,7 +103,6 @@ namespace sUCO.diagram.connection
         void thumbDragThumb_DragCompleted(object sender, DragCompletedEventArgs e)
         {
 
-            System.Console.WriteLine("thumbDragThumb_DragCompleted");
             if (HitConnector != null)
             {
                 if (connection != null)
@@ -119,7 +118,6 @@ namespace sUCO.diagram.connection
             this.HitConnector = null;
             this.pathGeometry = null;
 
-            //System.Console.WriteLine("aqui seta o tipo da linha ao alterar a posição dela");
             //this.connection.StrokeDashArray = new DoubleCollection(new double[] { 1, 2 });
             //this.connection.StrokeDashArray = null;
             this.InvalidateVisual();

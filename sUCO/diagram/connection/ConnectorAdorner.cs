@@ -54,7 +54,6 @@ namespace sUCO.diagram.connection
             drawingPen = new Pen(Brushes.LightSlateGray, 1);
             drawingPen.LineJoin = PenLineJoin.Round;
 
-            System.Console.WriteLine("Aqui seta o cursor quando move o mouse");
             this.Cursor = Cursors.Hand;
         }
 
@@ -88,8 +87,6 @@ namespace sUCO.diagram.connection
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-
-                System.Console.WriteLine("Aqui move o mouse ");
 
                 if (!this.IsMouseCaptured) this.CaptureMouse();
                 HitTesting(e.GetPosition(this));
