@@ -57,11 +57,11 @@
     <ItemsControl.Items>
 
         <Path Style="{StaticResource Boundary}" ToolTip="Boundary">
-            <s:DesignerItem.DragThumbTemplate>
+           <!-- <s:DesignerItem.DragThumbTemplate>
                 <ControlTemplate>
                     <Path Style="{StaticResource Boundary_DragThumb}"/>
                 </ControlTemplate>
-            </s:DesignerItem.DragThumbTemplate>
+            </s:DesignerItem.DragThumbTemplate>-->
         </Path>
 
 

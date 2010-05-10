@@ -9,6 +9,7 @@
     
     <ToolBar x:Key="MyToolbar" Height="120">
         <!--File-->
+        <!--
         <GroupBox Header="Arquivo" Style="{StaticResource ToolbarGroup}" Margin="5,3,3,3">
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button Margin="3" Width="55" Style="{StaticResource ToolBarButtonBaseStyle}"
@@ -75,7 +76,7 @@
                 </StackPanel>
             </StackPanel>
         </GroupBox>
-
+        -->
         <!--Edit-->
         <GroupBox Header="Editar" Style="{StaticResource ToolbarGroup}" Margin="3">
             <StackPanel Grid.Row="1" Orientation="Horizontal">
