@@ -6,17 +6,17 @@ namespace sUCO.core
     public class CasoUso
     {
 
-        public CasoUso(string nome, Diagrama diagrama) : this(diagrama)
+        public CasoUso(string nome, FluxoCasoUso diagrama) : this(diagrama)
         {
             this.Nome = nome;
         }
 
-        public CasoUso(Diagrama diagrama)
+        public CasoUso(FluxoCasoUso diagrama)
         {
             this.Diagrama = diagrama;
         }
 
-        public Diagrama Diagrama { get; set; }
+        public FluxoCasoUso Diagrama { get; set; }
         public string Nome { get; set; }
         public string Objetivo{ get; set; }
         public string PosCondicao { get; set; }

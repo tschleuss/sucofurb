@@ -137,7 +137,7 @@ namespace sUCO.control
 
                     if (xmlIn.Name.Equals("casoDeUso"))
                     {
-                        casoDeUso = new CasoUso( new Diagrama() );
+                        casoDeUso = new CasoUso( new FluxoCasoUso() );
                         raias = casoDeUso.Diagrama.ListaRaias;
                         casoDeUso.Nome = xmlIn.GetAttribute("nome");
                         casoDeUso.Objetivo = xmlIn.GetAttribute("objetivo");

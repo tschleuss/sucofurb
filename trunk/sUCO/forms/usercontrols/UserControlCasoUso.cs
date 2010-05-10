@@ -32,7 +32,7 @@ namespace sUCO.forms.usercontrols
         public UserControlCasoUso(UserControlPanelCasoUso panelSelecao)
         {
             this.panelSelecao = panelSelecao;
-            this.casoUso = new CasoUso( new Diagrama());
+            this.casoUso = new CasoUso( new FluxoCasoUso());
             InitializeComponent();
 
             this.splitContainerFluxoUC.Panel2Collapsed = true;
@@ -218,7 +218,7 @@ namespace sUCO.forms.usercontrols
             }
         }
 
-        private void criarRaia(Diagrama diagrama, DataGridView dataGridView)
+        private void criarRaia(FluxoCasoUso diagrama, DataGridView dataGridView)
         {
             FormAddRaia formAddRaia = new FormAddRaia();
             formAddRaia.ShowDialog();
@@ -233,7 +233,7 @@ namespace sUCO.forms.usercontrols
             }
         }
 
-        private void addAcao(Diagrama diagrama, DataGridView dataGridView)
+        private void addAcao(FluxoCasoUso diagrama, DataGridView dataGridView)
         {
             if (!diagrama.CarregandoNovoDiagrama)
             {
@@ -242,12 +242,12 @@ namespace sUCO.forms.usercontrols
             }
         }
 
-        private void doRemoverAcao(Diagrama diagrama, DataGridView dataGridView, int rowIndex)
+        private void doRemoverAcao(FluxoCasoUso diagrama, DataGridView dataGridView, int rowIndex)
         {
             diagrama.doRemoverAcao(rowIndex);
         }
 
-        private void doAlterarAcao(Diagrama diagrama, DataGridView dataGridView, int columnIndex, int rowIndex)
+        private void doAlterarAcao(FluxoCasoUso diagrama, DataGridView dataGridView, int columnIndex, int rowIndex)
         {
             if (!diagrama.CarregandoNovoDiagrama)
             {
@@ -261,7 +261,7 @@ namespace sUCO.forms.usercontrols
             }
         }
 
-        private void doAlterarRaia(Diagrama diagrama, DataGridView dataGridView, int columnIndex)
+        private void doAlterarRaia(FluxoCasoUso diagrama, DataGridView dataGridView, int columnIndex)
         {
             if (dataGridView.ColumnCount > 0)
             {
@@ -420,7 +420,7 @@ namespace sUCO.forms.usercontrols
             splitContainerFluxoUC.Panel2Collapsed = true;
         }
 
-        private void doRemoverRaia(Diagrama diagrama, DataGridView dataGridView)
+        private void doRemoverRaia(FluxoCasoUso diagrama, DataGridView dataGridView)
         {
             if (dataGridView.ColumnCount >= 1)
             {

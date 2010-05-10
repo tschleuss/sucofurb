@@ -76,7 +76,7 @@
     <Compile Include="core\Acao.cs" />
     <Compile Include="core\CenarioAlternativo.cs" />
     <Compile Include="core\DBManager.cs" />
-    <Compile Include="core\Diagrama.cs" />
+    <Compile Include="core\FluxoCasoUso.cs" />
     <Compile Include="core\events\Arguments.cs" />
     <Compile Include="core\events\Delegates.cs" />
     <Compile Include="core\MyDGV.cs">

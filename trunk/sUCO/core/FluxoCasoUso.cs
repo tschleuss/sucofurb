@@ -7,35 +7,26 @@ using System.Windows.Forms;
 namespace sUCO.core
 {
     [Serializable]
-    public class Diagrama
+    public class FluxoCasoUso
     {
         private ArrayList p_ListaRaias;
-        private byte[] p_ByteImagem;
         private bool p_CarregandoNovoDiagrama = false;
 
         // Construtores
-        public Diagrama(Image imagem, ArrayList listaRaias)
+        public FluxoCasoUso(ArrayList listaRaias)
         {
-            p_ByteImagem    = imagem != null ?  convertImageToByteArray(imagem) : new byte[0];
             p_ListaRaias    = listaRaias;
         }
 
-        public Diagrama()
+        public FluxoCasoUso()
         {
             p_ListaRaias = new ArrayList();
-            p_ByteImagem = new byte[0];
         }
         
         // Propriedades
         public bool CarregandoNovoDiagrama
         {
             get { return p_CarregandoNovoDiagrama; }
-        }
-
-        public Image Imagem
-        {
-            set { p_ByteImagem = value != null ? convertImageToByteArray(value) : new byte[0]; }
-            get { return p_ByteImagem.Length > 0 ? convertByteArrayToImage(p_ByteImagem) : null; }
         }
 
         public ArrayList ListaRaias
