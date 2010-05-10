@@ -3,49 +3,32 @@ using System.Collections;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace sUCO.core
 {
-    [Serializable]
     public class FluxoCasoUso
     {
-        private ArrayList p_ListaRaias;
-        private bool p_CarregandoNovoDiagrama = false;
-
-        // Construtores
-        public FluxoCasoUso(ArrayList listaRaias)
-        {
-            p_ListaRaias    = listaRaias;
-        }
+        public int Codigo { get; set; }
+        public IList<Raia> ListaRaias { get; set; }
 
         public FluxoCasoUso()
         {
-            p_ListaRaias = new ArrayList();
-        }
-        
-        // Propriedades
-        public bool CarregandoNovoDiagrama
-        {
-            get { return p_CarregandoNovoDiagrama; }
-        }
-
-        public ArrayList ListaRaias
-        {
-            get { return p_ListaRaias; }
+            this.ListaRaias = new List<Raia>();
         }
 
         public int countRaias
         {
-            get { return p_ListaRaias.Count; }
+            get { return this.ListaRaias.Count; }
         }
 
         public int countAcoes
         {
             get
             {
-                if (p_ListaRaias.Count > 0)
+                if (this.ListaRaias.Count > 0)
                 {
-                    return ((Raia)p_ListaRaias[0]).ListaAcoes.Count;
+                    return (this.ListaRaias[0]).ListaAcoes.Count;
                 }
 
                 return 0;
@@ -67,9 +50,9 @@ namespace sUCO.core
 
         public DataGridViewColumn getRaia(int index)
         {
-            if (index < p_ListaRaias.Count)
+            if (index < this.ListaRaias.Count)
             {
-                return doCriarColuna((Raia)p_ListaRaias[index]);
+                return doCriarColuna(this.ListaRaias[index]);
             }
 
             return null;
@@ -77,12 +60,12 @@ namespace sUCO.core
 
         public Acao getAcao(int columnIndex, int rowIndex)
         {
-            if (columnIndex < ListaRaias.Count)
+            if (columnIndex < this.ListaRaias.Count)
             {
-                Raia r = ((Raia)ListaRaias[columnIndex]);
+                Raia r = this.ListaRaias[columnIndex];
                 if (rowIndex < r.ListaAcoes.Count)
                 {
-                    return (Acao)r.ListaAcoes[rowIndex];
+                    return r.ListaAcoes[rowIndex];
                 }
             }
             return null;
@@ -91,22 +74,22 @@ namespace sUCO.core
         public void addAcao()
         {
             // Adiciona uma nova linha para todas as Raias
-            for (int x=0; x<ListaRaias.Count; x++)
+            for (int x = 0; x < this.ListaRaias.Count; x++)
             {
-                ((Raia)p_ListaRaias[x]).ListaAcoes.Add(new Acao("", new ArrayList()));
+                this.ListaRaias[x].ListaAcoes.Add(new Acao("", new List<CenarioAlternativo>()));
             }
         }
 
         public void addCenario(Acao acao, CenarioAlternativo cenario)
         {
-            acao.ListaCenariosAlternativos.Add(cenario);
+            acao.Cenarios.Add(cenario);
         }
 
         public void doRemoverCenario(Acao acao, CenarioAlternativo cenario)
         {
-            if (acao.ListaCenariosAlternativos.Contains(cenario))
+            if (acao.Cenarios.Contains(cenario))
             {
-                acao.ListaCenariosAlternativos.Remove(cenario);
+                acao.Cenarios.Remove(cenario);
             }
         }
 
@@ -114,18 +97,18 @@ namespace sUCO.core
         {
             if (columnIndex < ListaRaias.Count)
             {
-                if (rowIndex < ((Raia)p_ListaRaias[columnIndex]).ListaAcoes.Count)
+                if (rowIndex < this.ListaRaias[columnIndex].ListaAcoes.Count)
                 {
-                    (((Raia)p_ListaRaias[columnIndex]).ListaAcoes[rowIndex]) = acao;
+                    this.ListaRaias[columnIndex].ListaAcoes[rowIndex] = acao;
                 }
             }
         }
 
         public void doAlterarNomeRaia(int index, string novoNome, DataGridView dataGridView)
         {
-            if (index < p_ListaRaias.Count)
+            if (index < this.ListaRaias.Count)
             {
-                Raia raia = (Raia)p_ListaRaias[index];
+                Raia raia = this.ListaRaias[index];
                 dataGridView.Columns[raia.Nome].HeaderText = novoNome;
                 dataGridView.Columns[raia.Nome].Name = novoNome;
                 raia.Nome = novoNome;
@@ -136,27 +119,26 @@ namespace sUCO.core
 
             for (int x = 0; x < ListaRaias.Count; x++)
             {
-                if (rowIndex < ((Raia)p_ListaRaias[x]).ListaAcoes.Count)
+                if (rowIndex < this.ListaRaias[x].ListaAcoes.Count)
                 {
-                    ((Raia)p_ListaRaias[x]).ListaAcoes.RemoveAt(rowIndex);
+                    this.ListaRaias[x].ListaAcoes.RemoveAt(rowIndex);
                 }
             }
-        }   
-             
+        }
+
         public void doRemoverRaia(int index, DataGridView dataGridView)
         {
-            if (index < p_ListaRaias.Count)
+            if (index < this.ListaRaias.Count)
             {
                 dataGridView.Columns.RemoveAt(index);
-                p_ListaRaias.RemoveAt(index);
+                this.ListaRaias.RemoveAt(index);
             }
-        }      
-  
+        }
+
         public void doCarregarDatagridView(DataGridView dataGridView)
         {
             try
             {
-                p_CarregandoNovoDiagrama = true;
                 dataGridView.ColumnCount = 0;
 
                 for (int x = 0; x < countRaias; x++)
@@ -172,37 +154,57 @@ namespace sUCO.core
                     // Adiciona as ações(linhas)
                     for (int y = 0; y < dataGridView.RowCount; y++)
                     {
-                        string texto = ((Acao)((Raia)ListaRaias[x]).ListaAcoes[y]).Texto;
+                        string texto = this.ListaRaias[x].ListaAcoes[y].Texto;
                         dataGridView[x, y].Value = texto != "" ? texto : null;
                     }
                 }
-
-                p_CarregandoNovoDiagrama = false;
             }
             catch (Exception err)
             {
                 throw new Exception("Erro ao carregar dataGridView.\r\nMensagem: " + err.Message);
             }
+
+            this.fixBlankRows(dataGridView);
         }
 
-        // Métodos auxiliares
-        private byte[] convertImageToByteArray(System.Drawing.Image image)
+        private void fixBlankRows(DataGridView dataGridView)
         {
-            MemoryStream ms = new MemoryStream();
-            image.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-            return ms.ToArray();
-        }
+            int newRowCount = 0;
 
-        private Image convertByteArrayToImage(byte[] byteArray)
-        {
-            MemoryStream ms = new MemoryStream(byteArray);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
+            for (int y = 0; y < dataGridView.RowCount; y++)
+            {
+                IList<String> aux = new List<String>();
+
+                for (int x = 0; x < countRaias; x++)
+                {
+                    string texto = this.ListaRaias[x].ListaAcoes[y].Texto;
+                    aux.Add(texto);
+                }
+
+                bool allEmpty = true;
+                foreach (String s in aux)
+                {
+                    if (!s.Equals(""))
+                    {
+                        allEmpty = false;
+                    }
+                }
+
+                if (allEmpty == true)
+                {
+                    newRowCount++;
+                }
+            }
+
+            if (newRowCount > 0)
+            {
+                dataGridView.RowCount -= newRowCount - 1;
+            }
         }
 
         private DataGridViewColumn addNewRaia(Raia raia)
         {
-            p_ListaRaias.Add(raia);
+            this.ListaRaias.Add(raia);
             return doCriarColuna(raia);
         }
 
@@ -224,7 +226,7 @@ namespace sUCO.core
             {
                 for (int x = 0; x < countAcoes; x++)
                 {
-                    raia.ListaAcoes.Add(new Acao("", new ArrayList()));
+                    raia.ListaAcoes.Add(new Acao("", new List<CenarioAlternativo>()));
                 }
             }
         }

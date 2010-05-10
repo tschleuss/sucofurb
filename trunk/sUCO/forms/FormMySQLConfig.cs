@@ -16,11 +16,11 @@ namespace sUCO.forms
         {
             InitializeComponent();
 
-            txtHost.Text        = MySQLGenerator.Instance.Host;
-            txtPort.Text        = MySQLGenerator.Instance.Port;
-            txtUser.Text        = MySQLGenerator.Instance.User;
-            txtPass.Text        = MySQLGenerator.Instance.Pass;
-            txtDatabase.Text    = MySQLGenerator.Instance.Database;
+            txtHost.Text        = DBUtil.Instance.Host;
+            txtPort.Text        = DBUtil.Instance.Port;
+            txtUser.Text        = DBUtil.Instance.User;
+            txtPass.Text        = DBUtil.Instance.Pass;
+            txtDatabase.Text    = DBUtil.Instance.Database;
         }
 
         private void btTestar_Click(object sender, EventArgs e)
@@ -31,8 +31,13 @@ namespace sUCO.forms
             String pass = txtPass.Text;
             String data = txtDatabase.Text;
 
-            MySQLGenerator.Instance.initConfiguration(host, port, user, pass, data);
-            MySQLGenerator.Instance.testConnection();
+            DBUtil.Instance.initConfiguration(host, port, user, pass, data);
+            DBUtil.Instance.testConnection();
+
+            if (DBUtil.Instance.Configured)
+            {
+                btSalvar.Enabled = true;
+            }
         }
 
         private void btSalvar_Click(object sender, EventArgs e)
@@ -43,8 +48,14 @@ namespace sUCO.forms
             String pass = txtPass.Text;
             String data = txtDatabase.Text;
 
-            MySQLGenerator.Instance.initConfiguration(host, port, user, pass, data);
+            DBUtil.Instance.initConfiguration(host, port, user, pass, data);
             this.Close();
+        }
+
+        private void txt_TextChanged(object sender, EventArgs e)
+        {
+            DBUtil.Instance.Configured = false;
+            btSalvar.Enabled = false;
         }
     }
 }

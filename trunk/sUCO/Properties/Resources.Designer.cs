@@ -95,6 +95,13 @@ namespace sUCO.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap database {
+            get {
+                object obj = ResourceManager.GetObject("database", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
@@ -165,6 +172,13 @@ namespace sUCO.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap save {
+            get {
+                object obj = ResourceManager.GetObject("save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap text {
             get {
                 object obj = ResourceManager.GetObject("text", resourceCulture);
@@ -175,6 +189,13 @@ namespace sUCO.Properties {
         internal static System.Drawing.Bitmap uml_actor {
             get {
                 object obj = ResourceManager.GetObject("uml_actor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap xml {
+            get {
+                object obj = ResourceManager.GetObject("xml", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

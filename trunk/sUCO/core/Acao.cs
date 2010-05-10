@@ -1,35 +1,30 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace sUCO.core
 {
-    [Serializable]
     public class Acao
     {
-        public string Texto { get; set; }
-        private ArrayList listaCenariosAlternativos;
+        public int                          Codigo { get; set; }
+        public String                       Texto { get; set; }
+        public IList<CenarioAlternativo>    Cenarios { get; set; }
 
-        public Acao(string texto, ArrayList listaCenariosAlternativos)
+        public Acao(string texto, IList<CenarioAlternativo> cenarios)
         {
             this.Texto = texto;
-            this.listaCenariosAlternativos = listaCenariosAlternativos;
-        }
-
-        public ArrayList ListaCenariosAlternativos
-        {
-            set { this.listaCenariosAlternativos = value; }
-            get { return this.listaCenariosAlternativos; }
+            this.Cenarios = cenarios;
         }
 
         public string[] ListaCenarios
         {
             get
             {
-                string[] lista = new string[this.listaCenariosAlternativos.Count];
+                string[] lista = new string[this.Cenarios.Count];
 
-                for (int x = 0; x < listaCenariosAlternativos.Count; x++)
+                for (int x = 0; x < this.Cenarios.Count; x++)
                 {
-                    lista[x] = ((CenarioAlternativo)this.listaCenariosAlternativos[x]).Nome;
+                    lista[x] = this.Cenarios[x].Nome;
                 }
                 return lista;
             }

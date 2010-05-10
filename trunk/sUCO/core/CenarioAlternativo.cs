@@ -2,7 +2,6 @@
 
 namespace sUCO.core
 {
-    [Serializable]
     public class CenarioAlternativo : FluxoCasoUso
     {
         private string p_Nome;
