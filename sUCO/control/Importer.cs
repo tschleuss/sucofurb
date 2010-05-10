@@ -8,7 +8,7 @@ namespace sUCO.control
 {
     class Importer
     {
-        public static void importarXML()
+        public static void ImportarXML()
         {
             XmlReader reader = new XmlTextReader("/sUCO_UC.xml");
             //XmlReader reader = new XmlTextReader("/EATeste.xml");

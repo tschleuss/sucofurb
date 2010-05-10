@@ -239,7 +239,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="core\Raia.cs" />
-    <Compile Include="control\Serializador.cs" />
+    <Compile Include="control\Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\images\addRaia.png" />
