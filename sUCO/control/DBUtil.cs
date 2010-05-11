@@ -88,13 +88,17 @@ namespace sUCO.control
                 if (instance.Connection != null)
                 {
                     instance.Connection.Open();
-                    MessageBox.Show("Conexao estabelecida com sucesso!");
+                    MessageBox.Show("Conexão estabelecida com sucesso!", "MySQL");
                     instance.Configured = true;
+                }
+                else
+                {
+                    MessageBox.Show("Configure sua conexão com o banco!", "MySQL");
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show("Erro ao abrir conexao com o banco: " + e.Message);
+                MessageBox.Show("Erro ao abrir conexão com o banco: " + e.Message, "MySQL");
                 instance.Configured = false;
             }
             finally

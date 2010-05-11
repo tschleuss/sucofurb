@@ -34,53 +34,60 @@ namespace sUCO.control
             CenarioDAO cenarioDAO = new CenarioDAO();
 
             IList<CasoUso> casoUsoList = null;
-            IList<Projeto> projetoList = projDAO.findAll();
-            FrmProjetosSelect frm = new FrmProjetosSelect();
-            
-            foreach (Projeto proj in projetoList)
+
+            DBUtil.Instance.testConnection();
+
+
+            if (DBUtil.Instance.Configured)
             {
-                frm.add(proj.Nome, proj.Codigo);
-            }
+                IList<Projeto> projetoList = projDAO.findAll();
+                FrmProjetosSelect frm = new FrmProjetosSelect();
 
-            frm.ShowDialog();
-
-            if ( frm.SelectedProject != -1)
-            {
-                Projeto proj = projDAO.find(frm.SelectedProject);
-                casoUsoList = casoDAO.findByProjeto(proj.Codigo);
-
-                foreach (CasoUso caso in casoUsoList)
+                foreach (Projeto proj in projetoList)
                 {
-                    IList<Raia> casoUsoRaias = raiaDAO.findByCasoUso(caso.Codigo);
+                    frm.add(proj.Nome, proj.Codigo);
+                }
 
-                    foreach (Raia raia in casoUsoRaias)
+                frm.ShowDialog();
+
+                if (frm.SelectedProject != -1)
+                {
+                    Projeto proj = projDAO.find(frm.SelectedProject);
+                    casoUsoList = casoDAO.findByProjeto(proj.Codigo);
+
+                    foreach (CasoUso caso in casoUsoList)
                     {
-                        IList<Acao> raiaAcoes = acaoDAO.findByRaia(raia.Codigo);
+                        IList<Raia> casoUsoRaias = raiaDAO.findByCasoUso(caso.Codigo);
 
-                        foreach (Acao acao in raiaAcoes)
+                        foreach (Raia raia in casoUsoRaias)
                         {
-                            IList<CenarioAlternativo> acaoCenario = cenarioDAO.findByAcao(acao.Codigo);
+                            IList<Acao> raiaAcoes = acaoDAO.findByRaia(raia.Codigo);
 
-                            foreach (CenarioAlternativo cenario in acaoCenario)
+                            foreach (Acao acao in raiaAcoes)
                             {
-                                IList<Raia> cenarioRaias = raiaDAO.findByCenario(cenario.Codigo);
+                                IList<CenarioAlternativo> acaoCenario = cenarioDAO.findByAcao(acao.Codigo);
 
-                                foreach (Raia cenarioRaia in cenarioRaias)
+                                foreach (CenarioAlternativo cenario in acaoCenario)
                                 {
-                                    IList<Acao> cenarioRaiaAcoes = acaoDAO.findByRaia(cenarioRaia.Codigo);
-                                    cenarioRaia.ListaAcoes = cenarioRaiaAcoes;
+                                    IList<Raia> cenarioRaias = raiaDAO.findByCenario(cenario.Codigo);
+
+                                    foreach (Raia cenarioRaia in cenarioRaias)
+                                    {
+                                        IList<Acao> cenarioRaiaAcoes = acaoDAO.findByRaia(cenarioRaia.Codigo);
+                                        cenarioRaia.ListaAcoes = cenarioRaiaAcoes;
+                                    }
+                                    cenario.ListaRaias = cenarioRaias;
                                 }
-                                cenario.ListaRaias = cenarioRaias;
+
+                                acao.Cenarios = acaoCenario;
                             }
 
-                            acao.Cenarios = acaoCenario;
+                            raia.ListaAcoes = raiaAcoes;
                         }
 
-                        raia.ListaAcoes = raiaAcoes;
+                        caso.FluxoCasoUso = new FluxoCasoUso();
+                        caso.FluxoCasoUso.ListaRaias = casoUsoRaias;
                     }
-
-                    caso.FluxoCasoUso = new FluxoCasoUso();
-                    caso.FluxoCasoUso.ListaRaias = casoUsoRaias;
                 }
             }
 
