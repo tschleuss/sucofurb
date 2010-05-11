@@ -11,6 +11,8 @@ namespace sUCO.core
         private string      p_Nome = "";
         private int         p_width = 0;
 
+        public Raia() { }
+
         public Raia(string nome, int width, IList<Acao> listaAcoes)
         {
             this.ListaAcoes = listaAcoes;

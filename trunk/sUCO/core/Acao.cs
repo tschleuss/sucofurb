@@ -10,6 +10,8 @@ namespace sUCO.core
         public String                       Texto { get; set; }
         public IList<CenarioAlternativo>    Cenarios { get; set; }
 
+        public Acao() { }
+
         public Acao(string texto, IList<CenarioAlternativo> cenarios)
         {
             this.Texto = texto;
