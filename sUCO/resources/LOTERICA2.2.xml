@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<casosDeUso nome="Projeto do Milhao" criado="5/9/2010 7:01:21 AM" atualizado="5/9/2010 7:01:21 AM" responsavel="Diego Silva">
+  <casoDeUso nome="UC 1 - Ganhar na loteria" objetivo="Ficar rico" preCondicao="Ter bilhete premiado" posCondicao="Ter muito dinheiro">
+    <raias>
+      <raia nome="Cliente" tamanho="100">
+        <acoes>
+          <acao valor="Entrar na loterica" />
+          <acao valor="Falar com a atendente" />
+          <acao valor="" />
+          <acao valor="" />
+          <acao valor="" />
+          <acao valor="Receber premio" />
+          <acao valor="Sair feliz" />
+          <acao valor="" />
+          <acao valor="" />
+        </acoes>
+      </raia>
+      <raia nome="Atendente" tamanho="100">
+        <acoes>
+          <acao valor="" />
+          <acao valor="" />
+          <acao valor="Receber bilhete do cliente" />
+          <acao valor="Validar bilhete" />
+          <acao valor="Entregar premio ao cliente">
+            <cenarios>
+              <cenario nome="Bilhete invalido">
+                <raias>
+                  <raia nome="Cliente" tamanho="100">
+                    <acoes>
+                      <acao valor="" />
+                      <acao valor="Ficar com raiva" />
+                      <acao valor="Sacar uma arma" />
+                      <acao valor="" />
+                      <acao valor="Apontar a arma para a atendente" />
+                      <acao valor="" />
+                      <acao valor="Atirar na cabea" />
+                      <acao valor="Roubar loterica" />
+                      <acao valor="Sair feliz" />
+                      <acao valor="" />
+                      <acao valor="" />
+                      <acao valor="" />
+                    </acoes>
+                  </raia>
+                  <raia nome="Atendente" tamanho="100">
+                    <acoes>
+                      <acao valor="Entregar bilhete invalido" />
+                      <acao valor="" />
+                      <acao valor="" />
+                      <acao valor="Berrar" />
+                      <acao valor="" />
+                      <acao valor="Berrar mais ainda" />
+                      <acao valor="" />
+                      <acao valor="" />
+                      <acao valor="" />
+                      <acao valor="sfsdf" />
+                      <acao valor="" />
+                      <acao valor="" />
+                    </acoes>
+                  </raia>
+                </raias>
+              </cenario>
+              <cenario-end />
+            </cenarios>
+          </acao>
+          <acao valor="" />
+          <acao valor="" />
+          <acao valor="" />
+          <acao valor="" />
+        </acoes>
+      </raia>
+    </raias>
+  </casoDeUso>
+  <casoDeUso-end />
+</casosDeUso>
