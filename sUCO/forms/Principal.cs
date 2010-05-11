@@ -44,7 +44,7 @@ namespace sUCO.forms
                 case TiposArquivos.CasoUso:
 
                     this.projeto.NomeArquivo = abrirArquivoDialog.FileName;
-                    IList<CasoUso> ucList = PersistenceFactory.toXML().abrirArquivo(this.projeto);
+                    IList<CasoUso> ucList = PersistenceFactory.toXML().abrirArquivo(ref this.projeto);
 
                     if (ucList != null && ucList.Count > 0)
                     {
@@ -396,8 +396,15 @@ namespace sUCO.forms
 
         private void carregarProjetosBD()
         {
-            IList<CasoUso> ucList = PersistenceFactory.toDB().abrirArquivo(this.projeto);
-            this.restaurarComponentes(ucList);
+            IList<CasoUso> ucList = PersistenceFactory.toDB().abrirArquivo(ref projeto);
+            if (ucList != null)
+            {
+                this.txtNomeProjeto.Text = this.projeto.Nome;
+                this.txtResponsavel.Text = this.projeto.Responsavel;
+
+                this.excluirComponentes();
+                this.restaurarComponentes(ucList);
+            }
         }
     }
 }

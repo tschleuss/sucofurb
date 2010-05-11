@@ -24,7 +24,7 @@ namespace sUCO.control
             salvarXML(projeto, ucList);
         }
 
-        IList<CasoUso> Serializador.abrirArquivo(Projeto projeto)
+        IList<CasoUso> Serializador.abrirArquivo(ref Projeto projeto)
         {
             if (File.Exists(projeto.NomeArquivo))
             {

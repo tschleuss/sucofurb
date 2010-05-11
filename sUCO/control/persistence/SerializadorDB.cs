@@ -16,6 +16,56 @@ namespace sUCO.control
         {
             ProjetoDAO projDAO = new ProjetoDAO();
             CasoUsoDAO casoDAO = new CasoUsoDAO();
+            AcaoDAO acaoDAO = new AcaoDAO();
+            RaiaDAO raiaDAO = new RaiaDAO();
+            CenarioDAO cenarioDAO = new CenarioDAO();
+
+            //Exclui tudo antes
+            if (projeto.Codigo != 0)
+            {
+                foreach (CasoUso casoUso in ucList)
+                {
+                    IList<Raia> listaRaias = casoUso.FluxoCasoUso.ListaRaias;
+
+                    foreach (Raia raia in listaRaias)
+                    {
+                        IList<Acao> listaAcoes = raia.ListaAcoes;
+
+                        foreach (Acao acao in listaAcoes)
+                        {
+                            IList<CenarioAlternativo> listaCenarios = acao.Cenarios;
+
+                            foreach (CenarioAlternativo cenario in listaCenarios)
+                            {
+                                IList<Raia> listaCenarioRaia = cenario.ListaRaias;
+
+                                foreach (Raia cenarioRaia in listaCenarioRaia)
+                                {
+                                    IList<Acao> listaAcoesRaia = cenarioRaia.ListaAcoes;
+
+                                    foreach (Acao acaoRaia in listaAcoesRaia)
+                                    {
+                                        acaoDAO.delete(acaoRaia);
+                                    }
+
+                                    raiaDAO.delete(cenarioRaia);
+                                }
+
+                                cenarioDAO.delete(cenario);
+                            }
+
+                            acaoDAO.delete(acao);
+                        }
+
+                        raiaDAO.delete(raia);
+                    }
+
+                    casoDAO.delete(casoUso);
+                }
+
+                projDAO.delete(projeto);
+            }
+
 
             projDAO.insert(projeto);
 
@@ -25,35 +75,32 @@ namespace sUCO.control
             }
         }
 
-        public IList<CasoUso> abrirArquivo(Projeto projeto)
+        public IList<CasoUso> abrirArquivo(ref Projeto projeto)
         {
             ProjetoDAO projDAO = new ProjetoDAO();
             CasoUsoDAO casoDAO = new CasoUsoDAO();
             RaiaDAO raiaDAO = new RaiaDAO();
             AcaoDAO acaoDAO = new AcaoDAO();
             CenarioDAO cenarioDAO = new CenarioDAO();
-
             IList<CasoUso> casoUsoList = null;
 
             DBUtil.Instance.testConnection();
-
-
             if (DBUtil.Instance.Configured)
             {
                 IList<Projeto> projetoList = projDAO.findAll();
                 FrmProjetosSelect frm = new FrmProjetosSelect();
-
+                
                 foreach (Projeto proj in projetoList)
                 {
                     frm.add(proj.Nome, proj.Codigo);
                 }
 
                 frm.ShowDialog();
-
-                if (frm.SelectedProject != -1)
+            
+                if (frm.SelectedProject != 0 && frm.SelectedProject != -1)
                 {
-                    Projeto proj = projDAO.find(frm.SelectedProject);
-                    casoUsoList = casoDAO.findByProjeto(proj.Codigo);
+                    projeto = projDAO.find(frm.SelectedProject);
+                    casoUsoList = casoDAO.findByProjeto(projeto.Codigo);
 
                     foreach (CasoUso caso in casoUsoList)
                     {
