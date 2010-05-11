@@ -29,8 +29,8 @@ namespace sUCO.control
                     instance = new DBUtil();
                     instance.Host = "localhost";
                     instance.Port = "3306"; ;
-                    instance.User = "";
-                    instance.Pass = "";
+                    instance.User = "root";
+                    instance.Pass = ".,root";
                     instance.Database = "sUCO";
                 }
 
@@ -116,6 +116,22 @@ namespace sUCO.control
                 command.ExecuteNonQuery();
             }
             catch(Exception e)
+            {
+                MessageBox.Show("Erro ao executar query: " + e.Message);
+                throw new Exception(e.Message, e);
+            }
+        }
+
+        public void executeDelete(String query)
+        {
+            MySqlCommand command = null;
+
+            try
+            {
+                command = new MySqlCommand(query, instance.Connection);
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
             {
                 MessageBox.Show("Erro ao executar query: " + e.Message);
                 throw new Exception(e.Message, e);

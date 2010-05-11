@@ -396,7 +396,8 @@ namespace sUCO.forms
 
         private void carregarProjetosBD()
         {
-            MessageBox.Show("Ainda nao carrega do banco - utilize o importar XML");
+            IList<CasoUso> ucList = PersistenceFactory.toDB().abrirArquivo(this.projeto);
+            this.restaurarComponentes(ucList);
         }
     }
 }

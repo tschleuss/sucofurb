@@ -90,30 +90,30 @@
     <Compile Include="dao\CenarioDAO.cs" />
     <Compile Include="dao\ProjetoDAO.cs" />
     <Compile Include="dao\RaiaDAO.cs" />
-    <Compile Include="diagram\connection\Connection.cs" />
-    <Compile Include="diagram\connection\ConnectionAdorner.cs" />
-    <Compile Include="diagram\connection\Connector.cs" />
-    <Compile Include="diagram\connection\ConnectorAdorner.cs" />
-    <Compile Include="diagram\controls\DragThumb.cs" />
-    <Compile Include="diagram\controls\RelativePositionPanel.cs" />
-    <Compile Include="diagram\controls\ResizeThumb.cs" />
-    <Compile Include="diagram\DesignerCanvas.Commands.cs" />
-    <Compile Include="diagram\DesignerCanvas.cs" />
-    <Compile Include="diagram\DesignerItem.cs" />
-    <Compile Include="diagram\designer\Teste.xaml.cs">
+    <Compile Include="forms\diagram\connection\Connection.cs" />
+    <Compile Include="forms\diagram\connection\ConnectionAdorner.cs" />
+    <Compile Include="forms\diagram\connection\Connector.cs" />
+    <Compile Include="forms\diagram\connection\ConnectorAdorner.cs" />
+    <Compile Include="forms\diagram\controls\DragThumb.cs" />
+    <Compile Include="forms\diagram\controls\RelativePositionPanel.cs" />
+    <Compile Include="forms\diagram\controls\ResizeThumb.cs" />
+    <Compile Include="forms\diagram\DesignerCanvas.Commands.cs" />
+    <Compile Include="forms\diagram\DesignerCanvas.cs" />
+    <Compile Include="forms\diagram\DesignerItem.cs" />
+    <Compile Include="forms\diagram\designer\Teste.xaml.cs">
       <DependentUpon>Teste.xaml</DependentUpon>
     </Compile>
-    <Compile Include="diagram\DiagramaWPF.xaml.cs">
+    <Compile Include="forms\diagram\DiagramaWPF.xaml.cs">
       <DependentUpon>DiagramaWPF.xaml</DependentUpon>
     </Compile>
-    <Compile Include="diagram\IGroupable.cs" />
-    <Compile Include="diagram\ISelectable.cs" />
-    <Compile Include="diagram\PathFinder.cs" />
-    <Compile Include="diagram\RubberbandAdorner.cs" />
-    <Compile Include="diagram\SelectionService.cs" />
-    <Compile Include="diagram\TipoRelacionamento.cs" />
-    <Compile Include="diagram\Toolbox.cs" />
-    <Compile Include="diagram\ToolboxItem.cs" />
+    <Compile Include="forms\diagram\IGroupable.cs" />
+    <Compile Include="forms\diagram\ISelectable.cs" />
+    <Compile Include="forms\diagram\PathFinder.cs" />
+    <Compile Include="forms\diagram\RubberbandAdorner.cs" />
+    <Compile Include="forms\diagram\SelectionService.cs" />
+    <Compile Include="forms\diagram\TipoRelacionamento.cs" />
+    <Compile Include="forms\diagram\Toolbox.cs" />
+    <Compile Include="forms\diagram\ToolboxItem.cs" />
     <Compile Include="forms\FormAddCasoUso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +125,12 @@
     </Compile>
     <Compile Include="forms\FormMySQLConfig.Designer.cs">
       <DependentUpon>FormMySQLConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FormProjetosSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormProjetosSelect.Designer.cs">
+      <DependentUpon>FormProjetosSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\usercontrols\MiniaturaDiagrama.xaml.cs">
       <DependentUpon>MiniaturaDiagrama.xaml</DependentUpon>
@@ -192,6 +198,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormMySQLConfig.resx">
       <DependentUpon>FormMySQLConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FormProjetosSelect.resx">
+      <DependentUpon>FormProjetosSelect.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\usercontrols\UserControlCasoUso.resx">
@@ -272,90 +282,90 @@
     <None Include="resources\images\relatorio.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="diagram\designer\images\.svn\all-wcprops" />
-    <None Include="diagram\designer\images\.svn\entries" />
-    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsBottom.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsCenteredHorizontal.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsCenteredVertical.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsLeft.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsRight.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\AlignObjectsTop.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\BringForward.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\BringToFront.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\Copy.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\Cut.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\Delete.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\DistributeObjectsHorizontal.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\DistributeObjectsVertical.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\GenericDocument.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\Group.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\OpenFolder.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\Paste.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\PasteBig.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\Print.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\rel_associate.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\rel_extend.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\rel_generalize.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\rel_include.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\Save.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\SendBackward.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\SendToBack.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\prop-base\Ungroup.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsBottom.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsCenteredHorizontal.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsCenteredVertical.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsLeft.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsRight.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\AlignObjectsTop.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\BringForward.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\BringToFront.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\Copy.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\Cut.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\Delete.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\DistributeObjectsHorizontal.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\DistributeObjectsVertical.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\GenericDocument.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\Group.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\OpenFolder.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\Paste.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\PasteBig.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\Print.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\rel_associate.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\rel_extend.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\rel_generalize.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\rel_include.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\Save.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\SendBackward.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\SendToBack.png.svn-base" />
-    <None Include="diagram\designer\images\.svn\text-base\Ungroup.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\all-wcprops" />
+    <None Include="forms\diagram\designer\images\.svn\entries" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\AlignObjectsBottom.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\AlignObjectsCenteredHorizontal.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\AlignObjectsCenteredVertical.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\AlignObjectsLeft.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\AlignObjectsRight.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\AlignObjectsTop.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\BringForward.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\BringToFront.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\Copy.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\Cut.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\Delete.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\DistributeObjectsHorizontal.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\DistributeObjectsVertical.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\GenericDocument.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\Group.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\OpenFolder.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\Paste.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\PasteBig.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\Print.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\rel_associate.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\rel_extend.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\rel_generalize.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\rel_include.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\Save.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\SendBackward.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\SendToBack.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\prop-base\Ungroup.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\AlignObjectsBottom.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\AlignObjectsCenteredHorizontal.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\AlignObjectsCenteredVertical.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\AlignObjectsLeft.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\AlignObjectsRight.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\AlignObjectsTop.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\BringForward.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\BringToFront.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\Copy.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\Cut.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\Delete.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\DistributeObjectsHorizontal.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\DistributeObjectsVertical.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\GenericDocument.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\Group.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\OpenFolder.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\Paste.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\PasteBig.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\Print.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\rel_associate.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\rel_extend.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\rel_generalize.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\rel_include.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\Save.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\SendBackward.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\SendToBack.png.svn-base" />
+    <None Include="forms\diagram\designer\images\.svn\text-base\Ungroup.png.svn-base" />
     <None Include="resources\database.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsBottom.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsCenteredHorizontal.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsCenteredVertical.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsLeft.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsRight.png" />
-    <Resource Include="diagram\designer\images\AlignObjectsTop.png" />
-    <Resource Include="diagram\designer\images\BringForward.png" />
-    <Resource Include="diagram\designer\images\BringToFront.png" />
-    <Resource Include="diagram\designer\images\Copy.png" />
-    <Resource Include="diagram\designer\images\Cut.png" />
-    <Resource Include="diagram\designer\images\Delete.png" />
-    <Resource Include="diagram\designer\images\DistributeObjectsHorizontal.png" />
-    <Resource Include="diagram\designer\images\DistributeObjectsVertical.png" />
-    <Resource Include="diagram\designer\images\GenericDocument.png" />
-    <Resource Include="diagram\designer\images\Group.png" />
-    <Resource Include="diagram\designer\images\OpenFolder.png" />
-    <Resource Include="diagram\designer\images\Paste.png" />
-    <Resource Include="diagram\designer\images\PasteBig.png" />
-    <Resource Include="diagram\designer\images\Print.png" />
-    <Resource Include="diagram\designer\images\rel_associate.png" />
-    <Resource Include="diagram\designer\images\rel_extend.png" />
-    <Resource Include="diagram\designer\images\rel_generalize.png" />
-    <Resource Include="diagram\designer\images\rel_include.png" />
-    <Resource Include="diagram\designer\images\Save.png" />
-    <Resource Include="diagram\designer\images\SendBackward.png" />
-    <Resource Include="diagram\designer\images\SendToBack.png" />
-    <Resource Include="diagram\designer\images\Ungroup.png" />
+    <Resource Include="forms\diagram\designer\images\AlignObjectsBottom.png" />
+    <Resource Include="forms\diagram\designer\images\AlignObjectsCenteredHorizontal.png" />
+    <Resource Include="forms\diagram\designer\images\AlignObjectsCenteredVertical.png" />
+    <Resource Include="forms\diagram\designer\images\AlignObjectsLeft.png" />
+    <Resource Include="forms\diagram\designer\images\AlignObjectsRight.png" />
+    <Resource Include="forms\diagram\designer\images\AlignObjectsTop.png" />
+    <Resource Include="forms\diagram\designer\images\BringForward.png" />
+    <Resource Include="forms\diagram\designer\images\BringToFront.png" />
+    <Resource Include="forms\diagram\designer\images\Copy.png" />
+    <Resource Include="forms\diagram\designer\images\Cut.png" />
+    <Resource Include="forms\diagram\designer\images\Delete.png" />
+    <Resource Include="forms\diagram\designer\images\DistributeObjectsHorizontal.png" />
+    <Resource Include="forms\diagram\designer\images\DistributeObjectsVertical.png" />
+    <Resource Include="forms\diagram\designer\images\GenericDocument.png" />
+    <Resource Include="forms\diagram\designer\images\Group.png" />
+    <Resource Include="forms\diagram\designer\images\OpenFolder.png" />
+    <Resource Include="forms\diagram\designer\images\Paste.png" />
+    <Resource Include="forms\diagram\designer\images\PasteBig.png" />
+    <Resource Include="forms\diagram\designer\images\Print.png" />
+    <Resource Include="forms\diagram\designer\images\rel_associate.png" />
+    <Resource Include="forms\diagram\designer\images\rel_extend.png" />
+    <Resource Include="forms\diagram\designer\images\rel_generalize.png" />
+    <Resource Include="forms\diagram\designer\images\rel_include.png" />
+    <Resource Include="forms\diagram\designer\images\Save.png" />
+    <Resource Include="forms\diagram\designer\images\SendBackward.png" />
+    <Resource Include="forms\diagram\designer\images\SendToBack.png" />
+    <Resource Include="forms\diagram\designer\images\Ungroup.png" />
     <Content Include="resources\database\sUCO_DER.png" />
     <Content Include="resources\images\add.png" />
     <Content Include="resources\images\addUC.png" />
@@ -380,59 +390,59 @@
     <None Include="resources\xml.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="diagram\designer\ApplicationToolbar.xaml">
+    <Page Include="forms\diagram\designer\ApplicationToolbar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\components\Expander.xaml">
+    <Page Include="forms\diagram\designer\components\Expander.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\components\GroupBox.xaml">
+    <Page Include="forms\diagram\designer\components\GroupBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\components\ScrollBar.xaml">
+    <Page Include="forms\diagram\designer\components\ScrollBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\components\Shared.xaml">
+    <Page Include="forms\diagram\designer\components\Shared.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\components\ToolBar.xaml">
+    <Page Include="forms\diagram\designer\components\ToolBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\Connection.xaml">
+    <Page Include="forms\diagram\designer\Connection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\DesignerItem.xaml">
+    <Page Include="forms\diagram\designer\DesignerItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\Teste.xaml">
+    <Page Include="forms\diagram\designer\Teste.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\toolbox\ElementosUC.xaml">
+    <Page Include="forms\diagram\designer\toolbox\ElementosUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\toolbox\Relacionamentos.xaml">
+    <Page Include="forms\diagram\designer\toolbox\Relacionamentos.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\toolbox\Toolbox.xaml">
+    <Page Include="forms\diagram\designer\toolbox\Toolbox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\designer\toolbox\ToolboxItem.xaml">
+    <Page Include="forms\diagram\designer\toolbox\ToolboxItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="diagram\DiagramaWPF.xaml">
+    <Page Include="forms\diagram\DiagramaWPF.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -442,10 +452,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="diagram\designer\images\.svn\props\" />
-    <Folder Include="diagram\designer\images\.svn\tmp\prop-base\" />
-    <Folder Include="diagram\designer\images\.svn\tmp\props\" />
-    <Folder Include="diagram\designer\images\.svn\tmp\text-base\" />
+    <Folder Include="forms\diagram\designer\images\.svn\props\" />
+    <Folder Include="forms\diagram\designer\images\.svn\tmp\prop-base\" />
+    <Folder Include="forms\diagram\designer\images\.svn\tmp\props\" />
+    <Folder Include="forms\diagram\designer\images\.svn\tmp\text-base\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

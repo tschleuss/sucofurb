@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using sUCO.dao;
 using sUCO.core;
+using sUCO.forms;
 
 namespace sUCO.control
 {
@@ -26,7 +27,64 @@ namespace sUCO.control
 
         public IList<CasoUso> abrirArquivo(Projeto projeto)
         {
-            throw new NotImplementedException();
+            ProjetoDAO projDAO = new ProjetoDAO();
+            CasoUsoDAO casoDAO = new CasoUsoDAO();
+            RaiaDAO raiaDAO = new RaiaDAO();
+            AcaoDAO acaoDAO = new AcaoDAO();
+            CenarioDAO cenarioDAO = new CenarioDAO();
+
+            IList<CasoUso> casoUsoList = null;
+            IList<Projeto> projetoList = projDAO.findAll();
+            FrmProjetosSelect frm = new FrmProjetosSelect();
+            
+            foreach (Projeto proj in projetoList)
+            {
+                frm.add(proj.Nome, proj.Codigo);
+            }
+
+            frm.ShowDialog();
+
+            if ( frm.SelectedProject != -1)
+            {
+                Projeto proj = projDAO.find(frm.SelectedProject);
+                casoUsoList = casoDAO.findByProjeto(proj.Codigo);
+
+                foreach (CasoUso caso in casoUsoList)
+                {
+                    IList<Raia> casoUsoRaias = raiaDAO.findByCasoUso(caso.Codigo);
+
+                    foreach (Raia raia in casoUsoRaias)
+                    {
+                        IList<Acao> raiaAcoes = acaoDAO.findByRaia(raia.Codigo);
+
+                        foreach (Acao acao in raiaAcoes)
+                        {
+                            IList<CenarioAlternativo> acaoCenario = cenarioDAO.findByAcao(acao.Codigo);
+
+                            foreach (CenarioAlternativo cenario in acaoCenario)
+                            {
+                                IList<Raia> cenarioRaias = raiaDAO.findByCenario(cenario.Codigo);
+
+                                foreach (Raia cenarioRaia in cenarioRaias)
+                                {
+                                    IList<Acao> cenarioRaiaAcoes = acaoDAO.findByRaia(cenarioRaia.Codigo);
+                                    cenarioRaia.ListaAcoes = cenarioRaiaAcoes;
+                                }
+                                cenario.ListaRaias = cenarioRaias;
+                            }
+
+                            acao.Cenarios = acaoCenario;
+                        }
+
+                        raia.ListaAcoes = raiaAcoes;
+                    }
+
+                    caso.FluxoCasoUso = new FluxoCasoUso();
+                    caso.FluxoCasoUso.ListaRaias = casoUsoRaias;
+                }
+            }
+
+            return casoUsoList;
         }
 
         #endregion

@@ -6,6 +6,8 @@ namespace sUCO.core
     {
         private string p_Nome;
 
+        public CenarioAlternativo() { }
+
         public CenarioAlternativo(string nome)
         {
             p_Nome = nome;

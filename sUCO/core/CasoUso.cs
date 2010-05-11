@@ -4,6 +4,7 @@ namespace sUCO.core
 {
     public class CasoUso
     {
+        public CasoUso() { }
 
         public CasoUso(string nome, FluxoCasoUso diagrama)
             : this(diagrama)
