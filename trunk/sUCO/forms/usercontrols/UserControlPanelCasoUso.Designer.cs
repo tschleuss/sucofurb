@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System;
+using System.Windows.Forms.Integration;
 namespace sUCO.forms.usercontrols
 {
     partial class UserControlPanelCasoUso
@@ -40,6 +41,7 @@ namespace sUCO.forms.usercontrols
             // txtCasoUso
             // 
             this.txtCasoUso.Location = new System.Drawing.Point(10, 111);
+            this.txtCasoUso.Name = "txtCasoUso";
             this.txtCasoUso.Size = new System.Drawing.Size(120, 20);
             this.txtCasoUso.TabIndex = 4;
             this.txtCasoUso.Visible = false;
@@ -49,6 +51,7 @@ namespace sUCO.forms.usercontrols
             // 
             this.btEditarNome.Image = global::sUCO.Properties.Resources.editUC;
             this.btEditarNome.Location = new System.Drawing.Point(107, 111);
+            this.btEditarNome.Name = "btEditarNome";
             this.btEditarNome.Size = new System.Drawing.Size(23, 23);
             this.btEditarNome.TabIndex = 5;
             this.btEditarNome.UseVisualStyleBackColor = true;
@@ -58,6 +61,7 @@ namespace sUCO.forms.usercontrols
             // 
             this.lblNome.AutoSize = true;
             this.lblNome.Location = new System.Drawing.Point(7, 114);
+            this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(99, 13);
             this.lblNome.TabIndex = 6;
             this.lblNome.Text = "Nome Caso de Uso";
@@ -65,8 +69,11 @@ namespace sUCO.forms.usercontrols
             // 
             // hostMiniDiagrama
             // 
-            this.hostMiniDiagrama.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.hostMiniDiagrama.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.hostMiniDiagrama.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.hostMiniDiagrama.Location = new System.Drawing.Point(10, 9);
+            this.hostMiniDiagrama.Margin = new System.Windows.Forms.Padding(0);
+            this.hostMiniDiagrama.Name = "hostMiniDiagrama";
             this.hostMiniDiagrama.Size = new System.Drawing.Size(120, 96);
             this.hostMiniDiagrama.TabIndex = 7;
             this.hostMiniDiagrama.Child = this.miniDiagrama;
@@ -78,6 +85,7 @@ namespace sUCO.forms.usercontrols
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.btEditarNome);
             this.Controls.Add(this.txtCasoUso);
+            this.Name = "UserControlPanelCasoUso";
             this.Size = new System.Drawing.Size(138, 138);
             this.Click += new System.EventHandler(this.UserControlPanelCasoUso_Click);
             this.ResumeLayout(false);
@@ -90,7 +98,7 @@ namespace sUCO.forms.usercontrols
         private TextBox txtCasoUso;
         private Button btEditarNome;
         private Label lblNome;
-        private System.Windows.Forms.Integration.ElementHost hostMiniDiagrama;
+        private ElementHost hostMiniDiagrama;
         private MiniaturaDiagrama miniDiagrama;
     }
 }
