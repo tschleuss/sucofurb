@@ -95,7 +95,7 @@ namespace sUCO.forms
                 ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
                 //ucPanelCasoUso.MiniaturaDiagrama.MouseDoubleClick +=  new MouseButtonEventHandler(this.PanelCasoUso_Click);
 
-                AddPanelOnTableLayout(ucPanelCasoUso);
+                adicionarUCPanel(ucPanelCasoUso);
             }
 
             this.txtNomeProjeto.Text = this.projeto.Nome;
@@ -265,7 +265,7 @@ namespace sUCO.forms
                 ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
                 //ucPanelCasoUso.MiniaturaDiagrama.MouseDoubleClick += new MouseButtonEventHandler(this.PanelCasoUso_Click);
 
-                AddPanelOnTableLayout(ucPanelCasoUso);
+                adicionarUCPanel(ucPanelCasoUso);
             }
         }
 
@@ -281,7 +281,7 @@ namespace sUCO.forms
             return tab;
         }
 
-        private void AddPanelOnTableLayout(UserControlPanelCasoUso panel)
+        private void adicionarUCPanel(UserControlPanelCasoUso panel)
         {
             //não considera o panel que foi adicionado na conta
             int coluna = this.projeto.QtdCasoUso() - 1;

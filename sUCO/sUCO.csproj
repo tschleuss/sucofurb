@@ -363,6 +363,7 @@
     <Content Include="resources\images\delete.png" />
     <Content Include="resources\images\deleteUC.png" />
     <None Include="resources\docs\eap\sUCO_4.EAP" />
+    <None Include="resources\docs\pdf\sUCO_4.pdf" />
     <None Include="resources\images\editUC.png" />
     <None Include="resources\database\script_BD.sql" />
     <None Include="resources\images\diagrama.png" />
