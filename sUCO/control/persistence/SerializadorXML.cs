@@ -131,7 +131,7 @@ namespace sUCO.control
                 {
                     if (xmlIn.Name.Equals("casosDeUso"))
                     {
-                        String datePattern = "M/d/yyyy H:mm:ss tt";
+                        String datePattern = "dd/MM/yyyy HH:mm:ss";
                         projeto.Nome = xmlIn.GetAttribute("nome");
                         projeto.Responsavel = xmlIn.GetAttribute("responsavel");
                         projeto.DataCriacao = DateTime.ParseExact(xmlIn.GetAttribute("criado"), datePattern, null);
