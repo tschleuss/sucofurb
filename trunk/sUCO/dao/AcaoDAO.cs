@@ -28,9 +28,12 @@ namespace sUCO.dao
             DBUtil.Instance.closeConnection();
 
             CenarioDAO cenarioDAO = new CenarioDAO();
-            foreach (CenarioAlternativo cenario in acao.Cenarios)
+            if (acao.Cenarios != null)
             {
-                cenarioDAO.insert(cenario, acao);
+                foreach (CenarioAlternativo cenario in acao.Cenarios)
+                {
+                    cenarioDAO.insert(cenario, acao);
+                }
             }
         }
 

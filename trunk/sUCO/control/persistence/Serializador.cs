@@ -14,6 +14,6 @@ namespace sUCO.control
     interface Serializador
     {
         void salvarArquivo(Projeto projeto, IList<CasoUso> ucList);
-        IList<CasoUso> abrirArquivo(Projeto projeto);
+        IList<CasoUso> abrirArquivo(ref Projeto projeto);
     }
 }

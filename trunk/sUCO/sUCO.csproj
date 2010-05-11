@@ -202,6 +202,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FormProjetosSelect.resx">
       <DependentUpon>FormProjetosSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\usercontrols\UserControlCasoUso.resx">
       <DependentUpon>UserControlCasoUso.cs</DependentUpon>
