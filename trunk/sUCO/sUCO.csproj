@@ -386,6 +386,7 @@
     <Content Include="resources\images\uml_actor.png" />
     <Content Include="resources\database\MySql.Data.dll" />
     <Content Include="resources\database\sUCO_DER.xml" />
+    <Content Include="resources\LOTERICA2.2.xml" />
     <None Include="resources\save.png" />
     <None Include="resources\xml.png" />
   </ItemGroup>
