@@ -174,6 +174,7 @@ namespace sUCO.forms.usercontrols
             this.splitContainerExibicao = new System.Windows.Forms.SplitContainer();
             this.panelHostDiagrama = new System.Windows.Forms.Panel();
             this.hostDiagrama = new System.Windows.Forms.Integration.ElementHost();
+            this.diagramaWPF = new sUCO.diagram.DiagramaWPF();
             this.dataSet = new System.Data.DataSet();
             this.splitContainerFluxoUC.Panel1.SuspendLayout();
             this.splitContainerFluxoUC.Panel2.SuspendLayout();
@@ -210,7 +211,7 @@ namespace sUCO.forms.usercontrols
             // splitContainerFluxoUC.Panel2
             // 
             this.splitContainerFluxoUC.Panel2.Controls.Add(this.panelCenarioAlternativo);
-            this.splitContainerFluxoUC.Size = new System.Drawing.Size(800, 159);
+            this.splitContainerFluxoUC.Size = new System.Drawing.Size(800, 307);
             this.splitContainerFluxoUC.SplitterDistance = 266;
             this.splitContainerFluxoUC.TabIndex = 6;
             // 
@@ -220,7 +221,7 @@ namespace sUCO.forms.usercontrols
             this.panelFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFluxo.Location = new System.Drawing.Point(34, 0);
             this.panelFluxo.Name = "panelFluxo";
-            this.panelFluxo.Size = new System.Drawing.Size(232, 159);
+            this.panelFluxo.Size = new System.Drawing.Size(232, 307);
             this.panelFluxo.TabIndex = 4;
             // 
             // dgCasosUso
@@ -254,7 +255,7 @@ namespace sUCO.forms.usercontrols
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgCasosUso.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgCasosUso.Size = new System.Drawing.Size(232, 159);
+            this.dgCasosUso.Size = new System.Drawing.Size(232, 307);
             this.dgCasosUso.TabIndex = 7;
             this.dgCasosUso.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCasosUso_ColumnHeaderMouseDoubleClick);
             this.dgCasosUso.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgCasosUso_CellBeginEdit);
@@ -276,7 +277,7 @@ namespace sUCO.forms.usercontrols
             this.ucToolBox.Location = new System.Drawing.Point(0, 0);
             this.ucToolBox.Name = "ucToolBox";
             this.ucToolBox.ShowItemToolTips = true;
-            this.ucToolBox.Size = new System.Drawing.Size(34, 159);
+            this.ucToolBox.Size = new System.Drawing.Size(34, 307);
             this.ucToolBox.TabIndex = 3;
             // 
             // btRaia
@@ -358,7 +359,7 @@ namespace sUCO.forms.usercontrols
             this.panelCenarioAlternativo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCenarioAlternativo.Location = new System.Drawing.Point(0, 0);
             this.panelCenarioAlternativo.Name = "panelCenarioAlternativo";
-            this.panelCenarioAlternativo.Size = new System.Drawing.Size(530, 159);
+            this.panelCenarioAlternativo.Size = new System.Drawing.Size(530, 307);
             this.panelCenarioAlternativo.TabIndex = 0;
             // 
             // lblCenarioAlternativo
@@ -410,7 +411,7 @@ namespace sUCO.forms.usercontrols
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgCenarioAlternativo.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgCenarioAlternativo.Size = new System.Drawing.Size(530, 135);
+            this.dgCenarioAlternativo.Size = new System.Drawing.Size(530, 283);
             this.dgCenarioAlternativo.TabIndex = 0;
             this.dgCenarioAlternativo.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCenarioAlternativo_ColumnHeaderMouseDoubleClick);
             this.dgCenarioAlternativo.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgCenarioAlternativo_CellBeginEdit);
@@ -551,8 +552,6 @@ namespace sUCO.forms.usercontrols
             // 
             // btExibirDiagrama
             // 
-            this.btExibirDiagrama.Checked = true;
-            this.btExibirDiagrama.CheckState = System.Windows.Forms.CheckState.Checked;
             this.btExibirDiagrama.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btExibirDiagrama.Image = global::sUCO.Properties.Resources.diagrama;
             this.btExibirDiagrama.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -671,6 +670,7 @@ namespace sUCO.forms.usercontrols
             // splitContainerExibicao.Panel1
             // 
             this.splitContainerExibicao.Panel1.Controls.Add(this.panelHostDiagrama);
+            this.splitContainerExibicao.Panel1Collapsed = true;
             // 
             // splitContainerExibicao.Panel2
             // 
@@ -686,16 +686,18 @@ namespace sUCO.forms.usercontrols
             this.panelHostDiagrama.Controls.Add(this.hostDiagrama);
             this.panelHostDiagrama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHostDiagrama.Location = new System.Drawing.Point(0, 0);
+            this.panelHostDiagrama.Name = "panelHostDiagrama";
             this.panelHostDiagrama.Size = new System.Drawing.Size(800, 144);
             this.panelHostDiagrama.TabIndex = 1;
             // 
             // hostDiagrama
             // 
-            diagramaWPF = new DiagramaWPF();
             this.hostDiagrama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hostDiagrama.Location = new System.Drawing.Point(0, 0);
+            this.hostDiagrama.Name = "hostDiagrama";
             this.hostDiagrama.Size = new System.Drawing.Size(783, 450);
-            this.hostDiagrama.Child = diagramaWPF;
+            this.hostDiagrama.TabIndex = 0;
+            this.hostDiagrama.Child = this.diagramaWPF;
             // 
             // dataSet
             // 
@@ -704,6 +706,7 @@ namespace sUCO.forms.usercontrols
             // UserControlCasoUso
             // 
             this.Controls.Add(this.panelGeral);
+            this.Name = "UserControlCasoUso";
             this.Size = new System.Drawing.Size(800, 450);
             this.splitContainerFluxoUC.Panel1.ResumeLayout(false);
             this.splitContainerFluxoUC.Panel1.PerformLayout();

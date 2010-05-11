@@ -125,13 +125,13 @@ namespace sUCO.forms
                     if (projeto.NomeArquivo != null && !projeto.NomeArquivo.Equals(""))
                     {
                         PersistenceFactory.toXML().salvarArquivo(projeto, ucList);
-                        MessageBox.Show("Projeto exportado com sucesso!");
+                        MessageBox.Show("Projeto exportado com sucesso!", "Exportar XML");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Nao ha itens para exportar!!");
+                MessageBox.Show("Não há itens para exportar!", "Exportar XML");
             }
         }
 
@@ -149,7 +149,7 @@ namespace sUCO.forms
                 if (ucList.Count > 0)
                 {
                     PersistenceFactory.toDB().salvarArquivo(projeto, ucList);
-                    MessageBox.Show("Projeto salvo com sucesso!");
+                    MessageBox.Show("Projeto salvo com sucesso!", "Salvar projeto");
                 }
                 else
                 {
@@ -158,7 +158,7 @@ namespace sUCO.forms
             }
             else
             {
-                MessageBox.Show("Configure sua conexao com o banco!");
+                MessageBox.Show("Configure sua conexão com o banco!", "Salvar projeto");
             }
         }
 
@@ -227,7 +227,7 @@ namespace sUCO.forms
             }
 
             PersistenceFactory.toDB().salvarArquivo(projeto, ucList);
-            MessageBox.Show("Projeto salvo com sucesso!");
+            MessageBox.Show("Projeto salvo com sucesso!", "Salvar projeto");
             return true;
         }
 
