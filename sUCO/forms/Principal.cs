@@ -24,48 +24,43 @@ namespace sUCO.forms
         }
 
         private Projeto projeto;
+
+        public Projeto Projeto
+        {
+            get { return this.projeto; }
+            set { this.projeto = value; }
+        }
+
         private event PanelCasoUsoHandler ClickPanelCasoUso;
         private UserControlPanelCasoUso panelCasoUsoSelecionado;
-        private TiposArquivos tipoArquivo = TiposArquivos.Nenhum;
         private int qtdPorLinha = 5;
         private bool opened = false;
 
         public Principal()
         {
-            this.projeto = new Projeto();
+            this.Projeto = new Projeto();
             this.ClickPanelCasoUso += new PanelCasoUsoHandler(this.SelecionarPanelCasoUso);
             InitializeComponent();
-        }
-        
-        private void abrirArquivoDialog_FileOk(object sender, CancelEventArgs e)
-        {
-            switch (tipoArquivo)
-            {
-                case TiposArquivos.CasoUso:
 
-                    this.projeto.NomeArquivo = abrirArquivoDialog.FileName;
-                    IList<CasoUso> ucList = PersistenceFactory.toXML().abrirArquivo(ref this.projeto);
-
-                    if (ucList != null && ucList.Count > 0)
-                    {
-                        //Recria os componentes graficos
-                        this.excluirComponentes();
-                        this.restaurarComponentes(ucList);
-                        this.opened = true;
-                    }
-
-                    break;
-            }
+            this.AtualizarCamposDadosProjeto();
         }
 
-        private void excluirComponentes()
+        private void ExcluirComponentes()
         {
             //Limpar tudo antes de carregar.
             tableLayoutPanelCasoUso.Controls.Clear();
-            this.projeto.LimparPanelCasoUso();
+            this.Projeto.LimparPanelCasoUso();
+
+            //TODO exclusão
+            /*
+            foreach (TabCasoUso tab in TabControl.Controls)
+            {
+                Console.WriteLine(TabControl.Controls.GetChildIndex(tab));
+            }*/
+
         }
 
-        private void restaurarComponentes(IList<CasoUso> ucList)
+        private void RestaurarComponentes(IList<CasoUso> ucList)
         {
             UserControlPanelCasoUso ucPanelCasoUso = null;
             UserControlCasoUso ucCasoUso = null;
@@ -84,7 +79,7 @@ namespace sUCO.forms
                 //Atualiza a grid com as raias e acoes\
                 ucCasoUso.refreshComponentes();
 
-                this.projeto.AddPanelCasoUso(ucPanelCasoUso);
+                this.Projeto.AddPanelCasoUso(ucPanelCasoUso);
 
                 //cria a tab
                 TabCasoUso tab = this.GetTabPage(ucCasoUso);
@@ -98,14 +93,14 @@ namespace sUCO.forms
                 adicionarUCPanel(ucPanelCasoUso);
             }
 
-            this.txtNomeProjeto.Text = this.projeto.Nome;
-            this.txtResponsavel.Text = this.projeto.Responsavel;
+            this.txtNomeProjeto.Text = this.Projeto.Nome;
+            this.txtResponsavel.Text = this.Projeto.Responsavel;
         }
 
         private void menuItemInternoSalvar_Click(object sender, EventArgs e)
         {
             IList<CasoUso> ucList = new List<CasoUso>();
-            foreach (UserControlPanelCasoUso ucpc in this.projeto.listaPanelCasoUso)
+            foreach (UserControlPanelCasoUso ucpc in this.Projeto.listaPanelCasoUso)
             {
                 ucList.Add(ucpc.Tab.CasoUso.CasoUso);
             }
@@ -120,11 +115,11 @@ namespace sUCO.forms
 
                 if (result != DialogResult.Cancel)
                 {
-                    projeto.NomeArquivo = salvarArquivoDialog.FileName;
+                    Projeto.NomeArquivo = salvarArquivoDialog.FileName;
 
-                    if (projeto.NomeArquivo != null && !projeto.NomeArquivo.Equals(""))
+                    if (Projeto.NomeArquivo != null && !Projeto.NomeArquivo.Equals(""))
                     {
-                        PersistenceFactory.toXML().salvarArquivo(projeto, ucList);
+                        PersistenceFactory.toXML().SalvarArquivo(Projeto, ucList);
                         MessageBox.Show("Projeto exportado com sucesso!", "Exportar XML");
                     }
                 }
@@ -141,15 +136,15 @@ namespace sUCO.forms
             {
                 //Recupera todo os casos de uso criados
                 IList<CasoUso> ucList = new List<CasoUso>();
-                foreach (UserControlPanelCasoUso ucpc in this.projeto.listaPanelCasoUso)
+                foreach (UserControlPanelCasoUso ucpc in this.Projeto.listaPanelCasoUso)
                 {
                     ucList.Add(ucpc.Tab.CasoUso.CasoUso);
                 }
 
                 if (ucList.Count > 0)
                 {
-                    PersistenceFactory.toDB().salvarArquivo(projeto, ucList);
-                    MessageBox.Show("Projeto salvo com sucesso!", "Salvar projeto");
+                    PersistenceFactory.toDB().SalvarArquivo(Projeto, ucList);
+                    MessageBox.Show("Projeto salvo com sucesso!", "Salvar Projeto");
                 }
                 else
                 {
@@ -158,15 +153,14 @@ namespace sUCO.forms
             }
             else
             {
-                MessageBox.Show("Configure sua conexão com o banco!", "Salvar projeto");
+                MessageBox.Show("Configure sua conexão com o banco!", "Salvar Projeto");
             }
         }
 
         private void btAbrir_Click(object sender, EventArgs e)
         {
-            if (verificaSalvar())
+            if (VerificaSalvar())
             {                
-                tipoArquivo = TiposArquivos.CasoUso;
                 abrirArquivoDialog.Filter = "Arquivos de casos de uso (*.xml)|*.xml";
                 this.abrirArquivoDialog.ShowDialog();
             }
@@ -179,7 +173,7 @@ namespace sUCO.forms
 
         private void btNovo_Click(object sender, EventArgs e)
         {
-            if ( verificaSalvar())
+            if ( VerificaSalvar())
             {
                 //casoDeUso = new CasoUso("", new Diagrama(), "");
                 //cb_Cenarios.Items.Clear();
@@ -190,7 +184,7 @@ namespace sUCO.forms
         }
 
 
-        private bool verificaSalvar()
+        private bool VerificaSalvar()
         {
             if (opened)
             {
@@ -198,7 +192,7 @@ namespace sUCO.forms
 
                 if (result == DialogResult.Yes)
                 {
-                    return salvar();
+                    return Salvar();
                 }
                 else if (result == DialogResult.Cancel)
                 {
@@ -209,31 +203,31 @@ namespace sUCO.forms
             return true;
         }
 
-        private bool salvar()
+        private bool Salvar()
         {
-            if (projeto.NomeArquivo == null)
+            if (Projeto.NomeArquivo == null)
             {
                 if ( salvarArquivoDialog.ShowDialog() == DialogResult.OK )
                 {
-                    projeto.NomeArquivo = salvarArquivoDialog.FileName;
+                    Projeto.NomeArquivo = salvarArquivoDialog.FileName;
                 }
             }
 
             //Recupera todo os casos de uso criados
             IList<CasoUso> ucList = new List<CasoUso>();
-            foreach (UserControlPanelCasoUso ucpc in this.projeto.listaPanelCasoUso)
+            foreach (UserControlPanelCasoUso ucpc in this.Projeto.listaPanelCasoUso)
             {
                 ucList.Add(ucpc.Tab.CasoUso.CasoUso);
             }
 
-            PersistenceFactory.toDB().salvarArquivo(projeto, ucList);
-            MessageBox.Show("Projeto salvo com sucesso!", "Salvar projeto");
+            PersistenceFactory.toDB().SalvarArquivo(Projeto, ucList);
+            MessageBox.Show("Projeto salvo com sucesso!", "Salvar Projeto");
             return true;
         }
 
         private void btUCAdd_Click(object sender, EventArgs e)
         {
-            FormAddCasoUso formAddCasoUso = new FormAddCasoUso(String.Format("Caso de Uso {0}", this.projeto.QtdCasoUso()));
+            FormAddCasoUso formAddCasoUso = new FormAddCasoUso(String.Format("Caso de Uso {0}", this.Projeto.QtdCasoUso()));
             formAddCasoUso.ShowDialog();
 
             if (!formAddCasoUso.Cancelado)
@@ -251,13 +245,13 @@ namespace sUCO.forms
                 ucCasoUso.TxtPreCondicao.Text = ucCasoUso.CasoUso.PreCondicao;
                 ucCasoUso.TxtPosCondicao.Text = ucCasoUso.CasoUso.PosCondicao;
 
-                this.projeto.AddPanelCasoUso(ucPanelCasoUso);
+                this.Projeto.AddPanelCasoUso(ucPanelCasoUso);
 
                 //cria a tab
                 TabCasoUso tab = this.GetTabPage(ucCasoUso);
 
                 //adiciona a tab
-                tabControl.Controls.Add(tab);
+                TabControl.Controls.Add(tab);
 
                 ucPanelCasoUso.TxtCasoUso = ucCasoUso.CasoUso.Nome;
                 ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
@@ -284,7 +278,7 @@ namespace sUCO.forms
         private void adicionarUCPanel(UserControlPanelCasoUso panel)
         {
             //não considera o panel que foi adicionado na conta
-            int coluna = this.projeto.QtdCasoUso() - 1;
+            int coluna = this.Projeto.QtdCasoUso() - 1;
 
             if (coluna != 0 && (coluna % this.qtdPorLinha) == 0)
             {
@@ -307,28 +301,28 @@ namespace sUCO.forms
 
             UserControlPanelCasoUso uc = (UserControlPanelCasoUso)p.Parent;
 
-            if (!tabControl.TabPages.Contains(uc.Tab))
+            if (!TabControl.TabPages.Contains(uc.Tab))
             {
-                tabControl.Controls.Add(uc.Tab);
+                TabControl.Controls.Add(uc.Tab);
             }
 
             //seleciona a tab
-            tabControl.SelectedTab = uc.Tab;
+            TabControl.SelectedTab = uc.Tab;
         }
 
         private void btUCDel_Click(object sender, EventArgs e)
         {
 
              DialogResult opt = MessageBox.Show(
-	                                                "Deseja realmente excluir o Caso de Uso selecionado do projeto?", 
+	                                                "Deseja realmente excluir o Caso de Uso selecionado do Projeto?", 
 	                                                "Excluir Caso de Uso", 
                                                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question
                                                    );
              if (opt == DialogResult.Yes)
             {
                 this.tableLayoutPanelCasoUso.Controls.Remove(this.panelCasoUsoSelecionado);
-                this.projeto.RemovePanelCasoUso(this.panelCasoUsoSelecionado);
-                tabControl.Controls.Remove(this.panelCasoUsoSelecionado.Tab);
+                this.Projeto.RemovePanelCasoUso(this.panelCasoUsoSelecionado);
+                TabControl.Controls.Remove(this.panelCasoUsoSelecionado.Tab);
             }
         }
 
@@ -357,12 +351,12 @@ namespace sUCO.forms
 
         private void txtNomeProjeto_TextChanged(object sender, EventArgs e)
         {
-            this.projeto.Nome = this.txtNomeProjeto.Text;
+            this.Projeto.Nome = this.txtNomeProjeto.Text;
         }
 
         private void txtResponsavel_TextChanged(object sender, EventArgs e)
         {
-            this.projeto.Responsavel = this.txtResponsavel.Text;
+            this.Projeto.Responsavel = this.txtResponsavel.Text;
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -373,7 +367,7 @@ namespace sUCO.forms
 
 		private void btRefreshLayout_Click(object sender, EventArgs e)
         {
-            foreach (UserControlPanelCasoUso panel in this.projeto.listaPanelCasoUso)
+            foreach (UserControlPanelCasoUso panel in this.Projeto.listaPanelCasoUso)
             {
                 RenderTargetBitmap bitmap = panel.Tab.CasoUso.Diagrama.GetImageFromCanvas();
 
@@ -386,25 +380,64 @@ namespace sUCO.forms
         }
         private void menuItemInternoAbrir_Click(object sender, EventArgs e)
         {
-            this.carregarProjetosBD();
+            this.CarregarProjetosBD();
         }
 
         private void btAbrir_Click_1(object sender, EventArgs e)
         {
-            this.carregarProjetosBD();
+            this.CarregarProjetosBD();
         }
 
-        private void carregarProjetosBD()
+        private void CarregarProjetosBD()
         {
-            IList<CasoUso> ucList = PersistenceFactory.toDB().abrirArquivo(ref projeto);
+            IList<CasoUso> ucList = PersistenceFactory.toDB().AbrirArquivo(ref projeto);
             if (ucList != null)
             {
-                this.txtNomeProjeto.Text = this.projeto.Nome;
-                this.txtResponsavel.Text = this.projeto.Responsavel;
+                //ao restaurar os componentes essa data será sobrescrita
+                DateTime dataAtualizacaoBD = projeto.DataAtualizacao;
 
-                this.excluirComponentes();
-                this.restaurarComponentes(ucList);
+                this.ExcluirComponentes();
+                this.RestaurarComponentes(ucList);
+
+                //recupera a data
+                projeto.DataAtualizacao = dataAtualizacaoBD;
+                this.AtualizarCamposDadosProjeto();
             }
         }
+
+        private void abrirArquivoDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            this.CarregarProjetoXML();
+        }
+
+        private void CarregarProjetoXML()
+        {
+            this.Projeto.NomeArquivo = abrirArquivoDialog.FileName;
+            IList<CasoUso> ucList = PersistenceFactory.toXML().AbrirArquivo(ref projeto);
+            if (ucList != null && ucList.Count > 0)
+            {
+                //Recria os componentes graficos
+                this.ExcluirComponentes();
+                this.RestaurarComponentes(ucList);
+                this.opened = true;
+            }
+        }
+
+
+        public void AtualizarDataUltimaAlteracaoProjeto()
+        {
+            this.Projeto.DataAtualizacao = DateTime.Now;
+            this.AtualizarCamposDadosProjeto();
+        }
+
+
+        private void AtualizarCamposDadosProjeto()
+        {
+            this.txtNomeProjeto.Text = this.Projeto.Nome;
+            this.txtResponsavel.Text = this.Projeto.Responsavel;
+            this.lblDataCriacaoValor.Text = this.Projeto.DataCriacao.ToString(this.Projeto.DatePattern);
+            this.lblDataAtualizacaoValor.Text = this.Projeto.DataAtualizacao.ToString(this.Projeto.DatePattern);
+        }
+        
     }
 }

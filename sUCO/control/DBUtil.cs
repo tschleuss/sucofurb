@@ -30,7 +30,7 @@ namespace sUCO.control
                     instance.Host = "localhost";
                     instance.Port = "3306"; ;
                     instance.User = "root";
-                    instance.Pass = ".,root";
+                    instance.Pass = "";
                     instance.Database = "sUCO";
                 }
 
@@ -81,15 +81,18 @@ namespace sUCO.control
             }
         }
 
-        public void testConnection()
+        public void testConnection(bool exibirMsgSucesso)
         {
             try
             {
                 if (instance.Connection != null)
                 {
                     instance.Connection.Open();
-                    MessageBox.Show("Conexão estabelecida com sucesso!", "MySQL");
                     instance.Configured = true;
+                    if (exibirMsgSucesso)
+                    {
+                        MessageBox.Show("Conexão estabelecida com sucesso!", "MySQL");
+                    }
                 }
                 else
                 {

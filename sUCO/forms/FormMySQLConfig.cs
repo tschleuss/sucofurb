@@ -32,7 +32,7 @@ namespace sUCO.forms
             String data = txtDatabase.Text;
 
             DBUtil.Instance.initConfiguration(host, port, user, pass, data);
-            DBUtil.Instance.testConnection();
+            DBUtil.Instance.testConnection(true);
 
             if (DBUtil.Instance.Configured)
             {

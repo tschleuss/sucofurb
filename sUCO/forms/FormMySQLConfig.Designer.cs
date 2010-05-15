@@ -174,7 +174,7 @@
             this.Name = "FormMySQLConfig";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Configuracoes do MySQL";
+            this.Text = "Configuracões do MySQL";
             this.ResumeLayout(false);
             this.PerformLayout();
 

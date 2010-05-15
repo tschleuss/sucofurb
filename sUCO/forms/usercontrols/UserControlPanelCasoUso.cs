@@ -105,6 +105,13 @@ namespace sUCO.forms.usercontrols
             {
                 this.ChangeNameCasoUso(this, new Arguments(novoNome));
             }
+
+            this.AtualizarDataUltimaAlteracaoProjeto();
+        }
+
+        public void AtualizarDataUltimaAlteracaoProjeto()
+        {
+            this.principal.AtualizarDataUltimaAlteracaoProjeto();
         }
 
         private void AlterarNomeCasoUso(object sender, Arguments e)

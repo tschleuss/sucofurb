@@ -12,6 +12,7 @@ namespace sUCO.core
         public DateTime DataAtualizacao { get; set; }
         public String   Responsavel { get; set; }
         public String   NomeArquivo { get; set; }
+        public String   DatePattern { get; set; }
         public IList<UserControlPanelCasoUso> listaPanelCasoUso;
 
         public Projeto()
@@ -19,6 +20,7 @@ namespace sUCO.core
             this.listaPanelCasoUso = new List<UserControlPanelCasoUso>();
             this.DataCriacao = System.DateTime.Now;
             this.DataAtualizacao = System.DateTime.Now;
+            this.DatePattern = @"dd\/MM\/yyyy HH:mm:ss";
         }
 
         public void AddPanelCasoUso(UserControlPanelCasoUso panel)

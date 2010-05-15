@@ -38,7 +38,7 @@ namespace sUCO.dao
 
         public void delete(CenarioAlternativo cenario)
         {
-            if (cenario.Codigo != null)
+            if (cenario.Codigo != 0)
             {
                 StringBuilder sql = new StringBuilder();
                 sql.Append(" DELETE FROM cenario WHERE cd_cenario = {0} ");
