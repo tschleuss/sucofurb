@@ -12,7 +12,9 @@ namespace sUCO.control
     {
         #region Serializador Members
 
-        public void salvarArquivo(Projeto projeto, IList<CasoUso> ucList)
+        #region Salvar Projeto
+
+        public void SalvarArquivo(Projeto projeto, IList<CasoUso> ucList)
         {
             ProjetoDAO projDAO = new ProjetoDAO();
             CasoUsoDAO casoDAO = new CasoUsoDAO();
@@ -23,49 +25,72 @@ namespace sUCO.control
             //Exclui tudo antes
             if (projeto.Codigo != 0)
             {
+                #region Casos de Uso
+
                 foreach (CasoUso casoUso in ucList)
                 {
                     IList<Raia> listaRaias = casoUso.FluxoCasoUso.ListaRaias;
+
+                    #region Raias
 
                     foreach (Raia raia in listaRaias)
                     {
                         IList<Acao> listaAcoes = raia.ListaAcoes;
 
+                        #region Ações
+
                         foreach (Acao acao in listaAcoes)
                         {
                             IList<CenarioAlternativo> listaCenarios = acao.Cenarios;
+
+                            #region Cenarios
 
                             foreach (CenarioAlternativo cenario in listaCenarios)
                             {
                                 IList<Raia> listaCenarioRaia = cenario.ListaRaias;
 
+                                #region Raias
+
                                 foreach (Raia cenarioRaia in listaCenarioRaia)
                                 {
                                     IList<Acao> listaAcoesRaia = cenarioRaia.ListaAcoes;
+
+                                    #region Ações
 
                                     foreach (Acao acaoRaia in listaAcoesRaia)
                                     {
                                         acaoDAO.delete(acaoRaia);
                                     }
 
+                                    #endregion
+
                                     raiaDAO.delete(cenarioRaia);
                                 }
+
+                                #endregion
 
                                 cenarioDAO.delete(cenario);
                             }
 
+                            #endregion
+
                             acaoDAO.delete(acao);
                         }
+
+                        #endregion
 
                         raiaDAO.delete(raia);
                     }
 
+                    #endregion
+
                     casoDAO.delete(casoUso);
                 }
 
+                #endregion
+
                 projDAO.delete(projeto);
             }
-
 
             projDAO.insert(projeto);
 
@@ -75,7 +100,11 @@ namespace sUCO.control
             }
         }
 
-        public IList<CasoUso> abrirArquivo(ref Projeto projeto)
+        #endregion
+
+        #region Abrir Projeto
+
+        public IList<CasoUso> AbrirArquivo(ref Projeto projeto)
         {
             ProjetoDAO projDAO = new ProjetoDAO();
             CasoUsoDAO casoDAO = new CasoUsoDAO();
@@ -84,7 +113,7 @@ namespace sUCO.control
             CenarioDAO cenarioDAO = new CenarioDAO();
             IList<CasoUso> casoUsoList = null;
 
-            DBUtil.Instance.testConnection();
+            DBUtil.Instance.testConnection(false);
             if (DBUtil.Instance.Configured)
             {
                 IList<Projeto> projetoList = projDAO.findAll();
@@ -140,6 +169,8 @@ namespace sUCO.control
 
             return casoUsoList;
         }
+
+        #endregion
 
         #endregion
     }

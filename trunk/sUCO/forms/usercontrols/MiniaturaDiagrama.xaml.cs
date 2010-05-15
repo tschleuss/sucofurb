@@ -25,9 +25,12 @@ namespace sUCO.forms.usercontrols
             get;
         }
 
-        public MiniaturaDiagrama()
+        private Principal formPrincipal;
+
+        public MiniaturaDiagrama(Principal formPrincipal)
         {
             InitializeComponent();
+            this.formPrincipal = formPrincipal;
         }
 
         public void SetImage( RenderTargetBitmap bitmap )
@@ -48,13 +51,13 @@ namespace sUCO.forms.usercontrols
 
         private void diagrama_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!Principal.tabControl.TabPages.Contains(this.Tab))
+            if (!formPrincipal.TabControl.TabPages.Contains(this.Tab))
             {
-                Principal.tabControl.Controls.Add(this.Tab);
+                formPrincipal.TabControl.Controls.Add(this.Tab);
             }
 
             //seleciona a tab
-            Principal.tabControl.SelectedTab = Tab;
+            formPrincipal.TabControl.SelectedTab = Tab;
         }
 
     }

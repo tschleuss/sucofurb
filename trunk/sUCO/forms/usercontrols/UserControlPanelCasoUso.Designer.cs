@@ -35,7 +35,7 @@ namespace sUCO.forms.usercontrols
             this.btEditarNome = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.hostMiniDiagrama = new System.Windows.Forms.Integration.ElementHost();
-            this.miniDiagrama = new sUCO.forms.usercontrols.MiniaturaDiagrama();
+            this.miniDiagrama = new sUCO.forms.usercontrols.MiniaturaDiagrama(this.principal);
             this.SuspendLayout();
             // 
             // txtCasoUso

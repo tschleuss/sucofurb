@@ -7,6 +7,7 @@ using sUCO.core;
 using System.Collections.Generic;
 using sUCO.forms.usercontrols;
 using sUCO.forms;
+using System.Globalization;
 
 namespace sUCO.control
 {
@@ -14,23 +15,23 @@ namespace sUCO.control
     {
         #region Serializador Members
 
-        void Serializador.salvarArquivo(Projeto projeto, IList<CasoUso> ucList)
+        void Serializador.SalvarArquivo(Projeto projeto, IList<CasoUso> ucList)
         {
             if (File.Exists(projeto.NomeArquivo))
             {
                 File.Delete(projeto.NomeArquivo);
             }
 
-            salvarXML(projeto, ucList);
+            SalvarXML(projeto, ucList);
         }
 
-        IList<CasoUso> Serializador.abrirArquivo(ref Projeto projeto)
+        IList<CasoUso> Serializador.AbrirArquivo(ref Projeto projeto)
         {
             if (File.Exists(projeto.NomeArquivo))
             {
                 IList<CasoUso> ucList = new List<CasoUso>();
                 XmlTextReader xmlIn = new XmlTextReader(projeto.NomeArquivo);
-                xmlIn = lerXmlRaias(xmlIn, ucList, projeto, null, null);
+                xmlIn = LerXmlRaias(xmlIn, ucList, projeto, null, null);
 
                 return ucList;
             }
@@ -40,15 +41,15 @@ namespace sUCO.control
 
         #endregion
 
-        private static void salvarXML(Projeto projeto, IList<CasoUso> ucList)
+        private static void SalvarXML(Projeto projeto, IList<CasoUso> ucList)
         {
             XmlTextWriter xmlOut = new XmlTextWriter(projeto.NomeArquivo, null);
             xmlOut.Formatting = Formatting.Indented;
             xmlOut.WriteStartDocument();
             xmlOut.WriteStartElement("casosDeUso");
             xmlOut.WriteAttributeString("nome", projeto.Nome);
-            xmlOut.WriteAttributeString("criado", projeto.DataCriacao.ToString());
-            xmlOut.WriteAttributeString("atualizado", projeto.DataAtualizacao.ToString());
+            xmlOut.WriteAttributeString("criado", projeto.DataCriacao.ToString(projeto.DatePattern));
+            xmlOut.WriteAttributeString("atualizado", projeto.DataAtualizacao.ToString(projeto.DatePattern));
             xmlOut.WriteAttributeString("responsavel", projeto.Responsavel);
 
             foreach (CasoUso diagrama in ucList)
@@ -59,7 +60,7 @@ namespace sUCO.control
                 xmlOut.WriteAttributeString("objetivo", diagrama.Objetivo);
                 xmlOut.WriteAttributeString("preCondicao", diagrama.PreCondicao);
                 xmlOut.WriteAttributeString("posCondicao", diagrama.PosCondicao);
-                xmlOut = geraXmlRaias(xmlOut, diagrama.FluxoCasoUso.ListaRaias);
+                xmlOut = GeraXmlRaias(xmlOut, diagrama.FluxoCasoUso.ListaRaias);
                 xmlOut.WriteEndElement();
 
                 xmlOut.WriteStartElement("casoDeUso-end");
@@ -72,7 +73,7 @@ namespace sUCO.control
             xmlOut.Close();
         }
 
-        private static XmlTextWriter geraXmlRaias(XmlTextWriter xmlOut, IList<Raia> listaRaias)
+        private static XmlTextWriter GeraXmlRaias(XmlTextWriter xmlOut, IList<Raia> listaRaias)
         {
             xmlOut.WriteStartElement("raias");
             foreach (Raia raia in listaRaias)
@@ -98,7 +99,7 @@ namespace sUCO.control
                                 xmlOut.WriteAttributeString("nome", cenario.Nome);
 
                                 //Recursivamente gera o xml para as raias e acoes dos cenarios alternativos.
-                                geraXmlRaias(xmlOut, cenario.ListaRaias);
+                                GeraXmlRaias(xmlOut, cenario.ListaRaias);
                                 xmlOut.WriteEndElement();
 
                                 xmlOut.WriteStartElement("cenario-end");
@@ -116,7 +117,7 @@ namespace sUCO.control
             return xmlOut;
         }
 
-        private static XmlTextReader lerXmlRaias(XmlTextReader xmlIn, IList<CasoUso> usList, Projeto projeto, CasoUso casoDeUso, IList<Raia> raias)
+        private static XmlTextReader LerXmlRaias(XmlTextReader xmlIn, IList<CasoUso> usList, Projeto projeto, CasoUso casoDeUso, IList<Raia> raias)
         {
             IList<Acao> acoes = null;
             CenarioAlternativo cenario = null;
@@ -131,11 +132,10 @@ namespace sUCO.control
                 {
                     if (xmlIn.Name.Equals("casosDeUso"))
                     {
-                        String datePattern = "dd/MM/yyyy HH:mm:ss";
                         projeto.Nome = xmlIn.GetAttribute("nome");
                         projeto.Responsavel = xmlIn.GetAttribute("responsavel");
-                        projeto.DataCriacao = DateTime.ParseExact(xmlIn.GetAttribute("criado"), datePattern, null);
-                        projeto.DataAtualizacao = DateTime.ParseExact(xmlIn.GetAttribute("criado"), datePattern, null);
+                        projeto.DataCriacao = DateTime.ParseExact(xmlIn.GetAttribute("criado"), projeto.DatePattern, null);
+                        projeto.DataAtualizacao = DateTime.ParseExact(xmlIn.GetAttribute("atualizado"), projeto.DatePattern, null);
                     }
 
                     if (xmlIn.Name.Equals("casoDeUso"))
@@ -173,7 +173,7 @@ namespace sUCO.control
                         acoes[acoes.Count - 1].Cenarios.Add(cenario);
 
                         //Recursivamente recupera as raias e acoes dos cenarios alternativos.
-                        xmlIn = lerXmlRaias(xmlIn, usList, projeto, casoDeUso, cenario.ListaRaias);
+                        xmlIn = LerXmlRaias(xmlIn, usList, projeto, casoDeUso, cenario.ListaRaias);
                     }
 
                     if (xmlIn.Name.Equals("cenario-end"))

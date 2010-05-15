@@ -48,20 +48,20 @@ namespace sUCO.forms.usercontrols
 
         private void btRaiaAdd_Click(object sender, EventArgs e)
         {
-            criarRaia(casoUso.FluxoCasoUso, dgCasosUso);
+            CriarRaia(casoUso.FluxoCasoUso, dgCasosUso);
         }
 
         private void dgCasosUso_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            doAlterarRaia(casoUso.FluxoCasoUso, dgCasosUso, e.ColumnIndex);
+            DoAlterarRaia(casoUso.FluxoCasoUso, dgCasosUso, e.ColumnIndex);
         }
 
         private void btRaiaDel_Click(object sender, EventArgs e)
         {
-            doRemoverRaia(casoUso.FluxoCasoUso, dgCasosUso);
+            DoRemoverRaia(casoUso.FluxoCasoUso, dgCasosUso);
         }
 
-        private bool podeEditarCelula(DataGridView dataGridView, int linha, int coluna)
+        private bool PodeEditarCelula(DataGridView dataGridView, int linha, int coluna)
         {
             for (int x = 0; x < dataGridView.ColumnCount; x++)
             {
@@ -79,7 +79,7 @@ namespace sUCO.forms.usercontrols
 
         private void dgCasosUso_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            if (!podeEditarCelula(dgCasosUso, e.RowIndex, e.ColumnIndex))
+            if (!PodeEditarCelula(dgCasosUso, e.RowIndex, e.ColumnIndex))
             {
                 e.Cancel = true;
             }
@@ -87,20 +87,20 @@ namespace sUCO.forms.usercontrols
 
         private void dgCasosUso_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            addAcao(casoUso.FluxoCasoUso, (DataGridView)sender);
+            AdicionarAcao(casoUso.FluxoCasoUso, (DataGridView)sender);
         }
 
         private void dgCasosUso_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            doRemoverAcao(casoUso.FluxoCasoUso, (DataGridView)sender, e.RowIndex);
+            RemoverAcao(casoUso.FluxoCasoUso, (DataGridView)sender, e.RowIndex);
         }
 
         private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            CenarioAlternativo cenario = buscarCenarioSelecionado();
+            CenarioAlternativo cenario = BuscarCenarioSelecionado();
             if (cenario != null)
             {
-                addAcao(cenario, (DataGridView)sender);
+                AdicionarAcao(cenario, (DataGridView)sender);
             }
         }
 
@@ -113,15 +113,15 @@ namespace sUCO.forms.usercontrols
 
                 if (cbCenariosAlternativos.SelectedIndex > -1)
                 {
-                    Acao acao = casoUso.FluxoCasoUso.getAcao(columnIndex, rowIndex);
+                    Acao acao = casoUso.FluxoCasoUso.GetAcao(columnIndex, rowIndex);
 
                     CenarioAlternativo cenario = (CenarioAlternativo)acao.Cenarios[cbCenariosAlternativos.SelectedIndex];
-                    doRemoverAcao(cenario, (DataGridView)sender, e.RowIndex);
+                    RemoverAcao(cenario, (DataGridView)sender, e.RowIndex);
                 }
             }
         }
 
-        private void limparGrig(DataGridView dataGridView)
+        private void LimparGrig(DataGridView dataGridView)
         {
             dataGridView.Columns.Clear();
             dataGridView.Rows.Clear();
@@ -130,7 +130,7 @@ namespace sUCO.forms.usercontrols
 
         private void dgCasosUso_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            doAlterarAcao(casoUso.FluxoCasoUso, dgCasosUso, e.ColumnIndex, e.RowIndex);
+            AlterarAcao(casoUso.FluxoCasoUso, dgCasosUso, e.ColumnIndex, e.RowIndex);
         }
 
         private void novoCenarioToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -147,34 +147,37 @@ namespace sUCO.forms.usercontrols
 
                     CenarioAlternativo cenario = new CenarioAlternativo(formCenario.NomeCenario);
 
-                    Acao acao = casoUso.FluxoCasoUso.getAcao(columnIndex, rowIndex);
+                    Acao acao = casoUso.FluxoCasoUso.GetAcao(columnIndex, rowIndex);
                     acao.Cenarios.Add(cenario);
 
-                    carregarCenarios(acao.Cenarios.IndexOf(cenario));
+                    CarregarCenarios(acao.Cenarios.IndexOf(cenario));
+
+                    this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
                 }
             }
         }
 
         private void removerCenarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CenarioAlternativo cenario = buscarCenarioSelecionado();
+            CenarioAlternativo cenario = BuscarCenarioSelecionado();
             if (cenario != null)
             {
                 int rowIndex = dgCasosUso.SelectedCells[0].RowIndex;
                 int columnIndex = dgCasosUso.SelectedCells[0].ColumnIndex;
 
-                casoUso.FluxoCasoUso.getAcao(columnIndex, rowIndex).Cenarios.Remove(cenario);
-                carregarCenarios(0);
+                casoUso.FluxoCasoUso.GetAcao(columnIndex, rowIndex).Cenarios.Remove(cenario);
+                CarregarCenarios(0);
+                this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
             }
         }
 
-        private void carregarCenarios(int index)
+        private void CarregarCenarios(int index)
         {
             cbCenariosAlternativos.Items.Clear();
             cbCenariosAlternativos.SelectedIndex = -1;
             cbCenariosAlternativos.Text = "";
 
-            limparGrig(dgCenarioAlternativo);
+            LimparGrig(dgCenarioAlternativo);
 
             if (dgCasosUso.SelectedCells.Count == 1)
             {
@@ -183,7 +186,7 @@ namespace sUCO.forms.usercontrols
 
                 if (dgCasosUso[columnIndex, rowIndex].Value != null)
                 {
-                    Acao acao = casoUso.FluxoCasoUso.getAcao(columnIndex, rowIndex);
+                    Acao acao = casoUso.FluxoCasoUso.GetAcao(columnIndex, rowIndex);
                     if (acao != null)
                     {
                         if (index < acao.Cenarios.Count)
@@ -194,66 +197,71 @@ namespace sUCO.forms.usercontrols
                             inserindoCenario = false;
 
                             CenarioAlternativo cenario = (CenarioAlternativo)acao.Cenarios[index];
-                            cenario.doCarregarDatagridView(dgCenarioAlternativo);
+                            cenario.CarregarDatagridView(dgCenarioAlternativo);
                         }
                     }
                 }
             }
 
-            validarBotoesCenario();
+            ValidarBotoesCenario();
         }
 
-        private void dgCasosUso_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgCasosUso_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            carregarCenarios(0);
+            CarregarCenarios(0);
         }
 
         private void adicionarRaiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CenarioAlternativo cenario = buscarCenarioSelecionado();
+            CenarioAlternativo cenario = BuscarCenarioSelecionado();
             if (cenario != null)
             {
-                criarRaia(cenario, dgCenarioAlternativo);
+                CriarRaia(cenario, dgCenarioAlternativo);
+                this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
             }
         }
 
-        private void criarRaia(FluxoCasoUso diagrama, DataGridView dataGridView)
+        private void CriarRaia(FluxoCasoUso fluxo, DataGridView dataGridView)
         {
             FormAddRaia formAddRaia = new FormAddRaia();
             formAddRaia.ShowDialog();
 
             if (!formAddRaia.Cancelado)
             {
-                DataGridViewColumn[] columns = diagrama.addRaia(new Raia(formAddRaia.NomeRaia, 100, new List<Acao>()));
+                DataGridViewColumn[] columns = fluxo.AddRaia(new Raia(formAddRaia.NomeRaia, 100, new List<Acao>()));
                 foreach (DataGridViewColumn column in columns)
                 {
                     dataGridView.Columns.Add(column);
                 }
+                this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
             }
         }
 
-        private void addAcao(FluxoCasoUso diagrama, DataGridView dataGridView)
+        private void AdicionarAcao(FluxoCasoUso fluxo, DataGridView dataGridView)
         {
-            diagrama.addAcao();
+            fluxo.AdicionarAcao();
+            this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
         }
 
-        private void doRemoverAcao(FluxoCasoUso diagrama, DataGridView dataGridView, int rowIndex)
+        private void RemoverAcao(FluxoCasoUso fluxo, DataGridView dataGridView, int rowIndex)
         {
-            diagrama.doRemoverAcao(rowIndex);
+            fluxo.RemoverAcao(rowIndex);
+            this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
         }
 
-        private void doAlterarAcao(FluxoCasoUso diagrama, DataGridView dataGridView, int columnIndex, int rowIndex)
+        private void AlterarAcao(FluxoCasoUso fluxo, DataGridView dataGridView, int columnIndex, int rowIndex)
         {
             object texto = dataGridView[columnIndex, rowIndex].Value;
-            Acao acao = diagrama.getAcao(columnIndex, rowIndex);
+            Acao acao = fluxo.GetAcao(columnIndex, rowIndex);
 
             if (acao != null)
             {
                 acao.Texto = (texto != null ? texto.ToString() : "");
+                this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
             }
         }
 
-        private void doAlterarRaia(FluxoCasoUso diagrama, DataGridView dataGridView, int columnIndex)
+        private void DoAlterarRaia(FluxoCasoUso fluxo, DataGridView dataGridView, int columnIndex)
         {
             if (dataGridView.ColumnCount > 0)
             {
@@ -263,26 +271,28 @@ namespace sUCO.forms.usercontrols
 
                 if (formAlterarRaia.AlterarNome)
                 {
-                    diagrama.doAlterarNomeRaia(columnIndex, formAlterarRaia.NomeRaia, dataGridView);
+                    fluxo.AlterarNomeRaia(columnIndex, formAlterarRaia.NomeRaia, dataGridView);
+                    this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
                 }
                 else if (formAlterarRaia.Remover)
                 {
-                    diagrama.doRemoverRaia(columnIndex, dataGridView);
+                    fluxo.RemoverRaia(columnIndex, dataGridView);
+                    this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
                 }
             }
         }
 
         private void dgCenarioAlternativo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            CenarioAlternativo cenario = buscarCenarioSelecionado();
+            CenarioAlternativo cenario = BuscarCenarioSelecionado();
             if (cenario != null)
             {
-                doAlterarAcao(cenario, dgCenarioAlternativo, e.ColumnIndex, e.RowIndex);
+                AlterarAcao(cenario, dgCenarioAlternativo, e.ColumnIndex, e.RowIndex);
             }
         }
 
         bool inserindoCenario = false;
-        private CenarioAlternativo buscarCenarioSelecionado()
+        private CenarioAlternativo BuscarCenarioSelecionado()
         {
             if (dgCasosUso.SelectedCells.Count == 1)
             {
@@ -293,7 +303,7 @@ namespace sUCO.forms.usercontrols
                 {
                     if (cbCenariosAlternativos.SelectedIndex > -1)
                     {
-                        Acao acao = casoUso.FluxoCasoUso.getAcao(columnIndex, rowIndex);
+                        Acao acao = casoUso.FluxoCasoUso.GetAcao(columnIndex, rowIndex);
                         if (acao != null)
                         {
                             CenarioAlternativo cenario = null;
@@ -318,10 +328,10 @@ namespace sUCO.forms.usercontrols
 
         private void dgCenarioAlternativo_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            CenarioAlternativo cenario = buscarCenarioSelecionado();
+            CenarioAlternativo cenario = BuscarCenarioSelecionado();
             if (cenario != null)
             {
-                doAlterarRaia(cenario, dgCenarioAlternativo, e.ColumnIndex);
+                DoAlterarRaia(cenario, dgCenarioAlternativo, e.ColumnIndex);
             }
         }
 
@@ -329,21 +339,21 @@ namespace sUCO.forms.usercontrols
         {
             if (!inserindoCenario)
             {
-                carregarCenarios(cbCenariosAlternativos.SelectedIndex);
+                CarregarCenarios(cbCenariosAlternativos.SelectedIndex);
             }
         }
 
         private void dgCenarioAlternativo_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            if (!podeEditarCelula(dgCenarioAlternativo, e.RowIndex, e.ColumnIndex))
+            if (!PodeEditarCelula(dgCenarioAlternativo, e.RowIndex, e.ColumnIndex))
             {
                 e.Cancel = true;
             }
         }
 
-        private void validarBotoesCenario()
+        private void ValidarBotoesCenario()
         {
-            CenarioAlternativo cenario = buscarCenarioSelecionado();
+            CenarioAlternativo cenario = BuscarCenarioSelecionado();
             if (cenario != null)
             {
                 btNovoCenario.Enabled = true;
@@ -374,7 +384,7 @@ namespace sUCO.forms.usercontrols
 
         private void alterarCenarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CenarioAlternativo cenario = buscarCenarioSelecionado();
+            CenarioAlternativo cenario = BuscarCenarioSelecionado();
             if (cenario != null)
             {
                 FormAlterarCenario formAltCenario = new FormAlterarCenario();
@@ -384,7 +394,7 @@ namespace sUCO.forms.usercontrols
                 if (formAltCenario.AlterarNome)
                 {
                     cenario.Nome = formAltCenario.NomeCenario;
-                    carregarCenarios(cbCenariosAlternativos.SelectedIndex);
+                    CarregarCenarios(cbCenariosAlternativos.SelectedIndex);
                 }
                 else if (formAltCenario.Remover)
                 {
@@ -392,11 +402,11 @@ namespace sUCO.forms.usercontrols
                     int columnIndex = dgCasosUso.SelectedCells[0].ColumnIndex;
 
 
-                    Acao acao = casoUso.FluxoCasoUso.getAcao(columnIndex, rowIndex);
+                    Acao acao = casoUso.FluxoCasoUso.GetAcao(columnIndex, rowIndex);
                     if (acao != null)
                     {
                         acao.Cenarios.Remove(cenario);
-                        carregarCenarios(0);
+                        CarregarCenarios(0);
                     }
                 }
             }
@@ -412,7 +422,7 @@ namespace sUCO.forms.usercontrols
             splitContainerFluxoUC.Panel2Collapsed = true;
         }
 
-        private void doRemoverRaia(FluxoCasoUso diagrama, DataGridView dataGridView)
+        private void DoRemoverRaia(FluxoCasoUso fluxo, DataGridView dataGridView)
         {
             if (dataGridView.ColumnCount >= 1)
             {
@@ -427,7 +437,7 @@ namespace sUCO.forms.usercontrols
                 if (raias.Length == 1)
                 {
                     dataGridView.Columns.RemoveAt(0);
-                    diagrama.ListaRaias.RemoveAt(0);
+                    fluxo.ListaRaias.RemoveAt(0);
                 }
                 else
                 {
@@ -437,9 +447,11 @@ namespace sUCO.forms.usercontrols
                     if (formDeleteRaia.Remover)
                     {
                         dataGridView.Columns.Remove(formDeleteRaia.NomeRaia);
-                        diagrama.ListaRaias.RemoveAt(formDeleteRaia.Index - 1);
+                        fluxo.ListaRaias.RemoveAt(formDeleteRaia.Index - 1);
                     }
                 }
+
+                this.panelSelecao.AtualizarDataUltimaAlteracaoProjeto();
             }
             else
             {
@@ -449,16 +461,16 @@ namespace sUCO.forms.usercontrols
 
         private void removerRaiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CenarioAlternativo cenario = buscarCenarioSelecionado();
+            CenarioAlternativo cenario = BuscarCenarioSelecionado();
             if (cenario != null)
             {
-                doRemoverRaia(cenario, dgCenarioAlternativo);
+                DoRemoverRaia(cenario, dgCenarioAlternativo);
             }
         }
 
         private void dgCasosUso_SelectionChanged(object sender, EventArgs e)
         {
-            validarBotoesCenario();
+            ValidarBotoesCenario();
         }
 
         private void txt_TextChanged(object sender, System.EventArgs e)
@@ -512,7 +524,7 @@ namespace sUCO.forms.usercontrols
 
         public void refreshComponentes()
         {
-            this.casoUso.FluxoCasoUso.doCarregarDatagridView(this.dgCasosUso);
+            this.casoUso.FluxoCasoUso.CarregarDatagridView(this.dgCasosUso);
         }
     }
 }

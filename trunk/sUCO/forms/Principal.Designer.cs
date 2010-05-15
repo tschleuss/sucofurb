@@ -1,8 +1,5 @@
 ﻿using System.Windows.Forms;
-using sUCO.core.events;
 using sUCO.forms.usercontrols;
-using System.ComponentModel;
-using System.Drawing;
 
 namespace sUCO.forms
 {
@@ -62,11 +59,11 @@ namespace sUCO.forms
             this.menuItemInternoNovo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemInternoAbrir = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemInternoSalvarBD = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemInternoImportarXML = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemInternoExportarXML = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemInternoXML = new System.Windows.Forms.ToolStripMenuItem();
-            this.preferenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemInternoExportarXML = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemInternoImportarXML = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemPreferencias = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemInternoSQL = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirArquivoDialog = new System.Windows.Forms.OpenFileDialog();
             this.topToolBox = new System.Windows.Forms.ToolStrip();
             this.btNovo = new System.Windows.Forms.ToolStripButton();
@@ -74,13 +71,18 @@ namespace sUCO.forms
             this.btSalvar = new System.Windows.Forms.ToolStripButton();
             this.btRelatorio = new System.Windows.Forms.ToolStripButton();
             this.panelTab = new System.Windows.Forms.Panel();
-            tabControl = new sUCO.forms.usercontrols.TabControlCasoUso();
+            this.tabControl = new sUCO.forms.usercontrols.TabControlCasoUso();
             this.tabPageProjeto = new System.Windows.Forms.TabPage();
             this.panelProjeto = new System.Windows.Forms.Panel();
             this.splitProjetoCasosUso = new System.Windows.Forms.SplitContainer();
+            this.groupBoxDadosProjeto = new System.Windows.Forms.GroupBox();
+            this.lblDataAtualizacaoValor = new System.Windows.Forms.Label();
+            this.lblDataAtualizacao = new System.Windows.Forms.Label();
+            this.lblDataCriacaoValor = new System.Windows.Forms.Label();
+            this.lblDataCriacao = new System.Windows.Forms.Label();
+            this.lblNomeProjeto = new System.Windows.Forms.Label();
             this.lblResponsavel = new System.Windows.Forms.Label();
             this.txtResponsavel = new System.Windows.Forms.TextBox();
-            this.lblNomeProjeto = new System.Windows.Forms.Label();
             this.txtNomeProjeto = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelCasoUso = new System.Windows.Forms.TableLayoutPanel();
             this.projectToolBox = new System.Windows.Forms.MenuStrip();
@@ -90,12 +92,13 @@ namespace sUCO.forms
             this.menuTopo.SuspendLayout();
             this.topToolBox.SuspendLayout();
             this.panelTab.SuspendLayout();
-            tabControl.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.tabPageProjeto.SuspendLayout();
             this.panelProjeto.SuspendLayout();
             this.splitProjetoCasosUso.Panel1.SuspendLayout();
             this.splitProjetoCasosUso.Panel2.SuspendLayout();
             this.splitProjetoCasosUso.SuspendLayout();
+            this.groupBoxDadosProjeto.SuspendLayout();
             this.projectToolBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,7 +106,7 @@ namespace sUCO.forms
             // 
             this.menuTopo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemArquivo,
-            this.preferenciasToolStripMenuItem});
+            this.menuItemPreferencias});
             this.menuTopo.Location = new System.Drawing.Point(0, 0);
             this.menuTopo.Name = "menuTopo";
             this.menuTopo.Size = new System.Drawing.Size(917, 24);
@@ -124,7 +127,7 @@ namespace sUCO.forms
             // 
             this.menuItemInternoNovo.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoNovo.Image")));
             this.menuItemInternoNovo.Name = "menuItemInternoNovo";
-            this.menuItemInternoNovo.Size = new System.Drawing.Size(152, 22);
+            this.menuItemInternoNovo.Size = new System.Drawing.Size(105, 22);
             this.menuItemInternoNovo.Text = "Novo";
             this.menuItemInternoNovo.Click += new System.EventHandler(this.menuItemInternoNovo_Click);
             // 
@@ -132,7 +135,7 @@ namespace sUCO.forms
             // 
             this.menuItemInternoAbrir.Image = ((System.Drawing.Image)(resources.GetObject("menuItemInternoAbrir.Image")));
             this.menuItemInternoAbrir.Name = "menuItemInternoAbrir";
-            this.menuItemInternoAbrir.Size = new System.Drawing.Size(152, 22);
+            this.menuItemInternoAbrir.Size = new System.Drawing.Size(105, 22);
             this.menuItemInternoAbrir.Text = "Abrir";
             this.menuItemInternoAbrir.Click += new System.EventHandler(this.menuItemInternoAbrir_Click);
             // 
@@ -140,50 +143,51 @@ namespace sUCO.forms
             // 
             this.menuItemInternoSalvarBD.Image = global::sUCO.Properties.Resources.save;
             this.menuItemInternoSalvarBD.Name = "menuItemInternoSalvarBD";
-            this.menuItemInternoSalvarBD.Size = new System.Drawing.Size(152, 22);
+            this.menuItemInternoSalvarBD.Size = new System.Drawing.Size(105, 22);
             this.menuItemInternoSalvarBD.Text = "Salvar";
             this.menuItemInternoSalvarBD.Click += new System.EventHandler(this.menuItemInternoSalvarBD_Click);
             // 
-            // menuItemInternoImportarXML
+            // menuItemInternoXML
             // 
-            this.menuItemInternoImportarXML.Image = global::sUCO.Properties.Resources.xml;
-            this.menuItemInternoImportarXML.Name = "menuItemInternoImportarXML";
-            this.menuItemInternoImportarXML.Size = new System.Drawing.Size(152, 22);
-            this.menuItemInternoImportarXML.Text = "Importar XML";
-            this.menuItemInternoImportarXML.Click += new System.EventHandler(this.btAbrir_Click);
+            this.menuItemInternoXML.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemInternoExportarXML,
+            this.menuItemInternoImportarXML});
+            this.menuItemInternoXML.Image = global::sUCO.Properties.Resources.xml;
+            this.menuItemInternoXML.Name = "menuItemInternoXML";
+            this.menuItemInternoXML.Size = new System.Drawing.Size(105, 22);
+            this.menuItemInternoXML.Text = "XML";
             // 
             // menuItemInternoExportarXML
             // 
             this.menuItemInternoExportarXML.Image = global::sUCO.Properties.Resources.xml;
             this.menuItemInternoExportarXML.Name = "menuItemInternoExportarXML";
-            this.menuItemInternoExportarXML.Size = new System.Drawing.Size(152, 22);
+            this.menuItemInternoExportarXML.Size = new System.Drawing.Size(147, 22);
             this.menuItemInternoExportarXML.Text = "Exportar XML";
             this.menuItemInternoExportarXML.Click += new System.EventHandler(this.menuItemInternoSalvar_Click);
             // 
-            // menuItemInternoXML
+            // menuItemInternoImportarXML
             // 
-            this.menuItemInternoXML.Image = global::sUCO.Properties.Resources.xml;
-            this.menuItemInternoXML.Name = "menuItemInternoXML";
-            this.menuItemInternoXML.Size = new System.Drawing.Size(152, 22);
-            this.menuItemInternoXML.Text = "XML";
-            this.menuItemInternoXML.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemInternoExportarXML, this.menuItemInternoImportarXML});
+            this.menuItemInternoImportarXML.Image = global::sUCO.Properties.Resources.xml;
+            this.menuItemInternoImportarXML.Name = "menuItemInternoImportarXML";
+            this.menuItemInternoImportarXML.Size = new System.Drawing.Size(147, 22);
+            this.menuItemInternoImportarXML.Text = "Importar XML";
+            this.menuItemInternoImportarXML.Click += new System.EventHandler(this.btAbrir_Click);
             // 
-            // preferenciasToolStripMenuItem
+            // menuItemPreferencias
             // 
-            this.preferenciasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.preferenciasToolStripMenuItem.Name = "preferenciasToolStripMenuItem";
-            this.preferenciasToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
-            this.preferenciasToolStripMenuItem.Text = "Preferencias";
+            this.menuItemPreferencias.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemInternoSQL});
+            this.menuItemPreferencias.Name = "menuItemPreferencias";
+            this.menuItemPreferencias.Size = new System.Drawing.Size(83, 20);
+            this.menuItemPreferencias.Text = "Preferências";
             // 
-            // toolStripMenuItem1
+            // menuItemInternoSQL
             // 
-            this.toolStripMenuItem1.Image = global::sUCO.Properties.Resources.connect;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
-            this.toolStripMenuItem1.Text = "MySQL";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.menuItemInternoSQL.Image = global::sUCO.Properties.Resources.connect;
+            this.menuItemInternoSQL.Name = "menuItemInternoSQL";
+            this.menuItemInternoSQL.Size = new System.Drawing.Size(112, 22);
+            this.menuItemInternoSQL.Text = "MySQL";
+            this.menuItemInternoSQL.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // abrirArquivoDialog
             // 
@@ -246,7 +250,7 @@ namespace sUCO.forms
             // 
             this.panelTab.AutoScroll = true;
             this.panelTab.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelTab.Controls.Add(tabControl);
+            this.panelTab.Controls.Add(this.tabControl);
             this.panelTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTab.Location = new System.Drawing.Point(0, 49);
             this.panelTab.Name = "panelTab";
@@ -255,14 +259,14 @@ namespace sUCO.forms
             // 
             // tabControl
             // 
-            tabControl.Controls.Add(this.tabPageProjeto);
-            tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            tabControl.Location = new System.Drawing.Point(0, 0);
-            tabControl.Name = "tabControl";
-            tabControl.SelectedIndex = 0;
-            tabControl.Size = new System.Drawing.Size(913, 520);
-            tabControl.TabIndex = 7;
+            this.tabControl.Controls.Add(this.tabPageProjeto);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(913, 520);
+            this.tabControl.TabIndex = 7;
             // 
             // tabPageProjeto
             // 
@@ -296,50 +300,107 @@ namespace sUCO.forms
             // 
             // splitProjetoCasosUso.Panel1
             // 
-            this.splitProjetoCasosUso.Panel1.Controls.Add(this.lblResponsavel);
-            this.splitProjetoCasosUso.Panel1.Controls.Add(this.txtResponsavel);
-            this.splitProjetoCasosUso.Panel1.Controls.Add(this.lblNomeProjeto);
-            this.splitProjetoCasosUso.Panel1.Controls.Add(this.txtNomeProjeto);
+            this.splitProjetoCasosUso.Panel1.Controls.Add(this.groupBoxDadosProjeto);
             // 
             // splitProjetoCasosUso.Panel2
             // 
             this.splitProjetoCasosUso.Panel2.AutoScroll = true;
             this.splitProjetoCasosUso.Panel2.Controls.Add(this.tableLayoutPanelCasoUso);
             this.splitProjetoCasosUso.Size = new System.Drawing.Size(865, 488);
-            this.splitProjetoCasosUso.SplitterDistance = 25;
+            this.splitProjetoCasosUso.SplitterDistance = 70;
             this.splitProjetoCasosUso.TabIndex = 12;
             // 
-            // lblResponsavel
+            // groupBoxDadosProjeto
             // 
-            this.lblResponsavel.AutoSize = true;
-            this.lblResponsavel.BackColor = System.Drawing.Color.Transparent;
-            this.lblResponsavel.Location = new System.Drawing.Point(395, 5);
-            this.lblResponsavel.Name = "lblResponsavel";
-            this.lblResponsavel.Size = new System.Drawing.Size(69, 13);
-            this.lblResponsavel.TabIndex = 15;
-            this.lblResponsavel.Text = "Responsável\r\n";
+            this.groupBoxDadosProjeto.Controls.Add(this.lblDataAtualizacaoValor);
+            this.groupBoxDadosProjeto.Controls.Add(this.lblDataAtualizacao);
+            this.groupBoxDadosProjeto.Controls.Add(this.lblDataCriacaoValor);
+            this.groupBoxDadosProjeto.Controls.Add(this.lblDataCriacao);
+            this.groupBoxDadosProjeto.Controls.Add(this.lblNomeProjeto);
+            this.groupBoxDadosProjeto.Controls.Add(this.lblResponsavel);
+            this.groupBoxDadosProjeto.Controls.Add(this.txtResponsavel);
+            this.groupBoxDadosProjeto.Controls.Add(this.txtNomeProjeto);
+            this.groupBoxDadosProjeto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxDadosProjeto.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxDadosProjeto.Name = "groupBoxDadosProjeto";
+            this.groupBoxDadosProjeto.Size = new System.Drawing.Size(865, 70);
+            this.groupBoxDadosProjeto.TabIndex = 16;
+            this.groupBoxDadosProjeto.TabStop = false;
+            this.groupBoxDadosProjeto.Text = "Dados do Projeto";
             // 
-            // txtResponsavel
+            // lblDataAtualizacaoValor
             // 
-            this.txtResponsavel.Location = new System.Drawing.Point(487, 2);
-            this.txtResponsavel.Name = "txtResponsavel";
-            this.txtResponsavel.Size = new System.Drawing.Size(280, 20);
-            this.txtResponsavel.TabIndex = 14;
-            this.txtResponsavel.TextChanged += new System.EventHandler(this.txtResponsavel_TextChanged);
+            this.lblDataAtualizacaoValor.AutoSize = true;
+            this.lblDataAtualizacaoValor.BackColor = System.Drawing.Color.Transparent;
+            this.lblDataAtualizacaoValor.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblDataAtualizacaoValor.Location = new System.Drawing.Point(561, 47);
+            this.lblDataAtualizacaoValor.Name = "lblDataAtualizacaoValor";
+            this.lblDataAtualizacaoValor.Size = new System.Drawing.Size(116, 13);
+            this.lblDataAtualizacaoValor.TabIndex = 19;
+            this.lblDataAtualizacaoValor.Text = "DATA_ATUALIZACAO";
+            // 
+            // lblDataAtualizacao
+            // 
+            this.lblDataAtualizacao.AutoSize = true;
+            this.lblDataAtualizacao.BackColor = System.Drawing.Color.Transparent;
+            this.lblDataAtualizacao.Location = new System.Drawing.Point(426, 47);
+            this.lblDataAtualizacao.Name = "lblDataAtualizacao";
+            this.lblDataAtualizacao.Size = new System.Drawing.Size(125, 13);
+            this.lblDataAtualizacao.TabIndex = 18;
+            this.lblDataAtualizacao.Text = "Data da última alteração:";
+            // 
+            // lblDataCriacaoValor
+            // 
+            this.lblDataCriacaoValor.AutoSize = true;
+            this.lblDataCriacaoValor.BackColor = System.Drawing.Color.Transparent;
+            this.lblDataCriacaoValor.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblDataCriacaoValor.Location = new System.Drawing.Point(106, 47);
+            this.lblDataCriacaoValor.Name = "lblDataCriacaoValor";
+            this.lblDataCriacaoValor.Size = new System.Drawing.Size(89, 13);
+            this.lblDataCriacaoValor.TabIndex = 17;
+            this.lblDataCriacaoValor.Text = "DATA_CRIACAO";
+            // 
+            // lblDataCriacao
+            // 
+            this.lblDataCriacao.AutoSize = true;
+            this.lblDataCriacao.BackColor = System.Drawing.Color.Transparent;
+            this.lblDataCriacao.Location = new System.Drawing.Point(14, 47);
+            this.lblDataCriacao.Name = "lblDataCriacao";
+            this.lblDataCriacao.Size = new System.Drawing.Size(86, 13);
+            this.lblDataCriacao.TabIndex = 16;
+            this.lblDataCriacao.Text = "Data de criação:";
             // 
             // lblNomeProjeto
             // 
             this.lblNomeProjeto.AutoSize = true;
             this.lblNomeProjeto.BackColor = System.Drawing.Color.Transparent;
-            this.lblNomeProjeto.Location = new System.Drawing.Point(9, 6);
+            this.lblNomeProjeto.Location = new System.Drawing.Point(17, 18);
             this.lblNomeProjeto.Name = "lblNomeProjeto";
-            this.lblNomeProjeto.Size = new System.Drawing.Size(86, 13);
+            this.lblNomeProjeto.Size = new System.Drawing.Size(89, 13);
             this.lblNomeProjeto.TabIndex = 13;
-            this.lblNomeProjeto.Text = "Nome do Projeto";
+            this.lblNomeProjeto.Text = "Nome do Projeto:";
+            // 
+            // lblResponsavel
+            // 
+            this.lblResponsavel.AutoSize = true;
+            this.lblResponsavel.BackColor = System.Drawing.Color.Transparent;
+            this.lblResponsavel.Location = new System.Drawing.Point(479, 18);
+            this.lblResponsavel.Name = "lblResponsavel";
+            this.lblResponsavel.Size = new System.Drawing.Size(72, 13);
+            this.lblResponsavel.TabIndex = 15;
+            this.lblResponsavel.Text = "Responsável:";
+            // 
+            // txtResponsavel
+            // 
+            this.txtResponsavel.Location = new System.Drawing.Point(564, 15);
+            this.txtResponsavel.Name = "txtResponsavel";
+            this.txtResponsavel.Size = new System.Drawing.Size(280, 20);
+            this.txtResponsavel.TabIndex = 14;
+            this.txtResponsavel.TextChanged += new System.EventHandler(this.txtResponsavel_TextChanged);
             // 
             // txtNomeProjeto
             // 
-            this.txtNomeProjeto.Location = new System.Drawing.Point(101, 3);
+            this.txtNomeProjeto.Location = new System.Drawing.Point(109, 15);
             this.txtNomeProjeto.Name = "txtNomeProjeto";
             this.txtNomeProjeto.Size = new System.Drawing.Size(280, 20);
             this.txtNomeProjeto.TabIndex = 12;
@@ -422,31 +483,43 @@ namespace sUCO.forms
             this.topToolBox.ResumeLayout(false);
             this.topToolBox.PerformLayout();
             this.panelTab.ResumeLayout(false);
-            tabControl.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabPageProjeto.ResumeLayout(false);
             this.tabPageProjeto.PerformLayout();
             this.panelProjeto.ResumeLayout(false);
             this.splitProjetoCasosUso.Panel1.ResumeLayout(false);
-            this.splitProjetoCasosUso.Panel1.PerformLayout();
             this.splitProjetoCasosUso.Panel2.ResumeLayout(false);
             this.splitProjetoCasosUso.ResumeLayout(false);
+            this.groupBoxDadosProjeto.ResumeLayout(false);
+            this.groupBoxDadosProjeto.PerformLayout();
             this.projectToolBox.ResumeLayout(false);
             this.projectToolBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
-
         private TableLayoutPanel tableLayoutPanelCasoUso;
         private ToolStripMenuItem btRefreshLayout;
         private Label lblResponsavel;
         private TextBox txtResponsavel;
-        private ToolStripMenuItem preferenciasToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem menuItemPreferencias;
+        private ToolStripMenuItem menuItemInternoSQL;
         private ToolStripMenuItem menuItemInternoSalvarBD;
         private ToolStripMenuItem menuItemInternoImportarXML;
         private ToolStripMenuItem menuItemInternoXML;
-        public static TabControlCasoUso tabControl;
+        private GroupBox groupBoxDadosProjeto;
+        private TabControlCasoUso tabControl;
+        private Label lblDataCriacao;
+        private Label lblDataAtualizacaoValor;
+        private Label lblDataAtualizacao;
+        private Label lblDataCriacaoValor;
+
+        public TabControlCasoUso TabControl
+        {
+            get { return this.tabControl; }
+            set { this.tabControl = value; }
+        }
+
 
     }
 }

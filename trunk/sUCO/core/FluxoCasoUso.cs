@@ -17,12 +17,12 @@ namespace sUCO.core
             this.ListaRaias = new List<Raia>();
         }
 
-        public int countRaias
+        public int CountRaias
         {
             get { return this.ListaRaias.Count; }
         }
 
-        public int countAcoes
+        public int CountAcoes
         {
             get
             {
@@ -36,10 +36,10 @@ namespace sUCO.core
         }
 
         // Métodos principais
-        public DataGridViewColumn[] addRaia(Raia raia)
+        public DataGridViewColumn[] AddRaia(Raia raia)
         {
             DataGridViewColumn[] colunas = new DataGridViewColumn[1];
-            colunas[0] = addNewRaia(raia);
+            colunas[0] = AdicionarRaia(raia);
 
             // Preenche com ações vazias, para que todas as rias 
             // tenham a mesma qtd de ações
@@ -48,17 +48,17 @@ namespace sUCO.core
             return colunas;
         }
 
-        public DataGridViewColumn getRaia(int index)
+        public DataGridViewColumn GetRaia(int index)
         {
             if (index < this.ListaRaias.Count)
             {
-                return doCriarColuna(this.ListaRaias[index]);
+                return CriarColuna(this.ListaRaias[index]);
             }
 
             return null;
         }
 
-        public Acao getAcao(int columnIndex, int rowIndex)
+        public Acao GetAcao(int columnIndex, int rowIndex)
         {
             if (columnIndex < this.ListaRaias.Count)
             {
@@ -71,7 +71,7 @@ namespace sUCO.core
             return null;
         }
 
-        public void addAcao()
+        public void AdicionarAcao()
         {
             // Adiciona uma nova linha para todas as Raias
             for (int x = 0; x < this.ListaRaias.Count; x++)
@@ -85,7 +85,7 @@ namespace sUCO.core
             acao.Cenarios.Add(cenario);
         }
 
-        public void doRemoverCenario(Acao acao, CenarioAlternativo cenario)
+        public void RemoverCenario(Acao acao, CenarioAlternativo cenario)
         {
             if (acao.Cenarios.Contains(cenario))
             {
@@ -93,7 +93,7 @@ namespace sUCO.core
             }
         }
 
-        public void doAlterarAcao(int columnIndex, int rowIndex, Acao acao)
+        public void AlterarAcao(int columnIndex, int rowIndex, Acao acao)
         {
             if (columnIndex < ListaRaias.Count)
             {
@@ -104,7 +104,7 @@ namespace sUCO.core
             }
         }
 
-        public void doAlterarNomeRaia(int index, string novoNome, DataGridView dataGridView)
+        public void AlterarNomeRaia(int index, string novoNome, DataGridView dataGridView)
         {
             if (index < this.ListaRaias.Count)
             {
@@ -114,7 +114,7 @@ namespace sUCO.core
                 raia.Nome = novoNome;
             }
         }
-        public void doRemoverAcao(int rowIndex)
+        public void RemoverAcao(int rowIndex)
         {
 
             for (int x = 0; x < ListaRaias.Count; x++)
@@ -126,7 +126,7 @@ namespace sUCO.core
             }
         }
 
-        public void doRemoverRaia(int index, DataGridView dataGridView)
+        public void RemoverRaia(int index, DataGridView dataGridView)
         {
             if (index < this.ListaRaias.Count)
             {
@@ -135,20 +135,20 @@ namespace sUCO.core
             }
         }
 
-        public void doCarregarDatagridView(DataGridView dataGridView)
+        public void CarregarDatagridView(DataGridView dataGridView)
         {
             try
             {
                 dataGridView.ColumnCount = 0;
 
-                for (int x = 0; x < countRaias; x++)
+                for (int x = 0; x < CountRaias; x++)
                 {
                     // Adiciona Raia(Coluna)
-                    dataGridView.Columns.Add(getRaia(x));
+                    dataGridView.Columns.Add(GetRaia(x));
 
-                    if (dataGridView.RowCount < countAcoes)
+                    if (dataGridView.RowCount < CountAcoes)
                     {
-                        dataGridView.RowCount = countAcoes;
+                        dataGridView.RowCount = CountAcoes;
                     }
 
                     // Adiciona as ações(linhas)
@@ -164,10 +164,10 @@ namespace sUCO.core
                 throw new Exception("Erro ao carregar dataGridView.\r\nMensagem: " + err.Message);
             }
 
-            this.fixBlankRows(dataGridView);
+            this.FixBlankRows(dataGridView);
         }
 
-        private void fixBlankRows(DataGridView dataGridView)
+        private void FixBlankRows(DataGridView dataGridView)
         {
             int newRowCount = 0;
 
@@ -175,7 +175,7 @@ namespace sUCO.core
             {
                 IList<String> aux = new List<String>();
 
-                for (int x = 0; x < countRaias; x++)
+                for (int x = 0; x < CountRaias; x++)
                 {
                     string texto = this.ListaRaias[x].ListaAcoes[y].Texto;
                     aux.Add(texto);
@@ -202,13 +202,13 @@ namespace sUCO.core
             }
         }
 
-        private DataGridViewColumn addNewRaia(Raia raia)
+        private DataGridViewColumn AdicionarRaia(Raia raia)
         {
             this.ListaRaias.Add(raia);
-            return doCriarColuna(raia);
+            return CriarColuna(raia);
         }
 
-        private DataGridViewColumn doCriarColuna(Raia raia)
+        private DataGridViewColumn CriarColuna(Raia raia)
         {
             DataGridViewColumn column = new DataGridViewColumn();
             column.CellTemplate = new DataGridViewTextBoxCell();
@@ -222,9 +222,9 @@ namespace sUCO.core
 
         private void doPreencherComAcoesVazias(Raia raia)
         {
-            if (countAcoes > 0)
+            if (CountAcoes > 0)
             {
-                for (int x = 0; x < countAcoes; x++)
+                for (int x = 0; x < CountAcoes; x++)
                 {
                     raia.ListaAcoes.Add(new Acao("", new List<CenarioAlternativo>()));
                 }

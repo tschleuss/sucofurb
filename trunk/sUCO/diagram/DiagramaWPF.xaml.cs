@@ -15,18 +15,23 @@ namespace sUCO.diagram
 
         public RenderTargetBitmap GetImageFromCanvas()
         {
+            RenderTargetBitmap renderBitmap = null;
             Transform transform = this.MyDesigner.LayoutTransform;
             Size size = new Size(this.MyDesigner.ActualWidth, this.MyDesigner.ActualHeight);
 
-            RenderTargetBitmap renderBitmap =
-              new RenderTargetBitmap(
-                (int)size.Width,
-                (int)size.Height,
-                120d,
-                96d,
-                PixelFormats.Pbgra32);
+            if (size.Height > 0 && size.Width > 0)
+            {
 
-            renderBitmap.Render(this.MyDesigner);
+                renderBitmap =
+                  new RenderTargetBitmap(
+                    (int)size.Width,
+                    (int)size.Height,
+                    120d,
+                    96d,
+                    PixelFormats.Pbgra32);
+
+                renderBitmap.Render(this.MyDesigner);
+            }
 
             return renderBitmap;
         }
