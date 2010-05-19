@@ -110,6 +110,8 @@ namespace sUCO.diagram
 
         #endregion
 
+        public String Nome {get;set;}
+
         static DesignerItem()
         {
             // set the key to reference the style for this control
@@ -119,7 +121,8 @@ namespace sUCO.diagram
 
         public DesignerItem(Guid id)
         {
-            this.id = id;
+            this.id     = id;
+            this.Nome   = "Nome do objeto";
             this.Loaded += new RoutedEventHandler(DesignerItem_Loaded);
         }
 

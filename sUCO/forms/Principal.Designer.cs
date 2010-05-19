@@ -312,6 +312,7 @@ namespace sUCO.forms
             // 
             // groupBoxDadosProjeto
             // 
+            this.groupBoxDadosProjeto.BackColor = System.Drawing.SystemColors.Control;
             this.groupBoxDadosProjeto.Controls.Add(this.lblDataAtualizacaoValor);
             this.groupBoxDadosProjeto.Controls.Add(this.lblDataAtualizacao);
             this.groupBoxDadosProjeto.Controls.Add(this.lblDataCriacaoValor);
