@@ -108,6 +108,8 @@
     </Compile>
     <Compile Include="diagram\IGroupable.cs" />
     <Compile Include="diagram\ISelectable.cs" />
+    <Compile Include="diagram\label\EditableTextBlock.cs" />
+    <Compile Include="diagram\label\EditableTextBlockAdorner.cs" />
     <Compile Include="diagram\PathFinder.cs" />
     <Compile Include="diagram\RubberbandAdorner.cs" />
     <Compile Include="diagram\SelectionService.cs" />

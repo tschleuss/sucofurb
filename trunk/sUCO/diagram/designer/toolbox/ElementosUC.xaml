@@ -2,7 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:sUCO.diagram"
                     xmlns:b="clr-namespace:sUCO.diagram.connection"
-                    xmlns:c="clr-namespace:sUCO.diagram.controls">
+                    xmlns:c="clr-namespace:sUCO.diagram.controls"
+                    xmlns:l="clr-namespace:sUCO.diagram.label"
+                    >
 
   <Brush x:Key="ItemStroke">#FFD69436</Brush>
   <LinearGradientBrush x:Key="ItemBrush" StartPoint="0,0" EndPoint="0,1">
@@ -52,8 +54,7 @@
     <Setter Property="Stroke" Value="Transparent"/>
   </Style>
 
-  <s:Toolbox x:Key="ElementosUC" ItemSize="60,50" SnapsToDevicePixels="True"
-             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+  <s:Toolbox x:Key="ElementosUC" ItemSize="60,50" SnapsToDevicePixels="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
     <ItemsControl.Items>
 
         <Path Style="{StaticResource Boundary}" ToolTip="Boundary">
@@ -81,7 +82,7 @@
                 </GeometryGroup>
             </Path.Data>
             <s:DesignerItem.DragThumbTemplate>
-                <ControlTemplate>
+               <ControlTemplate>
                     <Path Fill="Transparent" Stretch="Fill" Data="M 9,2 11,6 17,6 12,10 17,15 10,15 1,15 6,10 1,6 7,6 Z"/>
                 </ControlTemplate>
             </s:DesignerItem.DragThumbTemplate>

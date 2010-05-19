@@ -3,7 +3,9 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:s="clr-namespace:sUCO.diagram"
                     xmlns:b="clr-namespace:sUCO.diagram.connection"
-                    xmlns:c="clr-namespace:sUCO.diagram.controls">
+                    xmlns:c="clr-namespace:sUCO.diagram.controls"
+                    xmlns:l="clr-namespace:sUCO.diagram.label"
+                    >
 
     <ContextMenu x:Key="DesignerItemContextMenu">
         <MenuItem Header="Recortar" Command="{x:Static ApplicationCommands.Cut}">
@@ -152,6 +154,13 @@
                         <Control x:Name="PART_ConnectorDecorator"
                                  Visibility="Hidden"
                                  Template="{StaticResource ConnectorDecoratorTemplate}"/>
+
+                        <l:EditableTextBlock Text="{Binding Nome, Mode=TwoWay}">
+                            <l:EditableTextBlock.RenderTransform>
+                                <TranslateTransform X="0" Y="-20"/>
+                            </l:EditableTextBlock.RenderTransform>
+                        </l:EditableTextBlock>
+                        
                     </Grid>
                     <ControlTemplate.Triggers>
                         <DataTrigger Value="True" Binding="{Binding RelativeSource={RelativeSource Self},Path=IsGroup}">
