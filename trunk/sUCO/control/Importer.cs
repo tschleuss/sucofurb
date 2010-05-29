@@ -147,9 +147,9 @@ namespace sUCO.control
             }
         }
 
-        static void Main()
-        {
-            ImportarXML();
-        }
+        //static void Main()
+        //{
+        //    ImportarXML();
+        //}
     }
 }
