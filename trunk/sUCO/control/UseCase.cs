@@ -5,15 +5,21 @@ namespace sUCO
 {
     public class UseCase
     {
-        private String  id;
-        private String  name;
-        private int     seqNumber;
-        private int     top;
-        private int     left;
-        private int     width;
-        private int     height;
-
+        private String              id;
+        private UseCaseType         type;
+        private String              name;
+        private int                 seqNumber;
+        private int                 top;
+        private int                 left;
+        private int                 width;
+        private int                 height;
         private IList<UserCaseLink> links;
+
+        public enum UseCaseType
+        {
+            USE_CASE,
+            ACTOR
+        }
 
         public UseCase(String id, String name)
         {
@@ -68,6 +74,12 @@ namespace sUCO
         {
             get { return this.height; }
             set { this.height = value; }
+        }
+
+        public UseCaseType Type
+        {
+            get { return this.type; }
+            set { this.type = value; }
         }
     }
 }

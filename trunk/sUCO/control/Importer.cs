@@ -10,7 +10,6 @@ namespace sUCO.control
     {
         public static Dictionary<String, UseCase> ImportarXML(String filePath)
         {
-            //XmlReader reader = new XmlTextReader("/sUCO_UC.xml");
             XmlReader reader = new XmlTextReader(filePath);
             Dictionary<String, UseCase> hash = new Dictionary<String, UseCase>();
 
@@ -33,11 +32,21 @@ namespace sUCO.control
             {
                 String type = reader.GetAttribute("xmi:type");
 
-                if (type != null && type.Equals("uml:UseCase"))
+                if (type != null && (type.Equals("uml:UseCase") || type.Equals("uml:Actor")))
                 {
                     String id = reader.GetAttribute("xmi:idref");
                     String name = reader.GetAttribute("name");
                     UseCase uc = new UseCase(id, name);
+
+                    if (type.Equals("uml:UseCase"))
+                    {
+                        uc.Type = UseCase.UseCaseType.USE_CASE;
+                    }
+                    else if (type.Equals("uml:Actor"))
+                    {
+                        uc.Type = UseCase.UseCaseType.ACTOR;
+                    }
+
                     hash.Add(id, uc);
                 }
             }

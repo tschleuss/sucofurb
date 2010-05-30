@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using Microsoft.Win32;
 using sUCO.diagram.connection;
 using System.Text;
+using System.Reflection;
 
 namespace sUCO.diagram
 {
@@ -100,7 +101,20 @@ namespace sUCO.diagram
                         item.Height = currentUseCase.Height;
                         Canvas.SetLeft(item, currentUseCase.Left);
                         Canvas.SetTop(item, currentUseCase.Top);
-                        Object content = XamlReader.Load(XmlReader.Create(new StringReader(this.buildXMLContent())));
+
+                        Object content = null;
+                        String xmlContent = "";
+
+                        if( currentUseCase.Type == UseCase.UseCaseType.USE_CASE )
+                        {
+                            xmlContent = sUCO.Properties.Resources.casoUso;
+                        }
+                        else if (currentUseCase.Type == UseCase.UseCaseType.ACTOR)
+                        {
+                            xmlContent = sUCO.Properties.Resources.actor;
+                        }
+
+                        content = XamlReader.Load(XmlReader.Create(new StringReader(xmlContent)));
                         item.Content = content;
                         item.Nome = currentUseCase.Name;
                         this.Children.Add(item);
@@ -110,170 +124,6 @@ namespace sUCO.diagram
 
                 this.InvalidateVisual();
             }
-        }
-
-        #endregion
-
-        #region XML Statico para Teste
-
-        public String buildXMLContent()
-        {
-            StringBuilder xml = new StringBuilder();
-
-            xml.Append("<Path ToolTip=\"Caso de Uso\" InputMethod.IsInputMethodEnabled=\"True\" ");
-            xml.Append("xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" ");
-            xml.Append("xmlns:s=\"clr-namespace:System;assembly=mscorlib\" ");
-            xml.Append("xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\" ");
-            xml.Append("xmlns:uco=\"clr-namespace:sUCO.diagram;assembly=sUCO\">");
-            xml.Append("	<Path.Style>");
-            xml.Append("		<Style TargetType=\"Path\">");
-            xml.Append("			<Style.BasedOn>");
-            xml.Append("				<Style TargetType=\"Path\">");
-            xml.Append("					<Style.Resources>");
-            xml.Append("						<ResourceDictionary />");
-            xml.Append("					</Style.Resources>");
-            xml.Append("					<Setter Property=\"Shape.Fill\">");
-            xml.Append("						<Setter.Value>");
-            xml.Append("							<LinearGradientBrush StartPoint=\"0,0\" EndPoint=\"0,1\">");
-            xml.Append("								<LinearGradientBrush.GradientStops>");
-            xml.Append("									<GradientStop Color=\"#FFFAFBE9\" Offset=\"0\" />");
-            xml.Append("									<GradientStop Color=\"#FFFCF2E3\" Offset=\"1\" />");
-            xml.Append("								</LinearGradientBrush.GradientStops>");
-            xml.Append("							</LinearGradientBrush>");
-            xml.Append("						</Setter.Value>");
-            xml.Append("					</Setter>");
-            xml.Append("					<Setter Property=\"Shape.Stroke\">");
-            xml.Append("						<Setter.Value>");
-            xml.Append("							<SolidColorBrush>#FFD69436</SolidColorBrush>");
-            xml.Append("						</Setter.Value>");
-            xml.Append("					</Setter>");
-            xml.Append("					<Setter Property=\"Shape.StrokeThickness\">");
-            xml.Append("						<Setter.Value>");
-            xml.Append("							<s:Double>1</s:Double>");
-            xml.Append("						</Setter.Value>");
-            xml.Append("					</Setter>");
-            xml.Append("					<Setter Property=\"Shape.StrokeLineJoin\">");
-            xml.Append("						<Setter.Value>");
-            xml.Append("							<x:Static Member=\"PenLineJoin.Round\" />");
-            xml.Append("						</Setter.Value>");
-            xml.Append("					</Setter>");
-            xml.Append("					<Setter Property=\"Shape.Stretch\">");
-            xml.Append("						<Setter.Value>");
-            xml.Append("							<x:Static Member=\"Stretch.Fill\" />");
-            xml.Append("						</Setter.Value>");
-            xml.Append("					</Setter>");
-            xml.Append("					<Setter Property=\"UIElement.IsHitTestVisible\">");
-            xml.Append("						<Setter.Value>");
-            xml.Append("							<s:Boolean>False</s:Boolean>");
-            xml.Append("						</Setter.Value>");
-            xml.Append("					</Setter>");
-            xml.Append("					<Setter Property=\"UIElement.SnapsToDevicePixels\">");
-            xml.Append("						<Setter.Value>");
-            xml.Append("							<s:Boolean>True</s:Boolean>");
-            xml.Append("						</Setter.Value>");
-            xml.Append("					</Setter>");
-            xml.Append("				</Style>");
-            xml.Append("			</Style.BasedOn>");
-            xml.Append("			<Style.Resources>");
-            xml.Append("				<ResourceDictionary />");
-            xml.Append("			</Style.Resources>");
-            xml.Append("			<Setter Property=\"Path.Data\">");
-            xml.Append("				<Setter.Value>");
-            xml.Append("					<StreamGeometry>M10,20A20,20,0,1,1,50,20A20,20,0,1,1,10,20</StreamGeometry>");
-            xml.Append("				</Setter.Value>");
-            xml.Append("			</Setter>");
-            xml.Append("		</Style>");
-            xml.Append("	</Path.Style>");
-            xml.Append("	<uco:DesignerItem.DragThumbTemplate>");
-            xml.Append("		<ControlTemplate>");
-            xml.Append("			<Path>");
-            xml.Append("				<Path.Style>");
-            xml.Append("					<Style TargetType=\"Path\">");
-            xml.Append("						<Style.BasedOn>");
-            xml.Append("							<Style TargetType=\"Path\">");
-            xml.Append("								<Style.BasedOn>");
-            xml.Append("									<Style TargetType=\"Path\">");
-            xml.Append("										<Style.Resources>");
-            xml.Append("											<ResourceDictionary />");
-            xml.Append("										</Style.Resources>");
-            xml.Append("										<Setter Property=\"Shape.Fill\">");
-            xml.Append("											<Setter.Value>");
-            xml.Append("												<LinearGradientBrush StartPoint=\"0,0\" EndPoint=\"0,1\">");
-            xml.Append("													<LinearGradientBrush.GradientStops>");
-            xml.Append("														<GradientStop Color=\"#FFFAFBE9\" Offset=\"0\" />");
-            xml.Append("														<GradientStop Color=\"#FFFCF2E3\" Offset=\"1\" />");
-            xml.Append("													</LinearGradientBrush.GradientStops>");
-            xml.Append("												</LinearGradientBrush>");
-            xml.Append("											</Setter.Value>");
-            xml.Append("										</Setter>");
-            xml.Append("										<Setter Property=\"Shape.Stroke\">");
-            xml.Append("											<Setter.Value>");
-            xml.Append("												<SolidColorBrush>#FFD69436</SolidColorBrush>");
-            xml.Append("											</Setter.Value>");
-            xml.Append("										</Setter>");
-            xml.Append("										<Setter Property=\"Shape.StrokeThickness\">");
-            xml.Append("											<Setter.Value>");
-            xml.Append("												<s:Double>1</s:Double>");
-            xml.Append("											</Setter.Value>");
-            xml.Append("										</Setter>");
-            xml.Append("										<Setter Property=\"Shape.StrokeLineJoin\">");
-            xml.Append("											<Setter.Value>");
-            xml.Append("												<x:Static Member=\"PenLineJoin.Round\" />");
-            xml.Append("											</Setter.Value>");
-            xml.Append("										</Setter>");
-            xml.Append("										<Setter Property=\"Shape.Stretch\">");
-            xml.Append("											<Setter.Value>");
-            xml.Append("												<x:Static Member=\"Stretch.Fill\" />");
-            xml.Append("											</Setter.Value>");
-            xml.Append("										</Setter>");
-            xml.Append("										<Setter Property=\"UIElement.IsHitTestVisible\">");
-            xml.Append("											<Setter.Value>");
-            xml.Append("												<s:Boolean>False</s:Boolean>");
-            xml.Append("											</Setter.Value>");
-            xml.Append("										</Setter>");
-            xml.Append("										<Setter Property=\"UIElement.SnapsToDevicePixels\">");
-            xml.Append("											<Setter.Value>");
-            xml.Append("												<s:Boolean>True</s:Boolean>");
-            xml.Append("											</Setter.Value>");
-            xml.Append("										</Setter>");
-            xml.Append("									</Style>");
-            xml.Append("								</Style.BasedOn>");
-            xml.Append("								<Style.Resources>");
-            xml.Append("									<ResourceDictionary />");
-            xml.Append("								</Style.Resources>");
-            xml.Append("								<Setter Property=\"Path.Data\">");
-            xml.Append("									<Setter.Value>");
-            xml.Append("										<StreamGeometry>M10,20A20,20,0,1,1,50,20A20,20,0,1,1,10,20</StreamGeometry>");
-            xml.Append("									</Setter.Value>");
-            xml.Append("								</Setter>");
-            xml.Append("							</Style>");
-            xml.Append("						</Style.BasedOn>");
-            xml.Append("						<Style.Resources>");
-            xml.Append("							<ResourceDictionary />");
-            xml.Append("						</Style.Resources>");
-            xml.Append("						<Setter Property=\"UIElement.IsHitTestVisible\">");
-            xml.Append("							<Setter.Value>");
-            xml.Append("								<s:Boolean>True</s:Boolean>");
-            xml.Append("							</Setter.Value>");
-            xml.Append("						</Setter>");
-            xml.Append("						<Setter Property=\"Shape.Fill\">");
-            xml.Append("							<Setter.Value>");
-            xml.Append("								<SolidColorBrush>#00FFFFFF</SolidColorBrush>");
-            xml.Append("							</Setter.Value>");
-            xml.Append("						</Setter>");
-            xml.Append("						<Setter Property=\"Shape.Stroke\">");
-            xml.Append("							<Setter.Value>");
-            xml.Append("								<SolidColorBrush>#00FFFFFF</SolidColorBrush>");
-            xml.Append("							</Setter.Value>");
-            xml.Append("						</Setter>");
-            xml.Append("					</Style>");
-            xml.Append("				</Path.Style>");
-            xml.Append("			</Path>");
-            xml.Append("		</ControlTemplate>");
-            xml.Append("	</uco:DesignerItem.DragThumbTemplate>");
-            xml.Append("</Path>");
-
-            return xml.ToString();
         }
 
         #endregion

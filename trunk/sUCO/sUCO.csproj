@@ -368,6 +368,8 @@
     <Resource Include="diagram\designer\images\SendBackward.png" />
     <Resource Include="diagram\designer\images\SendToBack.png" />
     <Resource Include="diagram\designer\images\Ungroup.png" />
+    <None Include="resources\casoUso.xml" />
+    <None Include="resources\actor.xml" />
     <Content Include="resources\database\sUCO_DER.png" />
     <Content Include="resources\images\add.png" />
     <Content Include="resources\images\addUC.png" />
@@ -388,7 +390,6 @@
     <Content Include="resources\images\uml_actor.png" />
     <Content Include="resources\database\MySql.Data.dll" />
     <Content Include="resources\database\sUCO_DER.xml" />
-    <Content Include="resources\LOTERICA2.2.xml" />
     <None Include="resources\save.png" />
     <None Include="resources\xml.png" />
   </ItemGroup>
