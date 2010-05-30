@@ -60,6 +60,23 @@ namespace sUCO.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;Path ToolTip=&quot;Ator&quot; InputMethod.IsInputMethodEnabled=&quot;True&quot;
+        ///	xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///	xmlns:s=&quot;clr-namespace:System;assembly=mscorlib&quot; xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///	xmlns:uco=&quot;clr-namespace:sUCO.diagram;assembly=sUCO&quot; xmlns:uco0=&quot;clr-namespace:sUCO.diagram.controls;assembly=sUCO&quot;
+        ///	xmlns:uco1=&quot;clr-namespace:sUCO.diagram.connection;assembly=sUCO&quot;&gt;
+        ///	&lt;Path.Data&gt;
+        ///		&lt;GeometryGroup&gt;
+        ///			&lt;GeometryGroup.Children&gt;
+        ///				&lt;EllipseGeometry RadiusX=&quot;15&quot; Ra [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string actor {
+            get {
+                return ResourceManager.GetString("actor", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap add {
             get {
                 object obj = ResourceManager.GetObject("add", resourceCulture);
@@ -78,6 +95,27 @@ namespace sUCO.Properties {
             get {
                 object obj = ResourceManager.GetObject("addUC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;Path ToolTip=&quot;Caso de Uso&quot; InputMethod.IsInputMethodEnabled=&quot;True&quot;
+        ///	xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///	xmlns:s=&quot;clr-namespace:System;assembly=mscorlib&quot; xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///	xmlns:uco=&quot;clr-namespace:sUCO.diagram;assembly=sUCO&quot;&gt;
+        ///	&lt;Path.Style&gt;
+        ///		&lt;Style TargetType=&quot;Path&quot;&gt;
+        ///			&lt;Style.BasedOn&gt;
+        ///				&lt;Style TargetType=&quot;Path&quot;&gt;
+        ///					&lt;Style.Resources&gt;
+        ///						&lt;ResourceDictionary /&gt;
+        ///					&lt;/Style.Resources&gt;
+        ///					&lt;Setter Property=&quot;Shape.Fill&quot;&gt;
+        ///						&lt;Setter. [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string casoUso {
+            get {
+                return ResourceManager.GetString("casoUso", resourceCulture);
             }
         }
         

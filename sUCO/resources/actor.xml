@@ -1,0 +1,86 @@
+<Path ToolTip="Ator" InputMethod.IsInputMethodEnabled="True"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:uco="clr-namespace:sUCO.diagram;assembly=sUCO" xmlns:uco0="clr-namespace:sUCO.diagram.controls;assembly=sUCO"
+	xmlns:uco1="clr-namespace:sUCO.diagram.connection;assembly=sUCO">
+	<Path.Data>
+		<GeometryGroup>
+			<GeometryGroup.Children>
+				<EllipseGeometry RadiusX="15" RadiusY="15" Center="150,150" />
+				<PathGeometry
+					Figures="M120,285L150,235 180,280 150,235 M150,165L150,235 M150,180L120,180 M150,180L180,180" />
+			</GeometryGroup.Children>
+		</GeometryGroup>
+	</Path.Data>
+	<Path.Style>
+		<Style TargetType="Path">
+			<Style.Resources>
+				<ResourceDictionary />
+			</Style.Resources>
+			<Setter Property="Shape.Fill">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+						<LinearGradientBrush.GradientStops>
+							<GradientStop Color="#FFFAFBE9" Offset="0" />
+							<GradientStop Color="#FFFCF2E3" Offset="1" />
+						</LinearGradientBrush.GradientStops>
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Shape.Stroke">
+				<Setter.Value>
+					<SolidColorBrush>#FFD69436</SolidColorBrush>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Shape.StrokeThickness">
+				<Setter.Value>
+					<s:Double>1</s:Double>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Shape.StrokeLineJoin">
+				<Setter.Value>
+					<x:Static Member="PenLineJoin.Round" />
+				</Setter.Value>
+			</Setter>
+			<Setter Property="Shape.Stretch">
+				<Setter.Value>
+					<x:Static Member="Stretch.Fill" />
+				</Setter.Value>
+			</Setter>
+			<Setter Property="UIElement.IsHitTestVisible">
+				<Setter.Value>
+					<s:Boolean>False</s:Boolean>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="UIElement.SnapsToDevicePixels">
+				<Setter.Value>
+					<s:Boolean>True</s:Boolean>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Path.Style>
+	<uco:DesignerItem.DragThumbTemplate>
+		<ControlTemplate>
+			<Path Data="M9,2L11,6 17,6 12,10 17,15 10,15 1,15 6,10 1,6 7,6z"
+				Stretch="Fill" Fill="#00FFFFFF" />
+		</ControlTemplate>
+	</uco:DesignerItem.DragThumbTemplate>
+	<uco:DesignerItem.ConnectorDecoratorTemplate>
+		<ControlTemplate>
+			<uco0:RelativePositionPanel Margin="-4,-4,-4,-4">
+				<uco1:Connector Orientation="Top" Position="0,0"
+					Name="Top1" uco0:RelativePositionPanel.RelativePosition="0.5,0" />
+				<uco1:Connector Orientation="Left" Position="0,0"
+					Name="Top2" uco0:RelativePositionPanel.RelativePosition="0,0.285" />
+				<uco1:Connector Orientation="Right" Position="0,0"
+					Name="Top3" uco0:RelativePositionPanel.RelativePosition="1,0.285" />
+				<uco1:Connector Orientation="Bottom" Position="0,0"
+					Name="Top4" uco0:RelativePositionPanel.RelativePosition="0.035,1" />
+				<uco1:Connector Orientation="Bottom" Position="0,0"
+					Name="Top5" uco0:RelativePositionPanel.RelativePosition="0.965,1" />
+				<uco1:Connector Orientation="Bottom" Position="0,0"
+					Name="Top6" uco0:RelativePositionPanel.RelativePosition="0.5,1" />
+			</uco0:RelativePositionPanel>
+		</ControlTemplate>
+	</uco:DesignerItem.ConnectorDecoratorTemplate>
+</Path>
