@@ -8,9 +8,10 @@ namespace sUCO.control
 {
     class Importer
     {
-        public static void ImportarXML()
+        public static Dictionary<String, UseCase> ImportarXML(String filePath)
         {
-            XmlReader reader = new XmlTextReader("/sUCO_UC.xml");
+            //XmlReader reader = new XmlTextReader("/sUCO_UC.xml");
+            XmlReader reader = new XmlTextReader(filePath);
             Dictionary<String, UseCase> hash = new Dictionary<String, UseCase>();
 
             while (reader.Read())
@@ -23,7 +24,7 @@ namespace sUCO.control
                 }
             }
 
-            Console.ReadLine();
+            return hash;
         }
 
         private static void parseElementTag(XmlReader reader, Dictionary<String, UseCase> hash)
@@ -146,10 +147,5 @@ namespace sUCO.control
                 }
             }
         }
-
-        //static void Main()
-        //{
-        //    ImportarXML();
-        //}
     }
 }

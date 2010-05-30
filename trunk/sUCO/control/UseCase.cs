@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace sUCO
 {
-    class UseCase
+    public class UseCase
     {
         private String  id;
         private String  name;

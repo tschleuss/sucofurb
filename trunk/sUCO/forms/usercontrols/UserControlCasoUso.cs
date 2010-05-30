@@ -10,6 +10,7 @@ using System.Collections;
 using sUCO.core;
 using sUCO.diagram;
 using System.Windows.Forms.Integration;
+using sUCO.control;
 
 namespace sUCO.forms.usercontrols
 {
@@ -529,6 +530,21 @@ namespace sUCO.forms.usercontrols
         public void refreshComponentes()
         {
             this.casoUso.FluxoCasoUso.CarregarDatagridView(this.dgCasosUso);
+        }
+
+        private void btImportarModelo_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog eaXML = new OpenFileDialog();
+            eaXML.Filter = "Arquivos de casos de uso do Enterprise Architect (*.xml)|*.xml";
+
+            DialogResult result = eaXML.ShowDialog();
+
+            if (result != DialogResult.Cancel)
+            {
+                String filePath = eaXML.FileName;
+                Dictionary<String, UseCase> componentes = Importer.ImportarXML(filePath);
+                diagramaWPF.MyDesigner.DrawnEAComponentes(componentes);
+            }
         }
     }
 }

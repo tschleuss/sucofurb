@@ -81,9 +81,6 @@
     <Compile Include="core\events\Arguments.cs" />
     <Compile Include="core\events\Delegates.cs" />
     <Compile Include="core\FluxoCasoUso.cs" />
-    <Compile Include="core\MyDGV.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="core\Projeto.cs" />
     <Compile Include="dao\AcaoDAO.cs" />
     <Compile Include="dao\CasoUsoDAO.cs" />
@@ -136,6 +133,9 @@
     </Compile>
     <Compile Include="forms\usercontrols\MiniaturaDiagrama.xaml.cs">
       <DependentUpon>MiniaturaDiagrama.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="forms\usercontrols\MyDGV.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="forms\usercontrols\TabCasoUso.cs">
       <SubType>Component</SubType>

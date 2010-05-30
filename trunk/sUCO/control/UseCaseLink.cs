@@ -2,7 +2,7 @@
 
 namespace sUCO
 {
-    class UserCaseLink
+    public class UserCaseLink
     {
         private String source;
         private String target;
