@@ -21,7 +21,10 @@ namespace sUCO.forms.usercontrols
         public CasoUso CasoUso
         {
             get { return casoUso; }
-            set { casoUso = value; }
+            set { 
+                    casoUso = value;
+                    this.dgCasosUso.Fluxo = value.FluxoCasoUso;
+                }
         }
 
         public DiagramaWPF Diagrama
@@ -185,7 +188,7 @@ namespace sUCO.forms.usercontrols
                 int columnIndex = dgCasosUso.SelectedCells[0].ColumnIndex;
 
                 if (dgCasosUso[columnIndex, rowIndex].Value != null)
-                {
+                {   
                     Acao acao = casoUso.FluxoCasoUso.GetAcao(columnIndex, rowIndex);
                     if (acao != null)
                     {
@@ -198,6 +201,7 @@ namespace sUCO.forms.usercontrols
 
                             CenarioAlternativo cenario = (CenarioAlternativo)acao.Cenarios[index];
                             cenario.CarregarDatagridView(dgCenarioAlternativo);
+                            dgCenarioAlternativo.Fluxo = cenario;
                         }
                     }
                 }
