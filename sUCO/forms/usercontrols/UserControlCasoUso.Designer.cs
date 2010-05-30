@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Data;
 using sUCO.diagram;
+using sUCO.core;
 namespace sUCO.forms.usercontrols
 {
     partial class UserControlCasoUso
@@ -113,10 +114,10 @@ namespace sUCO.forms.usercontrols
 
         private DataSet dataSet;
 
-        private DataGridView dgCenarioAlternativo;
-        private DataGridView dgCasosUso;
-        //private MyDVG dgCenarioAlternativo;
-        //private MyDVG dgCasosUso;
+        //private DataGridView dgCenarioAlternativo;
+        //private DataGridView dgCasosUso;
+        private MyDGV dgCenarioAlternativo;
+        private MyDGV dgCasosUso;
 
         #endregion
 
@@ -135,7 +136,10 @@ namespace sUCO.forms.usercontrols
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainerFluxoUC = new System.Windows.Forms.SplitContainer();
             this.panelFluxo = new System.Windows.Forms.Panel();
-            this.dgCasosUso = new System.Windows.Forms.DataGridView();
+            //this.dgCasosUso = new System.Windows.Forms.DataGridView();
+            this.dgCasosUso = new MyDGV();
+            this.dgCasosUso.Fluxo = this.casoUso.FluxoCasoUso;
+
             this.ucToolBox = new System.Windows.Forms.MenuStrip();
             this.btRaia = new System.Windows.Forms.ToolStripMenuItem();
             this.btRaiaAdd = new System.Windows.Forms.ToolStripMenuItem();
@@ -147,7 +151,8 @@ namespace sUCO.forms.usercontrols
             this.panelCenarioAlternativo = new System.Windows.Forms.Panel();
             this.lblCenarioAlternativo = new System.Windows.Forms.Label();
             this.cbCenariosAlternativos = new System.Windows.Forms.ComboBox();
-            this.dgCenarioAlternativo = new System.Windows.Forms.DataGridView();
+            //this.dgCenarioAlternativo = new System.Windows.Forms.DataGridView();
+            this.dgCenarioAlternativo = new MyDGV();
             this.menuCenarioAlternativo = new System.Windows.Forms.MenuStrip();
             this.btNovoCenario = new System.Windows.Forms.ToolStripMenuItem();
             this.btAddCenarioAlternativo = new System.Windows.Forms.ToolStripMenuItem();
@@ -201,7 +206,6 @@ namespace sUCO.forms.usercontrols
             // 
             this.splitContainerFluxoUC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerFluxoUC.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerFluxoUC.Name = "splitContainerFluxoUC";
             // 
             // splitContainerFluxoUC.Panel1
             // 
@@ -220,7 +224,6 @@ namespace sUCO.forms.usercontrols
             this.panelFluxo.Controls.Add(this.dgCasosUso);
             this.panelFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFluxo.Location = new System.Drawing.Point(34, 0);
-            this.panelFluxo.Name = "panelFluxo";
             this.panelFluxo.Size = new System.Drawing.Size(232, 307);
             this.panelFluxo.TabIndex = 4;
             // 
@@ -246,7 +249,6 @@ namespace sUCO.forms.usercontrols
             this.dgCasosUso.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgCasosUso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCasosUso.Location = new System.Drawing.Point(0, 0);
-            this.dgCasosUso.Name = "dgCasosUso";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -275,7 +277,6 @@ namespace sUCO.forms.usercontrols
             this.btCenarioAlternativo,
             this.btGerarRelatorio});
             this.ucToolBox.Location = new System.Drawing.Point(0, 0);
-            this.ucToolBox.Name = "ucToolBox";
             this.ucToolBox.ShowItemToolTips = true;
             this.ucToolBox.Size = new System.Drawing.Size(34, 307);
             this.ucToolBox.TabIndex = 3;
@@ -287,7 +288,6 @@ namespace sUCO.forms.usercontrols
             this.btRaiaAdd,
             this.btRemoverRaia});
             this.btRaia.Image = global::sUCO.Properties.Resources.raia;
-            this.btRaia.Name = "btRaia";
             this.btRaia.Size = new System.Drawing.Size(21, 20);
             this.btRaia.ToolTipText = "Raias";
             // 
@@ -295,7 +295,6 @@ namespace sUCO.forms.usercontrols
             // 
             this.btRaiaAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaAdd.Image = global::sUCO.Properties.Resources.addRaia;
-            this.btRaiaAdd.Name = "btRaiaAdd";
             this.btRaiaAdd.Size = new System.Drawing.Size(150, 22);
             this.btRaiaAdd.Text = "Adicionar Raia";
             this.btRaiaAdd.ToolTipText = "Adiciona uma Raia ao Caso de Uso";
@@ -305,7 +304,6 @@ namespace sUCO.forms.usercontrols
             // 
             this.btRemoverRaia.BackColor = System.Drawing.SystemColors.Control;
             this.btRemoverRaia.Image = global::sUCO.Properties.Resources.deleteRaia;
-            this.btRemoverRaia.Name = "btRemoverRaia";
             this.btRemoverRaia.Size = new System.Drawing.Size(150, 22);
             this.btRemoverRaia.Text = "Excluir Raia";
             this.btRemoverRaia.ToolTipText = "Deleta uma Raia do Caso de Uso";
@@ -318,7 +316,6 @@ namespace sUCO.forms.usercontrols
             this.btVerCenariosAlternativos,
             this.btOcultarCenariosAlternativos});
             this.btCenarioAlternativo.Image = global::sUCO.Properties.Resources.cenarioAlternativo;
-            this.btCenarioAlternativo.Name = "btCenarioAlternativo";
             this.btCenarioAlternativo.Size = new System.Drawing.Size(21, 20);
             this.btCenarioAlternativo.ToolTipText = "Cenários";
             // 
@@ -326,7 +323,6 @@ namespace sUCO.forms.usercontrols
             // 
             this.btVerCenariosAlternativos.BackColor = System.Drawing.SystemColors.Control;
             this.btVerCenariosAlternativos.Image = global::sUCO.Properties.Resources.ok;
-            this.btVerCenariosAlternativos.Name = "btVerCenariosAlternativos";
             this.btVerCenariosAlternativos.Size = new System.Drawing.Size(172, 22);
             this.btVerCenariosAlternativos.Text = "Visualizar Cenários";
             this.btVerCenariosAlternativos.ToolTipText = "Visualisa os cenários alternativos";
@@ -336,7 +332,6 @@ namespace sUCO.forms.usercontrols
             // 
             this.btOcultarCenariosAlternativos.BackColor = System.Drawing.SystemColors.Control;
             this.btOcultarCenariosAlternativos.Image = global::sUCO.Properties.Resources.negado;
-            this.btOcultarCenariosAlternativos.Name = "btOcultarCenariosAlternativos";
             this.btOcultarCenariosAlternativos.Size = new System.Drawing.Size(172, 22);
             this.btOcultarCenariosAlternativos.Text = "Ocultar Cenários";
             this.btOcultarCenariosAlternativos.ToolTipText = "Oculta os cenários alternativos";
@@ -346,7 +341,6 @@ namespace sUCO.forms.usercontrols
             // 
             this.btGerarRelatorio.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btGerarRelatorio.Image = global::sUCO.Properties.Resources.relatorio;
-            this.btGerarRelatorio.Name = "btGerarRelatorio";
             this.btGerarRelatorio.Size = new System.Drawing.Size(21, 20);
             this.btGerarRelatorio.ToolTipText = "Gerar Relatório do Caso de Uso";
             // 
@@ -358,7 +352,6 @@ namespace sUCO.forms.usercontrols
             this.panelCenarioAlternativo.Controls.Add(this.menuCenarioAlternativo);
             this.panelCenarioAlternativo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCenarioAlternativo.Location = new System.Drawing.Point(0, 0);
-            this.panelCenarioAlternativo.Name = "panelCenarioAlternativo";
             this.panelCenarioAlternativo.Size = new System.Drawing.Size(530, 307);
             this.panelCenarioAlternativo.TabIndex = 0;
             // 
@@ -366,7 +359,6 @@ namespace sUCO.forms.usercontrols
             // 
             this.lblCenarioAlternativo.AutoSize = true;
             this.lblCenarioAlternativo.Location = new System.Drawing.Point(86, 6);
-            this.lblCenarioAlternativo.Name = "lblCenarioAlternativo";
             this.lblCenarioAlternativo.Size = new System.Drawing.Size(95, 13);
             this.lblCenarioAlternativo.TabIndex = 3;
             this.lblCenarioAlternativo.Text = "Cenário alternativo";
@@ -375,7 +367,6 @@ namespace sUCO.forms.usercontrols
             // 
             this.cbCenariosAlternativos.FormattingEnabled = true;
             this.cbCenariosAlternativos.Location = new System.Drawing.Point(187, 3);
-            this.cbCenariosAlternativos.Name = "cbCenariosAlternativos";
             this.cbCenariosAlternativos.Size = new System.Drawing.Size(238, 21);
             this.cbCenariosAlternativos.TabIndex = 2;
             this.cbCenariosAlternativos.SelectedIndexChanged += new System.EventHandler(this.cb_Cenarios_SelectedIndexChanged);
@@ -402,7 +393,6 @@ namespace sUCO.forms.usercontrols
             this.dgCenarioAlternativo.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgCenarioAlternativo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCenarioAlternativo.Location = new System.Drawing.Point(0, 24);
-            this.dgCenarioAlternativo.Name = "dgCenarioAlternativo";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -735,16 +725,6 @@ namespace sUCO.forms.usercontrols
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             this.ResumeLayout(false);
 
-        }
-
-        private void InitColumns(DataSet ds)
-        {
-            DataGridViewTextBoxColumn coluna = new DataGridViewTextBoxColumn();
-            coluna.DataPropertyName = "FirstName";
-            coluna.HeaderText = "Forename";
-            coluna.ValueType = typeof(string);
-            coluna.Frozen = true;
-            this.dgCasosUso.Columns.Add(coluna);
         }
         private SplitContainer splitContainerExibicao;
         private Panel panelHostDiagrama;
