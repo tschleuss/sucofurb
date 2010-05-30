@@ -80,6 +80,18 @@ namespace sUCO.core
             }
         }
 
+
+        public IList<Acao> BuscarListaAcaoPorLinha(int linha)
+        {
+            IList<Acao> lista = new List<Acao>();
+            for (int i = 0; i < this.ListaRaias.Count; i++)
+            {
+                lista.Add(this.ListaRaias[i].ListaAcoes[linha]);
+            }
+
+            return lista;
+        }
+
         public void addCenario(Acao acao, CenarioAlternativo cenario)
         {
             acao.Cenarios.Add(cenario);
