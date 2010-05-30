@@ -295,7 +295,7 @@ namespace sUCO.forms.usercontrols
             // 
             this.btRaiaAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btRaiaAdd.Image = global::sUCO.Properties.Resources.addRaia;
-            this.btRaiaAdd.Size = new System.Drawing.Size(150, 22);
+            this.btRaiaAdd.Size = new System.Drawing.Size(153, 22);
             this.btRaiaAdd.Text = "Adicionar Raia";
             this.btRaiaAdd.ToolTipText = "Adiciona uma Raia ao Caso de Uso";
             this.btRaiaAdd.Click += new System.EventHandler(this.btRaiaAdd_Click);
@@ -304,7 +304,7 @@ namespace sUCO.forms.usercontrols
             // 
             this.btRemoverRaia.BackColor = System.Drawing.SystemColors.Control;
             this.btRemoverRaia.Image = global::sUCO.Properties.Resources.deleteRaia;
-            this.btRemoverRaia.Size = new System.Drawing.Size(150, 22);
+            this.btRemoverRaia.Size = new System.Drawing.Size(153, 22);
             this.btRemoverRaia.Text = "Excluir Raia";
             this.btRemoverRaia.ToolTipText = "Deleta uma Raia do Caso de Uso";
             this.btRemoverRaia.Click += new System.EventHandler(this.btRaiaDel_Click);
@@ -323,7 +323,7 @@ namespace sUCO.forms.usercontrols
             // 
             this.btVerCenariosAlternativos.BackColor = System.Drawing.SystemColors.Control;
             this.btVerCenariosAlternativos.Image = global::sUCO.Properties.Resources.ok;
-            this.btVerCenariosAlternativos.Size = new System.Drawing.Size(172, 22);
+            this.btVerCenariosAlternativos.Size = new System.Drawing.Size(174, 22);
             this.btVerCenariosAlternativos.Text = "Visualizar Cenários";
             this.btVerCenariosAlternativos.ToolTipText = "Visualisa os cenários alternativos";
             this.btVerCenariosAlternativos.Click += new System.EventHandler(this.visualizarCenariosToolStripMenuItem_Click);
@@ -332,7 +332,7 @@ namespace sUCO.forms.usercontrols
             // 
             this.btOcultarCenariosAlternativos.BackColor = System.Drawing.SystemColors.Control;
             this.btOcultarCenariosAlternativos.Image = global::sUCO.Properties.Resources.negado;
-            this.btOcultarCenariosAlternativos.Size = new System.Drawing.Size(172, 22);
+            this.btOcultarCenariosAlternativos.Size = new System.Drawing.Size(174, 22);
             this.btOcultarCenariosAlternativos.Text = "Ocultar Cenários";
             this.btOcultarCenariosAlternativos.ToolTipText = "Oculta os cenários alternativos";
             this.btOcultarCenariosAlternativos.Click += new System.EventHandler(this.ocultarCenariosToolStripMenuItem_Click);
@@ -474,7 +474,7 @@ namespace sUCO.forms.usercontrols
             this.btAddRaiaCenarioAlternativo.BackColor = System.Drawing.SystemColors.Control;
             this.btAddRaiaCenarioAlternativo.Image = global::sUCO.Properties.Resources.addRaia;
             this.btAddRaiaCenarioAlternativo.Name = "btAddRaiaCenarioAlternativo";
-            this.btAddRaiaCenarioAlternativo.Size = new System.Drawing.Size(150, 22);
+            this.btAddRaiaCenarioAlternativo.Size = new System.Drawing.Size(153, 22);
             this.btAddRaiaCenarioAlternativo.Text = "Adicionar Raia";
             this.btAddRaiaCenarioAlternativo.ToolTipText = "Adiciona uma nova raia ao cenário alternativo";
             this.btAddRaiaCenarioAlternativo.Click += new System.EventHandler(this.adicionarRaiaToolStripMenuItem_Click);
@@ -484,7 +484,7 @@ namespace sUCO.forms.usercontrols
             this.btRemoverRaiaCenarioAlternativo.BackColor = System.Drawing.SystemColors.Control;
             this.btRemoverRaiaCenarioAlternativo.Image = global::sUCO.Properties.Resources.deleteRaia;
             this.btRemoverRaiaCenarioAlternativo.Name = "btRemoverRaiaCenarioAlternativo";
-            this.btRemoverRaiaCenarioAlternativo.Size = new System.Drawing.Size(150, 22);
+            this.btRemoverRaiaCenarioAlternativo.Size = new System.Drawing.Size(153, 22);
             this.btRemoverRaiaCenarioAlternativo.Text = "Remover Raia";
             this.btRemoverRaiaCenarioAlternativo.ToolTipText = "Remove uma raia do cenário alternativo";
             this.btRemoverRaiaCenarioAlternativo.Click += new System.EventHandler(this.removerRaiaToolStripMenuItem_Click);
@@ -570,6 +570,7 @@ namespace sUCO.forms.usercontrols
             this.btImportarModelo.Name = "btImportarModelo";
             this.btImportarModelo.Size = new System.Drawing.Size(23, 22);
             this.btImportarModelo.ToolTipText = "Importar Diagrama Caso Uso";
+            this.btImportarModelo.Click += new System.EventHandler(this.btImportarModelo_Click);
             // 
             // btAlterar
             // 
@@ -677,7 +678,7 @@ namespace sUCO.forms.usercontrols
             this.panelHostDiagrama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHostDiagrama.Location = new System.Drawing.Point(0, 0);
             this.panelHostDiagrama.Name = "panelHostDiagrama";
-            this.panelHostDiagrama.Size = new System.Drawing.Size(800, 144);
+            this.panelHostDiagrama.Size = new System.Drawing.Size(150, 144);
             this.panelHostDiagrama.TabIndex = 1;
             // 
             // hostDiagrama
@@ -685,7 +686,7 @@ namespace sUCO.forms.usercontrols
             this.hostDiagrama.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hostDiagrama.Location = new System.Drawing.Point(0, 0);
             this.hostDiagrama.Name = "hostDiagrama";
-            this.hostDiagrama.Size = new System.Drawing.Size(783, 450);
+            this.hostDiagrama.Size = new System.Drawing.Size(134, 450);
             this.hostDiagrama.TabIndex = 0;
             this.hostDiagrama.Child = this.diagramaWPF;
             // 
