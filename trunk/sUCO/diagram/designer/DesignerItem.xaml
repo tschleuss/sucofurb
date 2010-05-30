@@ -135,8 +135,16 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type s:DesignerItem}">
+                    
                     <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent},Path=.}"
                           ContextMenu="{StaticResource DesignerItemContextMenu}">
+
+                        <l:EditableTextBlock Text="{Binding Nome, Mode=TwoWay}">
+                            <l:EditableTextBlock.RenderTransform>
+                                <TranslateTransform X="0" Y="-20"/>
+                            </l:EditableTextBlock.RenderTransform>
+                        </l:EditableTextBlock>
+                        
                         <!-- PART_DragThumb -->
                         <c:DragThumb x:Name="PART_DragThumb" 
                                      Cursor="SizeAll"/>
@@ -154,12 +162,6 @@
                         <Control x:Name="PART_ConnectorDecorator"
                                  Visibility="Hidden"
                                  Template="{StaticResource ConnectorDecoratorTemplate}"/>
-
-                        <l:EditableTextBlock Text="{Binding Nome, Mode=TwoWay}">
-                            <l:EditableTextBlock.RenderTransform>
-                                <TranslateTransform X="0" Y="-20"/>
-                            </l:EditableTextBlock.RenderTransform>
-                        </l:EditableTextBlock>
                         
                     </Grid>
                     <ControlTemplate.Triggers>
