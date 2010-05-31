@@ -65,6 +65,17 @@ namespace sUCO.forms.usercontrols
             DoRemoverRaia(casoUso.FluxoCasoUso, dgCasosUso);
         }
 
+        private void btGerarRelatorio_Click(object sender, EventArgs e)
+        {
+            DialogResult result = this.exportarArquivoDialog.ShowDialog();
+
+            if (result != DialogResult.Cancel)
+            {
+                Exporter exporter = new Exporter();
+                exporter.SalvarDoc(this.exportarArquivoDialog.FileName, this.casoUso.FluxoCasoUso.ListaRaias);
+            }
+        }
+
         private bool PodeEditarCelula(DataGridView dataGridView, int linha, int coluna)
         {
             for (int x = 0; x < dataGridView.ColumnCount; x++)

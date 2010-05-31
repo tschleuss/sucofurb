@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="control\DBUtil.cs" />
+    <Compile Include="control\Exporter.cs" />
     <Compile Include="control\persistence\PersistenceFactory.cs" />
     <Compile Include="control\persistence\SerializadorDB.cs" />
     <Compile Include="control\persistence\SerializadorXML.cs" />
