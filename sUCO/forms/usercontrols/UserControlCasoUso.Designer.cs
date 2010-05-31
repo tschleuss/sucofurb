@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Windows.Forms.Integration;
 using System.Data;
 using sUCO.diagram;
 using sUCO.core;
@@ -126,58 +127,58 @@ namespace sUCO.forms.usercontrols
         private Label lblCenarioAlternativo;
         private ComboBox cbCenariosAlternativos;
 
+        private SaveFileDialog exportarArquivoDialog;
+
         public void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.splitContainerFluxoUC = new System.Windows.Forms.SplitContainer();
-            this.panelFluxo = new System.Windows.Forms.Panel();
-            //this.dgCasosUso = new System.Windows.Forms.DataGridView();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            this.splitContainerFluxoUC = new SplitContainer();
+            this.panelFluxo = new Panel();
             this.dgCasosUso = new MyDGV();
             this.dgCasosUso.Fluxo = this.casoUso.FluxoCasoUso;
 
-            this.ucToolBox = new System.Windows.Forms.MenuStrip();
-            this.btRaia = new System.Windows.Forms.ToolStripMenuItem();
-            this.btRaiaAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.btRemoverRaia = new System.Windows.Forms.ToolStripMenuItem();
-            this.btCenarioAlternativo = new System.Windows.Forms.ToolStripMenuItem();
-            this.btVerCenariosAlternativos = new System.Windows.Forms.ToolStripMenuItem();
-            this.btOcultarCenariosAlternativos = new System.Windows.Forms.ToolStripMenuItem();
-            this.btGerarRelatorio = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelCenarioAlternativo = new System.Windows.Forms.Panel();
-            this.lblCenarioAlternativo = new System.Windows.Forms.Label();
-            this.cbCenariosAlternativos = new System.Windows.Forms.ComboBox();
-            //this.dgCenarioAlternativo = new System.Windows.Forms.DataGridView();
+            this.ucToolBox = new MenuStrip();
+            this.btRaia = new ToolStripMenuItem();
+            this.btRaiaAdd = new ToolStripMenuItem();
+            this.btRemoverRaia = new ToolStripMenuItem();
+            this.btCenarioAlternativo = new ToolStripMenuItem();
+            this.btVerCenariosAlternativos = new ToolStripMenuItem();
+            this.btOcultarCenariosAlternativos = new ToolStripMenuItem();
+            this.btGerarRelatorio = new ToolStripMenuItem();
+            this.panelCenarioAlternativo = new Panel();
+            this.lblCenarioAlternativo = new Label();
+            this.cbCenariosAlternativos = new ComboBox();
             this.dgCenarioAlternativo = new MyDGV();
-            this.menuCenarioAlternativo = new System.Windows.Forms.MenuStrip();
-            this.btNovoCenario = new System.Windows.Forms.ToolStripMenuItem();
-            this.btAddCenarioAlternativo = new System.Windows.Forms.ToolStripMenuItem();
-            this.btRemoverCenarioAlternativo = new System.Windows.Forms.ToolStripMenuItem();
-            this.btAlterarCenarioAlternativo = new System.Windows.Forms.ToolStripMenuItem();
-            this.btRaiaAlternativo = new System.Windows.Forms.ToolStripMenuItem();
-            this.btAddRaiaCenarioAlternativo = new System.Windows.Forms.ToolStripMenuItem();
-            this.btRemoverRaiaCenarioAlternativo = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelGeral = new System.Windows.Forms.Panel();
-            this.splitContainerGeral = new System.Windows.Forms.SplitContainer();
-            this.menuExibicao = new System.Windows.Forms.ToolStrip();
-            this.btExibirDiagrama = new System.Windows.Forms.ToolStripButton();
-            this.btExibirFluxo = new System.Windows.Forms.ToolStripButton();
-            this.btImportarModelo = new System.Windows.Forms.ToolStripButton();
-            this.btAlterar = new System.Windows.Forms.Button();
-            this.txtPosCondicao = new System.Windows.Forms.TextBox();
-            this.lblPosCondicao = new System.Windows.Forms.Label();
-            this.txtPreCondicao = new System.Windows.Forms.TextBox();
-            this.lblPreCondicao = new System.Windows.Forms.Label();
-            this.txtObjetivo = new System.Windows.Forms.TextBox();
-            this.lblObjetivo = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.lblNome = new System.Windows.Forms.Label();
-            this.splitContainerExibicao = new System.Windows.Forms.SplitContainer();
-            this.panelHostDiagrama = new System.Windows.Forms.Panel();
+            this.menuCenarioAlternativo = new MenuStrip();
+            this.btNovoCenario = new ToolStripMenuItem();
+            this.btAddCenarioAlternativo = new ToolStripMenuItem();
+            this.btRemoverCenarioAlternativo = new ToolStripMenuItem();
+            this.btAlterarCenarioAlternativo = new ToolStripMenuItem();
+            this.btRaiaAlternativo = new ToolStripMenuItem();
+            this.btAddRaiaCenarioAlternativo = new ToolStripMenuItem();
+            this.btRemoverRaiaCenarioAlternativo = new ToolStripMenuItem();
+            this.panelGeral = new Panel();
+            this.splitContainerGeral = new SplitContainer();
+            this.menuExibicao = new ToolStrip();
+            this.btExibirDiagrama = new ToolStripButton();
+            this.btExibirFluxo = new ToolStripButton();
+            this.btImportarModelo = new ToolStripButton();
+            this.btAlterar = new Button();
+            this.txtPosCondicao = new TextBox();
+            this.lblPosCondicao = new Label();
+            this.txtPreCondicao = new TextBox();
+            this.lblPreCondicao = new Label();
+            this.txtObjetivo = new TextBox();
+            this.lblObjetivo = new Label();
+            this.txtNome = new TextBox();
+            this.lblNome = new Label();
+            this.splitContainerExibicao = new SplitContainer();
+            this.panelHostDiagrama = new Panel();
             this.hostDiagrama = new System.Windows.Forms.Integration.ElementHost();
             this.diagramaWPF = new sUCO.diagram.DiagramaWPF();
             this.dataSet = new System.Data.DataSet();
@@ -201,6 +202,14 @@ namespace sUCO.forms.usercontrols
             this.panelHostDiagrama.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             this.SuspendLayout();
+            //
+            // exportarArquivoDialog
+            //
+            this.exportarArquivoDialog = new SaveFileDialog();
+            this.exportarArquivoDialog.AddExtension = true;
+            this.exportarArquivoDialog.DefaultExt = ".doc";
+            this.exportarArquivoDialog.Filter = "Relatório de caso de Uso (*.doc)|*.doc";
+            this.exportarArquivoDialog.FileName = "*.doc";
             // 
             // splitContainerFluxoUC
             // 
@@ -259,20 +268,20 @@ namespace sUCO.forms.usercontrols
             this.dgCasosUso.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgCasosUso.Size = new System.Drawing.Size(232, 307);
             this.dgCasosUso.TabIndex = 7;
-            this.dgCasosUso.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCasosUso_ColumnHeaderMouseDoubleClick);
-            this.dgCasosUso.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgCasosUso_CellBeginEdit);
-            this.dgCasosUso.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCasoUso_ColumnHeaderMouseClick);
-            this.dgCasosUso.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgCasosUso_RowsAdded);
-            this.dgCasosUso.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCasosUso_CellEndEdit);
-            this.dgCasosUso.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCasosUso_CellEnter);
-            this.dgCasosUso.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgCasosUso_RowsRemoved);
+            this.dgCasosUso.ColumnHeaderMouseDoubleClick += new DataGridViewCellMouseEventHandler(this.dgCasosUso_ColumnHeaderMouseDoubleClick);
+            this.dgCasosUso.CellBeginEdit += new DataGridViewCellCancelEventHandler(this.dgCasosUso_CellBeginEdit);
+            this.dgCasosUso.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(this.dgCasoUso_ColumnHeaderMouseClick);
+            this.dgCasosUso.RowsAdded += new DataGridViewRowsAddedEventHandler(this.dgCasosUso_RowsAdded);
+            this.dgCasosUso.CellEndEdit += new DataGridViewCellEventHandler(this.dgCasosUso_CellEndEdit);
+            this.dgCasosUso.CellEnter += new DataGridViewCellEventHandler(this.dgCasosUso_CellEnter);
+            this.dgCasosUso.RowsRemoved += new DataGridViewRowsRemovedEventHandler(this.dgCasosUso_RowsRemoved);
             this.dgCasosUso.SelectionChanged += new System.EventHandler(this.dgCasosUso_SelectionChanged);
             // 
             // ucToolBox
             // 
             this.ucToolBox.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ucToolBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ucToolBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ucToolBox.Items.AddRange(new ToolStripItem[] {
             this.btRaia,
             this.btCenarioAlternativo,
             this.btGerarRelatorio});
@@ -284,7 +293,7 @@ namespace sUCO.forms.usercontrols
             // btRaia
             // 
             this.btRaia.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btRaia.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btRaia.DropDownItems.AddRange(new ToolStripItem[] {
             this.btRaiaAdd,
             this.btRemoverRaia});
             this.btRaia.Image = global::sUCO.Properties.Resources.raia;
@@ -312,7 +321,7 @@ namespace sUCO.forms.usercontrols
             // btCenarioAlternativo
             // 
             this.btCenarioAlternativo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btCenarioAlternativo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btCenarioAlternativo.DropDownItems.AddRange(new ToolStripItem[] {
             this.btVerCenariosAlternativos,
             this.btOcultarCenariosAlternativos});
             this.btCenarioAlternativo.Image = global::sUCO.Properties.Resources.cenarioAlternativo;
@@ -343,6 +352,7 @@ namespace sUCO.forms.usercontrols
             this.btGerarRelatorio.Image = global::sUCO.Properties.Resources.relatorio;
             this.btGerarRelatorio.Size = new System.Drawing.Size(21, 20);
             this.btGerarRelatorio.ToolTipText = "Gerar Relatório do Caso de Uso";
+            this.btGerarRelatorio.Click += new System.EventHandler(this.btGerarRelatorio_Click);
             // 
             // panelCenarioAlternativo
             // 
@@ -403,15 +413,15 @@ namespace sUCO.forms.usercontrols
             this.dgCenarioAlternativo.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgCenarioAlternativo.Size = new System.Drawing.Size(530, 283);
             this.dgCenarioAlternativo.TabIndex = 0;
-            this.dgCenarioAlternativo.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgCenarioAlternativo_ColumnHeaderMouseDoubleClick);
-            this.dgCenarioAlternativo.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgCenarioAlternativo_CellBeginEdit);
-            this.dgCenarioAlternativo.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
-            this.dgCenarioAlternativo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCenarioAlternativo_CellEndEdit);
-            this.dgCenarioAlternativo.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
+            this.dgCenarioAlternativo.ColumnHeaderMouseDoubleClick += new DataGridViewCellMouseEventHandler(this.dgCenarioAlternativo_ColumnHeaderMouseDoubleClick);
+            this.dgCenarioAlternativo.CellBeginEdit += new DataGridViewCellCancelEventHandler(this.dgCenarioAlternativo_CellBeginEdit);
+            this.dgCenarioAlternativo.RowsAdded += new DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            this.dgCenarioAlternativo.CellEndEdit += new DataGridViewCellEventHandler(this.dgCenarioAlternativo_CellEndEdit);
+            this.dgCenarioAlternativo.RowsRemoved += new DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
             // 
             // menuCenarioAlternativo
             // 
-            this.menuCenarioAlternativo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuCenarioAlternativo.Items.AddRange(new ToolStripItem[] {
             this.btNovoCenario,
             this.btRaiaAlternativo});
             this.menuCenarioAlternativo.Location = new System.Drawing.Point(0, 0);
@@ -421,7 +431,7 @@ namespace sUCO.forms.usercontrols
             // 
             // btNovoCenario
             // 
-            this.btNovoCenario.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btNovoCenario.DropDownItems.AddRange(new ToolStripItem[] {
             this.btAddCenarioAlternativo,
             this.btRemoverCenarioAlternativo,
             this.btAlterarCenarioAlternativo});
@@ -461,7 +471,7 @@ namespace sUCO.forms.usercontrols
             // 
             // btRaiaAlternativo
             // 
-            this.btRaiaAlternativo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btRaiaAlternativo.DropDownItems.AddRange(new ToolStripItem[] {
             this.btAddRaiaCenarioAlternativo,
             this.btRemoverRaiaCenarioAlternativo});
             this.btRaiaAlternativo.Image = global::sUCO.Properties.Resources.raia;
@@ -531,7 +541,7 @@ namespace sUCO.forms.usercontrols
             // menuExibicao
             // 
             this.menuExibicao.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.menuExibicao.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuExibicao.Items.AddRange(new ToolStripItem[] {
             this.btExibirDiagrama,
             this.btExibirFluxo,
             this.btImportarModelo});
