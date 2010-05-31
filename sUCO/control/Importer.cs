@@ -96,10 +96,12 @@ namespace sUCO.control
                                         }
                                         else if (attr.Equals("Right"))
                                         {
+                                            uc.Right = value;
                                             uc.Width = value - uc.Left;
                                         }
                                         else if (attr.Equals("Bottom"))
                                         {
+                                            uc.Bottom = value;
                                             uc.Height = value - uc.Top;
                                         }
                                     }
