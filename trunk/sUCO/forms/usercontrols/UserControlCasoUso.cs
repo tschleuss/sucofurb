@@ -65,7 +65,7 @@ namespace sUCO.forms.usercontrols
             if (result != DialogResult.Cancel)
             {
                 Exporter exporter = new Exporter();
-                exporter.SalvarDoc(this.exportarArquivoDialog.FileName, this.casoUso);
+                exporter.ExportarCasoUso(this.exportarArquivoDialog.FileName, this.casoUso);
             }
         }
 

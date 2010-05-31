@@ -438,6 +438,24 @@ namespace sUCO.forms
             this.lblDataCriacaoValor.Text = this.Projeto.DataCriacao.ToString(this.Projeto.DatePattern);
             this.lblDataAtualizacaoValor.Text = this.Projeto.DataAtualizacao.ToString(this.Projeto.DatePattern);
         }
+
+        private void btRelatorio_Click(object sender, EventArgs e)
+        {
+            DialogResult result = this.exportarArquivoDialog.ShowDialog();
+
+            if (result != DialogResult.Cancel)
+            {
+
+                IList<CasoUso> listaCasoUso = new List<CasoUso>();
+
+                foreach(UserControlPanelCasoUso panel in this.Projeto.listaPanelCasoUso)
+                {
+                }
+
+                Exporter exporter = new Exporter();
+                //exporter.ExportarCasoUso(this.exportarArquivoDialog.FileName, this.);
+            }
+        }
         
     }
 }
