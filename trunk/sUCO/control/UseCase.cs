@@ -12,6 +12,8 @@ namespace sUCO
         private int                 seqNumber;
         private int                 top;
         private int                 left;
+        private int                 right;
+        private int                 bottom;
         private int                 width;
         private int                 height;
         private IList<UserCaseLink> links;
@@ -69,6 +71,18 @@ namespace sUCO
         {
             get { return this.left; }
             set { this.left = value; }
+        }
+
+        public int Right
+        {
+            get { return this.right; }
+            set { this.right = value; }
+        }
+
+        public int Bottom
+        {
+            get { return this.bottom; }
+            set { this.bottom = value; }
         }
 
         public int Width

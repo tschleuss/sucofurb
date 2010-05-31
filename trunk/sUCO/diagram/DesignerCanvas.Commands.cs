@@ -131,22 +131,15 @@ namespace sUCO.diagram
                     {
                         IList<UserCaseLink> connectors = currentUseCase.Links;
 
-                        foreach (UserCaseLink links in connectors)
+                        foreach (UserCaseLink link in connectors)
                         {
                             UseCase sourceUC = null;
                             UseCase targetUC = null;
 
-                            componentes.TryGetValue(links.Source, out sourceUC);
-                            componentes.TryGetValue(links.Target, out targetUC);
+                            componentes.TryGetValue(link.Source, out sourceUC);
+                            componentes.TryGetValue(link.Target, out targetUC);
 
-                            Guid sourceID = new Guid(sourceUC.UcID);
-                            Guid targetID = new Guid(targetUC.UcID);
-
-                            //FIX-ME
-                            Connector sourceConnector = GetConnector(sourceID, "Top1");
-                            Connector targetConnector = GetConnector(targetID, "Top2");
-
-                            Connection connection = new Connection(sourceConnector, targetConnector, links.Relacionamento);
+                            Connection connection = this.retrieveConnection(sourceUC, targetUC, link);
                             Canvas.SetZIndex(connection, 1);
                             this.Children.Add(connection);
                         }
@@ -155,6 +148,30 @@ namespace sUCO.diagram
 
                 this.InvalidateVisual();
             }
+        }
+
+        #endregion
+
+        #region Calculate Connection Position
+
+        private Connection retrieveConnection(UseCase source, UseCase target, UserCaseLink link)
+        {
+            Guid sourceID = new Guid(source.UcID);
+            Guid targetID = new Guid(target.UcID);
+
+            String sourceCon = "Top1";
+            String targetCon = "Top1";
+
+            //Top1 - Top
+            //Top2 - Left
+            //Top3 - Right
+            //Top4 - Bottom
+
+            //FIX-ME
+            Connector sourceConnector = GetConnector(sourceID, sourceCon);
+            Connector targetConnector = GetConnector(targetID, targetCon);
+
+            return new Connection(sourceConnector, targetConnector, link.Relacionamento); ;
         }
 
         #endregion
