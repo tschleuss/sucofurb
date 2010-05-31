@@ -65,22 +65,14 @@
 				Stretch="Fill" Fill="#00FFFFFF" />
 		</ControlTemplate>
 	</uco:DesignerItem.DragThumbTemplate>
-	<uco:DesignerItem.ConnectorDecoratorTemplate>
-		<ControlTemplate>
-			<uco0:RelativePositionPanel Margin="-4,-4,-4,-4">
-				<uco1:Connector Orientation="Top" Position="0,0"
-					Name="Top1" uco0:RelativePositionPanel.RelativePosition="0.5,0" />
-				<uco1:Connector Orientation="Left" Position="0,0"
-					Name="Top2" uco0:RelativePositionPanel.RelativePosition="0,0.285" />
-				<uco1:Connector Orientation="Right" Position="0,0"
-					Name="Top3" uco0:RelativePositionPanel.RelativePosition="1,0.285" />
-				<uco1:Connector Orientation="Bottom" Position="0,0"
-					Name="Top4" uco0:RelativePositionPanel.RelativePosition="0.035,1" />
-				<uco1:Connector Orientation="Bottom" Position="0,0"
-					Name="Top5" uco0:RelativePositionPanel.RelativePosition="0.965,1" />
-				<uco1:Connector Orientation="Bottom" Position="0,0"
-					Name="Top6" uco0:RelativePositionPanel.RelativePosition="0.5,1" />
-			</uco0:RelativePositionPanel>
-		</ControlTemplate>
-	</uco:DesignerItem.ConnectorDecoratorTemplate>
+  <uco:DesignerItem.ConnectorDecoratorTemplate>
+    <ControlTemplate>
+      <uco0:RelativePositionPanel Margin="-4,-4,-4,-4">
+        <uco1:Connector Orientation="Top" Position="0,0" Name="Top1" uco0:RelativePositionPanel.RelativePosition="0.5,0" />
+        <uco1:Connector Orientation="Left" Position="0,0" Name="Top2" uco0:RelativePositionPanel.RelativePosition="0,0.5" />
+        <uco1:Connector Orientation="Right" Position="0,0" Name="Top3" uco0:RelativePositionPanel.RelativePosition="1,0.5" />
+        <uco1:Connector Orientation="Bottom" Position="0,0" Name="Top4" uco0:RelativePositionPanel.RelativePosition="0.5,1" />
+      </uco0:RelativePositionPanel>
+    </ControlTemplate>
+  </uco:DesignerItem.ConnectorDecoratorTemplate>
 </Path>

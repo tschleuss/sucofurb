@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using sUCO.diagram;
 
 namespace sUCO.control
 {
@@ -37,6 +38,7 @@ namespace sUCO.control
                     String id = reader.GetAttribute("xmi:idref");
                     String name = reader.GetAttribute("name");
                     UseCase uc = new UseCase(id, name);
+                    uc.UcID = System.Guid.NewGuid().ToString();
 
                     if (type.Equals("uml:UseCase"))
                     {
@@ -115,43 +117,71 @@ namespace sUCO.control
             {
                 XmlReader sub = reader.ReadSubtree();
                 UserCaseLink ucl = null;
+                bool hasType = false;
 
                 while (sub.Read())
                 {
-                    if (sub.IsStartElement())
+                    if (sub.Name.Equals("source") && sub.IsStartElement() )
                     {
-                        if (sub.Name.Equals("source"))
-                        {
-                            ucl = new UserCaseLink();
-                            String id = sub.GetAttribute("xmi:idref");
-                            ucl.Source = id;
-                        }
+                        ucl = new UserCaseLink();
+                        String id = sub.GetAttribute("xmi:idref");
+                        ucl.Source = id;
+                    }
 
-                        if (ucl != null && sub.Name.Equals("target"))
-                        {
-                            String id = sub.GetAttribute("xmi:idref");
-                            ucl.Target = id;
-                        }
+                    if (ucl != null && sub.Name.Equals("target") && sub.IsStartElement())
+                    {
+                        String id = sub.GetAttribute("xmi:idref");
+                        ucl.Target = id;
 
-                        if (ucl != null && sub.Name.Equals("model"))
-                        {
-                            String type = sub.GetAttribute("type");
-                            ucl.Type = type;
-                        }
+                        XmlReader targetSub = reader.ReadSubtree();
 
-                        if (ucl != null && ucl.Source != null && ucl.Target != null)
+                        while (targetSub.Read())
                         {
-                            UseCase uc = null;
-                            hash.TryGetValue(ucl.Source, out uc);
-
-                            if (uc == null)
+                            if (ucl != null && sub.Name.Equals("model"))
                             {
-                                hash.TryGetValue(ucl.Target, out uc);
+                                String type = sub.GetAttribute("type");
+                                ucl.Type = type;
                             }
-
-                            uc.Links.Add(ucl);
-                            ucl = null;
                         }
+                    }
+
+                    if (ucl != null && sub.Name.Equals("properties"))
+                    {
+                        String type = sub.GetAttribute("ea_type");
+
+                        if (type.Equals("Association"))
+                        {
+                            ucl.Relacionamento = TipoRelacionamento.Associate;
+                        }
+                        else if (type.Equals("UseCase"))
+                        {
+                            String subType = sub.GetAttribute("subtype");
+                            if( subType.Equals("Extends"))
+                            {
+                                ucl.Relacionamento = TipoRelacionamento.Extend;
+                            }
+                        }
+
+                        hasType = true;
+                    }
+
+                    if (ucl != null && ucl.Source != null && ucl.Target != null && hasType)
+                    {
+                        UseCase uc = null;
+                        hash.TryGetValue(ucl.Source, out uc);
+
+                        if (uc == null)
+                        {
+                            hash.TryGetValue(ucl.Target, out uc);
+                        }
+
+                        if (ucl.Type.Equals("UseCase") || ucl.Type.Equals("Actor"))
+                        {
+                            uc.Links.Add(ucl);
+                        }
+                    
+                        ucl = null;
+                        hasType = false;
                     }
                 }
             }

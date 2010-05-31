@@ -5,7 +5,8 @@ namespace sUCO
 {
     public class UseCase
     {
-        private String              id;
+        private String              ucID;
+        private String              eaID;
         private UseCaseType         type;
         private String              name;
         private int                 seqNumber;
@@ -23,7 +24,7 @@ namespace sUCO
 
         public UseCase(String id, String name)
         {
-            this.id = id;
+            this.eaID = id;
             this.name = name;
             this.links = new List<UserCaseLink>();
         }
@@ -34,10 +35,16 @@ namespace sUCO
             set { this.links = value; }
         }
 
-        public String Id
+        public String EaID
         {
-            get { return this.id; }
-            set { this.id = value; }
+            get { return this.eaID; }
+            set { this.eaID = value; }
+        }
+
+        public String UcID
+        {
+            get { return this.ucID; }
+            set { this.ucID = value; }
         }
 
         public String Name
