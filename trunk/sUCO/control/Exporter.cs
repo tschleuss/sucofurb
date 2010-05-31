@@ -10,51 +10,45 @@ namespace sUCO.control
 
         private ApplicationClass app;
         private object missingValue;
+        private Document doc;
 
         public Exporter()
         {
             this.app = new ApplicationClass();
             this.missingValue = System.Reflection.Missing.Value;
+
+            this.doc = this.app.Documents.Add(ref missingValue, ref missingValue, ref missingValue, ref missingValue);
+            this.doc.Activate();
+        }
+
+        private void Finalizar(object nomeArquivo)
+        {
+
+            doc.SaveAs2000(ref nomeArquivo, ref missingValue, ref missingValue, ref missingValue,
+            ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue,
+            ref missingValue, ref missingValue);
+
+            this.app.Quit(ref missingValue, ref missingValue, ref missingValue);
         }
 
         public void ExportarCasoUso(string caminhoArquivo, CasoUso casoUso)
         {
-            object fileName = caminhoArquivo;
-
-            Document doc = this.app.Documents.Add(ref missingValue, ref missingValue, ref missingValue, ref missingValue);
-
-            doc.Activate();
-
-            this.ImprimirCasoUso(doc, casoUso);
-
-            doc.SaveAs2000(ref fileName, ref missingValue, ref missingValue, ref missingValue,
-            ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue,
-            ref missingValue, ref missingValue);
-
-            this.app.Quit(ref missingValue, ref missingValue, ref missingValue);
+            this.ImprimirCasoUso(casoUso);
+            this.Finalizar(caminhoArquivo);
         }
 
         public void ExportarCasoUso(string caminhoArquivo, IList<CasoUso> listaCasoUso)
         {
-            object fileName = caminhoArquivo;
-
-            Document doc = this.app.Documents.Add(ref missingValue, ref missingValue, ref missingValue, ref missingValue);
-
-            doc.Activate();
 
             foreach (CasoUso casoUso in listaCasoUso)
             {
-                this.ImprimirCasoUso(doc, casoUso);
+                this.ImprimirCasoUso(casoUso);
             }
 
-            doc.SaveAs2000(ref fileName, ref missingValue, ref missingValue, ref missingValue,
-            ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue,
-            ref missingValue, ref missingValue);
-
-            this.app.Quit(ref missingValue, ref missingValue, ref missingValue);
+            this.Finalizar(caminhoArquivo);
         }
 
-        private void ImprimirCasoUso(Document doc, CasoUso casoUso)
+        private void ImprimirCasoUso(CasoUso casoUso)
         {
             IList<Raia> listaRaia = casoUso.FluxoCasoUso.ListaRaias;
 
@@ -67,7 +61,7 @@ namespace sUCO.control
 
                 //titulo
                 Paragraph paragraph = doc.Content.Paragraphs.Add(ref missingValue);
-                paragraph.Range.Text = casoUso.Nome;
+                paragraph.Range.Text = String.Format("CASO DE USO: {0}", casoUso.Nome);
                 paragraph.Range.Font.Bold = 1;
                 paragraph.Range.Font.Color = WdColor.wdColorBlack;
                 paragraph.Range.InsertParagraphAfter();
@@ -81,7 +75,7 @@ namespace sUCO.control
                         if (!String.IsNullOrEmpty(acao.Texto))
                         {
                             paragraph = doc.Content.Paragraphs.Add(ref missingValue);
-                            paragraph.Range.Text = String.Format("({0}) {1} - {2}", raia.Nome, i+1, acao.Texto);
+                            paragraph.Range.Text = String.Format("{0})({1}) {2}", i+1, raia.Nome, acao.Texto);
                             paragraph.Range.Font.Bold = 0;
                             paragraph.Format.SpaceAfter = 10;
                             paragraph.Range.InsertParagraphAfter();
@@ -98,13 +92,13 @@ namespace sUCO.control
 
                 foreach (CenarioAlternativo cenario in dicCenarios.Keys)
                 {
-                    this.ImprimirCenarioAlternativo(doc, cenario, dicCenarios[cenario]);
+                    this.ImprimirCenarioAlternativo(cenario, dicCenarios[cenario]);
                 }
 
             }
         }
 
-        private void ImprimirCenarioAlternativo(Document doc, CenarioAlternativo alternativo, int indiceAcao)
+        private void ImprimirCenarioAlternativo(CenarioAlternativo alternativo, int indiceAcao)
         {
 
             IList<Raia> listaRaia = alternativo.ListaRaias;
@@ -116,7 +110,7 @@ namespace sUCO.control
 
                 //titulo
                 Paragraph paragraph = doc.Content.Paragraphs.Add(ref missingValue);
-                paragraph.Range.Text = String.Format("(Ação {1}) - {0}", indiceAcao, alternativo.Nome);
+                paragraph.Range.Text = String.Format("CENÁRIO ALTERNATIVO: {0} (Ação de origem: {1})", alternativo.Nome, indiceAcao);
                 paragraph.Range.Font.Bold = 1;
                 paragraph.Range.Font.Color = WdColor.wdColorRed;
                 paragraph.Format.SpaceAfter = 5;
@@ -131,7 +125,7 @@ namespace sUCO.control
                         if (!String.IsNullOrEmpty(acao.Texto))
                         {
                             paragraph = doc.Content.Paragraphs.Add(ref missingValue);
-                            paragraph.Range.Text = String.Format("({0}) {1} - {2}", raia.Nome, i+1, acao.Texto);
+                            paragraph.Range.Text = String.Format("{0})({1}) {2}", i + 1, raia.Nome, acao.Texto);
                             paragraph.Range.Font.Bold = 0;
                             paragraph.Range.InsertParagraphAfter();
 

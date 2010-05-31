@@ -450,10 +450,11 @@ namespace sUCO.forms
 
                 foreach(UserControlPanelCasoUso panel in this.Projeto.listaPanelCasoUso)
                 {
+                    listaCasoUso.Add(panel.Tab.CasoUso.CasoUso);
                 }
 
                 Exporter exporter = new Exporter();
-                //exporter.ExportarCasoUso(this.exportarArquivoDialog.FileName, this.);
+                exporter.ExportarCasoUso(this.exportarArquivoDialog.FileName, listaCasoUso);
             }
         }
         
