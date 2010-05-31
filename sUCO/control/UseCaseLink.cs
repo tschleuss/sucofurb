@@ -1,4 +1,5 @@
 ﻿using System;
+using sUCO.diagram;
 
 namespace sUCO
 {
@@ -7,6 +8,7 @@ namespace sUCO
         private String source;
         private String target;
         private String type;
+        private TipoRelacionamento relacionamento;
 
         public UserCaseLink()
         {
@@ -28,6 +30,12 @@ namespace sUCO
         {
             get { return this.type; }
             set { this.type = value; }
+        }
+
+        public TipoRelacionamento Relacionamento
+        {
+            get { return this.relacionamento; }
+            set { this.relacionamento = value; }
         }
     }
 }

@@ -350,6 +350,7 @@ namespace sUCO.diagram
 
         private static ConnectorOrientation GetOrientation(Point p1, Point p2)
         {
+            /**
             if (p1.X == p2.X)
             {
                 if (p1.Y >= p2.Y)
@@ -365,6 +366,29 @@ namespace sUCO.diagram
                     return ConnectorOrientation.Left;
             }
             throw new Exception("Failed to retrieve orientation");
+           */
+            //FIX-ME
+            if (p1.X == p2.X)
+            {
+                if (p1.Y >= p2.Y)
+                    return ConnectorOrientation.Bottom;
+                else
+                    return ConnectorOrientation.Top;
+            }
+            else if (p1.Y == p2.Y)
+            {
+                if (p1.X >= p2.X)
+                    return ConnectorOrientation.Right;
+                else
+                    return ConnectorOrientation.Left;
+            }
+            else
+            {
+                if (p1.Y >= p2.Y)
+                    return ConnectorOrientation.Bottom;
+                else
+                    return ConnectorOrientation.Top;
+            }
         }
 
         private static Orientation GetOrientation(ConnectorOrientation sourceOrientation)

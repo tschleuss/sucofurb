@@ -95,7 +95,7 @@ namespace sUCO.diagram
 
                     if (currentUseCase != null)
                     {
-                        Guid id = System.Guid.NewGuid();
+                        Guid id = new Guid(currentUseCase.UcID);
                         DesignerItem item = new DesignerItem(id);
                         item.Width = currentUseCase.Width;
                         item.Height = currentUseCase.Height;
@@ -119,6 +119,37 @@ namespace sUCO.diagram
                         item.Nome = currentUseCase.Name;
                         this.Children.Add(item);
                         SetConnectorDecoratorTemplate(item);
+                    }
+                }
+
+                foreach (String keys in componentes.Keys)
+                {
+                    UseCase currentUseCase = null;
+                    componentes.TryGetValue(keys, out currentUseCase);
+
+                    if (currentUseCase != null)
+                    {
+                        IList<UserCaseLink> connectors = currentUseCase.Links;
+
+                        foreach (UserCaseLink links in connectors)
+                        {
+                            UseCase sourceUC = null;
+                            UseCase targetUC = null;
+
+                            componentes.TryGetValue(links.Source, out sourceUC);
+                            componentes.TryGetValue(links.Target, out targetUC);
+
+                            Guid sourceID = new Guid(sourceUC.UcID);
+                            Guid targetID = new Guid(targetUC.UcID);
+
+                            //FIX-ME
+                            Connector sourceConnector = GetConnector(sourceID, "Top1");
+                            Connector targetConnector = GetConnector(targetID, "Top2");
+
+                            Connection connection = new Connection(sourceConnector, targetConnector, links.Relacionamento);
+                            Canvas.SetZIndex(connection, 1);
+                            this.Children.Add(connection);
+                        }
                     }
                 }
 

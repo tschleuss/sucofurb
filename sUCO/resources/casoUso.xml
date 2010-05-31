@@ -1,7 +1,8 @@
 <Path ToolTip="Caso de Uso" InputMethod.IsInputMethodEnabled="True"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:uco="clr-namespace:sUCO.diagram;assembly=sUCO">
+	xmlns:uco="clr-namespace:sUCO.diagram;assembly=sUCO" xmlns:uco0="clr-namespace:sUCO.diagram.controls;assembly=sUCO" 
+  xmlns:uco1="clr-namespace:sUCO.diagram.connection;assembly=sUCO">
 	<Path.Style>
 		<Style TargetType="Path">
 			<Style.BasedOn>
@@ -152,4 +153,14 @@
 			</Path>
 		</ControlTemplate>
 	</uco:DesignerItem.DragThumbTemplate>
+  <uco:DesignerItem.ConnectorDecoratorTemplate>
+    <ControlTemplate>
+      <uco0:RelativePositionPanel Margin="-4,-4,-4,-4">
+        <uco1:Connector Orientation="Top" Position="0,0" Name="Top1" uco0:RelativePositionPanel.RelativePosition="0.5,0" />
+        <uco1:Connector Orientation="Left" Position="0,0" Name="Top2" uco0:RelativePositionPanel.RelativePosition="0,0.5" />
+        <uco1:Connector Orientation="Right" Position="0,0" Name="Top3" uco0:RelativePositionPanel.RelativePosition="1,0.5" />
+        <uco1:Connector Orientation="Bottom" Position="0,0" Name="Top4" uco0:RelativePositionPanel.RelativePosition="0.5,1" />
+      </uco0:RelativePositionPanel>
+    </ControlTemplate>
+  </uco:DesignerItem.ConnectorDecoratorTemplate>
 </Path>
