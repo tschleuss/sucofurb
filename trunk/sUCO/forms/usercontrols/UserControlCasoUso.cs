@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Collections;
+using sUCO.control;
 using sUCO.core;
 using sUCO.diagram;
-using System.Windows.Forms.Integration;
-using sUCO.control;
 
 namespace sUCO.forms.usercontrols
 {
@@ -72,7 +65,7 @@ namespace sUCO.forms.usercontrols
             if (result != DialogResult.Cancel)
             {
                 Exporter exporter = new Exporter();
-                exporter.SalvarDoc(this.exportarArquivoDialog.FileName, this.casoUso.FluxoCasoUso.ListaRaias);
+                exporter.SalvarDoc(this.exportarArquivoDialog.FileName, this.casoUso);
             }
         }
 
