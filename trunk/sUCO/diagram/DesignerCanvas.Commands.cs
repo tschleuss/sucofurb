@@ -81,7 +81,7 @@ namespace sUCO.diagram
 
         #region Drawn EA Componentes
 
-        public void DrawnEAComponentes(Dictionary<String, UseCase> componentes)
+        public void DrawnEAComponentes(Dictionary<String, ComponenteDiagrama> componentes)
         {
             if (componentes != null)
             {
@@ -90,7 +90,7 @@ namespace sUCO.diagram
 
                 foreach (String keys in componentes.Keys)
                 {
-                    UseCase currentUseCase = null;
+                    ComponenteDiagrama currentUseCase = null;
                     componentes.TryGetValue(keys, out currentUseCase);
 
                     if (currentUseCase != null)
@@ -105,11 +105,11 @@ namespace sUCO.diagram
                         Object content = null;
                         String xmlContent = "";
 
-                        if( currentUseCase.Type == UseCase.UseCaseType.USE_CASE )
+                        if( currentUseCase.Type == ComponenteDiagrama.UseCaseType.USE_CASE )
                         {
                             xmlContent = sUCO.Properties.Resources.casoUso;
                         }
-                        else if (currentUseCase.Type == UseCase.UseCaseType.ACTOR)
+                        else if (currentUseCase.Type == ComponenteDiagrama.UseCaseType.ACTOR)
                         {
                             xmlContent = sUCO.Properties.Resources.actor;
                         }
@@ -124,17 +124,17 @@ namespace sUCO.diagram
 
                 foreach (String keys in componentes.Keys)
                 {
-                    UseCase currentUseCase = null;
+                    ComponenteDiagrama currentUseCase = null;
                     componentes.TryGetValue(keys, out currentUseCase);
 
                     if (currentUseCase != null)
                     {
-                        IList<UserCaseLink> connectors = currentUseCase.Links;
+                        IList<ComponenteLigacao> connectors = currentUseCase.Links;
 
-                        foreach (UserCaseLink link in connectors)
+                        foreach (ComponenteLigacao link in connectors)
                         {
-                            UseCase sourceUC = null;
-                            UseCase targetUC = null;
+                            ComponenteDiagrama sourceUC = null;
+                            ComponenteDiagrama targetUC = null;
 
                             componentes.TryGetValue(link.Source, out sourceUC);
                             componentes.TryGetValue(link.Target, out targetUC);
@@ -154,7 +154,7 @@ namespace sUCO.diagram
 
         #region Calculate Connection Position
 
-        private Connection retrieveConnection(UseCase source, UseCase target, UserCaseLink link)
+        private Connection retrieveConnection(ComponenteDiagrama source, ComponenteDiagrama target, ComponenteLigacao link)
         {
             Guid sourceID = new Guid(source.UcID);
             Guid targetID = new Guid(target.UcID);
@@ -172,6 +172,72 @@ namespace sUCO.diagram
             Connector targetConnector = GetConnector(targetID, targetCon);
 
             return new Connection(sourceConnector, targetConnector, link.Relacionamento); ;
+        }
+
+        #endregion
+
+        #region Recupera Componentes em texto
+
+        public String retrieveTextComponentes()
+        {
+            IEnumerable<DesignerItem> designerItems = this.Children.OfType<DesignerItem>();
+            IEnumerable<Connection> connections = this.Children.OfType<Connection>();
+
+            XElement designerItemsXML = SerializeDesignerItems(designerItems);
+            XElement connectionsXML = SerializeConnections(connections);
+
+            XElement root = new XElement("Root");
+            root.Add(designerItemsXML);
+            root.Add(connectionsXML);
+
+            return root.ToString();
+        }
+
+        #endregion
+
+        #region Drawn Text Componentes
+
+        public void drawnTextComponentes(String text)
+        {
+            XElement root = XElement.Parse(text);
+
+            if (root == null)
+            {
+                return;
+            }
+
+            this.Children.Clear();
+            this.SelectionService.ClearSelection();
+
+            IEnumerable<XElement> itemsXML = root.Elements("DesignerItems").Elements("DesignerItem");
+            foreach (XElement itemXML in itemsXML)
+            {
+                Guid id = new Guid(itemXML.Element("ID").Value);
+                DesignerItem item = DeserializeDesignerItem(itemXML, id, 0, 0);
+                this.Children.Add(item);
+                SetConnectorDecoratorTemplate(item);
+            }
+
+            this.InvalidateVisual();
+
+            IEnumerable<XElement> connectionsXML = root.Elements("Connections").Elements("Connection");
+            foreach (XElement connectionXML in connectionsXML)
+            {
+                Guid sourceID = new Guid(connectionXML.Element("SourceID").Value);
+                Guid sinkID = new Guid(connectionXML.Element("SinkID").Value);
+
+                String sourceConnectorName = connectionXML.Element("SourceConnectorName").Value;
+                String sinkConnectorName = connectionXML.Element("SinkConnectorName").Value;
+
+                Connector sourceConnector = GetConnector(sourceID, sourceConnectorName);
+                Connector sinkConnector = GetConnector(sinkID, sinkConnectorName);
+
+                TipoRelacionamento tipo = (TipoRelacionamento)Enum.Parse(typeof(TipoRelacionamento), connectionXML.Element("Relacionamento").Value, true);
+
+                Connection connection = new Connection(sourceConnector, sinkConnector, tipo);
+                Canvas.SetZIndex(connection, Int32.Parse(connectionXML.Element("zIndex").Value));
+                this.Children.Add(connection);
+            }
         }
 
         #endregion
@@ -960,6 +1026,7 @@ namespace sUCO.diagram
                                                   new XElement("zIndex", Canvas.GetZIndex(item)),
                                                   new XElement("IsGroup", item.IsGroup),
                                                   new XElement("ParentID", item.ParentID),
+                                                  new XElement("Name", item.Nome),
                                                   new XElement("Content", contentXaml)
                                               )
                                    );
@@ -996,6 +1063,7 @@ namespace sUCO.diagram
             Canvas.SetLeft(item, Double.Parse(itemXML.Element("Left").Value, CultureInfo.InvariantCulture) + OffsetX);
             Canvas.SetTop(item, Double.Parse(itemXML.Element("Top").Value, CultureInfo.InvariantCulture) + OffsetY);
             Canvas.SetZIndex(item, Int32.Parse(itemXML.Element("zIndex").Value));
+            item.Nome = itemXML.Element("Name").Value;
             Object content = XamlReader.Load(XmlReader.Create(new StringReader(itemXML.Element("Content").Value)));
             item.Content = content;
             return item;

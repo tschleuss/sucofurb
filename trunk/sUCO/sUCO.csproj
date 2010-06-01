@@ -73,8 +73,8 @@
     <Compile Include="control\persistence\PersistenceFactory.cs" />
     <Compile Include="control\persistence\SerializadorDB.cs" />
     <Compile Include="control\persistence\SerializadorXML.cs" />
-    <Compile Include="control\UseCaseLink.cs" />
-    <Compile Include="control\UseCase.cs" />
+    <Compile Include="control\ComponenteLigacao.cs" />
+    <Compile Include="control\ComponenteDiagrama.cs" />
     <Compile Include="control\Importer.cs" />
     <Compile Include="core\Acao.cs" />
     <Compile Include="core\CenarioAlternativo.cs" />
@@ -85,6 +85,7 @@
     <Compile Include="dao\AcaoDAO.cs" />
     <Compile Include="dao\CasoUsoDAO.cs" />
     <Compile Include="dao\CenarioDAO.cs" />
+    <Compile Include="dao\componentes\ComponenteDiagramaDAO.cs" />
     <Compile Include="dao\ProjetoDAO.cs" />
     <Compile Include="dao\RaiaDAO.cs" />
     <Compile Include="diagram\connection\Connection.cs" />
@@ -392,6 +393,7 @@
     <Content Include="resources\database\MySql.Data.dll" />
     <Content Include="resources\database\sUCO_DER.xml" />
     <None Include="resources\save.png" />
+    <None Include="resources\sucoDB.sql" />
     <None Include="resources\xml.png" />
   </ItemGroup>
   <ItemGroup>

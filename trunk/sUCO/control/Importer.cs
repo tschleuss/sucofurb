@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using sUCO.diagram;
+using sUCO.core;
 
 namespace sUCO.control
 {
     class Importer
     {
-        public static Dictionary<String, UseCase> ImportarXML(String filePath)
+        public static Dictionary<String, ComponenteDiagrama> ImportarXML(String filePath)
         {
             XmlReader reader = new XmlTextReader(filePath);
-            Dictionary<String, UseCase> hash = new Dictionary<String, UseCase>();
+            Dictionary<String, ComponenteDiagrama> hash = new Dictionary<String, ComponenteDiagrama>();
 
             while (reader.Read())
             {
@@ -27,7 +28,7 @@ namespace sUCO.control
             return hash;
         }
 
-        private static void parseElementTag(XmlReader reader, Dictionary<String, UseCase> hash)
+        private static void parseElementTag(XmlReader reader, Dictionary<String, ComponenteDiagrama> hash)
         {
             if (reader.Name.Equals("element"))
             {
@@ -37,16 +38,16 @@ namespace sUCO.control
                 {
                     String id = reader.GetAttribute("xmi:idref");
                     String name = reader.GetAttribute("name");
-                    UseCase uc = new UseCase(id, name);
+                    ComponenteDiagrama uc = new ComponenteDiagrama(id, name);
                     uc.UcID = System.Guid.NewGuid().ToString();
 
                     if (type.Equals("uml:UseCase"))
                     {
-                        uc.Type = UseCase.UseCaseType.USE_CASE;
+                        uc.Type = ComponenteDiagrama.UseCaseType.USE_CASE;
                     }
                     else if (type.Equals("uml:Actor"))
                     {
-                        uc.Type = UseCase.UseCaseType.ACTOR;
+                        uc.Type = ComponenteDiagrama.UseCaseType.ACTOR;
                     }
 
                     hash.Add(id, uc);
@@ -54,7 +55,7 @@ namespace sUCO.control
             }
         }
 
-        private static void parseDiagramsTag(XmlReader reader, Dictionary<String, UseCase> hash)
+        private static void parseDiagramsTag(XmlReader reader, Dictionary<String, ComponenteDiagrama> hash)
         {
             if (reader.Name.Equals("diagrams"))
             {
@@ -70,7 +71,7 @@ namespace sUCO.control
 
                         if (geometry != null)
                         {
-                            UseCase uc = null;
+                            ComponenteDiagrama uc = null;
                             hash.TryGetValue(id, out uc);
 
                             if (uc != null)
@@ -113,19 +114,19 @@ namespace sUCO.control
             }
         }
 
-        private static void parseConnectorTag(XmlReader reader, Dictionary<String, UseCase> hash)
+        private static void parseConnectorTag(XmlReader reader, Dictionary<String, ComponenteDiagrama> hash)
         {
             if (reader.Name.Equals("connector"))
             {
                 XmlReader sub = reader.ReadSubtree();
-                UserCaseLink ucl = null;
+                ComponenteLigacao ucl = null;
                 bool hasType = false;
 
                 while (sub.Read())
                 {
                     if (sub.Name.Equals("source") && sub.IsStartElement() )
                     {
-                        ucl = new UserCaseLink();
+                        ucl = new ComponenteLigacao();
                         String id = sub.GetAttribute("xmi:idref");
                         ucl.Source = id;
                     }
@@ -169,7 +170,7 @@ namespace sUCO.control
 
                     if (ucl != null && ucl.Source != null && ucl.Target != null && hasType)
                     {
-                        UseCase uc = null;
+                        ComponenteDiagrama uc = null;
                         hash.TryGetValue(ucl.Source, out uc);
 
                         if (uc == null)
