@@ -51,12 +51,14 @@ namespace sUCO.forms
             tableLayoutPanelCasoUso.Controls.Clear();
             this.Projeto.LimparPanelCasoUso();
 
-            //TODO exclusão
-            /*
-            foreach (TabCasoUso tab in TabControl.Controls)
+            //remove todas as tabs
+            foreach (TabPage tab in TabControl.TabPages)
             {
-                Console.WriteLine(TabControl.Controls.GetChildIndex(tab));
-            }*/
+                if(tab.TabIndex !=0)
+                {
+                    tabControl.Controls.Remove(tab);
+                }
+            }
 
         }
 
@@ -100,7 +102,7 @@ namespace sUCO.forms
         private void menuItemInternoSalvar_Click(object sender, EventArgs e)
         {
             IList<CasoUso> ucList = new List<CasoUso>();
-            foreach (UserControlPanelCasoUso ucpc in this.Projeto.listaPanelCasoUso)
+            foreach (UserControlPanelCasoUso ucpc in this.Projeto.ListaPanelCasoUso)
             {
                 ucList.Add(ucpc.Tab.CasoUso.CasoUso);
             }
@@ -136,7 +138,7 @@ namespace sUCO.forms
             {
                 //Recupera todo os casos de uso criados
                 IList<CasoUso> ucList = new List<CasoUso>();
-                foreach (UserControlPanelCasoUso ucpc in this.Projeto.listaPanelCasoUso)
+                foreach (UserControlPanelCasoUso ucpc in this.Projeto.ListaPanelCasoUso)
                 {
                     ucList.Add(ucpc.Tab.CasoUso.CasoUso);
                 }
@@ -148,7 +150,7 @@ namespace sUCO.forms
                 }
                 else
                 {
-                    MessageBox.Show("Nao ha itens para salvar!!");
+                    MessageBox.Show("Não há itens para salvar.", "Salvar Projeto");
                 }
             }
             else
@@ -175,24 +177,23 @@ namespace sUCO.forms
         {
             if ( VerificaSalvar())
             {
-                //casoDeUso = new CasoUso("", new Diagrama(), "");
-                //cb_Cenarios.Items.Clear();
-
-                //limparGrig(dgCasosUso);
-                //limparGrig(dgCenarioAlternativo);
+                this.Projeto.RessetarInfo();
+                this.AtualizarCamposDadosProjeto();
+                this.ExcluirComponentes();
             }
         }
 
 
         private bool VerificaSalvar()
         {
-            if (opened)
+            if (opened || this.Projeto.ListaPanelCasoUso.Count > 0)
             {
                 DialogResult result = MessageBox.Show("O conteúdo do arquivo foi alterado.\nDeseja Salvar as alterações?", "Arquivo alterado", MessageBoxButtons.YesNoCancel);
 
                 if (result == DialogResult.Yes)
                 {
-                    return Salvar();
+                    Salvar();
+                    return true;
                 }
                 else if (result == DialogResult.Cancel)
                 {
@@ -203,26 +204,16 @@ namespace sUCO.forms
             return true;
         }
 
-        private bool Salvar()
+        private void Salvar()
         {
-            if (Projeto.NomeArquivo == null)
+            if (DBUtil.Instance.Configured)
             {
-                if ( salvarArquivoDialog.ShowDialog() == DialogResult.OK )
-                {
-                    Projeto.NomeArquivo = salvarArquivoDialog.FileName;
-                }
+                this.menuItemInternoSalvarBD_Click(null, null);
             }
-
-            //Recupera todo os casos de uso criados
-            IList<CasoUso> ucList = new List<CasoUso>();
-            foreach (UserControlPanelCasoUso ucpc in this.Projeto.listaPanelCasoUso)
+            else
             {
-                ucList.Add(ucpc.Tab.CasoUso.CasoUso);
+                this.menuItemInternoSalvar_Click(null, null);
             }
-
-            PersistenceFactory.toDB().SalvarArquivo(Projeto, ucList);
-            MessageBox.Show("Projeto salvo com sucesso!", "Salvar Projeto");
-            return true;
         }
 
         private void btUCAdd_Click(object sender, EventArgs e)
@@ -367,7 +358,7 @@ namespace sUCO.forms
 
 		private void btRefreshLayout_Click(object sender, EventArgs e)
         {
-            foreach (UserControlPanelCasoUso panel in this.Projeto.listaPanelCasoUso)
+            foreach (UserControlPanelCasoUso panel in this.Projeto.ListaPanelCasoUso)
             {
                 RenderTargetBitmap bitmap = panel.Tab.CasoUso.Diagrama.GetImageFromCanvas();
 
@@ -448,7 +439,7 @@ namespace sUCO.forms
 
                 IList<CasoUso> listaCasoUso = new List<CasoUso>();
 
-                foreach(UserControlPanelCasoUso panel in this.Projeto.listaPanelCasoUso)
+                foreach(UserControlPanelCasoUso panel in this.Projeto.ListaPanelCasoUso)
                 {
                     listaCasoUso.Add(panel.Tab.CasoUso.CasoUso);
                 }
@@ -456,6 +447,11 @@ namespace sUCO.forms
                 Exporter exporter = new Exporter();
                 exporter.ExportarCasoUso(this.exportarArquivoDialog.FileName, listaCasoUso);
             }
+        }
+
+        private void btHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Em construção.", "Tópicos de ajuda");
         }
         
     }

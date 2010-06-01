@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.Office.Interop.Word;
 using sUCO.core;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace sUCO.control
 {
@@ -23,7 +25,6 @@ namespace sUCO.control
 
         private void Finalizar(object nomeArquivo)
         {
-
             doc.SaveAs2000(ref nomeArquivo, ref missingValue, ref missingValue, ref missingValue,
             ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue,
             ref missingValue, ref missingValue);
