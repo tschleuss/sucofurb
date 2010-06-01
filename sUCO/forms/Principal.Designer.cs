@@ -66,6 +66,8 @@ namespace sUCO.forms
             this.menuItemInternoImportarXML = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemPreferencias = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemInternoSQL = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemAjuda = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemInternoAjuda = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirArquivoDialog = new System.Windows.Forms.OpenFileDialog();
             this.topToolBox = new System.Windows.Forms.ToolStrip();
             this.btNovo = new System.Windows.Forms.ToolStripButton();
@@ -74,6 +76,7 @@ namespace sUCO.forms
             this.btRelatorio = new System.Windows.Forms.ToolStripButton();
             this.btHelp = new System.Windows.Forms.ToolStripButton();
             this.panelTab = new System.Windows.Forms.Panel();
+            this.exportarArquivoDialog = new System.Windows.Forms.SaveFileDialog();
             this.tabControl = new sUCO.forms.usercontrols.TabControlCasoUso();
             this.tabPageProjeto = new System.Windows.Forms.TabPage();
             this.panelProjeto = new System.Windows.Forms.Panel();
@@ -92,9 +95,6 @@ namespace sUCO.forms
             this.btUCAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.btUCDel = new System.Windows.Forms.ToolStripMenuItem();
             this.btRefreshLayout = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarArquivoDialog = new System.Windows.Forms.SaveFileDialog();
-            this.menuItemAjuda = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemInternoAjuda = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTopo.SuspendLayout();
             this.topToolBox.SuspendLayout();
             this.panelTab.SuspendLayout();
@@ -127,7 +127,7 @@ namespace sUCO.forms
             this.menuItemInternoSalvarBD,
             this.menuItemInternoXML});
             this.menuItemArquivo.Name = "menuItemArquivo";
-            this.menuItemArquivo.Size = new System.Drawing.Size(61, 20);
+            this.menuItemArquivo.Size = new System.Drawing.Size(56, 20);
             this.menuItemArquivo.Text = "Arquivo";
             // 
             // menuItemInternoNovo
@@ -136,6 +136,7 @@ namespace sUCO.forms
             this.menuItemInternoNovo.Name = "menuItemInternoNovo";
             this.menuItemInternoNovo.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoNovo.Text = "Novo";
+            this.menuItemInternoNovo.ToolTipText = "Novo Projeto";
             this.menuItemInternoNovo.Click += new System.EventHandler(this.menuItemInternoNovo_Click);
             // 
             // menuItemInternoAbrir
@@ -144,6 +145,7 @@ namespace sUCO.forms
             this.menuItemInternoAbrir.Name = "menuItemInternoAbrir";
             this.menuItemInternoAbrir.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoAbrir.Text = "Abrir";
+            this.menuItemInternoAbrir.ToolTipText = "Abrir Projeto";
             this.menuItemInternoAbrir.Click += new System.EventHandler(this.menuItemInternoAbrir_Click);
             // 
             // menuItemInternoSalvarBD
@@ -152,6 +154,7 @@ namespace sUCO.forms
             this.menuItemInternoSalvarBD.Name = "menuItemInternoSalvarBD";
             this.menuItemInternoSalvarBD.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoSalvarBD.Text = "Salvar";
+            this.menuItemInternoSalvarBD.ToolTipText = "Salvar Projeto";
             this.menuItemInternoSalvarBD.Click += new System.EventHandler(this.menuItemInternoSalvarBD_Click);
             // 
             // menuItemInternoXML
@@ -163,21 +166,24 @@ namespace sUCO.forms
             this.menuItemInternoXML.Name = "menuItemInternoXML";
             this.menuItemInternoXML.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoXML.Text = "XML";
+            this.menuItemInternoXML.ToolTipText = "XML";
             // 
             // menuItemInternoExportarXML
             // 
             this.menuItemInternoExportarXML.Image = global::sUCO.Properties.Resources.xml;
             this.menuItemInternoExportarXML.Name = "menuItemInternoExportarXML";
-            this.menuItemInternoExportarXML.Size = new System.Drawing.Size(147, 22);
+            this.menuItemInternoExportarXML.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoExportarXML.Text = "Exportar XML";
+            this.menuItemInternoExportarXML.ToolTipText = "Exportar projeto no formato XML";
             this.menuItemInternoExportarXML.Click += new System.EventHandler(this.menuItemInternoSalvar_Click);
             // 
             // menuItemInternoImportarXML
             // 
             this.menuItemInternoImportarXML.Image = global::sUCO.Properties.Resources.xml;
             this.menuItemInternoImportarXML.Name = "menuItemInternoImportarXML";
-            this.menuItemInternoImportarXML.Size = new System.Drawing.Size(147, 22);
+            this.menuItemInternoImportarXML.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoImportarXML.Text = "Importar XML";
+            this.menuItemInternoImportarXML.ToolTipText = "Importar projeto de um arquivo XML";
             this.menuItemInternoImportarXML.Click += new System.EventHandler(this.btAbrir_Click);
             // 
             // menuItemPreferencias
@@ -185,7 +191,7 @@ namespace sUCO.forms
             this.menuItemPreferencias.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemInternoSQL});
             this.menuItemPreferencias.Name = "menuItemPreferencias";
-            this.menuItemPreferencias.Size = new System.Drawing.Size(83, 20);
+            this.menuItemPreferencias.Size = new System.Drawing.Size(79, 20);
             this.menuItemPreferencias.Text = "Preferências";
             // 
             // menuItemInternoSQL
@@ -194,7 +200,25 @@ namespace sUCO.forms
             this.menuItemInternoSQL.Name = "menuItemInternoSQL";
             this.menuItemInternoSQL.Size = new System.Drawing.Size(152, 22);
             this.menuItemInternoSQL.Text = "MySQL";
+            this.menuItemInternoSQL.ToolTipText = "Configuracoes de conexao com o banco MySQL";
             this.menuItemInternoSQL.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // menuItemAjuda
+            // 
+            this.menuItemAjuda.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemInternoAjuda});
+            this.menuItemAjuda.Name = "menuItemAjuda";
+            this.menuItemAjuda.Size = new System.Drawing.Size(47, 20);
+            this.menuItemAjuda.Text = "Ajuda";
+            // 
+            // menuItemInternoAjuda
+            // 
+            this.menuItemInternoAjuda.Image = global::sUCO.Properties.Resources.help;
+            this.menuItemInternoAjuda.Name = "menuItemInternoAjuda";
+            this.menuItemInternoAjuda.Size = new System.Drawing.Size(167, 22);
+            this.menuItemInternoAjuda.Text = "Tópicos de Ajuda";
+            this.menuItemInternoAjuda.ToolTipText = "Tópicos de Ajuda";
+            this.menuItemInternoAjuda.Click += new System.EventHandler(this.btHelp_Click);
             // 
             // abrirArquivoDialog
             // 
@@ -275,6 +299,12 @@ namespace sUCO.forms
             this.panelTab.Name = "panelTab";
             this.panelTab.Size = new System.Drawing.Size(917, 524);
             this.panelTab.TabIndex = 5;
+            // 
+            // exportarArquivoDialog
+            // 
+            this.exportarArquivoDialog.DefaultExt = "doc";
+            this.exportarArquivoDialog.FileName = "*.doc";
+            this.exportarArquivoDialog.Filter = "Relatório de caso de Uso (*.doc)|*.doc";
             // 
             // tabControl
             // 
@@ -483,28 +513,6 @@ namespace sUCO.forms
             this.btRefreshLayout.Size = new System.Drawing.Size(21, 20);
             this.btRefreshLayout.ToolTipText = "Atualizar Visualização dos Casos de Uso";
             this.btRefreshLayout.Click += new System.EventHandler(this.btRefreshLayout_Click);
-            // 
-            // exportarArquivoDialog
-            // 
-            this.exportarArquivoDialog.DefaultExt = "doc";
-            this.exportarArquivoDialog.FileName = "*.doc";
-            this.exportarArquivoDialog.Filter = "Relatório de caso de Uso (*.doc)|*.doc";
-            // 
-            // menuItemAjuda
-            // 
-            this.menuItemAjuda.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemInternoAjuda});
-            this.menuItemAjuda.Name = "menuItemAjuda";
-            this.menuItemAjuda.Size = new System.Drawing.Size(50, 20);
-            this.menuItemAjuda.Text = "Ajuda";
-            // 
-            // menuItemInternoAjuda
-            // 
-            this.menuItemInternoAjuda.Image = global::sUCO.Properties.Resources.help;
-            this.menuItemInternoAjuda.Name = "menuItemInternoAjuda";
-            this.menuItemInternoAjuda.Size = new System.Drawing.Size(166, 22);
-            this.menuItemInternoAjuda.Text = "Tópicos de Ajuda";
-            this.menuItemInternoAjuda.Click += new System.EventHandler(this.btHelp_Click);
             // 
             // Principal
             // 
