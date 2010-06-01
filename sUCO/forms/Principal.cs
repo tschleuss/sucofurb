@@ -90,6 +90,7 @@ namespace sUCO.forms
                 ucPanelCasoUso.LblCasoUso = ucPanelCasoUso.TxtCasoUso;
                 ucPanelCasoUso.Tab = tab;
                 ucPanelCasoUso.Tab.Text = ucPanelCasoUso.LblCasoUso;
+                ucPanelCasoUso.Tab.CasoUso.Diagrama.MyDesigner.drawnTextComponentes(uc.ComponentText);
                 //ucPanelCasoUso.MiniaturaDiagrama.MouseDoubleClick +=  new MouseButtonEventHandler(this.PanelCasoUso_Click);
 
                 adicionarUCPanel(ucPanelCasoUso);
@@ -140,7 +141,9 @@ namespace sUCO.forms
                 IList<CasoUso> ucList = new List<CasoUso>();
                 foreach (UserControlPanelCasoUso ucpc in this.Projeto.ListaPanelCasoUso)
                 {
-                    ucList.Add(ucpc.Tab.CasoUso.CasoUso);
+                    CasoUso casoUso = ucpc.Tab.CasoUso.CasoUso;
+                    casoUso.ComponentText = ucpc.Tab.CasoUso.Diagrama.MyDesigner.retrieveTextComponentes();
+                    ucList.Add(casoUso);
                 }
 
                 if (ucList.Count > 0)
