@@ -9,7 +9,6 @@ namespace sUCO.control
 {
     public class Exporter
     {
-
         private ApplicationClass app;
         private object missingValue;
         private Document doc;
@@ -136,6 +135,5 @@ namespace sUCO.control
                 }
             }
         }
-
     }
 }

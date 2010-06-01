@@ -1,16 +1,17 @@
 ﻿using System;
 using sUCO.diagram;
+using sUCO.core;
 
 namespace sUCO
 {
-    public class UserCaseLink
+    public class ComponenteLigacao
     {
         private String source;
         private String target;
         private String type;
         private TipoRelacionamento relacionamento;
 
-        public UserCaseLink()
+        public ComponenteLigacao()
         {
         }
 

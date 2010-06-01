@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using sUCO.core;
 
 namespace sUCO
 {
-    public class UseCase
+    public class ComponenteDiagrama
     {
         private String              ucID;
         private String              eaID;
@@ -16,7 +17,7 @@ namespace sUCO
         private int                 bottom;
         private int                 width;
         private int                 height;
-        private IList<UserCaseLink> links;
+        private IList<ComponenteLigacao> links;
 
         public enum UseCaseType
         {
@@ -24,14 +25,18 @@ namespace sUCO
             ACTOR
         }
 
-        public UseCase(String id, String name)
+        public ComponenteDiagrama(String id, String name)
         {
             this.eaID = id;
             this.name = name;
-            this.links = new List<UserCaseLink>();
+            this.links = new List<ComponenteLigacao>();
         }
 
-        public IList<UserCaseLink> Links
+        public ComponenteDiagrama()
+        {
+        }
+
+        public IList<ComponenteLigacao> Links
         {
             get { return this.links; }
             set { this.links = value; }

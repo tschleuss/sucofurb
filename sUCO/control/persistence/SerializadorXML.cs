@@ -60,6 +60,7 @@ namespace sUCO.control
                 xmlOut.WriteAttributeString("objetivo", diagrama.Objetivo);
                 xmlOut.WriteAttributeString("preCondicao", diagrama.PreCondicao);
                 xmlOut.WriteAttributeString("posCondicao", diagrama.PosCondicao);
+                xmlOut = GeraXmlComponente(xmlOut, diagrama.ComponentText);
                 xmlOut = GeraXmlRaias(xmlOut, diagrama.FluxoCasoUso.ListaRaias);
                 xmlOut.WriteEndElement();
 
@@ -73,6 +74,14 @@ namespace sUCO.control
             xmlOut.Close();
         }
 
+        private static XmlTextWriter GeraXmlComponente(XmlTextWriter xmlOut, String components)
+        {
+            xmlOut.WriteStartElement("componentes");
+            xmlOut.WriteCData(components);
+            xmlOut.WriteEndElement();
+            return xmlOut;
+        }
+
         private static XmlTextWriter GeraXmlRaias(XmlTextWriter xmlOut, IList<Raia> listaRaias)
         {
             xmlOut.WriteStartElement("raias");
@@ -82,7 +91,7 @@ namespace sUCO.control
                 xmlOut.WriteAttributeString("nome", raia.Nome);
                 xmlOut.WriteAttributeString("tamanho", Convert.ToString(raia.Width));
 
-                if (raia.ListaAcoes.Count > 0)
+                if (raia.ListaAcoes != null && raia.ListaAcoes.Count > 0)
                 {
                     xmlOut.WriteStartElement("acoes");
                     foreach (Acao acao in raia.ListaAcoes)
@@ -90,7 +99,7 @@ namespace sUCO.control
                         xmlOut.WriteStartElement("acao");
                         xmlOut.WriteAttributeString("valor", acao.Texto);
 
-                        if (acao.Cenarios.Count > 0)
+                        if (acao.Cenarios != null && acao.Cenarios.Count > 0)
                         {
                             xmlOut.WriteStartElement("cenarios");
                             foreach (CenarioAlternativo cenario in acao.Cenarios)
@@ -146,6 +155,12 @@ namespace sUCO.control
                         casoDeUso.Objetivo = xmlIn.GetAttribute("objetivo");
                         casoDeUso.PreCondicao = xmlIn.GetAttribute("preCondicao");
                         casoDeUso.PosCondicao = xmlIn.GetAttribute("posCondicao");
+                    }
+
+                    if (xmlIn.Name.Equals("componentes"))
+                    {
+                        String componente = xmlIn.ReadElementContentAsString();
+                        casoDeUso.ComponentText = componente;
                     }
 
                     if (xmlIn.Name.Equals("raia"))

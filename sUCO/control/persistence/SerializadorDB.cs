@@ -5,6 +5,7 @@ using System.Text;
 using sUCO.dao;
 using sUCO.core;
 using sUCO.forms;
+using sUCO.dao.componentes;
 
 namespace sUCO.control
 {
@@ -21,6 +22,7 @@ namespace sUCO.control
             AcaoDAO acaoDAO = new AcaoDAO();
             RaiaDAO raiaDAO = new RaiaDAO();
             CenarioDAO cenarioDAO = new CenarioDAO();
+            ComponenteDiagramaDAO componenteDAO = new ComponenteDiagramaDAO();
 
             //Exclui tudo antes
             if (projeto.Codigo != 0)
@@ -29,6 +31,7 @@ namespace sUCO.control
 
                 foreach (CasoUso casoUso in ucList)
                 {
+                    componenteDAO.delete(casoUso);
                     IList<Raia> listaRaias = casoUso.FluxoCasoUso.ListaRaias;
 
                     #region Raias
@@ -97,6 +100,7 @@ namespace sUCO.control
             foreach (CasoUso casoUso in ucList)
             {
                 casoDAO.insert(casoUso, projeto);
+                componenteDAO.insert(casoUso.ComponentText, casoUso);
             }
         }
 
@@ -111,6 +115,7 @@ namespace sUCO.control
             RaiaDAO raiaDAO = new RaiaDAO();
             AcaoDAO acaoDAO = new AcaoDAO();
             CenarioDAO cenarioDAO = new CenarioDAO();
+            ComponenteDiagramaDAO componenteDAO = new ComponenteDiagramaDAO();
             IList<CasoUso> casoUsoList = null;
 
             DBUtil.Instance.testConnection(false);
@@ -133,6 +138,8 @@ namespace sUCO.control
 
                     foreach (CasoUso caso in casoUsoList)
                     {
+                        String componentText = componenteDAO.findByCasoUso(caso.Codigo);
+                        caso.ComponentText = componentText;
                         IList<Raia> casoUsoRaias = raiaDAO.findByCasoUso(caso.Codigo);
 
                         foreach (Raia raia in casoUsoRaias)

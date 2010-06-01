@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace sUCO.core
 {
     public class CasoUso
     {
-        public CasoUso() { }
+        public CasoUso() 
+        {
+        }
 
-        public CasoUso(string nome, FluxoCasoUso diagrama)
-            : this(diagrama)
+        public CasoUso(string nome, FluxoCasoUso diagrama) : this(diagrama)
         {
             this.Nome = nome;
         }
@@ -23,5 +25,7 @@ namespace sUCO.core
         public string   Objetivo{ get; set; }
         public string   PosCondicao { get; set; }
         public string   PreCondicao { get; set; }
+        public String ComponentText { get; set; }
+        public Dictionary<String, ComponenteDiagrama> Componentes { get; set; }
     }
 }

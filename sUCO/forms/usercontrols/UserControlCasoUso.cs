@@ -64,8 +64,8 @@ namespace sUCO.forms.usercontrols
 
             if (result != DialogResult.Cancel)
             {
-                Exporter exporter = new Exporter();
-                exporter.ExportarCasoUso(this.exportarArquivoDialog.FileName, this.casoUso);
+                //Exporter exporter = new Exporter();
+                //exporter.ExportarCasoUso(this.exportarArquivoDialog.FileName, this.casoUso);
             }
         }
 
@@ -546,8 +546,8 @@ namespace sUCO.forms.usercontrols
             if (result != DialogResult.Cancel)
             {
                 String filePath = eaXML.FileName;
-                Dictionary<String, UseCase> componentes = Importer.ImportarXML(filePath);
-                diagramaWPF.MyDesigner.DrawnEAComponentes(componentes);
+                this.CasoUso.Componentes = Importer.ImportarXML(filePath);
+                diagramaWPF.MyDesigner.DrawnEAComponentes(this.CasoUso.Componentes);
             }
         }
     }
