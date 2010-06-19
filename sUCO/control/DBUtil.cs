@@ -29,7 +29,7 @@ namespace sUCO.control
                     instance = new DBUtil();
                     instance.Host = "localhost";
                     instance.Port = "3306"; ;
-                    instance.User = "root";
+                    instance.User = "";
                     instance.Pass = "";
                     instance.Database = "sUCO";
                 }

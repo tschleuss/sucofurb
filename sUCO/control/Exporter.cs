@@ -4,6 +4,7 @@ using Microsoft.Office.Interop.Word;
 using sUCO.core;
 using System.IO;
 using System.Windows.Media.Imaging;
+using System.Windows.Forms;
 
 namespace sUCO.control
 {
@@ -29,6 +30,8 @@ namespace sUCO.control
             ref missingValue, ref missingValue);
 
             this.app.Quit(ref missingValue, ref missingValue, ref missingValue);
+
+            MessageBox.Show("Arquivo gerado com sucesso.", "Relatório de Caso de Uso");
         }
 
         public void ExportarCasoUso(string caminhoArquivo, CasoUso casoUso)
