@@ -12,6 +12,7 @@
     <AssemblyName>sUCO</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>resources\images\sUCO.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -392,6 +393,7 @@
     <Content Include="resources\images\uml_actor.png" />
     <Content Include="resources\database\MySql.Data.dll" />
     <Content Include="resources\database\sUCO_DER.xml" />
+    <None Include="resources\manual.doc" />
     <None Include="resources\save.png" />
     <None Include="resources\sucoDB.sql" />
     <None Include="resources\xml.png" />
