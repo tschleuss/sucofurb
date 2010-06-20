@@ -63,7 +63,12 @@ namespace sUCO.control
             }
             catch
             {
-                MessageBox.Show("Erro ao abrir conexao com o banco");
+                MessageBox.Show(
+                    "Erro ao abrir conexao com o banco",
+                    "MySQL",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
             }
         }
 
@@ -78,7 +83,12 @@ namespace sUCO.control
             }
             catch
             {
-                MessageBox.Show("Erro ao fechar conexao com o banco");
+                MessageBox.Show(
+                    "Erro ao fechar conexao com o banco",
+                    "MySQL",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
             }
         }
 
@@ -92,7 +102,12 @@ namespace sUCO.control
                     instance.Configured = true;
                     if (exibirMsgSucesso)
                     {
-                        MessageBox.Show("Conexão estabelecida com sucesso!", "MySQL");
+                        MessageBox.Show(
+                            "Conexão estabelecida com sucesso!", 
+                            "MySQL",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Exclamation
+                        );
                     }
                 }
                 else
@@ -143,8 +158,12 @@ namespace sUCO.control
             }
             catch(Exception e)
             {
-                MessageBox.Show("Erro ao executar query: " + e.Message);
-                throw new Exception(e.Message, e);
+                MessageBox.Show(
+                    "Erro ao executar query:\n" + e.Message,
+                    "MySQL",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
             }
         }
 
@@ -159,8 +178,12 @@ namespace sUCO.control
             }
             catch (Exception e)
             {
-                MessageBox.Show("Erro ao executar query: " + e.Message);
-                throw new Exception(e.Message, e);
+                MessageBox.Show(
+                    "Erro ao executar query:\n" + e.Message,
+                    "MySQL",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
             }
         }
 
@@ -177,8 +200,12 @@ namespace sUCO.control
             }
             catch (Exception e)
             {
-                MessageBox.Show("Erro ao executar query: " + e.Message);
-                throw new Exception(e.Message, e);
+                MessageBox.Show(
+                    "Erro ao executar query:\n" + e.Message,
+                    "MySQL",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
             }
         }
     }

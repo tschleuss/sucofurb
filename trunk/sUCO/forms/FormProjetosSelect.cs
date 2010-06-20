@@ -40,7 +40,12 @@ namespace sUCO.forms
             int selectedValue = int.Parse(this.comboProjetos.SelectedValue.ToString());
             if (selectedValue == -1)
             {
-                MessageBox.Show("Selecione um projeto");
+                MessageBox.Show(
+                    "Selecione um projeto.",
+                    "Projeto",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
             else
             {
