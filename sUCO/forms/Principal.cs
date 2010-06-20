@@ -189,7 +189,12 @@ namespace sUCO.forms
         {
             if (opened || this.Projeto.ListaPanelCasoUso.Count > 0)
             {
-                DialogResult result = MessageBox.Show("O conteúdo do arquivo foi alterado.\nDeseja Salvar as alterações?", "Arquivo alterado", MessageBoxButtons.YesNoCancel);
+                DialogResult result = MessageBox.Show(
+                    "O conteúdo do arquivo foi alterado.\nDeseja Salvar as alterações?",
+                    "Arquivo alterado", 
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Warning
+                );
 
                 if (result == DialogResult.Yes)
                 {

@@ -206,6 +206,8 @@ namespace sUCO.control
                     MessageBoxButton.OK,
                     MessageBoxImage.Error
                 );
+
+                return 0;
             }
         }
     }
