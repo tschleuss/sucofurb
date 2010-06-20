@@ -57,5 +57,10 @@ namespace sUCO.forms
             DBUtil.Instance.Configured = false;
             btSalvar.Enabled = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

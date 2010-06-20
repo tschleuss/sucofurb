@@ -135,6 +135,8 @@ namespace sUCO.forms
 
         private void menuItemInternoSalvarBD_Click(object sender, EventArgs e)
         {
+            DBUtil.Instance.testConnection(false);
+
             if (DBUtil.Instance.Configured)
             {
                 //Recupera todo os casos de uso criados
@@ -155,10 +157,6 @@ namespace sUCO.forms
                 {
                     MessageBox.Show("Não há itens para salvar.", "Salvar Projeto");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Configure sua conexão com o banco!", "Salvar Projeto");
             }
         }
 

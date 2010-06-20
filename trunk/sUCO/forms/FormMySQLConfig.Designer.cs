@@ -41,6 +41,7 @@
             this.txtDatabase = new System.Windows.Forms.TextBox();
             this.btSalvar = new System.Windows.Forms.Button();
             this.btTestar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -132,7 +133,7 @@
             // btSalvar
             // 
             this.btSalvar.Enabled = false;
-            this.btSalvar.Location = new System.Drawing.Point(224, 148);
+            this.btSalvar.Location = new System.Drawing.Point(144, 148);
             this.btSalvar.Name = "btSalvar";
             this.btSalvar.Size = new System.Drawing.Size(75, 23);
             this.btSalvar.TabIndex = 10;
@@ -142,7 +143,7 @@
             // 
             // btTestar
             // 
-            this.btTestar.Location = new System.Drawing.Point(143, 148);
+            this.btTestar.Location = new System.Drawing.Point(63, 148);
             this.btTestar.Name = "btTestar";
             this.btTestar.Size = new System.Drawing.Size(75, 23);
             this.btTestar.TabIndex = 11;
@@ -150,11 +151,22 @@
             this.btTestar.UseVisualStyleBackColor = true;
             this.btTestar.Click += new System.EventHandler(this.btTestar_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(225, 148);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Cancelar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormMySQLConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(322, 183);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btTestar);
             this.Controls.Add(this.btSalvar);
             this.Controls.Add(this.txtDatabase);
@@ -194,5 +206,6 @@
         private System.Windows.Forms.TextBox txtDatabase;
         private System.Windows.Forms.Button btSalvar;
         private System.Windows.Forms.Button btTestar;
+        private System.Windows.Forms.Button button1;
     }
 }
