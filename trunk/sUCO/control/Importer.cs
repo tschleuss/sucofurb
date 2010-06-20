@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml;
 using sUCO.diagram;
 using sUCO.core;
+using sUCO.forms;
 
 namespace sUCO.control
 {
