@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
 using System.Windows;
+using sUCO.forms;
 
 namespace sUCO.control
 {
@@ -96,12 +97,30 @@ namespace sUCO.control
                 }
                 else
                 {
-                    MessageBox.Show("Configure sua conexão com o banco!", "MySQL");
+                    MessageBoxResult result = MessageBox.Show(
+                        "Deseja configurar sua conexão com o banco agora ?", 
+                        "MySQL",
+                        MessageBoxButton.OKCancel,
+                        MessageBoxImage.Question
+                    );
+
+                    if (result == MessageBoxResult.OK)
+                    {
+                        FormMySQLConfig formMySQL = new FormMySQLConfig();
+                        formMySQL.ShowDialog();
+                    }
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show("Erro ao abrir conexão com o banco: " + e.Message, "MySQL");
+                MessageBox.Show(
+                    "Erro ao abrir conexão com o banco, o servidor retornou:\n" + e.Message,
+                    "MySQL",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error
+                );
+
+                instance.Connection = null;
                 instance.Configured = false;
             }
             finally

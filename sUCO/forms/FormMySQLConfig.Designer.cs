@@ -68,7 +68,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Usuario";
+            this.label3.Text = "Usuário";
             // 
             // label4
             // 
@@ -174,7 +174,7 @@
             this.Name = "FormMySQLConfig";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Configuracões do MySQL";
+            this.Text = "Configurações do MySQL";
             this.ResumeLayout(false);
             this.PerformLayout();
 
