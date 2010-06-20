@@ -41,9 +41,9 @@
             this.lblSelecao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelecao.Location = new System.Drawing.Point(13, 13);
             this.lblSelecao.Name = "lblSelecao";
-            this.lblSelecao.Size = new System.Drawing.Size(151, 13);
+            this.lblSelecao.Size = new System.Drawing.Size(163, 13);
             this.lblSelecao.TabIndex = 0;
-            this.lblSelecao.Text = "Selecione o projeto  ser aberto";
+            this.lblSelecao.Text = "Selecione o projeto a ser aberto. ";
             // 
             // comboProjetos
             // 
@@ -90,7 +90,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmProjetosSelect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Seleção do Projeto";
+            this.Text = "Seleção de Projetos";
             this.ResumeLayout(false);
             this.PerformLayout();
 
